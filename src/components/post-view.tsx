@@ -6,6 +6,7 @@ import { ActionBar, Badge, ErrorNote, PrimaryButton, ScreenBody, SubLink, TopBar
 import { PostFourUp, ToneTag, useTry } from "@/components/post-parts";
 import { ProductCards, ProductsBadge } from "@/components/tone-parts";
 import { api, delKey } from "@/lib/client/api";
+import { topicLabel } from "@/lib/topics";
 import type { Post } from "@/lib/types";
 
 export function PostView({ post }: { post: Post | null }) {
@@ -56,6 +57,11 @@ export function PostView({ post }: { post: Post | null }) {
       <ScreenBody>
         <div className="pt-1"><PostFourUp post={post} /></div>
         <h1 className="mt-4 text-[17px] font-bold leading-snug">{post.caption || post.mood}</h1>
+        {(post.tags ?? []).length > 0 && (
+          <p className="mt-1 flex flex-wrap gap-x-2 text-sm font-semibold text-cherry">
+            {(post.tags ?? []).map((k) => <span key={k}>#{topicLabel(k)}</span>)}
+          </p>
+        )}
         <div className="flex items-center gap-2"><ToneTag post={post} /><Badge kind="simulation" /></div>
         {post.products.length > 0 && (
           <>

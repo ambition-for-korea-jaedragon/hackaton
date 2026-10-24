@@ -101,6 +101,7 @@ export type Post = {
   myToneUrl: string; // apply_translated.png (selfie-style, tone-translated makeup)
   styledUrl: string; // styled.png
   products: Product[]; // up to 5, copied at post time
+  tags?: string[]; // topic keys from src/lib/topics.ts (max 2), assigned by Claude at post time
 };
 
 // API (all JSON unless noted)

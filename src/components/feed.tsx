@@ -4,16 +4,12 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { ErrorNote } from "@/components/app-shell";
 import { PostFourUp, moodLine, useTry } from "@/components/post-parts";
-import { TONE_DOT, api, toneClass, type ToneClass } from "@/lib/client/api";
+import { TONE_DOT, api, toneClass } from "@/lib/client/api";
+import { TOPICS, topicLabel } from "@/lib/topics";
 import type { Post } from "@/lib/types";
 
 
-const FILTERS: { key: "all" | ToneClass; label: string }[] = [
-  { key: "all", label: "All tones" },
-  { key: "fair", label: "Fair" },
-  { key: "medium", label: "Medium" },
-  { key: "deep", label: "Deep" },
-];
+const FILTERS: { key: string; label: string }[] = [{ key: "all", label: "전체" }, ...TOPICS.map((t) => ({ key: t.key, label: t.label }))];
 
 function timeAgo(iso: string) {
   const s = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 1000));
@@ -28,7 +24,7 @@ function timeAgo(iso: string) {
 export function Feed() {
   const [posts, setPosts] = useState<Post[] | null>(null);
   const [cursor, setCursor] = useState<string | undefined>();
-  const [filter, setFilter] = useState<"all" | ToneClass>("all");
+  const [filter, setFilter] = useState<string>("all");
   const [error, setError] = useState<string | null>(null);
   const [more, setMore] = useState(false);
 
@@ -50,7 +46,7 @@ export function Feed() {
     load();
   }, [load]);
 
-  const shown = (posts ?? []).filter((p) => p.mannequinUrl && p.styledUrl).filter((p) => filter === "all" || toneClass(p.skinTone.depth) === filter);
+  const shown = (posts ?? []).filter((p) => p.mannequinUrl && p.styledUrl).filter((p) => filter === "all" || (p.tags ?? []).includes(filter));
 
   return (
     <>
@@ -64,7 +60,7 @@ export function Feed() {
       </header>
 
       <main className="flex-1 overflow-y-auto pb-24">
-        <div className="flex gap-2 overflow-x-auto px-4 pb-3 pt-1" role="group" aria-label="Filter by skin tone">
+        <div className="flex gap-2 overflow-x-auto px-4 pb-3 pt-1" role="group" aria-label="Filter by trending topic">
           {FILTERS.map((f) => (
             <button
               key={f.key}
@@ -75,7 +71,7 @@ export function Feed() {
                 filter === f.key ? "border-ink bg-ink text-white" : "border-line bg-paper"
               }`}
             >
-              {f.key !== "all" && <i className="block size-3 rounded-full" style={{ background: TONE_DOT[f.key] }} />}
+              {f.key !== "all" && <span aria-hidden className="opacity-60">#</span>}
               {f.label}
             </button>
           ))}
@@ -96,10 +92,10 @@ export function Feed() {
             {shown.length === 0 && !error && (
               <div className="mx-4 mt-4 rounded-[var(--radius-booth)] bg-lilac p-6 text-center">
                 <h2 className="font-display text-2xl leading-tight">
-                  {filter === "all" ? "No looks yet." : "No looks for this tone yet."}
+                  {filter === "all" ? "No looks yet." : `No #${topicLabel(filter)} looks yet.`}
                 </h2>
                 <p className="mx-auto mt-2 max-w-[28ch] text-sm text-ink-soft">
-                  {filter === "all" ? "Copy a look, keep your tone, and post the first one." : "Try another filter, or post one yourself."}
+                  {filter === "all" ? "Copy a look, keep your tone, and post the first one." : "Try another topic, or post one yourself."}
                 </p>
                 <Link href="/new" className="mt-4 inline-block rounded-[var(--radius-cta)] bg-cherry px-5 py-3 font-semibold text-white">
                   Make a new look
@@ -179,6 +175,13 @@ function FeedPost({ post }: { post: Post }) {
 
       <div className="px-4 pt-2 text-[14px] leading-snug">
         {post.caption && <p className="font-bold">{post.caption}</p>}
+        {(post.tags ?? []).length > 0 && (
+          <p className="mt-0.5 flex flex-wrap gap-x-2 text-[13.5px] font-semibold text-cherry">
+            {(post.tags ?? []).map((k) => (
+              <span key={k}>#{topicLabel(k)}</span>
+            ))}
+          </p>
+        )}
         {post.products.length > 0 && (
           <Link href={`/p/${post.id}`} className="mt-1 inline-block text-[13.5px] font-semibold text-ink underline-offset-2 hover:underline">
             View {post.products.length} products

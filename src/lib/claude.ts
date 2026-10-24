@@ -3,6 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { LookAnalysis, ToneTranslation } from "./types";
 import { catalog } from "./catalog";
+import { TOPICS, TOPIC_KEYS } from "./topics";
 
 const MODEL = "claude-sonnet-5-5";
 
@@ -100,4 +101,23 @@ export async function translateTone(analysis: LookAnalysis, selfie: Img): Promis
   });
   const ids = new Set(catalog.map((c) => c.id));
   return { ...result, productIds: result.productIds.filter((i) => ids.has(i)) };
+}
+
+const TopicResult = z.object({ tags: z.array(z.enum(TOPIC_KEYS)) });
+
+// Assign up to 2 hot-topic keywords to a look. Never throws; returns [] on failure.
+export async function classifyTopics(analysis: LookAnalysis): Promise<string[]> {
+  try {
+    const topics = TOPICS.map((t) => `${t.key}: ${t.label} — ${t.hint}`).join("\n");
+    const r = await callStructured({
+      system: "You tag makeup looks with Korean beauty trend keywords. Pick the 1-2 best-fitting keys from the list (prefer the single best fit; add a second only if clearly true).",
+      content: [{ type: "text", text: `Topics:\n${topics}\n\nLook:\n${JSON.stringify(analysis)}` }],
+      schema: TopicResult,
+      toolName: "return_topics",
+    });
+    return r.tags.slice(0, 2);
+  } catch (e) {
+    console.error("[classifyTopics]", e instanceof Error ? e.message : e);
+    return [];
+  }
 }

@@ -1,5 +1,6 @@
 import { fileUrl, PostInput, type Post } from "@/lib/types";
 import { loadSession } from "@/lib/storage";
+import { classifyTopics } from "@/lib/claude";
 import { listPosts, newDeleteToken, newPostId, NO_STORE, savePost } from "@/lib/posts";
 
 export async function GET(req: Request) {
@@ -43,6 +44,7 @@ export async function POST(req: Request) {
     myToneUrl: fileUrl(s.id, "apply_translated.png"),
     styledUrl: fileUrl(s.id, "styled.png"),
     products: (s.products?.items ?? []).slice(0, 5),
+    tags: await classifyTopics(s.analysis),
   };
   const deleteToken = newDeleteToken();
   await savePost(post, deleteToken);
