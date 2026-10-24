@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>muselook — Option C, Color Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--peach:#F6B79A;--blush:#F7A8B4;--lip:#D6204E;--brick:#C2413F;--deep:#5A3825;--ink:#2B0F1E;--plum:#3A1424;--paper:#FFF6F3;
+--display:"Unbounded",system-ui,sans-serif;--body:"Figtree",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E6E0F0;color:var(--ink);font-family:var(--body);padding:40px 40px 60px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.head{max-width:1880px;margin:0 auto 34px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:end}
+.head h1{font-family:var(--display);font-weight:800;font-size:64px;letter-spacing:-2px;line-height:1}
+.head h2{font-family:var(--display);font-weight:500;font-size:22px;margin:10px 0 12px}
+.head p{font-size:17px;line-height:1.5;max-width:62ch}
+.tokens{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:22px;overflow:hidden}
+.tk{padding:34px 14px 12px;font-size:13.5px;font-weight:600;line-height:1.3}
+.tk b{display:block;font-family:var(--display);font-weight:700;font-size:13px}
+.row{max-width:2520px;margin:0 auto;display:flex;flex-wrap:wrap;gap:36px 30px;justify-content:center}
+.col{width:390px}
+.cap{font-size:15px;margin-bottom:10px;font-weight:500}
+.cap b{font-family:var(--display);font-weight:700;font-size:15px}
+.phone{width:390px;height:844px;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 0 0 8px var(--ink)}
+.status{height:44px;flex:none;display:flex;justify-content:space-between;align-items:flex-end;padding:0 28px 6px;font-size:14px;font-weight:700}
+.topbar{height:46px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 22px}
+.brand{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.5px}
+.back{font-size:28px;line-height:1;width:34px}
+.steps{display:flex;gap:5px}.steps span{width:26px;height:7px;border-radius:4px;background:currentColor;opacity:.28}.steps span.on{opacity:1}
+.body{flex:1;min-height:0;overflow:hidden;padding:6px 22px 0;position:relative}
+.action{flex:none;padding:12px 22px 28px}
+.cta{width:100%;border:0;border-radius:18px;padding:17px;font:700 17px var(--body)}
+.sub{text-align:center;font-weight:700;font-size:15px;margin-top:12px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;border-radius:999px;padding:4px 10px 4px 8px;background:var(--ink);color:#fff;white-space:nowrap}
+.badge i{width:8px;height:8px;border-radius:50%;background:#7CFFB2}
+.badge.sim{background:#fff;color:var(--ink)}.badge.sim i{background:#8A5F9E}
+.badge.web{background:#fff;color:var(--ink)}.badge.web i{background:#2E7BE0}
+svg{display:block;width:100%;height:100%}
+/* 1 */
+.p1{background:var(--peach)}.p1 .cta{background:var(--ink);color:#fff}
+.hero{font-family:var(--display);font-weight:800;font-size:37px;line-height:1.04;letter-spacing:-1.4px;margin:8px 0 12px}
+.lede{font-size:16px;line-height:1.45;max-width:32ch}
+.drop{margin-top:18px;background:var(--blush);border-radius:30px 30px 30px 8px;height:206px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:16px;border:2.5px dashed var(--ink)}
+.plus{width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--blush);font-size:30px;display:grid;place-items:center;line-height:1}
+.drop b{font-family:var(--display);font-weight:700;font-size:16px}.drop small{font-size:13.5px;line-height:1.4;max-width:28ch}
+.lbl{font-weight:700;font-size:15px;margin:18px 0 10px}
+.samples{display:flex;gap:10px}
+.samp{flex:1;border-radius:18px;overflow:hidden;background:var(--paper)}
+.samp .f{height:104px}
+.samp .pal{display:flex;height:12px}.samp .pal i{flex:1}
+.samp p{font-size:13.5px;font-weight:700;padding:7px 9px 9px}
+.samp.sel{box-shadow:0 0 0 3.5px var(--ink)}
+/* 2 */
+.p2{background:var(--blush)}.p2 .cta{background:var(--ink);color:#fff}
+.lh{display:flex;gap:14px;align-items:center}
+.lh .th{width:88px;height:106px;border-radius:20px;overflow:hidden;flex:none}
+.mood{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.2;letter-spacing:-.4px;margin-top:8px}
+.bands{margin:16px -22px 0;display:flex;flex-direction:column}
+.band{padding:12px 22px;min-height:84px;display:flex;align-items:center;color:var(--ink)}
+.band h4{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.3px}
+.band h4 em{font-family:var(--body);font-style:normal;font-weight:600;font-size:13.5px;margin-left:4px}
+.band p{font-size:14px;line-height:1.38;margin-top:3px;max-width:36ch}
+/* 3 */
+.p3{background:var(--deep);color:#fff}.p3 .cta{background:#fff;color:var(--deep);opacity:.9}
+.p3 .topbar{color:#fff}
+.tonehead{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-1px;line-height:1.05;margin:2px 0 14px}
+.ph{height:340px;border-radius:30px;overflow:hidden;position:relative;background:#7A4F36}
+.count{position:absolute;right:16px;top:10px;font-family:var(--display);font-weight:800;font-size:64px;color:#fff}
+.dev{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;font-weight:600}
+.dev .tr{flex:1;height:9px;border-radius:5px;background:rgba(255,255,255,.25);overflow:hidden}.dev .tr i{display:block;width:62%;height:100%;background:var(--blush)}
+.ramp{display:flex;height:34px;border-radius:12px;overflow:hidden;margin-top:14px}.ramp i{flex:1;position:relative}
+.ramp i.me::after{content:"";position:absolute;inset:3px;border:3px solid #fff;border-radius:8px}
+.rl{font-size:13px;margin-top:6px;display:flex;justify-content:space-between}
+.consent{margin-top:14px;display:flex;gap:10px;font-size:13.5px;line-height:1.42;align-items:flex-start}
+.box{width:20px;height:20px;border-radius:6px;background:var(--blush);color:var(--ink);display:grid;place-items:center;font-size:13px;font-weight:800;flex:none;margin-top:1px}
+/* 4 */
+.p4{background:var(--plum);color:#fff}.p4 .cta{background:var(--blush);color:var(--ink)}
+.split{display:grid;grid-template-columns:1fr 1fr;height:236px;flex:none}
+.half{position:relative;overflow:hidden}
+.half .tg{position:absolute;left:12px;bottom:12px;font-weight:700;font-size:13px;border-radius:999px;padding:4px 11px;background:var(--ink);color:#fff}
+.half .tgs{position:absolute;top:10px;left:12px;font-family:var(--display);font-weight:700;font-size:12px;}
+.swrow{display:grid;grid-template-columns:1fr 1fr;flex:none}
+.swrow .a,.swrow .b{height:50px;display:flex;align-items:center;padding:0 14px;font-weight:700;font-size:13.5px;line-height:1.2}
+.sx{display:grid;grid-template-columns:1fr 1fr}
+.note4{font-size:13.5px;line-height:1.4;padding:7px 22px 0}
+.ttl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.3px;margin:14px 0 8px}
+.prods{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pc{border-radius:16px;padding:10px 11px;color:var(--ink)}
+.pc .b{font-size:12px;font-weight:700}.pc .nm{font-size:13.5px;font-weight:800;line-height:1.2}.pc .w{font-size:12px;line-height:1.3;margin-top:3px}.pc .l{font-size:12.5px;font-weight:800;margin-top:4px;text-decoration:underline}
+/* 5 */
+.p5{background:var(--lip);color:#fff}
+.p5 .dimmed{filter:saturate(.8) brightness(.8);}
+.mini{margin:6px auto 0;width:300px;height:236px;display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden}
+.sheetp{position:absolute;left:0;right:0;bottom:0;background:var(--paper);color:var(--ink);border-radius:32px 32px 0 0;padding:12px 22px 28px}
+.grab{width:42px;height:5px;border-radius:3px;background:#C9B4B4;margin:0 auto 12px}
+.sheetp h3{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.6px;margin-bottom:12px}
+.field{background:var(--blush);border-radius:14px;padding:14px;font-size:15px;font-weight:600}
+.tg-row{display:flex;justify-content:space-between;align-items:center;margin:14px 2px 4px;font-size:15px;font-weight:600}
+.sw-ui{width:48px;height:28px;border-radius:999px;background:var(--ink);position:relative}.sw-ui i{position:absolute;top:3px;left:23px;width:22px;height:22px;border-radius:50%;background:#fff}
+.fine{font-size:13px;line-height:1.45;margin:8px 2px 14px}
+.p5 .cta{background:var(--lip);color:#fff}
+.srow{display:flex;margin-top:14px;font-size:14px;font-weight:700}.srow span{flex:1;text-align:center}
+/* 6 */
+.p6{background:var(--plum);color:#fff}
+.filters{display:flex;gap:8px;padding:0 22px 12px;flex:none}
+.fl{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:rgba(255,255,255,.14);color:#fff;white-space:nowrap}
+.fl i{width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 1.5px #fff}
+.fl.on{background:var(--blush);color:var(--ink)}
+.feed{flex:1;min-height:0;padding:0 14px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.post{border-radius:28px;overflow:hidden;color:var(--ink)}
+.post .pair{display:grid;grid-template-columns:1fr 1fr;height:216px}
+.post .half .tg{font-size:12px}
+.pm{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px 14px}
+.pm b{display:block;font-size:15px;line-height:1.25}
+.tone{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;margin-top:4px}.tone i{width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 1.5px var(--ink)}
+.try{border:0;background:var(--ink);color:#fff;font:700 14px var(--body);border-radius:14px;padding:11px 13px;white-space:nowrap}
+.notes{max-width:1880px;margin:44px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:26px;overflow:hidden}
+.note{padding:24px 26px 28px;font-size:15px;line-height:1.55}
+.note h3{font-family:var(--display);font-weight:700;font-size:16px;margin-bottom:8px;letter-spacing:-.3px}
+.note ul{padding-left:18px}
+@media (max-width:900px){.head{grid-template-columns:1fr}.notes{grid-template-columns:1fr}.tokens{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header class="head">
+ <div><h1>muselook</h1><h2>Option C — Color Lab</h2>
+ <p>The interface wears the look. Every screen floods with the shades of the makeup on it, your own skin tone sits on screen as a big field, and the moment you see your look shifted, the whole canvas changes from the idol's colors to yours.</p></div>
+ <div class="tokens">
+  <div class="tk" style="background:#F6B79A"><b>Apricot Lid</b>#F6B79A</div>
+  <div class="tk" style="background:#F7A8B4"><b>Glass Blush</b>#F7A8B4</div>
+  <div class="tk" style="background:#D6204E;color:#fff"><b>Cherry Lip</b>#D6204E</div>
+  <div class="tk" style="background:#C2413F;color:#fff"><b>Shifted Brick</b>#C2413F</div>
+  <div class="tk" style="background:#5A3825;color:#fff"><b>Deep Tone</b>#5A3825</div>
+  <div class="tk" style="background:#2B0F1E;color:#fff"><b>Berry Ink</b>#2B0F1E</div>
+ </div>
+</header>
+<div class="row">
+
+<div class="col"><div class="cap"><b>1 Look</b>, upload or pick a look</div>
+<div class="phone p1"><div class="status"><span>9:41</span><span>●●● ▮</span></div><div class="topbar"><span class="brand">muselook</span><div class="steps"><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+ <div class="body">
+  <h2 class="hero">Copy the look.<br>Keep your tone.</h2>
+  <p class="lede">Drop in any idol or influencer makeup photo. We'll break it down, put it on your face, then shift every shade to suit your skin.</p>
+  <div class="drop"><div class="plus">+</div><b>Add a makeup photo</b><small>A clear, front-facing shot works best. Use photos you have the right to share.</small></div>
+  <div class="lbl">Or start with a sample look</div>
+  <div class="samples">
+   <div class="samp sel"><div class="f"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#F7A8B4"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#F1D3C2"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.7"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.7"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#F25C7A"/></svg></div><div class="pal"><i style="background:#F2B49B"></i><i style="background:#F49BAA"></i><i style="background:#F25C7A"></i></div><p>Peach glass</p></div>
+   <div class="samp"><div class="f"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#C9A6E0"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#EBCDBB"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#C78BB0" opacity="0.7"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#C78BB0" opacity="0.7"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#B58AC4"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#B58AC4"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#B04A74"/></svg></div><div class="pal"><i style="background:#B58AC4"></i><i style="background:#C78BB0"></i><i style="background:#B04A74"></i></div><p>Mauve cool</p></div>
+   <div class="samp"><div class="f"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#F6B79A"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#EED2BD"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#E59A6E" opacity="0.7"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#E59A6E" opacity="0.7"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#E0A46E"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#E0A46E"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#C8553A"/></svg></div><div class="pal"><i style="background:#E0A46E"></i><i style="background:#E59A6E"></i><i style="background:#C8553A"></i></div><p>Brick sunset</p></div>
+  </div>
+ </div>
+ <div class="action"><button class="cta">Analyze This Look</button></div>
+</div></div>
+
+<div class="col"><div class="cap"><b>2 Breakdown</b>, what's in the look</div>
+<div class="phone p2"><div class="status"><span>9:41</span><span>●●● ▮</span></div><div class="topbar"><span class="back">‹</span><div class="steps"><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span></div></div>
+ <div class="body">
+  <div class="lh"><div class="th"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#F7A8B4"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#F1D3C2"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.7"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.7"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#F25C7A"/></svg></div><div><span class="badge live"><i></i>Live AI</span><div class="mood">Peachy glass skin, soft coral lids, blurred cherry lip</div></div></div>
+  <div class="bands">
+   <div class="band" style="background:#FBE3D6"><div class="bt"><h4>Skin prep <em>dewy</em></h4><p>Hydrating toner pats, then a light gel cream. Glow comes from skin, not highlighter.</p></div></div>
+   <div class="band" style="background:#F0D2BF"><div class="bt"><h4>Base <em>sheer, satin</em></h4><p>Thin cushion layer only where needed. Leave cheeks almost bare.</p></div></div>
+   <div class="band" style="background:#F2B49B"><div class="bt"><h4>Eyes <em>shimmer</em></h4><p>Peach wash across the lid, deeper coral at the outer third, short brown liner.</p></div></div>
+   <div class="band" style="background:#F49BAA"><div class="bt"><h4>Blush <em>sheer</em></h4><p>High on the cheek, blended toward the under-eye for a flushed look.</p></div></div>
+   <div class="band" style="background:#F25C7A"><div class="bt"><h4>Lips <em>blurred tint</em></h4><p>Tint the inner lip, then press outward with a fingertip.</p></div></div>
+  </div>
+ </div>
+ <div class="action" style="background:#F25C7A"><button class="cta" style="background:var(--ink);color:#fff">See It On Me</button></div>
+</div></div>
+
+<div class="col"><div class="cap"><b>3 On Me</b>, selfie, then the booth develops it</div>
+<div class="phone p3"><div class="status"><span>9:41</span><span>●●● ▮</span></div><div class="topbar"><span class="back">‹</span><div class="steps"><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span></div></div>
+ <div class="body">
+  <h2 class="tonehead">Your tone is the canvas</h2>
+  <div class="ph"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#F7A8B4"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#6E4630"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.5"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.5"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#F25C7A"/></svg><div class="count">2</div></div>
+  <div class="dev"><span>Developing your photo</span><div class="tr"><i></i></div></div>
+  <div class="ramp"><i style="background:#F3D9C8"></i><i style="background:#E2B08E"></i><i style="background:#C68A62"></i><i style="background:#8D5A3B"></i><i class="me" style="background:#5A3825"></i></div>
+  <div class="rl"><span>Fair</span><span>Deep, warm (yours)</span></div>
+  <div class="consent"><span class="box">✓</span><span>I'm 13 or older. My selfie is sent to Anthropic and OpenAI to create the preview and kept on this demo server for this session.</span></div>
+  <div class="consent"><span class="badge sim"><i></i>Simulation</span><span>Previews are AI-generated and approximate real color.</span></div>
+ </div>
+ <div class="action"><button class="cta" disabled>Putting the look on you…</button></div>
+</div></div>
+
+<div class="col"><div class="cap"><b>4 My Tone</b>, as-is vs shifted, swatches, products</div>
+<div class="phone p4"><div class="status"><span>9:41</span><span>●●● ▮</span></div><div class="topbar"><span class="back">‹</span><div class="steps"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></div>
+ <div class="split">
+  <div class="half" style="background:#F7A8B4"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#F7A8B4"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#6E4630"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.5"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.5"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#F25C7A"/></svg><span class="tg">As-is</span></div>
+  <div class="half" style="background:#C2413F"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#C2413F"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#6E4630"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#C2413F" opacity="0.75"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#C2413F" opacity="0.75"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#C9876E"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#C9876E"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#A3203F"/></svg><span class="tg" style="background:#fff;color:var(--ink)">My tone</span></div>
+ </div>
+ <div class="swrow">
+  <div class="a" style="background:#F49BAA;color:var(--ink)">Blush, pastel pink</div><div class="b" style="background:#C2413F;color:#fff">Blush, warm red</div>
+  <div class="a" style="background:#F25C7A;color:var(--ink)">Lips, blurred tint</div><div class="b" style="background:#A3203F;color:#fff">Lips, deeper cherry</div>
+ </div>
+ <div class="body" style="padding-top:0">
+  <div class="ttl" style="margin-top:10px"><span class="badge live"><i></i>Live AI</span> Shifted for deep, warm skin</div>
+  <div class="ttl" style="margin:8px 0 6px">Products for your shifted look <span class="badge web"><i></i>Web search</span></div>
+  <div class="prods">
+   <div class="pc" style="background:#F6B79A"><div class="b">Dasique</div><div class="nm">Blending Mood Cheek</div><div class="w">Warm red that reads as a flush on deep skin.</div><div class="l">View product</div></div>
+   <div class="pc" style="background:#C9876E"><div class="b">TIRTIR</div><div class="nm">Mask Fit Red Cushion 55N</div><div class="w">Matches deep neutral skin, satin finish.</div><div class="l">View product</div></div>
+  </div>
+ </div>
+ <div class="action" style="padding-top:6px;padding-bottom:22px"><button class="cta">Share My Look</button><div class="sub">Try another look</div></div>
+</div></div>
+
+<div class="col"><div class="cap"><b>5 Share</b>, post to the feed or copy a link</div>
+<div class="phone p5"><div class="status"><span>9:41</span><span>●●● ▮</span></div><div class="topbar"><span class="back">‹</span><div class="steps"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></div>
+ <div class="body dimmed"><div class="mini"><div class="half" style="background:#F7A8B4"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#F7A8B4"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#6E4630"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.5"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.5"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#F25C7A"/></svg><span class="tg">As-is</span></div><div class="half" style="background:#C2413F"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#C2413F"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#6E4630"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#C2413F" opacity="0.75"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#C2413F" opacity="0.75"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#C9876E"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#C9876E"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#A3203F"/></svg><span class="tg" style="background:#fff;color:var(--ink)">My tone</span></div></div></div>
+ <div class="sheetp"><div class="grab"></div>
+  <h3>Share your look</h3>
+  <div class="field">Peach glass, but make it mine 🍑</div>
+  <div class="tg-row"><span>Show the original look photo</span><span class="sw-ui"><i></i></span></div>
+  <p class="fine">Your look, tone tag and product list go to the public feed. You can delete it anytime from this device.</p>
+  <button class="cta">Post to Feed</button>
+  <div class="srow"><span>Copy link</span><span>Save image</span><span>Instagram story</span></div>
+ </div>
+</div></div>
+
+<div class="col"><div class="cap"><b>6 Feed</b>, see a look on someone like you, try it</div>
+<div class="phone p6"><div class="status"><span>9:41</span><span>●●● ▮</span></div><div class="topbar"><span class="brand">muselook</span><span class="back" style="text-align:right">＋</span></div>
+ <div class="filters"><span class="fl on">All tones</span><span class="fl"><i style="background:#F3D9C8"></i>Fair</span><span class="fl"><i style="background:#C68A62"></i>Medium</span><span class="fl"><i style="background:#5A3825"></i>Deep</span></div>
+ <div class="feed">
+  <article class="post" style="background:#F7A8B4"><div class="pair"><div class="half" style="background:#F7A8B4"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#F7A8B4"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#F1D3C2"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.7"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#F49BAA" opacity="0.7"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#F2B49B"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#F25C7A"/></svg><span class="tg">Look</span></div><div class="half" style="background:#C2413F"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#C2413F"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#6E4630"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#C2413F" opacity="0.75"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#C2413F" opacity="0.75"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#C9876E"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#C9876E"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#A3203F"/></svg><span class="tg" style="background:#fff;color:var(--ink)">My tone</span></div></div>
+   <div class="pm"><div><b>Peach glass, but make it mine 🍑</b><span class="tone"><i style="background:#5A3825"></i>Deep, warm</span></div><button class="try">Try This Look</button></div></article>
+  <article class="post" style="background:#C9A6E0"><div class="pair"><div class="half" style="background:#C9A6E0"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#C9A6E0"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#EBCDBB"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#C78BB0" opacity="0.7"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#C78BB0" opacity="0.7"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#B58AC4"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#B58AC4"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#B04A74"/></svg><span class="tg">Look</span></div><div class="half" style="background:#B04A74"><svg viewBox="0 0 100 124" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder face"><rect width="100" height="124" fill="#B04A74"/><path d="M16 124 q4 -26 34 -26 q30 0 34 26z" fill="#1E1218" opacity=".9"/><ellipse cx="50" cy="62" rx="35" ry="42" fill="#1E1218"/><ellipse cx="50" cy="68" rx="30" ry="38" fill="#C68A62"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#A8456E" opacity="0.7"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#A8456E" opacity="0.7"/><path d="M34 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#8A5F9E"/><path d="M52 60 q7 -7 14 0 q-7 -2 -14 0z" fill="#8A5F9E"/><circle cx="41" cy="61" r="1.6" fill="#1E1218"/><circle cx="59" cy="61" r="1.6" fill="#1E1218"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0z" fill="#8E2450"/></svg><span class="tg" style="background:#fff;color:var(--ink)">My tone</span></div></div>
+   <div class="pm"><div><b>Mauve cool for olive skin</b><span class="tone"><i style="background:#C68A62"></i>Medium, olive</span></div><button class="try">Try This Look</button></div></article>
+ </div>
+</div></div>
+
+</div>
+<section class="notes">
+ <div class="note" style="background:#F6B79A"><h3>Type</h3>Unbounded, a wide rounded display face, carries headlines, brand and step names at heavy weights with tight tracking. Figtree handles all reading text. Buttons are sentence case and start with a verb.</div>
+ <div class="note" style="background:#F7A8B4"><h3>The UI wears the look</h3>Each screen's background is a flat field pulled from the current look: apricot for upload, blush for the breakdown, deep tone while your selfie develops, lip red for sharing. Text on every field is Berry Ink or white, chosen for AA contrast.</div>
+ <div class="note" style="background:#C2413F;color:#fff"><h3>The split is the moment</h3>On My Tone the screen divides full bleed: the idol's blush and lip on the left, the translated shades on the right. Swatch blocks underneath stay on their own color fields, so the shift is judged on color, not on white.</div>
+ <div class="note" style="background:#5A3825;color:#fff"><h3>Honest labels</h3><ul><li>Live AI: Claude analysis and translation</li><li>Simulation: generated preview images</li><li>Web search: products found live</li></ul>Illustrated faces are placeholders for real photos.</div>
+</section>
+</body></html>
