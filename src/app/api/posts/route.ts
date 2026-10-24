@@ -1,6 +1,7 @@
-import { fileUrl, PostInput, type Post } from "@/lib/types";
+import { fileUrl, PostInput, type AreaPoints, type Post } from "@/lib/types";
 import { loadSession } from "@/lib/storage";
 import { classifyTopics } from "@/lib/claude";
+import samples from "@/data/sample-looks.json";
 import { listPosts, newDeleteToken, newPostId, NO_STORE, savePost } from "@/lib/posts";
 
 export async function GET(req: Request) {
@@ -45,6 +46,7 @@ export async function POST(req: Request) {
     styledUrl: fileUrl(s.id, "styled.png"),
     products: (s.products?.items ?? []).slice(0, 5),
     tags: await classifyTopics(s.analysis),
+    ...(s.sampleId ? { points: (samples as { id: string; points?: AreaPoints }[]).find((x) => x.id === s.sampleId)?.points } : {}),
   };
   const deleteToken = newDeleteToken();
   await savePost(post, deleteToken);

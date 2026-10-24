@@ -52,6 +52,15 @@ export async function computeFacePoints(src: string): Promise<AreaPoints | null>
   };
 }
 
+// Typical positions for a front-facing portrait; used only if landmark detection is unavailable.
+export const GENERIC_POINTS: AreaPoints = {
+  skincare: { x: 0.52, y: 0.27 },
+  base: { x: 0.4, y: 0.45 },
+  eye: { x: 0.38, y: 0.33 },
+  blush: { x: 0.67, y: 0.42 },
+  lip: { x: 0.52, y: 0.53 },
+};
+
 // Returns stored points if present, else computes them from the image; null while loading or if no face found.
 export function useFacePoints(src: string | undefined, stored?: AreaPoints): AreaPoints | null {
   const [computed, setComputed] = useState<AreaPoints | null>(null);
@@ -59,8 +68,11 @@ export function useFacePoints(src: string | undefined, stored?: AreaPoints): Are
     if (stored || !src) return;
     let alive = true;
     computeFacePoints(src)
-      .then((p) => alive && setComputed(p))
-      .catch((e) => console.error("[face-points]", e));
+      .then((p) => alive && setComputed(p ?? GENERIC_POINTS))
+      .catch((e) => {
+        console.error("[face-points]", e);
+        if (alive) setComputed(GENERIC_POINTS);
+      });
     return () => {
       alive = false;
     };

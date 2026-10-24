@@ -23,6 +23,7 @@ export async function POST(req: Request) {
     if (mannequin) await writeFileTo(s.id, "mannequin.png", mannequin);
     await updateSession(s.id, (st) => {
       st.analysis = analysis;
+      st.sampleId = sample.id;
       st.mannequin = { status: mannequin ? "done" : "pending" };
     });
     if (!mannequin) void runGeneration(s.id, "mannequin");

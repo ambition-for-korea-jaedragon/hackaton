@@ -84,6 +84,7 @@ export type SessionState = {
   id: string;
   createdAt: string;
   source: "live" | "sample"; // sample = precomputed demo result
+  sampleId?: string; // set for sample sessions (and copied by 'try'); lets posts reuse precomputed face points
   analysis?: LookAnalysis;
   translation?: ToneTranslation;
   applyOriginal: { status: ImageStatus; error?: string };

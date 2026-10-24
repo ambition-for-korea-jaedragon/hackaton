@@ -12,7 +12,7 @@ type View = { k: number; tx: number; ty: number };
 const HOME: View = { k: 1, tx: 0, ty: 0 };
 
 // card slots: which corner each area's card sits in
-const SLOT: Record<Area, "tl" | "tr" | "bl" | "br" | "tc"> = { eye: "tl", blush: "tr", lip: "bl", base: "br", skincare: "tc" };
+const SLOT: Record<Area, "tl" | "tr" | "bl" | "br" | "tc"> = { eye: "tl", blush: "tr", base: "bl", lip: "br", skincare: "tc" };
 
 export function ProductCallout({
   src,
