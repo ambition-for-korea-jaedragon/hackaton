@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ActionBar, Badge, ErrorNote, PrimaryButton, ScreenBody, Spinner, SubLink, TopBar,
 } from "@/components/app-shell";
-import { Booth } from "@/components/booth";
 import { FourUp } from "@/components/four-up";
 import { ShareSheet } from "@/components/share-sheet";
 import { ProductCards, ProductSkeleton, ProductsBadge, SwatchBand, areaLabel } from "@/components/tone-parts";
@@ -21,7 +20,7 @@ const STEP_NO: Record<Step, number> = { breakdown: 2, onme: 3, tone: 4 };
 const NOTICE = "My selfie is sent to Anthropic and OpenAI to create the preview and kept on this demo server for this session.";
 
 const isPending = (s: SessionState) =>
-  s.applyOriginal.status === "pending" || s.applyTranslated.status === "pending" ||
+  s.applyTranslated.status === "pending" ||
   s.mannequin?.status === "pending" || s.styled?.status === "pending" || s.products?.status === "pending" || s.museProducts?.status === "pending";
 
 export function SessionFlow({ id }: { id: string }) {
@@ -39,11 +38,7 @@ export function SessionFlow({ id }: { id: string }) {
       if (!stepSet.current) {
         stepSet.current = true;
         setStep(
-          next.translation || next.applyTranslated.status !== "idle"
-            ? "tone"
-            : next.applyOriginal.status !== "idle"
-              ? "onme"
-              : "breakdown",
+          next.translation || next.applyTranslated.status !== "idle" ? "tone" : "breakdown",
         );
       }
       return next;
@@ -232,7 +227,6 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
 }
 
 function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<unknown>; onNext: () => void }) {
-  const st = s.applyOriginal.status;
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
@@ -261,38 +255,26 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
     }
   }
 
-  async function upload() {
+  // One step: upload the selfie, read the skin tone and translate the look. The photos develop on the next screen.
+  async function submit() {
     if (!file) return;
     setBusy(true);
     setError(null);
     try {
       await postForm("/api/session/" + s.id + "/selfie", "selfie", await resizeImage(file));
-      await refresh();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Couldn't upload your selfie.");
-    }
-    setBusy(false);
-  }
-  async function translate() {
-    setBusy(true);
-    setError(null);
-    try {
       await postJson("/api/session/" + s.id + "/translate");
       await refresh();
       onNext();
+      return;
     } catch (e) {
       setError(e instanceof Error ? e.message : "Couldn't translate this look.");
     }
     setBusy(false);
   }
 
-  const showForm = st === "idle" || st === "error";
-  const selfieSrc = imgUrl(s.id, "selfie.jpg");
   return (
     <>
       <ScreenBody>
-        {showForm ? (
-          <>
             <SampleDock side="right" kind="selfie" items={TEST_SELFIES} title="Try a face" hint="Synthetic faces. Drag one onto the photo box, or click it. The look is applied for real." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
             <h1 className="mt-1 font-display text-[28px] leading-[1.05]">Now, your face.</h1>
             <p className="mt-1.5 text-[15px] text-ink-soft">Add a clear, front-facing selfie in good light.</p>
@@ -349,50 +331,17 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
             <div className="mt-2.5 flex items-start gap-2.5 text-[13.5px] text-ink-soft">
               <Badge kind="simulation" /> <span>Previews are AI-generated and approximate real color.</span>
             </div>
-            {st === "error" && <ErrorNote>{s.applyOriginal.error ?? "We couldn't create your preview."} Try the selfie again, or use a different photo.</ErrorNote>}
-            {error && <ErrorNote>{error}</ErrorNote>}
-          </>
-        ) : (
-          <>
-            <div className="mt-2 rounded-[28px] bg-lilac p-4">
-              <Booth
-                developing={st === "pending"}
-                backdrop={selfieSrc}
-                src={imgUrl(s.id, "apply_original.png")}
-                alt={st === "pending" ? "Your selfie while the booth develops your photo" : "The look applied to your face, as-is"}
-              />
-              {st === "pending" ? (
-                <div className="mt-3.5 flex items-center gap-2.5 text-[15px] font-semibold" role="status">
-                  <span>Developing your photo</span>
-                  <div className="h-1.5 flex-1 overflow-hidden rounded-[3px] bg-ink/10">
-                    <i className="block h-full w-1/2 animate-[slide_1.4s_ease-in-out_infinite] rounded-[3px] bg-ink" />
-                  </div>
-                </div>
-              ) : (
-                <div className="mt-3.5 flex items-center gap-2 text-sm font-semibold">
-                  As-is <Badge kind="simulation" />
-                </div>
-              )}
-            </div>
-            <p className="mt-3 text-[13.5px] text-ink-soft">
-              {st === "pending" ? "Putting the look on you. This can take up to a minute." : "This is the look exactly as the original wears it. Next, we shift it to your tone."}
-            </p>
-            {error && <ErrorNote onRetry={translate}>{error}</ErrorNote>}
-          </>
-        )}
+            {busy && (
+              <p role="status" className="mt-3 flex items-center gap-2 text-sm font-semibold text-cherry">
+                <Spinner /> Reading your skin tone… about 10 seconds.
+              </p>
+            )}
+            {error && <ErrorNote onRetry={file && !busy ? submit : undefined}>{error}</ErrorNote>}
       </ScreenBody>
       <ActionBar>
-        {showForm ? (
-          <PrimaryButton disabled={!file || !ok || busy} onClick={upload}>
-            {busy ? (<><Spinner /> Uploading…</>) : st === "error" ? "Try Again" : "See It On Me"}
-          </PrimaryButton>
-        ) : st === "pending" ? (
-          <PrimaryButton disabled>Putting the look on you…</PrimaryButton>
-        ) : (
-          <PrimaryButton onClick={translate} disabled={busy}>
-            {busy ? (<><Spinner /> Reading your tone…</>) : "Translate To My Tone"}
-          </PrimaryButton>
-        )}
+        <PrimaryButton disabled={!file || !ok || busy} onClick={submit}>
+          {busy ? (<><Spinner /> Reading your tone…</>) : "Translate To My Tone"}
+        </PrimaryButton>
       </ActionBar>
     </>
   );

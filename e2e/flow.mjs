@@ -21,11 +21,7 @@ try {
   await page.setInputFiles('input[type="file"]', "/Users/choam2426/workspace/hackaton/public/e2e/selfie-tan-warm.jpg");
   await page.getByRole("checkbox").check();
   await shot("4-selfie-ready");
-  const go = page.getByRole("button", { name: /(See It On Me|Put|Upload|Create|Use)/ }).last();
-  log("cta text:", await go.innerText());
-  await go.click();
-  await page.waitForSelector("text=Translate To My Tone", { timeout: 120000 }); log("② done"); await shot("5-asis");
-  await page.getByRole("button", { name: /Translate To My Tone/ }).click();
+  await page.getByRole("button", { name: /Translate To My Tone/ }).click(); log("selfie sent, translating");
   await page.waitForSelector("text=Share My Look", { timeout: 20000 });
   await page.waitForFunction(() => { const b = [...document.querySelectorAll("button")].find((x) => /Share My Look/.test(x.textContent || "")); return b && !b.disabled; }, null, { timeout: 180000 });
   log("③ + styled done"); await shot("6-mytone");

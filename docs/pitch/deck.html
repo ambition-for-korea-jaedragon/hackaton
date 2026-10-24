@@ -35,19 +35,19 @@
  /* slide 2 */
  .s2 h2{position:absolute;left:96px;right:96px;top:104px;font-size:46px;font-weight:800;line-height:1.15}
  .s2 h2 em{font-style:normal;color:var(--cherry)}
- .steps{position:absolute;left:96px;right:96px;top:190px;display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+ .steps{position:absolute;left:96px;right:96px;top:196px;display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
  .step{display:flex;gap:24px;align-items:flex-start}
- .scr{flex:0 0 250px;height:466px;border-radius:20px;overflow:hidden}
+ .scr{flex:0 0 266px;height:496px;border-radius:20px;overflow:hidden}
  .scr img{width:100%;display:block}
+ .scr-full img{height:100%;object-fit:cover;object-position:50% 100%}
  .txt{display:flex;flex-direction:column;gap:12px;padding-top:6px}
  .num{width:44px;height:44px;border-radius:50%;background:var(--cherry);color:#fff;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center}
- .txt h3{font-size:30px;font-weight:800;line-height:1.15}
- .txt p{font-size:24px;line-height:1.35;font-weight:500}
+ .txt h3{font-size:32px;font-weight:800;line-height:1.15}
+ .txt p{font-size:26px;line-height:1.35;font-weight:500}
  .txt p.buy{font-weight:800;color:var(--cherry)}
- .claude{position:absolute;left:96px;right:96px;top:720px;display:flex;flex-direction:column;gap:12px}
- .claude ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
- .claude li{font-size:22px;line-height:1.3}
- .claude li b{display:block;font-size:24px;font-weight:800}
+  .claude{position:absolute;left:96px;right:96px;top:790px;display:flex;flex-direction:column;gap:10px}
+ .built{font-size:26px;line-height:1.3}
+ .built b{font-weight:800}
  .bottom{display:flex;align-items:baseline;gap:32px;border-top:1px solid var(--line);padding-top:10px}
  .url{font-size:32px;font-weight:800;color:var(--cherry);white-space:nowrap}
  .disc{font-size:19px;line-height:1.35;color:var(--soft)}
@@ -93,7 +93,7 @@
         <p class="buy">Like one? Try it on your face.</p></div>
     </div>
     <div class="step">
-      <div class="scr"><img src="assets/product.png" alt=""></div>
+      <div class="scr scr-full"><img src="assets/product-eye.png" alt=""></div>
       <div class="txt"><div class="num">2</div><h3>Break down the look</h3>
         <p>See how your muse's makeup is done and which products were used.</p>
         <p class="buy">Buy any of them right away.</p></div>
@@ -101,20 +101,14 @@
     <div class="step">
       <div class="scr"><img src="assets/product-mytone.png" alt=""></div>
       <div class="txt"><div class="num">3</div><h3>What if it's on your face?</h3>
-        <p>Test whether the look suits you first. Your muse's shades can show differently on your skin tone, so muselook picks better-matching items.</p>
+        <p>Test whether the look suits you first. Shades can show differently on your skin tone, so muselook picks better matches.</p>
         <p class="buy">Buy the shades that work on your face.</p></div>
     </div>
   </div>
   <div class="claude">
-    <div class="label" style="margin-bottom:0">HOW CLAUDE DOES THE WORK</div>
-    <ul>
-      <li><b>Claude Haiku 5.5</b>reads the look: color, texture and technique per face area</li>
-      <li><b>Claude Sonnet 5.5</b>re-matches every shade to your face, with a reason</li>
-      <li><b>Claude Sonnet 5.5 agent</b>web-searches K-beauty products and buy links</li>
-      <li><b>Image model</b>simulates the look on your selfie</li>
-    </ul>
+    <div class="built"><b style="color:var(--cherry)">Built with Claude Haiku 5.5:</b> reads the look, matches shades to your face, and finds K-beauty products to buy.</div>
     <div class="bottom"><div class="url">muselook.fly.dev</div>
-      <div class="disc"><b>Live:</b> Claude analysis, shade matching and product search on every upload. <b>Sample:</b> demo faces are AI-generated people. On-face color is a simulation, not a real swatch.</div></div>
+      <div class="disc"><b>Live:</b> analysis, shade matching and product search on every upload. <b>Sample:</b> demo faces are AI-generated people. On-face color is a simulation, not a real swatch.</div></div>
   </div>
   <div class="foot"><img src="assets/footer-for-light-slides.png" alt=""></div>
 </section>

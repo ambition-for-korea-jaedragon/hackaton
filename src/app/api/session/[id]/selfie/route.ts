@@ -1,6 +1,5 @@
 import { loadSession, updateSession, writeFileTo } from "@/lib/storage";
 import { readImage } from "@/lib/upload";
-import { runGeneration } from "@/lib/generate-job";
 
 export async function POST(req: Request, ctx: { params: Promise<{ id: string }> }) {
   const { id } = await ctx.params;
@@ -19,11 +18,10 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string }> 
   if (img instanceof Response) return img;
   await writeFileTo(id, "selfie.jpg", img.data);
   await updateSession(id, (st) => {
-    st.applyOriginal = { status: "pending" };
+    // The As-is preview was removed: the selfie only feeds the tone translation (POST .../translate).
     st.applyTranslated = { status: "idle" };
     st.styled = { status: "idle" };
     delete st.translation;
   });
-  void runGeneration(id, "original");
   return Response.json({ ok: true });
 }
