@@ -11,7 +11,7 @@ function client() {
 }
 
 const BASE_RULES =
-  "Image 1 is the user's selfie; image 2 is a reference makeup look photo. Keep the exact same person from image 1: identical face shape, facial features, hairstyle, expression, pose, background and TRUE skin tone. Do NOT copy the face or skin tone of the person in image 2. Only apply makeup; change nothing else. Reproduce the mood of the reference look (lighting, texture, vibe). Photorealistic.";
+  "Image 1 is the user's selfie; image 2 is a reference makeup look photo. Keep the exact same person from image 1: identical face shape, facial features, hairstyle, expression, pose, background and TRUE skin tone. Do NOT copy the face or skin tone of the person in image 2. Only apply makeup; change nothing else. Keep the selfie's identity and skin tone exactly, but carry over the reference look's mood: soft beauty lighting, and the finish and texture of the makeup (dewy/matte/glassy etc.). Photorealistic.";
 
 export function originalPrompt(analysis: LookAnalysis | undefined, skinHex?: string): string {
   const steps = (analysis?.steps ?? [])
@@ -24,10 +24,13 @@ ${steps}`;
 }
 
 export function translatedPrompt(analysis: LookAnalysis | undefined, t: ToneTranslation): string {
-  const changes = t.changes.map((c) => `${c.area}: change ${c.fromHex} -> ${c.toHex} (${c.reason})`).join("\n");
-  return `${BASE_RULES} The person's skin tone is ${t.skinTone.depth}, ${t.skinTone.undertone} undertone, about ${t.skinTone.hex}; keep it exactly.
-Apply the makeup look from image 2, but with these adapted colors so the look's intended effect works on this skin tone:
+  const changes = t.changes
+    .map((c) => `- ${c.area}: use ${c.toHex} (instead of the reference's ${c.fromHex}) — ${c.reason}`)
+    .join("\n");
+  return `${BASE_RULES} The person's skin tone is ${t.skinTone.depth}, ${t.skinTone.undertone} undertone, about ${t.skinTone.hex}; keep it exactly, along with identity and lighting.
+Apply the makeup look from image 2 but with ADAPTED colors. The shifted colors must be clearly visible and clearly different from a plain copy of the reference look. Use exactly these colors per area:
 ${changes}
+The makeup must be noticeably applied, editorial-level and well pigmented in these exact colors, not subtle or washed out, so the color shift is obvious at a glance.
 Look mood: ${analysis?.mood ?? "same as reference"}. Same finish and technique as the reference look.`;
 }
 

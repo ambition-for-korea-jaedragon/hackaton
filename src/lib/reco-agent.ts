@@ -25,6 +25,8 @@ Task: recommend exactly 1 product for each of these areas: skincare, base, eye, 
 - The base product MUST have a shade that matches the customer's skin depth and undertone (deep shade ranges exist, e.g. TIRTIR).
 - The color, shade and finish should match the target color and finish for each area. For skincare, pick a prep product that suits the finish; shadeName is "".
 - Only products you actually found on a page via search. Prefer Olive Young Global, the brand's official site, YesStyle or Stylevana pages. Never invent URLs.
+- shadeName must be the exact shade name as sold on the product page (e.g. "21N Ivory"), with no notes or comments such as "check selector". If you cannot confirm the exact shade on a page, pick a different product whose shade you did confirm.
+- url must be a specific product page for that product (not a search, category or home page).
 - "hex" is an approximate swatch color as "#RRGGBB"; omit it if unknown.
 
 Output ONLY one JSON object, no prose, no markdown fences:
