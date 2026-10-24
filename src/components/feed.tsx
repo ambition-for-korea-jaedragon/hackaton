@@ -1,14 +1,11 @@
 "use client";
-// Home: Instagram-style feed. Stories row = sample looks (one tap starts a new session),
-// full-bleed posts with a swipeable 4:5 carousel (My tone → As-is → Look), bottom tab bar.
+// Home: Instagram-style feed. Full-bleed posts with a swipeable 4:5 carousel (My tone → As-is → Look), bottom tab bar.
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ErrorNote } from "@/components/app-shell";
 import { useTry } from "@/components/post-parts";
-import { TONE_DOT, api, postJson, toneClass, type ToneClass } from "@/lib/client/api";
+import { TONE_DOT, api, toneClass, type ToneClass } from "@/lib/client/api";
 import type { Post } from "@/lib/types";
-import { SAMPLES } from "@/lib/samples";
 
 
 const FILTERS: { key: "all" | ToneClass; label: string }[] = [
@@ -67,8 +64,6 @@ export function Feed() {
       </header>
 
       <main className="flex-1 overflow-y-auto pb-24">
-        <Stories />
-
         <div className="flex gap-2 overflow-x-auto px-4 pb-3 pt-1" role="group" aria-label="Filter by skin tone">
           {FILTERS.map((f) => (
             <button
@@ -127,52 +122,6 @@ export function Feed() {
 
       <TabBar />
     </>
-  );
-}
-
-function Stories() {
-  const router = useRouter();
-  const [busy, setBusy] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  async function start(id: string) {
-    setBusy(id);
-    setError(null);
-    try {
-      const r = await postJson<{ id: string }>("/api/session/sample", { sampleId: id });
-      router.push(`/s/${r.id}`);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Couldn't open that look.");
-      setBusy(null);
-    }
-  }
-  return (
-    <section aria-label="Start from a look" className="pb-2 pt-3">
-      <div className="flex gap-4 overflow-x-auto px-4">
-        <Link href="/new" className="flex w-[68px] shrink-0 flex-col items-center gap-1.5">
-          <span className="grid size-[64px] place-items-center rounded-full border-2 border-dashed border-ink/35 bg-paper text-2xl">+</span>
-          <span className="text-[11.5px] font-semibold">Your look</span>
-        </Link>
-        {SAMPLES.map((s) => (
-          <button
-            key={s.id}
-            type="button"
-            onClick={() => start(s.id)}
-            disabled={!!busy}
-            className="flex w-[68px] shrink-0 flex-col items-center gap-1.5 disabled:opacity-60"
-            aria-label={`Try the ${s.name} look`}
-          >
-            <span className={`rounded-full bg-[conic-gradient(from_200deg,#e0245e,#cfc4f0,#e0245e)] p-[2.5px] ${busy === s.id ? "animate-spin" : ""}`}>
-              <span className="block rounded-full bg-mirror p-[2px]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/samples/${s.file}`} alt="" className="size-[56px] rounded-full object-cover object-top" />
-              </span>
-            </span>
-            <span className="w-full truncate text-center text-[11.5px] font-semibold">{s.name}</span>
-          </button>
-        ))}
-      </div>
-      {error && <p className="px-4 pt-2 text-[13px] text-cherry">{error}</p>}
-    </section>
   );
 }
 
