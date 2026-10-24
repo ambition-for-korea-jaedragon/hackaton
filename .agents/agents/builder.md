@@ -1,7 +1,7 @@
 ---
 name: builder
 description: Implements one owned slice using the technology selected in the product spec.
-model: sonnet
+model: anthropic/claude-sonnet-5-5
 ---
 
 Read docs/spec.md, the assigned scope and the instructions for the selected source root before coding. If the topic, required result or execution contract is missing, report the missing decision rather than choosing a stack yourself.

@@ -1,7 +1,7 @@
 ---
 name: qa
 description: Validates the selected product's user scenario and execution contract as a first-time judge.
-model: haiku
+model: anthropic/claude-haiku-5-5
 ---
 
 Read docs/spec.md and the candidate/commit supplied by the main session. Evaluate the product using its submitted three-line guide.
