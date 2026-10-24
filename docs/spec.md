@@ -6,9 +6,8 @@
 
 - 선택 주제: "K-뷰티·K-의료를 찾는 전 세계 소비자를 위한 서비스" (`mission.md`) — K-뷰티 축
 - 고객·국가·실제 작업: 미국 Gen Z(13+) K-뷰티 팬, 특히 미디엄~딥 톤. 아이돌·원하는 메이크업 룩을 따라 하려고 제품을 고르는 작업
-- 현재 대안과 가장 큰 불편: 아티스트 인스타·매체 제품 목록, YouCam. 목록은 톤 무관, try-on은 K-뷰티·톤 번역 없음. 해외라 스와치 불가, 딥 톤 쉐이드 부족 (외부 출처 `research.md` §1)
+- 가장 큰 불편: 아이돌 제품 정보는 톤과 무관하고, 해외라 스와치할 수 없으며, 딥 톤 쉐이드가 부족하다 (외부 출처 `research.md` §1)
 - 한 줄 가치 제안: 아이돌 룩을 내 피부톤으로 번역해 — 내 얼굴에서의 모습과 내게 맞는 K-뷰티 제품·루틴을 보여준다
-- 선택 이유: 근거가 가장 강한 쉐이드 고통 + 아이돌 룩 수요(입구) + 소비자용 결합 도구 부재(조사 범위 내)
 - 첫 고객 경로: r/kbeauty·r/AsianBeauty 쉐이드 스레드, TikTok 딥 톤 K-뷰티 크리에이터, Olive Young US 제휴
 - 공개 레포·주제 선언: 완료 (`context.md`)
 
@@ -34,26 +33,26 @@
 | 주장 | 비교 대상·같은 입력 조건 | 확인할 결과 | 근거 종류·한계 |
 |---|---|---|---|
 | 딥 톤 해외 팬은 K-뷰티 쉐이드가 내 톤에 맞을지 알기 어렵다 | — | Reddit 3건, Dazed | 외부 출처. 파운데이션 중심, 자기선택 |
-| ②vs③ 비교가 구매 판단에 도움 | 같은 룩·같은 셀카로 ②만 vs ②+③ | 현장 3~5명 예/아니오·한마디 | 측정(소표본) |
+| ②vs③ 비교가 구매 판단에 도움 | 같은 룩·같은 셀카 | 현장 3~5명 예/아니오·한마디 | 측정(소표본) |
 | 생성 이미지가 피부톤을 보존 | 셀카 vs ②③ 볼 영역 평균색 | ΔE·눈 확인 | 측정. 조명·모델 의존 |
 
 상세: `evidence.md`.
 
 ## 기술 선택
 
-| 결정 항목 | 요구에서 나온 필요 | 선택·이유 | 다른 대안·포기한 점 |
-|---|---|---|---|
-| 제품 형태 | 심사자가 링크로 바로 사용, 업로드·이미지 표시 | 반응형 웹앱, 영어 UI | 모바일 앱(설치 장벽) |
-| 언어·프레임워크 | 화면 + 비밀 키를 숨기는 서버 + 파일 저장을 한 프로세스로 | **Next.js(App Router) + TypeScript**, 단일 서비스. Route Handler가 Claude·OpenAI 호출·파일 저장 | FastAPI+정적 HTML(두 언어), Vite+Express(구성 증가) |
-| 데이터·저장 | 사용자 결정: 이미지 파일시스템 저장. 세션별 결과 재표시 | `DATA_DIR`(로컬 `./data`, 배포 볼륨 `/data`) 아래 `sessions/{id}/look.*, selfie.*, analysis.json, translated.json, apply_original.png, apply_translated.png`. 카탈로그는 레포 `catalog.json`(샘플) | DB·S3(불필요). Vercel(영속 FS 없음) |
-| 인증·민감 정보 | 접근 장벽 최소, 얼굴 사진 | 로그인 없음, 추측 불가 UUID 세션. 13+ 체크, "Anthropic·OpenAI로 전송, 데모 서버에 저장" 고지. 아이돌 사진은 사용자 업로드만, 샘플 룩은 권리 확보 이미지 | 계정(불필요) |
-| 제품 AI | 룩 분석·톤 번역(텍스트·비전), 무드 있는 얼굴 이미지 | Claude `claude-sonnet-5-5`(vision, JSON 출력) = ①③ 판단. OpenAI Images edit `gpt-image-2.5-sunburst`(편집 정밀, 다중 입력 이미지, 얼굴 `input_fidelity` 확인 필요) = ②③ 이미지. 운영진 허용 확인(`hackathon.md`) | 색 오버레이(MediaPipe) — 무드 부족으로 사용자 기각. Claude는 이미지 생성 불가 |
-| 배포 | 공개 URL, 영속 디스크, 21:00 유지, push 1회 정책 | **Railway** 서비스 1개 + Volume `/data`. `railway up`으로 로컬 디렉터리 배포(git push 불필요). 비밀은 Railway Variables | Fly.io+volume(동등, 계정 확인 필요), Render disk(유료), Vercel(FS 없음) |
-| 검증 | 실제 시나리오 | `pnpm lint`·`pnpm build` + 공개 URL에서 ①→②→③ 수동/브라우저 확인 | E2E 자동화(시간) |
+| 결정 항목 | 요구에서 나온 필요 | 선택·이유 |
+|---|---|---|
+| 제품 형태 | 심사자가 링크로 바로 사용, 업로드·이미지 표시 | 반응형 웹앱, 영어 UI |
+| 언어·프레임워크 | 화면 + 비밀 키를 숨기는 서버 + 파일 저장을 한 프로세스로 | **Next.js(App Router) + TypeScript**, 단일 서비스. Route Handler가 Claude·OpenAI 호출·파일 저장 |
+| 데이터·저장 | 이미지 파일시스템 저장(사용자 결정), 세션별 결과 재표시 | `DATA_DIR`(로컬 `./data`, 배포 볼륨 `/data`) 아래 `sessions/{id}/look.*, selfie.*, analysis.json, translated.json, apply_original.png, apply_translated.png`. 카탈로그는 레포 `catalog.json`(샘플) |
+| 인증·민감 정보 | 접근 장벽 최소, 얼굴 사진 | 로그인 없음, 추측 불가 UUID 세션. 13+ 체크, "Anthropic·OpenAI로 전송, 데모 서버에 저장" 고지. 아이돌 사진은 사용자 업로드만, 샘플 룩은 권리 확보 이미지 |
+| 제품 AI | 룩 분석·톤 번역, 무드 있는 얼굴 이미지 | Claude `claude-sonnet-5-5`(vision, JSON) = ①③ 판단. OpenAI Images edit `gpt-image-2.5-sunburst`(다중 입력 이미지, 얼굴 `input_fidelity` 확인) = ②③ 이미지. 운영진 허용(`hackathon.md`) |
+| 배포 | 공개 URL, 영속 디스크, 21:00 유지 | **Railway** 서비스 1개 + Volume `/data`. `railway up`으로 로컬 디렉터리 배포. 비밀은 Railway Variables |
+| 검증 | 실제 시나리오 | `pnpm lint`·`pnpm build` + 공개 URL에서 ①→②→③ 확인 |
 
 ## 위험과 계약
 
-- 가장 위험한 가정: 이미지 모델이 셀카의 얼굴·피부톤을 보존하면서 룩을 입힌다. **실험:** 키 수령 즉시 셀카+룩 2장으로 edit 1회, 15분 제한. 실패 시: 프롬프트 강화(톤 hex 명시) → `input_fidelity` high → 그래도 실패면 ②③을 "무드 레퍼런스"로 낮추고 톤 판정은 Claude 텍스트로.
+- 가장 위험한 가정: 이미지 모델이 셀카의 얼굴·피부톤을 보존하면서 룩을 입힌다. **실험:** 키 수령 즉시 셀카+룩 2장으로 edit 1회, 15분 제한. 보정: 프롬프트에 톤 hex 명시, `input_fidelity` high.
 - 두 번째: 이미지 생성 지연(수십 초 추정). ②는 업로드 직후 백그라운드 시작, ③은 Claude 번역 후 생성. 클라이언트는 상태 폴링 또는 긴 요청 + 진행 표시. 샘플 룩·샘플 셀카는 미리 생성한 결과를 "Sample" 배지로 즉시 표시.
 - 공유 계약 (`src/lib/types.ts`, 메인 소유):
   - `LookAnalysis { mood: string; steps: Step[] }`, `Step { area: 'skincare'|'base'|'eye'|'blush'|'lip'; colors: {name, hex}[]; finish: string; technique: string; tips: string[]; productHints: string[] }`
