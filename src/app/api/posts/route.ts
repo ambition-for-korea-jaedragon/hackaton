@@ -45,6 +45,7 @@ export async function POST(req: Request) {
     myToneUrl: fileUrl(s.id, "apply_translated.png"),
     styledUrl: fileUrl(s.id, "styled.png"),
     products: (s.products?.items ?? []).slice(0, 5),
+    museProducts: (s.museProducts?.items ?? []).slice(0, 5),
     tags: await classifyTopics(s.analysis),
     ...(s.sampleId ? { points: (samples as { id: string; points?: AreaPoints }[]).find((x) => x.id === s.sampleId)?.points } : {}),
   };

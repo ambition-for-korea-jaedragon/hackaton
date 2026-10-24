@@ -70,7 +70,7 @@ export function AreaPill({ area }: { area: Product["area"] }) {
   return <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">{AREA_LABEL[area]}</span>;
 }
 
-export function ProductSheet({ product: p, onClose }: { product: Product; onClose: () => void }) {
+export function ProductSheet({ product: p, onClose, whyLabel = "Why it fits" }: { product: Product; onClose: () => void; whyLabel?: string }) {
   return (
     <Sheet title={`${AREA_LABEL[p.area]}: ${p.name}`} onClose={onClose}>
       <div className="flex items-center gap-3.5 pr-10">
@@ -86,7 +86,7 @@ export function ProductSheet({ product: p, onClose }: { product: Product; onClos
           <Dot hex={p.hex} size={14} /> {p.shadeName}
         </p>
       )}
-      <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-ink-soft">Why it fits</p>
+      <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-ink-soft">{whyLabel}</p>
       <p className="mt-0.5 text-[14.5px] leading-snug">{p.why}</p>
       <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs text-ink-soft underline underline-offset-2">
         Source
@@ -127,10 +127,10 @@ export function ProductList({ products, onPick }: { products: Product[]; onPick:
   );
 }
 
-export function ListSheet({ products, onPick, onClose, badge }: { products: Product[]; onPick: (p: Product) => void; onClose: () => void; badge: ReactNode }) {
+export function ListSheet({ products, onPick, onClose, badge, heading = "All products" }: { products: Product[]; onPick: (p: Product) => void; onClose: () => void; badge: ReactNode; heading?: string }) {
   return (
-    <Sheet title="All products" onClose={onClose}>
-      <h2 className="mb-3 flex items-center gap-2 pr-10 text-[17px] font-bold">All products {badge}</h2>
+    <Sheet title={heading} onClose={onClose}>
+      <h2 className="mb-3 flex items-center gap-2 pr-10 text-[17px] font-bold">{heading} {badge}</h2>
       <div data-autofocus tabIndex={-1} className="outline-none">
         <ProductList products={products} onPick={onPick} />
       </div>

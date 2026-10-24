@@ -162,7 +162,59 @@
         "x": 0.5164,
         "y": 0.5297
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Round Lab",
+        "name": "Birch Juice Moisturizing Serum",
+        "shadeName": "",
+        "hex": "",
+        "url": "https://roundlab.com/products/birch-moisturizing-serum",
+        "why": "Lightweight hydrating serum layer that gives the glassy, plump, hydrated finish.",
+        "sourceUrl": "https://roundlab.com/products/birch-moisturizing-serum"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Essential Cushion",
+        "shadeName": "19N Porcelain",
+        "hex": "#F3D9CF",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228712",
+        "why": "Very fair neutral Porcelain shade in a glow cushion for a thin, dewy, skin-like base.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-%E7%B6%B2%E5%85%89%E4%BA%AE%E8%82%8C%E7%B2%BE%E8%8F%AF%E6%B0%A3%E5%A2%8A%E7%B2%89%E5%BA%95-%E9%80%A3%E8%A3%9C%E5%85%85%E8%A3%9D/info.html/pid.1133919457"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Eyes",
+        "shadeName": "W02 Peach Blossom",
+        "hex": "#E9A39A",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=80&prdtNo=GA210811538",
+        "why": "Milky pink-coral peachy wash with a glitter pan for a sheer, shimmery lid.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=80&prdtNo=GA210811538"
+      },
+      {
+        "area": "blush",
+        "brand": "3CE",
+        "name": "Sheer Liquid Blusher",
+        "shadeName": "Side Piece",
+        "hex": "#EE7D86",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210711205",
+        "why": "Bright, clear dewy pink liquid blush for a strawberry-pink flush with a glow.",
+        "sourceUrl": "https://www.yesstyle.com/en/3ce-sheer-liquid-blusher-5-colors-soft-fig/info.html/pid.1108637623"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Dewyful Water Tint",
+        "shadeName": "07 Cherry Way",
+        "hex": "#D94A5E",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA211012028",
+        "why": "Glossy cherry-rose water tint that blends into a juicy gradient lip.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA211012028"
+      }
+    ]
   },
   {
     "id": "mauve-cool",
@@ -323,7 +375,59 @@
         "x": 0.51,
         "y": 0.524
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ROUND LAB",
+        "name": "1025 Dokdo Toner",
+        "shadeName": "",
+        "hex": "",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002228",
+        "why": "Light, hydrating toner that layers well for a plump, glassy, dewy prep.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002228"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Founwear Foundation The Original",
+        "shadeName": "19N Porcelain",
+        "hex": "#F1DDD6",
+        "url": "https://www.yesstyle.com/en/clio-kill-cover-founwear-foundation-the-original-5-colors-19c-light/info.html/pid.1130977821",
+        "why": "Lightweight, hydrating, glowy liquid foundation in a porcelain shade that matches the muse's fair, rosy-ivory complexion.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-kill-cover-founwear-foundation-the-original-5-colors-19c-light/info.html/pid.1130977821"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Muse Master Palette",
+        "shadeName": "04 Lilac Talk",
+        "hex": "#D9A9C9",
+        "url": "https://www.yesstyle.com/en/clio-muse-master-palette-2-types-04-lilac-talk/info.html/pid.1137366160",
+        "why": "Lilac-orchid shimmer palette for the lilac-pink lid and the mauve lower lash.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-muse-master-palette-2-types-04-lilac-talk/info.html/pid.1137366160"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek NEW",
+        "shadeName": "C02 Blueberry Chip",
+        "hex": "#C9879B",
+        "url": "https://www.yesstyle.com/en/romand-better-than-cheek-new-9-colors-c04-pear-chip/info.html/pid.1117526059",
+        "why": "Muted, cool mauve-pink soft-matte powder blush that gives a diffused, hazy flush.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-better-than-cheek-new-9-colors-c04-pear-chip/info.html/pid.1117526059"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Blur Fudge Tint",
+        "shadeName": "06 Mauvish",
+        "hex": "#8A5362",
+        "url": "https://www.yesstyle.com/en/romand-blur-fudge-tint/info.html/pid.1109576117",
+        "why": "Dusty mauve velvet-matte tint that blurs into a soft, diffused edge.",
+        "sourceUrl": "https://www.stylevana.com/en_US/deal-romand-blur-fudge-tint-5g-06-mauvish.html"
+      }
+    ]
   },
   {
     "id": "brick-sunset",
@@ -484,7 +588,59 @@
         "x": 0.5272,
         "y": 0.5239
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Beauty of Joseon",
+        "name": "Glow Serum: Propolis + Niacinamide",
+        "shadeName": "",
+        "hex": "#E8B88F",
+        "url": "https://global.oliveyoung.com/product/detail?dataSource=other_customers_bought&prdtNo=GA220615264",
+        "why": "Lightweight serum that layers under a gel-cream and gives the dewy, glass-like glow the muse has.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?dataSource=other_customers_bought&prdtNo=GA220615264"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Essential Cushion",
+        "shadeName": "21N Linen",
+        "hex": "#EBC3A5",
+        "url": "https://www.kpopbeauty.com/products/clio-kill-cover-mesh-glow-essential-cushion",
+        "why": "A light-to-medium warm-neutral shade for a light complexion, with a natural glowy satin-dewy finish that can be applied thinly.",
+        "sourceUrl": "https://www.kpopbeauty.com/products/clio-kill-cover-mesh-glow-essential-cushion"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Pro Eye Palette Air",
+        "shadeName": "#24 Toasted Chestnut Cappuccino",
+        "hex": "#C47A57",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=110&prdtNo=GA250833127",
+        "why": "A warm terracotta, copper and peach palette with soft shimmer for a wash of color on the lid.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=110&prdtNo=GA250833127"
+      },
+      {
+        "area": "blush",
+        "brand": "CLIO",
+        "name": "Essential Blush Tap",
+        "shadeName": "Coral Dahlia",
+        "hex": "#F2A68A",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA250832750",
+        "why": "A soft peach with a hint of coral that gives a flushed apricot-coral cheek.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA250832750"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "The Juicy Lasting Tint",
+        "shadeName": "13 Eat Dotori",
+        "hex": "#B7412F",
+        "url": "https://m.global.oliveyoung.com/product/detail?dataSource=you_might_also_like&prdtNo=GA251235991",
+        "why": "A red-brick juicy tint with a glossy finish that matches the brick-red lip.",
+        "sourceUrl": "https://m.global.oliveyoung.com/product/detail?dataSource=you_might_also_like&prdtNo=GA251235991"
+      }
+    ]
   },
   {
     "id": "cherry-blossom",
@@ -649,7 +805,59 @@
         "x": 0.5638,
         "y": 0.5365
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Round Lab",
+        "name": "Birch Juice Moisturizing Serum",
+        "shadeName": "",
+        "hex": "#F3E9E4",
+        "url": "https://www.yesstyle.com/en/round-lab-birch-juice-moisturizing-serum-50ml/info.html/pid.1123980116",
+        "why": "A hydrating, plumping serum layer that gives the dewy, glassy base for the wet-look sheen.",
+        "sourceUrl": "https://www.yesstyle.com/en/round-lab-birch-juice-moisturizing-serum-50ml/info.html/pid.1123980116"
+      },
+      {
+        "area": "base",
+        "brand": "BANILA CO",
+        "name": "Covericious Serum Foundation",
+        "shadeName": "19 Light",
+        "hex": "#F3D9D2",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA241026203",
+        "why": "A light pink-ivory serum foundation with sheer coverage and a skin-like glow, close to Porcelain Rose Ivory.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA241026203"
+      },
+      {
+        "area": "eye",
+        "brand": "peripera",
+        "name": "Sugar Twinkle Liquid Glitter",
+        "shadeName": "002 Soda Pop Flake",
+        "hex": "#F6D6DC",
+        "url": "https://www.yesstyle.com/en/peripera-sugar-twinkle/info.html/pid.1089689195",
+        "why": "A pink holographic liquid glitter that gives the champagne-pink sparkle and shimmery lid wash.",
+        "sourceUrl": "https://korecareglobal.com/products/peripera-sugar-twinkle-liquid-glitter"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "W01 Odi Milk",
+        "hex": "#F2A0AE",
+        "url": "https://www.yesstyle.com/en/romand-better-than-cheek/info.html/pid.1117526059",
+        "why": "A soft baby-pink blush with a rosy flush that suits the doll-like cheek.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-better-than-cheek/info.html/pid.1117526059"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Glasting Water Tint",
+        "shadeName": "05 Rose Splash",
+        "hex": "#C9566B",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002482",
+        "why": "A glass-shine water tint in a rosy pink-berry shade for a juicy, glassy lip.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002482"
+      }
+    ]
   },
   {
     "id": "smoky-plum",
@@ -812,7 +1020,59 @@
         "x": 0.5168,
         "y": 0.5222
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Torriden",
+        "name": "DIVE-IN Low Molecular Hyaluronic Acid Soothing Cream",
+        "shadeName": "",
+        "hex": "#F5F0EE",
+        "url": "https://www.yesstyle.com/en/torriden-dive-in-low/info.html/pid.1113454408",
+        "why": "Lightweight watery gel-cream with hyaluronic acid gives a smooth, hydrated, lightly glowy prep under dark colors.",
+        "sourceUrl": "https://www.yesstyle.com/en/torriden-dive-in-low/info.html/pid.1113454408"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Essential Cushion Set",
+        "shadeName": "19N Porcelain",
+        "hex": "#E8CFC4",
+        "url": "https://www.yesstyle.com/en/tcuc.USD/coc.SV/info.html/pid.1133919458",
+        "why": "Neutral porcelain shade for a light complexion, with a skin-like satin glow finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/tcuc.USD/coc.SV/info.html/pid.1133919458"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Pro Eye Palette Air Korean Royal Heritage Edition",
+        "shadeName": "M20 Plum Blossom Ribbon",
+        "hex": "#8A5563",
+        "url": "https://www.yesstyle.com/es/clio-pro-eye-palette-air-korean-royal-heritage-edition-2-types-m20/info.html/pid.1137890849",
+        "why": "A 12-pan palette in cool plum and mauve tones, with matte and shimmer pans for the smoky eye and rosy lid shimmer.",
+        "sourceUrl": "https://www.yesstyle.com/es/clio-pro-eye-palette-air-korean-royal-heritage-edition-2-types-m20/info.html/pid.1137890849"
+      },
+      {
+        "area": "blush",
+        "brand": "peripera",
+        "name": "Pure Blushed Sunshine Cheek",
+        "shadeName": "29 Dusty Mauve",
+        "hex": "#B8828A",
+        "url": "https://www.stylevana.com/en_US/peripera-pure-blushed-sunshine-cheek-4-2g-29-dusty-mauve.html",
+        "why": "A dusty rosy-mauve, soft matte-satin flush that blends into a diffused cold-weather cheek.",
+        "sourceUrl": "https://www.stylevana.com/en_US/peripera-pure-blushed-sunshine-cheek-4-2g-29-dusty-mauve.html"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Blur Fudge Tint",
+        "shadeName": "07 Cool Rose Up",
+        "hex": "#8E4A5E",
+        "url": "https://www.stylevana.com/en_CA/deal-romand-blur-fudge-tint-5g-07-cool-rose-up.html",
+        "why": "A cool plum-rose velvet-matte tint with blurred edges, close to the mulberry lip.",
+        "sourceUrl": "https://www.stylevana.com/en_CA/deal-romand-blur-fudge-tint-5g-07-cool-rose-up.html"
+      }
+    ]
   },
   {
     "id": "coral-summer",
@@ -967,7 +1227,59 @@
         "x": 0.5614,
         "y": 0.5346
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ROUND LAB",
+        "name": "1025 Dokdo Toner",
+        "shadeName": "",
+        "hex": "#F6E3D8",
+        "url": "https://www.yesstyle.com/en/round-lab-1025-%E7%8D%A8%E5%B3%B6%E7%88%BD%E8%86%9A%E6%B0%B4/info.html/pid.1074112897",
+        "why": "Lightweight hydrating toner that preps skin for a glassy, dewy finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/round-lab-1025-%E7%8D%A8%E5%B3%B6%E7%88%BD%E8%86%9A%E6%B0%B4/info.html/pid.1074112897"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Cushion",
+        "shadeName": "03 Linen",
+        "hex": "#E8B896",
+        "url": "https://www.yesstyle.com/en/clio-kill-cover-mesh-glow-cushion-set-3-colors-04-ginger/info.html/pid.1119395362",
+        "why": "Warm beige glass-skin cushion with a thin, dewy, skin-like finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-kill-cover-mesh-glow-cushion-set-3-colors-04-ginger/info.html/pid.1119395362"
+      },
+      {
+        "area": "eye",
+        "brand": "dasique",
+        "name": "Shadow Palette",
+        "shadeName": "14 Peach Squeeze",
+        "hex": "#F28C78",
+        "url": "https://www.yesstyle.com/en/dasique-shadow-palette-peach-squeeze-edition-oogschaduwpalet-14-peach/info.html/pid.1124811201",
+        "why": "Peach-coral palette with apricot shimmer and warm brown for the lash line.",
+        "sourceUrl": "https://www.yesstyle.com/en/dasique-shadow-palette-peach-squeeze-edition-oogschaduwpalet-14-peach/info.html/pid.1124811201"
+      },
+      {
+        "area": "blush",
+        "brand": "JUNG SAEM MOOL",
+        "name": "Colorpiece Cream Blush",
+        "shadeName": "Coral Fizz",
+        "hex": "#F58A74",
+        "url": "https://www.yesstyle.com/en/jung-saem-mool-colorpiece-cream-blush-2-types-pink-tears/info.html/pid.1137744824",
+        "why": "Peachy coral cream blush with a moisturizing, glowy finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/jung-saem-mool-colorpiece-cream-blush-2-types-pink-tears/info.html/pid.1137744824"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Glasting Melting Balm",
+        "shadeName": "11 Buffy Coral",
+        "hex": "#EE7F6B",
+        "url": "https://www.yesstyle.com/en/romand-glasting-melting/info.html/pid.1125553052",
+        "why": "Sheer coral glossy tint balm that gives a juicy, glass-like lip.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-glasting-melting/info.html/pid.1125553052"
+      }
+    ]
   },
   {
     "id": "mlbb-nude",
@@ -1130,7 +1442,59 @@
         "x": 0.5391,
         "y": 0.5454
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Round Lab",
+        "name": "Birch Juice Moisturizing Ampoule",
+        "shadeName": "",
+        "hex": "#F3E6DC",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA231221480",
+        "why": "Watery, quick-absorbing hydrating layer that gives plump, dewy glass-skin prep.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=170&prdtNo=GA231221480"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover High Glow Cushion SPF50+ PA+++",
+        "shadeName": "03 Linen",
+        "hex": "#EBC8B5",
+        "url": "https://www.stylevana.com/en_US/clio-kill-cover-high-glow-cushion-spf50-pa-14g-2.html",
+        "why": "Light-coverage luminous cushion in a light, warm-neutral shade close to Porcelain Peach with a dewy finish.",
+        "sourceUrl": "https://www.stylevana.com/en_US/clio-kill-cover-high-glow-cushion-spf50-pa-14g-2.html"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Palette",
+        "shadeName": "03 Rosebud Garden",
+        "hex": "#D9A99A",
+        "url": "https://romandbeauty.com/collections/all-products/products/better-than-palette",
+        "why": "Muted rosy-beige and rose tones with satin and shimmer textures match the soft rosy wash.",
+        "sourceUrl": "https://romandbeauty.com/collections/all-products/products/better-than-palette"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "C01 Peach Chip",
+        "hex": "#EFB0A5",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=110&prdtNo=GA220916123",
+        "why": "Sheer, dewy peachy-pink flush that builds in thin layers.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=110&prdtNo=GA220916123"
+      },
+      {
+        "area": "lip",
+        "brand": "peripera",
+        "name": "Ink Mood Glowy Tint",
+        "shadeName": "03 Rose in Mind",
+        "hex": "#D9707A",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA231121205",
+        "why": "Glossy rosy tint that can be dabbed in the center and blurred out for a juicy gradient.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA231121205"
+      }
+    ]
   },
   {
     "id": "red-velvet",
@@ -1285,7 +1649,59 @@
         "x": 0.5249,
         "y": 0.5798
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ROUND LAB",
+        "name": "Soybean Panthenol Toner",
+        "shadeName": "",
+        "hex": "#F5EDE6",
+        "url": "https://www.yesstyle.com/en/round-lab-soybean-panthenol-toner-250ml/info.html/pid.1130119229",
+        "why": "Hydrating, barrier-supporting toner that gives a smooth, dewy base before serum, moisturizer and primer.",
+        "sourceUrl": "https://www.yesstyle.com/en/round-lab-soybean-panthenol-toner-250ml/info.html/pid.1130119229"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Cushion Set",
+        "shadeName": "21N Linen",
+        "hex": "#F0D5C8",
+        "url": "https://www.yesstyle.com/en/clio-kill-cover-mesh-glow-cushion-set-4-colors-21n-linen/info.html/pid.1133975498",
+        "why": "Light porcelain-ivory shade with a glowy, satin, light-to-medium coverage finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-kill-cover-mesh-glow-cushion-set-4-colors-21n-linen/info.html/pid.1133975498"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Palette The Secret Garden",
+        "shadeName": "03 Rosebud Garden",
+        "hex": "#C98B80",
+        "url": "https://www.yesstyle.com/en/romand-better-than-palette-the-secret-garden-9-types-03-rosebud-garden/info.html/pid.1100088620",
+        "why": "Rose-brown palette with peachy-rose and warm brown-rose tones in matte and shimmer finishes for the lid and outer corner.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-better-than-palette-the-secret-garden-9-types-03-rosebud-garden/info.html/pid.1100088620"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek NEW",
+        "shadeName": "C04 Pear Chip",
+        "hex": "#EFA09A",
+        "url": "https://www.yesstyle.com/en/romand-better-than-cheek-new-9-colors-c04-pear-chip/info.html/pid.1117526059",
+        "why": "Soft, diffused semi-matte powder blush that gives a skin-like flush on the apples of the cheeks.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-better-than-cheek-new-9-colors-c04-pear-chip/info.html/pid.1117526059"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Zero Velvet Tint",
+        "shadeName": "11 Flare",
+        "hex": "#8E1521",
+        "url": "https://www.yesstyle.com/en/romand-zero-velvet-tint-11-colors-11-flare/info.html/pid.1071377547",
+        "why": "Velvet-matte, blurred-edge tint in a deep red that is close to the moody cherry-red lip.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-zero-velvet-tint-11-colors-11-flare/info.html/pid.1071377547"
+      }
+    ]
   },
   {
     "id": "icy-lilac",
@@ -1450,7 +1866,59 @@
         "x": 0.5144,
         "y": 0.5619
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ANUA",
+        "name": "PDRN Hyaluronic Acid Hydrating Capsule Mist",
+        "shadeName": "",
+        "hex": "#EAF2F8",
+        "url": "https://www.stylevana.com/en_US/anua-pdrn-hyaluronic-acid-hydrating-capsule-mist-100ml104283.html",
+        "why": "Hydrating glow mist that gives a glassy, wet-look sheen over skincare or makeup.",
+        "sourceUrl": "https://www.stylevana.com/en_US/anua-pdrn-hyaluronic-acid-hydrating-capsule-mist-100ml104283.html"
+      },
+      {
+        "area": "base",
+        "brand": "MILK TOUCH",
+        "name": "Dewy Glass Skin Foundation",
+        "shadeName": "15N Fair Ivory",
+        "hex": "#F1D9D3",
+        "url": "https://www.yesstyle.com/en/milk-touch-dewy-glass-skin-foundation-20-colors-15n-fair-ivory/info.html/pid.1137764151",
+        "why": "Light-coverage dewy glass-skin foundation in the fairest shade, close to porcelain pink beige.",
+        "sourceUrl": "https://www.yesstyle.com/en/milk-touch-dewy-glass-skin-foundation-20-colors-15n-fair-ivory/info.html/pid.1137764151"
+      },
+      {
+        "area": "eye",
+        "brand": "KLAVUU",
+        "name": "Urban Pearlsation Sparkle Eyeshadow",
+        "shadeName": "02 Silver Lilac",
+        "hex": "#C9B8D8",
+        "url": "https://realry.com/products/6a1f2bb58e0965a3c7062ee6",
+        "why": "Muted lilac with silver sparkle gives the frosted lilac pearlescent wash.",
+        "sourceUrl": "https://realry.com/products/6a1f2bb58e0965a3c7062ee6"
+      },
+      {
+        "area": "blush",
+        "brand": "AOU",
+        "name": "Glowy Cream Blush",
+        "shadeName": "02 Pinky",
+        "hex": "#E79AB0",
+        "url": "https://empresskorea.com/product/aou-glowy-cream-blush/",
+        "why": "Dewy cream blush in a cool pink with a slight blue tint for a cold-flushed look.",
+        "sourceUrl": "https://empresskorea.com/product/aou-glowy-cream-blush/"
+      },
+      {
+        "area": "lip",
+        "brand": "HERA",
+        "name": "Sensual Fitting Glow Tint",
+        "shadeName": "97 Lovebyte",
+        "hex": "#C98FA8",
+        "url": "https://wew.yesstyle.com/en/hera-sensual-fitting-glow-tint-8-colors-2023-version-304-sequence/info.html/pid.1114525839",
+        "why": "Glossy mauve-pink glow tint that matches the juicy mauve-pink lip center.",
+        "sourceUrl": "https://wew.yesstyle.com/en/hera-sensual-fitting-glow-tint-8-colors-2023-version-304-sequence/info.html/pid.1114525839"
+      }
+    ]
   },
   {
     "id": "golden-hour",
@@ -1614,7 +2082,59 @@
         "x": 0.5182,
         "y": 0.5082
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Anua",
+        "name": "Rice 70 Glow Milky Toner",
+        "shadeName": "",
+        "hex": "#F5EFE6",
+        "url": "https://global.oliveyoung.com/product/detail?dataSource=other_customers_bought&prdtNo=GA250329702",
+        "why": "Milky, hydrating toner patted in for a dewy, plump glow base.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?dataSource=other_customers_bought&prdtNo=GA250329702"
+      },
+      {
+        "area": "base",
+        "brand": "TFIT",
+        "name": "Radiance Fit Serum Foundation",
+        "shadeName": "W2.5 Honey",
+        "hex": "#C48A62",
+        "url": "https://www.stylevana.com/en_US/tfit-radiance-fit-serum-foundation-30g.html",
+        "why": "Serum foundation with a moist, glowing finish in a warm honey shade.",
+        "sourceUrl": "https://www.stylevana.com/en_US/tfit-radiance-fit-serum-foundation-30g.html"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Eyes",
+        "shadeName": "M01 Dry Apple Blossom",
+        "hex": "#C9783F",
+        "url": "https://www.romandglobal.com/en-gb/products/rom-nd-better-than-eyes-6-colors",
+        "why": "Warm brown-copper quad with a glitter shade for a shimmery, metallic eye.",
+        "sourceUrl": "https://www.romandglobal.com/en-gb/products/rom-nd-better-than-eyes-6-colors"
+      },
+      {
+        "area": "blush",
+        "brand": "VIDIVICI",
+        "name": "Petal Glow Cream Blush",
+        "shadeName": "08 Botanic Peach",
+        "hex": "#E0806A",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=1710&prdtNo=GA250531138",
+        "why": "Peach-coral cream blush with a dewy petal finish that melts into the skin.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=1710&prdtNo=GA250531138"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "The Juicy Lasting Tint",
+        "shadeName": "#10 Bare Apricot",
+        "hex": "#D08A6A",
+        "url": "https://romandbeauty.com/products/the-juicy-lasting-tint",
+        "why": "Juicy, glossy peachy-nude tint that matches the peachy-nude gloss lip.",
+        "sourceUrl": "https://allkcultures.com/k-beauty/romand-the-juicy-lasting-tint-3-5g/"
+      }
+    ]
   },
   {
     "id": "strawberry-milk",
@@ -1775,7 +2295,59 @@
         "x": 0.5071,
         "y": 0.556
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ROUND LAB",
+        "name": "Birch Juice Moisturizing Serum",
+        "shadeName": "",
+        "hex": "#F5E6E0",
+        "url": "https://www.yesstyle.com/en/round-lab-s%C3%A9rum-facial/info.html/pid.1123980116",
+        "why": "Lightweight hydrating serum with hyaluronic acid that builds a plump, dewy prep layer.",
+        "sourceUrl": "https://www.yesstyle.com/en/round-lab-s%C3%A9rum-facial/info.html/pid.1123980116"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Glow Fitting Cushion",
+        "shadeName": "2.5 Ivory",
+        "hex": "#F3D9D2",
+        "url": "https://www.yesstyle.com/en/clio-base-de-maquillaje-en-formato-cushion-kill-cover-glow-fitting/info.html/pid.1105626583",
+        "why": "Light ivory shade with a luminous, dewy, skin-like finish for a light complexion.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-base-de-maquillaje-en-formato-cushion-kill-cover-glow-fitting/info.html/pid.1105626583"
+      },
+      {
+        "area": "eye",
+        "brand": "romand",
+        "name": "Better Than Palette The Secret Garden",
+        "shadeName": "06 Peony Nude Garden",
+        "hex": "#E9777F",
+        "url": "https://www.yesstyle.com/en/romand-better-than-palette-the-secret-garden-9-types-06-peony-nude/info.html/pid.1100088589",
+        "why": "Pink and coral palette with shimmer shades for a sheer pink-coral wash.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-better-than-palette-the-secret-garden-9-types-06-peony-nude/info.html/pid.1100088589"
+      },
+      {
+        "area": "blush",
+        "brand": "peripera",
+        "name": "Pure Blushed Sunshine Cheek",
+        "shadeName": "28 Romantic Rose",
+        "hex": "#EE8D98",
+        "url": "https://www.yesstyle.com/en/peripera-pure-blushed-sunshine-cheek-6-colors-05-rose/info.html/pid.1092832302",
+        "why": "Reddish-pink jelly texture blush that gives a dewy, rosy flush.",
+        "sourceUrl": "https://www.yesstyle.com/en/peripera-pure-blushed-sunshine-cheek-6-colors-05-rose/info.html/pid.1092832302"
+      },
+      {
+        "area": "lip",
+        "brand": "romand",
+        "name": "The Juicy Lasting Tint",
+        "shadeName": "07 Cherry Bomb",
+        "hex": "#D8454F",
+        "url": "https://www.yesstyle.com/en/romand-the-juicy-lasting-tint-23-colors-01-pomelo-skin/info.html/pid.1134228333",
+        "why": "Juicy high-shine cherry red tint that blurs out into a glossy gradient.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-the-juicy-lasting-tint-23-colors-01-pomelo-skin/info.html/pid.1134228333"
+      }
+    ]
   },
   {
     "id": "bold-fuchsia",
@@ -1936,6 +2508,58 @@
         "x": 0.5897,
         "y": 0.5242
       }
-    }
+    },
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ROUND LAB",
+        "name": "Birch Juice Moisturizing Toner",
+        "shadeName": "",
+        "hex": "",
+        "url": "https://www.yesstyle.com/en/round-lab-birch-juice-moisturizing-toner-300ml/info.html/pid.1086574612",
+        "why": "Hydrating toner that builds the dewy, glass-skin prep layer.",
+        "sourceUrl": "https://www.yesstyle.com/en/round-lab-birch-juice-moisturizing-toner-300ml/info.html/pid.1086574612"
+      },
+      {
+        "area": "base",
+        "brand": "hince",
+        "name": "Second Skin Foundation",
+        "shadeName": "17 Porcelain",
+        "hex": "#F1D3CC",
+        "url": "https://m.yesstyle.com/en/hince-second-skin-foundation-4-colors-17-porcelain/info.html/pid.1129906928",
+        "why": "Light neutral porcelain shade in a thin, skin-like liquid foundation, matching Porcelain Neutral.",
+        "sourceUrl": "https://m.yesstyle.com/en/hince-second-skin-foundation-4-colors-17-porcelain/info.html/pid.1129906928"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Pro Eye Palette Air",
+        "shadeName": "04 Pink Pairing",
+        "hex": "#E58AB8",
+        "url": "https://www.yesstyle.com/en/info.html/pid.1124711013",
+        "why": "Cool bubblegum-to-orchid pink palette for a shimmery, glittery pink wash.",
+        "sourceUrl": "https://www.yesstyle.com/en/info.html/pid.1124711013"
+      },
+      {
+        "area": "blush",
+        "brand": "CLIO",
+        "name": "Essential Lipcheek Tap",
+        "shadeName": "03 Rosy Blow",
+        "hex": "#D9769B",
+        "url": "https://www.yesstyle.com/en/info.html/pid.1131592292",
+        "why": "Dabbable cream lip-and-cheek tint in a rosy pink for a dewy, doll-like flush.",
+        "sourceUrl": "https://www.yesstyle.com/en/info.html/pid.1131592292"
+      },
+      {
+        "area": "lip",
+        "brand": "peripera",
+        "name": "Mood Glowy Tint",
+        "shadeName": "07 Plum Fizz",
+        "hex": "#B4306A",
+        "url": "https://www.yesstyle.com/en/peripera-mood-glowy-tint-22-colors-01-tiny-strawberry/info.html/pid.1137219638",
+        "why": "Glassy, juicy glossy tint in a deep berry shade for a high-shine, stained berry-fuchsia lip.",
+        "sourceUrl": "https://www.yesstyle.com/en/peripera-mood-glowy-tint-22-colors-01-tiny-strawberry/info.html/pid.1137219638"
+      }
+    ]
   }
 ]

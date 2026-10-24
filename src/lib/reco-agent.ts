@@ -33,6 +33,29 @@ Output ONLY one JSON object, no prose, no markdown fences:
 {"products":[{"area":"skincare|base|eye|blush|lip","brand":"","name":"","shadeName":"","hex":"#RRGGBB","url":"product page URL","why":"one short line on why it fits","sourceUrl":"page used as evidence"}]}`;
 }
 
+// MUSE products: real K-beauty products that reproduce the muse look's ORIGINAL colors (no skin-tone adaptation).
+export function buildMusePrompt(analysis: LookAnalysis): string {
+  const areas = analysis.steps
+    .map((s) => `- ${s.area}: colors ${s.colors.map((c) => `${c.name} ${c.hex}`).join(", ") || "n/a"}; finish ${s.finish}; ${s.technique}`)
+    .join("\n");
+  return `You are a K-beauty shopping assistant. Use the web_search tool (and fetch_content if needed) to find REAL, currently sold Korean-brand (K-beauty) products that recreate this muse's makeup look exactly as shown (original colors, for the muse's own light complexion).
+
+Look mood: ${analysis.mood}
+Muse look by area:
+${areas}
+
+Task: recommend exactly 1 product for each of these areas: skincare, base, eye, blush, lip.
+- Match each area's color and finish as closely as possible (base: a shade matching the muse's complexion in the base color above). For skincare, pick a prep product that suits the finish; shadeName is "".
+- Only products you actually found on a page via search. Prefer Olive Young Global, the brand's official site, YesStyle or Stylevana pages. Never invent URLs.
+- shadeName must be the exact shade name as sold on the product page, with no notes or comments. If you cannot confirm the exact shade on a page, pick a different product whose shade you did confirm.
+- url must be a specific product page for that product (not a search, category or home page).
+- "hex" is an approximate swatch color as "#RRGGBB"; omit it if unknown.
+- "why": one short line saying how it matches the muse's color/finish.
+
+Output ONLY one JSON object, no prose, no markdown fences:
+{"products":[{"area":"skincare|base|eye|blush|lip","brand":"","name":"","shadeName":"","hex":"#RRGGBB","url":"product page URL","why":"one short line on how it matches the muse","sourceUrl":"page used as evidence"}]}`;
+}
+
 function cleanEnv(): NodeJS.ProcessEnv {
   const env = {} as NodeJS.ProcessEnv;
   for (const [k, v] of Object.entries(process.env)) {
@@ -160,6 +183,24 @@ export async function runRecommendations(id: string): Promise<void> {
     console.error(`[reco] ${id}: ${msg}`);
     await updateSession(id, (st) => {
       st.products = { status: "error", error: msg };
+    }).catch(() => {});
+  }
+}
+
+// Fire-and-forget; settles session.museProducts (no catalog fallback: errors are shown as unavailable). Caller must NOT await.
+export async function runMuseProducts(id: string): Promise<void> {
+  try {
+    const s = await loadSession(id);
+    if (!s?.analysis) throw new Error("missing analysis");
+    const items = parseProducts(await runPi(buildMusePrompt(s.analysis)));
+    await updateSession(id, (st) => {
+      st.museProducts = { status: "done", items };
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error(`[muse-products] ${id}: ${msg}`);
+    await updateSession(id, (st) => {
+      st.museProducts = { status: "error", error: msg };
     }).catch(() => {});
   }
 }

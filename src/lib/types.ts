@@ -91,7 +91,8 @@ export type SessionState = {
   applyTranslated: { status: ImageStatus; error?: string };
   mannequin?: { status: ImageStatus; error?: string }; // generated from look.jpg + analysis (no selfie needed); samples ship a pre-generated file
   styled?: { status: ImageStatus; error?: string }; // generated after applyTranslated is done
-  products?: { status: ImageStatus; items?: Product[]; error?: string; fallback?: boolean }; // fallback = sample catalog used
+  products?: { status: ImageStatus; items?: Product[]; error?: string; fallback?: boolean }; // MY TONE products (translated shades); fallback = sample catalog used
+  museProducts?: { status: ImageStatus; items?: Product[]; error?: string }; // MUSE products: real K-beauty products matching the muse look's ORIGINAL colors (web search)
 };
 
 // Social: public posts of (look + as-is + my tone). Persisted as DATA_DIR/posts/{postId}.json
@@ -111,7 +112,8 @@ export type Post = {
   mannequinUrl: string; // mannequin.png
   myToneUrl: string; // apply_translated.png (selfie-style, tone-translated makeup)
   styledUrl: string; // styled.png
-  products: Product[]; // up to 5, copied at post time
+  products: Product[]; // MY TONE products, up to 5, copied at post time
+  museProducts?: Product[]; // MUSE products (original look colors), up to 5; absent on older posts
   points?: AreaPoints; // optional stored override; the client normally computes pins from face landmarks (src/lib/client/face-points.ts)
   tags?: string[]; // topic keys from src/lib/topics.ts (max 2), assigned by Claude at post time
 };

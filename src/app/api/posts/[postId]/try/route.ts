@@ -1,5 +1,6 @@
 import { getPost, NO_STORE } from "@/lib/posts";
 import { runGeneration } from "@/lib/generate-job";
+import { runMuseProducts } from "@/lib/reco-agent";
 import { createSession, loadSession, readFileFrom, updateSession, writeFileTo } from "@/lib/storage";
 
 export async function POST(_req: Request, ctx: { params: Promise<{ postId: string }> }) {
@@ -19,8 +20,11 @@ export async function POST(_req: Request, ctx: { params: Promise<{ postId: strin
   await updateSession(s.id, (st) => {
     st.analysis = analysis;
     if (src.sampleId) st.sampleId = src.sampleId;
+    if (src.museProducts?.status === "done") st.museProducts = src.museProducts;
+    else st.museProducts = { status: "pending" };
     st.mannequin = { status: mannequin ? "done" : "pending" };
   });
   if (!mannequin) void runGeneration(s.id, "mannequin");
+  if (src.museProducts?.status !== "done") void runMuseProducts(s.id);
   return Response.json({ id: s.id }, { headers: NO_STORE });
 }
