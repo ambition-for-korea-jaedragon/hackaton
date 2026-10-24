@@ -108,6 +108,7 @@ export type Post = {
 // POST   /api/posts/[postId]/try    -> { id } new session reusing the post's look + analysis (skips ①)
 // Page   /p/[postId]                public post page with OG image = myToneUrl
 // POST /api/session                multipart {look: File}            -> { id, analysis }
+// POST /api/session/sample         JSON {sampleId}                   -> { id, analysis }  (copies public/samples/{file}, cached analysis from src/data/sample-looks.json; source='sample')
 // POST /api/session/[id]/selfie    multipart {selfie: File}          -> { ok: true }   (starts ② generation in background)
 // POST /api/session/[id]/translate (no body)                         -> { translation } (starts ③ generation in background)
 //      translate also starts the web product search job in background (products.status pending -> done/error)

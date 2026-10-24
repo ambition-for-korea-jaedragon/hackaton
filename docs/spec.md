@@ -53,7 +53,7 @@
 | 인증·민감 정보 | 접근 장벽 최소, 얼굴 사진 | 로그인 없음, 추측 불가 UUID 세션. 13+ 체크, "Anthropic·OpenAI로 전송, 데모 서버에 저장" 고지. 아이돌 사진은 사용자 업로드만, 샘플 룩은 권리 확보 이미지 |
 | 제품 AI | 룩 분석·톤 번역, 무드 있는 얼굴 이미지 | Claude `claude-sonnet-5-5`(vision, JSON) = ①③ 판단. OpenAI Images edit `gpt-image-2.5-sunburst`(다중 입력 이미지, 얼굴 `input_fidelity` 확인) = ②③ 이미지. 운영진 허용(`hackathon.md`) |
 | 제품 추천 | 실제 판매 중인 K-뷰티 제품을 번역된 색·톤·제형에 맞춰 추천(사용자 결정) | ③ 번역 후 백엔드가 **pi를 헤드리스로 실행**(`pi -p --no-session --model anthropic/claude-sonnet-5-5 --tools web_search,fetch_content,get_search_content`, pi-web-access 확장의 Exa 검색). 결과 JSON을 `Product` 스키마로 검증해 세션에 저장. 검색 실패 시 샘플 카탈로그로 표시(`fallback` 배지) |
-| 배포 | 공개 URL, 영속 디스크, 21:00 유지, 컨테이너에 pi 포함 | **Railway** 서비스 1개 + Volume `/data`, **Dockerfile** 빌드(node 24 + `@earendil-works/pi-coding-agent` + `pi-web-access`). `railway up`으로 로컬 디렉터리 배포. 비밀은 Railway Variables |
+| 배포 | 공개 URL, 영속 디스크, 21:00 유지, 컨테이너에 pi 포함 | **Fly.io** 머신 1대(`nrt`, shared-cpu-1x 1GB, auto-stop off) + Volume `muselook_data`→`/data`, **Dockerfile** 빌드(node 24 + `@earendil-works/pi-coding-agent` + `pi-web-access`). `fly deploy`로 로컬 디렉터리 배포. 비밀은 `fly secrets set` (Railway는 신규 가입 불가로 변경, 2026-10-24) |
 | 검증 | 실제 시나리오 | `pnpm lint`·`pnpm build` + 공개 URL에서 ①→②→③ 확인 |
 
 ## 위험과 계약
@@ -66,7 +66,7 @@
   - `CatalogItem { id, brand, name, area, shadeName, hex, finish, toneFit: string[], url, sample: true }`
   - API: `POST /api/session`(look) → `{id, analysis}` · `POST /api/session/{id}/selfie` → `{applyOriginal: url}` · `POST /api/session/{id}/translate` → `{translation, applyTranslated: url}` · `GET /api/files/{id}/{name}`
 - AI 사용 조건: 입력 이미지 최대 10MB, 서버에서 긴 변 1536px로 축소(라이브러리 결정은 scaffold). Claude 타임아웃 60s·1회 재시도, 이미지 120s·재시도 없음. 응답 JSON 스키마 검증 실패 시 1회 재요청 후 에러 표시. 실제 호출과 sample 결과를 UI·로그에서 구분.
-- 비밀: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `DATA_DIR`. 로컬 `.env.local`(gitignore), 배포 Railway Variables. 키 값은 문서·로그·클라이언트에 기록하지 않는다. OpenAI 키는 사용자가 개발 시 제공 예정.
+- 비밀: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `DATA_DIR`. 로컬 `.env.local`(gitignore), 배포 fly secrets. 키 값은 문서·로그·클라이언트에 기록하지 않는다. OpenAI 키는 사용자가 개발 시 제공 예정.
 
 ## 실행 계약 (scaffold 실측 2026-10-24 12:1x)
 
@@ -82,7 +82,7 @@
 | 로컬 실행 | 레포 루트 | `pnpm dev` (또는 `pnpm build && PORT=3100 pnpm start`) | http://localhost:3000 |
 | 검사·빌드 | 레포 루트 | `pnpm lint && npx tsc --noEmit && pnpm build` | 오류·경고 0 |
 | 컨테이너 | 레포 루트 | `docker build -t muselook:local .` → `docker run -p 3200:3000 -e PORT=3000 -v muselook-data:/data muselook:local` | `/` 200, `pi --version` 1.4.0, `/data` 쓰기 가능 |
-| 배포 | 레포 루트 | `railway login`(사용자) → `railway init`/`link` → 서비스에 Volume mount `/data` → Variables: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `DATA_DIR=/data` → `railway up` (Dockerfile 자동 감지) → 도메인 생성 | 공개 `*.up.railway.app` |
+| 배포 | 레포 루트 | `fly auth login`(사용자) → `fly apps create <name>` → `fly volumes create muselook_data -r nrt -s 1` → `fly secrets set ANTHROPIC_API_KEY=… OPENAI_API_KEY=…`(값은 .env.local에서 파이프, 로그 금지) → `fly deploy` | 공개 `https://<name>.fly.dev` |
 | 시나리오 | 외부 브라우저 | 샘플 룩 → 셀카 → ①②③ → 공유 → 피드 | 비교 이미지·제품 카드·배지·포스트 |
 
 ## 제출 후보
