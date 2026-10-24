@@ -5,8 +5,9 @@ import { LookAnalysis, ToneTranslation } from "./types";
 import { catalog } from "./catalog";
 import { TOPICS, TOPIC_KEYS } from "./topics";
 
-const MODEL = "claude-sonnet-5-5"; // tone translation (needs the most judgment)
-const FAST_MODEL = process.env.CLAUDE_FAST_MODEL || "claude-haiku-5-5"; // look analysis + topic tagging
+// All Claude calls (look analysis, tone translation, topic tags) run on Haiku. Override with CLAUDE_MODEL.
+const MODEL = process.env.CLAUDE_MODEL || "claude-haiku-5-5";
+const FAST_MODEL = MODEL;
 
 function client() {
   const apiKey = process.env.ANTHROPIC_API_KEY;

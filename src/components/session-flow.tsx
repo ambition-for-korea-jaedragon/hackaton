@@ -112,16 +112,22 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const sel = a.steps.find((x) => x.area === selArea) ?? null;
   // Adapt analysis steps to the shared callout (pin + card per area); card text = the finish.
-  const pseudo: Product[] = a.steps.map((st) => ({
-    area: st.area,
-    brand: "",
-    name: st.finish,
-    shadeName: "",
-    hex: st.colors[0]?.hex,
-    url: "",
-    why: "",
-    sourceUrl: "",
-  }));
+  const mp = s.museProducts;
+  const productsPending = !mp || mp.status === "pending" || mp.status === "idle";
+  const productFor = (area: LookStep["area"]) => (mp?.status === "done" ? mp.items?.find((p) => p.area === area) : undefined);
+  const pseudo: Product[] = a.steps.map((st) => {
+    const pr = productFor(st.area);
+    return {
+      area: st.area,
+      brand: pr ? pr.brand : "",
+      name: pr ? pr.name : st.finish,
+      shadeName: "",
+      hex: pr?.hex ?? st.colors[0]?.hex,
+      url: "",
+      why: "",
+      sourceUrl: "",
+    };
+  });
   function close() {
     setSelArea(null);
     setResetSignal((n) => n + 1);
@@ -161,6 +167,14 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
                 <span className="grid size-[26px] place-items-center rounded-full bg-ink text-[13px] font-bold text-white">{i + 1}</span>
                 <span className="min-w-0">
                   <b className="text-base">{areaLabel(st.area)}</b> <em className="text-[13px] font-medium not-italic text-ink-soft">{st.finish}</em>
+                  {productFor(st.area) ? (
+                    <span className="mt-0.5 block truncate text-[13px] font-semibold">
+                      {productFor(st.area)!.brand} {productFor(st.area)!.name}
+                      {productFor(st.area)!.shadeName ? <span className="font-medium text-ink-soft"> · {productFor(st.area)!.shadeName}</span> : null}
+                    </span>
+                  ) : productsPending ? (
+                    <span className="mt-1 block h-3 w-40 animate-pulse rounded bg-line" aria-hidden />
+                  ) : null}
                 </span>
                 <span className="inline-flex items-center gap-1">
                   {st.colors.map((c) => (
@@ -179,7 +193,7 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
           <SubLink href="/new">Try another look</SubLink>
         </ActionBar>
       )}
-      {sel && <LookDock steps={a.steps} step={sel} onSelect={(area) => choose(area)} onClose={close} />}
+      {sel && <LookDock steps={a.steps} step={sel} product={productFor(sel.area)} productsPending={productsPending} onSelect={(area) => choose(area)} onClose={close} />}
     </>
   );
 }

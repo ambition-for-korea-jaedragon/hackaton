@@ -28,7 +28,7 @@ Output ONLY one JSON object, no prose, no markdown fences:
 
 const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !k.startsWith("PI_")));
 const runPi = (p) => new Promise((res, rej) => {
-  const c = spawn("pi", ["-p", "--no-session", "--no-skills", "--no-context-files", "--model", "anthropic/claude-sonnet-5-5", "--tools", "web_search,fetch_content,get_search_content", p], { cwd: os.tmpdir(), env });
+  const c = spawn("pi", ["-p", "--no-session", "--no-skills", "--no-context-files", "--model", "anthropic/claude-haiku-5-5", "--tools", "web_search,fetch_content,get_search_content", p], { cwd: os.tmpdir(), env });
   c.stdin.end(); let out = ""; const t = setTimeout(() => c.kill("SIGKILL"), 170000);
   c.stdout.on("data", (d) => (out += d)); c.on("close", (code) => { clearTimeout(t); code === 0 ? res(out) : rej(new Error("exit " + code)); });
 });

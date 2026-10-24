@@ -73,7 +73,7 @@ function redact(s: string): string {
 
 function runPi(prompt: string): Promise<string> {
   const bin = process.env.PI_BIN || "pi";
-  const model = process.env.PI_MODEL_RECO || "anthropic/claude-sonnet-5-5";
+  const model = process.env.PI_MODEL_RECO || "anthropic/claude-haiku-5-5";
   const args = [
     "-p",
     "--no-session",

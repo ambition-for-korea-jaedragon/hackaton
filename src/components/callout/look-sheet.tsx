@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import type { LookStep } from "@/lib/types";
+import type { LookStep, Product } from "@/lib/types";
 import { AREA_LABEL } from "./areas";
 import { Dot } from "./sheets";
 
@@ -9,11 +9,15 @@ import { Dot } from "./sheets";
 export function LookDock({
   steps,
   step,
+  product,
+  productsPending,
   onSelect,
   onClose,
 }: {
   steps: LookStep[];
   step: LookStep;
+  product?: Product;
+  productsPending: boolean;
   onSelect: (area: LookStep["area"]) => void;
   onClose: () => void;
 }) {
@@ -57,6 +61,24 @@ export function LookDock({
       </div>
       <div ref={body} className="overflow-y-auto px-5 pb-[max(20px,env(safe-area-inset-bottom))] pt-2">
         <h2 className="font-display text-[22px] leading-tight first-letter:uppercase">{step.finish}</h2>
+        {product ? (
+          <div className="mt-2.5 flex items-center gap-3 rounded-2xl border border-line bg-paper p-2.5">
+            <span className="size-11 flex-none rounded-xl border border-ink/10" style={{ background: product.hex ?? "var(--color-lilac)" }} aria-hidden />
+            <span className="min-w-0 flex-1">
+              <span className="block text-[11px] font-bold uppercase tracking-wide text-ink-soft">Product</span>
+              <span className="block truncate text-[14px] font-bold">{product.brand} {product.name}</span>
+              {product.shadeName && <span className="block truncate text-[12.5px] text-ink-soft">{product.shadeName}</span>}
+            </span>
+            <a href={product.url} target="_blank" rel="noopener noreferrer" className="flex-none rounded-xl border-2 border-ink px-3 py-2 text-[13px] font-bold">
+              View
+            </a>
+          </div>
+        ) : productsPending ? (
+          <div className="mt-2.5 flex items-center gap-3 rounded-2xl border border-line bg-paper p-2.5" role="status">
+            <span className="size-11 flex-none animate-pulse rounded-xl bg-line" aria-hidden />
+            <span className="text-[13px] text-ink-soft">Finding the product…</span>
+          </div>
+        ) : null}
         {step.colors.length > 0 && (
           <ul className="mt-2.5 flex flex-wrap gap-2" aria-label="Colors used">
             {step.colors.map((c) => (
