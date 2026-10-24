@@ -13,7 +13,7 @@
 |---|---|---|
 | "Brown skin foundations: Tirtir is the only option" (r/koreanskincare, 2025) | 외부 출처, 포럼 글 1건 | `research.md` §1 — 스레드 제목 의역(원문: "Brown skin foundations", 본문에서 Tirtir 외 선택지 없음) |
 | US = K-뷰티 수출 1위, $2.19B, +15.1% (2025) | 외부 출처 | 식약처 via 연합 2026-01-09, `research.md` §2. 시장 규모이지 이 문제의 수요가 아님 |
-| Muse vs My tone 제품 교체(베이스 CLIO Kill Cover Mesh Glow 21N Linen → TIRTIR Mask Fit Red 45N Saddle Brown, 립 rom&nd Dewyful 04 → Juicy Lasting 07 Jujube) | 실측(제품 출력) | 로컬 포스트 `VKeytHAE_D`(Cocoa Ribbon × me-medium-deep-red), 세션 `577d7462…` — 합성 인물, 샘플 룩, 14:1x 시드 |
+| Muse vs My tone 제품 교체(베이스 CLIO Kill Cover Mesh Glow 02 Lingerie → TIRTIR Mask Fit Red 35N Walnut, 립 rom&nd Zero Velvet 07 Fizz → 21 Villain Vest, 아이 dasique #19 → rom&nd 02 Mahogany Garden) | 실측(제품 출력) | 로컬 포스트 `Ut7_dOpqZF`(Scarlet Edge, medium · warm olive), 세션 `74c66d91…` — 합성 인물, 샘플 룩, 14:1x 시드 |
 | Claude 역할: Haiku 5.5 분석·태깅, Sonnet 5.5 톤 번역, Sonnet 5.5 pi 에이전트 웹검색 | 구현 사실 | `spec.md` 제품 AI·제품 추천, `src/lib/reco-agent.ts` |
 | 이미지 모델 | 구현 사실 | OpenAI `gpt-image-2.5-sunburst`, 운영진 허용(`hackathon.md`) |
 
@@ -23,4 +23,4 @@ Live: Claude 분석·톤 번역·제품 검색. Sample: 데모 얼굴은 AI 생�
 
 ## 스크린샷
 
-실행 중이던 로컬 서버 :3100(빌드 커밋 미확인, HEAD aba9df2) 430×932 @2x, Playwright: `assets/feed.png`(`/`, Cocoa 포스트 영역 잘라냄), `assets/product.png`·`assets/product-mytone.png`(`/p/VKeytHAE_D`, Muse·My tone 탭). 1장 사진은 같은 세션의 `look.jpg`·`apply_translated.png`.
+실행 중이던 로컬 서버 :3100(빌드 커밋 미확인, HEAD aba9df2) 430×932 @2x, Playwright: `assets/feed.png`(`/`, Scarlet Edge 포스트 영역 잘라냄), `assets/product.png`·`assets/product-mytone.png`(`/p/Ut7_dOpqZF`, Muse·My tone 탭). 1장 사진은 같은 세션의 `look.jpg`·`apply_translated.png`.

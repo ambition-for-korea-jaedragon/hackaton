@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ActionBar, ErrorNote, PrimaryButton, ScreenBody, Spinner, TopBar } from "@/components/app-shell";
-import { api, postJson } from "@/lib/client/api";
+import { api } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
-import { SAMPLES, TEST_LOOKS } from "@/lib/samples";
+import { TEST_LOOKS } from "@/lib/samples";
 import { SampleDock, readSamplePayload } from "@/components/sample-dock";
 
 const COPY = ["Reading the look…", "Spotting every shade…", "Matching finishes…", "Writing your breakdown…"];
@@ -15,7 +15,6 @@ export function LookPicker() {
   const input = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
-  const [sample, setSample] = useState<string | null>(null);
   const [over, setOver] = useState(false);
   const [testPicked, setTestPicked] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -24,9 +23,9 @@ export function LookPicker() {
 
   useEffect(() => {
     if (!busy) return;
-    const t = setInterval(() => setCopyIdx((i) => Math.min(i + 1, COPY.length - 1)), sample ? 900 : 3000);
+    const t = setInterval(() => setCopyIdx((i) => Math.min(i + 1, COPY.length - 1)), 3000);
     return () => clearInterval(t);
-  }, [busy, sample]);
+  }, [busy]);
   useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
 
   function pickFile(f: File | undefined, testId: string | null = null) {
@@ -35,18 +34,9 @@ export function LookPicker() {
     setError(null);
     setFile(f);
     setTestPicked(testId);
-    setSample(null);
     setPreview(URL.createObjectURL(f));
   }
-  function pickSample(id: string) {
-    setTestPicked(null);
-    setSample(id);
-    setFile(null);
-    setPreview(null);
-    setError(null);
-  }
-
-  // Test looks are real uploads: they go through live analysis instead of the prepared sample data.
+  // Test looks are real uploads: they go through the live analysis.
   async function pickTestLook(id: string) {
     const it = TEST_LOOKS.find((x) => x.id === id);
     if (!it) return;
@@ -64,14 +54,7 @@ export function LookPicker() {
     setCopyIdx(0);
     try {
       let res: { id: string };
-      if (sample) {
-        // Sample analyses are precomputed and return instantly; hold the analysis scene so the demo shows the step.
-        [res] = await Promise.all([
-          postJson<{ id: string }>("/api/session/sample", { sampleId: sample }),
-          new Promise((r) => setTimeout(r, 3600)),
-        ]);
-      }
-      else if (file) {
+      if (file) {
         const small = await resizeImage(file);
         const fd = new FormData();
         fd.append("look", small);
@@ -84,15 +67,13 @@ export function LookPicker() {
     }
   }
 
-  const ready = !!(file || sample);
-  const current = SAMPLES.find((s) => s.id === sample);
+  const ready = !!file;
 
   return (
     <>
       {!busy && (
         <>
-          <SampleDock side="left" kind="look" items={SAMPLES} title="Demo looks" hint="Ready-made breakdowns. Drag one onto the photo box, or click it." selected={sample} onPick={pickSample} />
-          <SampleDock side="right" kind="testlook" items={TEST_LOOKS} title="Live test looks" hint="Analyzed for real, about 10 seconds. Drag one onto the box." selected={testPicked} onPick={(id) => void pickTestLook(id)} />
+          <SampleDock side="right" kind="testlook" items={TEST_LOOKS} title="Try a look" hint="Analyzed for real, about 10 seconds. Drag one onto the box, or click it." selected={testPicked} onPick={(id) => void pickTestLook(id)} />
         </>
       )}
       <TopBar
@@ -109,7 +90,7 @@ export function LookPicker() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] bg-paper">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={preview ?? (current ? current.src : "")}
+                src={preview ?? ""}
                 alt="Your look being analyzed"
                 className="size-full object-cover opacity-90"
               />
@@ -122,7 +103,7 @@ export function LookPicker() {
               </div>
             </div>
             <p className="mt-1 text-[13px] text-ink-soft">
-              {sample ? "Sample look: its breakdown was prepared ahead of time." : "This takes about 10 seconds."}
+              This takes about 10 seconds.
             </p>
           </div>
         ) : (
@@ -149,8 +130,7 @@ export function LookPicker() {
                   e.preventDefault();
                   setOver(false);
                   const dropped = readSamplePayload(e);
-                  if (dropped?.kind === "look") pickSample(dropped.id);
-                  else if (dropped?.kind === "testlook") void pickTestLook(dropped.id);
+                  if (dropped?.kind === "testlook") void pickTestLook(dropped.id);
                   else pickFile(e.dataTransfer.files[0]);
                 }}
                 className={`relative flex h-[250px] cursor-pointer flex-col [&>*]:pointer-events-none items-center justify-center gap-2.5 overflow-hidden rounded-[18px] border-2 border-dashed border-ink/30 text-center focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink ${
@@ -162,12 +142,12 @@ export function LookPicker() {
                     Drop to use this look
                   </span>
                 )}
-                {preview || current ? (
+                {preview ? (
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={preview ?? current?.src}
-                      alt={current && !preview ? `${current.name} sample look` : "Your selected look"}
+                      src={preview}
+                      alt="Your selected look"
                       className="absolute inset-0 size-full object-cover"
                     />
                     <span className="absolute bottom-2.5 rounded-full bg-paper px-3 py-1.5 text-[13px] font-semibold">
@@ -194,26 +174,22 @@ export function LookPicker() {
               </label>
             </div>
             <div className="mb-2.5 mt-[22px] text-sm font-semibold" id="samples-label">
-              Or start with a sample look
+              Or try a look
             </div>
             <div className="-mx-5 flex gap-2.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none]" role="radiogroup" aria-labelledby="samples-label">
-              {SAMPLES.map((s) => (
+              {TEST_LOOKS.map((s) => (
                 <button
                   key={s.id}
                   type="button"
                   role="radio"
-                  aria-checked={sample === s.id}
-                  onClick={() => pickSample(s.id)}
+                  aria-checked={testPicked === s.id}
+                  onClick={() => void pickTestLook(s.id)}
                   className={`w-[104px] shrink-0 overflow-hidden rounded-2xl bg-paper px-1.5 pb-2 pt-1.5 text-left ${
-                    sample === s.id ? "outline outline-[2.5px] outline-ink" : ""
+                    testPicked === s.id ? "outline outline-[2.5px] outline-ink" : ""
                   }`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={s.src}
-                    alt={`${s.name} sample look`}
-                    className="aspect-[5/6] w-full rounded-[11px] object-cover"
-                  />
+                  <img src={s.src} alt={`${s.name} look`} className="aspect-[5/6] w-full rounded-[11px] object-cover" />
                   <p className="mx-0.5 mt-[7px] truncate text-[12.5px] font-semibold">{s.name}</p>
                 </button>
               ))}
