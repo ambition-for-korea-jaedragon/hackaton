@@ -68,6 +68,16 @@ export const Product = z.object({
 export type Product = z.infer<typeof Product>;
 export const ProductList = z.object({ products: z.array(Product) });
 
+// Face anchor points on look.jpg, normalized 0..1 (x from left, y from top). Used for product callout pins on the muse photo.
+export const AreaPoints = z.object({
+  skincare: z.object({ x: z.number(), y: z.number() }), // forehead center (skin prep has no visible product)
+  base: z.object({ x: z.number(), y: z.number() }), // cheek/skin area beside the nose
+  eye: z.object({ x: z.number(), y: z.number() }), // center of the upper eyelid of the eye on the image's LEFT side
+  blush: z.object({ x: z.number(), y: z.number() }), // apple of the cheek on the image's RIGHT side
+  lip: z.object({ x: z.number(), y: z.number() }), // center of the lips
+});
+export type AreaPoints = z.infer<typeof AreaPoints>;
+
 // Session state persisted as DATA_DIR/sessions/{id}/session.json
 export type ImageStatus = "idle" | "pending" | "done" | "error";
 export type SessionState = {
@@ -101,6 +111,7 @@ export type Post = {
   myToneUrl: string; // apply_translated.png (selfie-style, tone-translated makeup)
   styledUrl: string; // styled.png
   products: Product[]; // up to 5, copied at post time
+  points?: AreaPoints; // optional stored override; the client normally computes pins from face landmarks (src/lib/client/face-points.ts)
   tags?: string[]; // topic keys from src/lib/topics.ts (max 2), assigned by Claude at post time
 };
 

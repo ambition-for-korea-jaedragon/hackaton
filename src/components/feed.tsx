@@ -159,7 +159,7 @@ function FeedPost({ post }: { post: Post }) {
         <PostFourUp post={post} />
       </div>
 
-      <div className="flex items-center gap-3 px-4 pt-3">
+      <div className="flex items-center gap-2 px-4 pt-3">
         <button
           type="button"
           onClick={t.go}
@@ -171,6 +171,16 @@ function FeedPost({ post }: { post: Post }) {
         <button type="button" onClick={share} className="rounded-xl border border-line bg-paper px-3 py-2 text-[13.5px] font-semibold">
           {copied ? "Link copied" : "Share"}
         </button>
+        {post.products.length > 0 && (
+          <Link
+            href={`/p/${post.id}`}
+            aria-label={`View ${post.products.length} products`}
+            className="inline-flex items-center gap-1.5 rounded-xl border-2 border-ink px-3 py-[6px] text-[13.5px] font-semibold"
+          >
+            Products
+            <span className="grid min-w-[18px] place-items-center rounded-full bg-ink px-1 text-[11px] leading-[18px] text-white">{post.products.length}</span>
+          </Link>
+        )}
       </div>
 
       <div className="px-4 pt-2 text-[14px] leading-snug">
@@ -181,11 +191,6 @@ function FeedPost({ post }: { post: Post }) {
               <span key={k}>#{topicLabel(k)}</span>
             ))}
           </p>
-        )}
-        {post.products.length > 0 && (
-          <Link href={`/p/${post.id}`} className="mt-1 inline-block text-[13.5px] font-semibold text-ink underline-offset-2 hover:underline">
-            View {post.products.length} products
-          </Link>
         )}
       </div>
       {t.error && (
