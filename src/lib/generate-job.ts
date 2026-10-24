@@ -1,5 +1,6 @@
 import "server-only";
 import { readFileFrom, updateSession, writeFileTo, loadSession } from "./storage";
+import { trackJob } from "./jobs";
 import {
   generateApplied,
   generateFromImages,
@@ -20,7 +21,11 @@ const FILE = {
 } as const;
 
 // Fire-and-forget; always settles session status. Caller must NOT await.
-export async function runGeneration(id: string, kind: Kind): Promise<void> {
+export function runGeneration(id: string, kind: Kind): Promise<void> {
+  return trackJob(`${id}:${KEY[kind]}`, () => runGenerationInner(id, kind));
+}
+
+async function runGenerationInner(id: string, kind: Kind): Promise<void> {
   const key = KEY[kind];
   try {
     const s = await loadSession(id);

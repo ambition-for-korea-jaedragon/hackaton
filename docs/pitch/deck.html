@@ -35,20 +35,22 @@
  /* slide 2 */
  .s2 h2{position:absolute;left:96px;right:96px;top:104px;font-size:46px;font-weight:800;line-height:1.15}
  .s2 h2 em{font-style:normal;color:var(--cherry)}
- .phones{position:absolute;left:96px;top:196px;display:flex;gap:30px}
- .phone{width:330px;display:flex;flex-direction:column;gap:12px}
- .scr{width:330px;height:612px;border-radius:24px;overflow:hidden;background:transparent}
+ .steps{position:absolute;left:96px;right:96px;top:190px;display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+ .step{display:flex;gap:24px;align-items:flex-start}
+ .scr{flex:0 0 250px;height:466px;border-radius:20px;overflow:hidden}
  .scr img{width:100%;display:block}
- .phone p{font-size:24px;font-weight:700;text-align:center;line-height:1.2}
- .phone p span{color:var(--cherry)}
- .s2 .right{position:absolute;left:1180px;right:96px;top:196px;display:flex;flex-direction:column;gap:18px}
- ol{list-style:none;display:flex;flex-direction:column;gap:14px}
- ol li{font-size:28px;line-height:1.28;padding-left:52px;position:relative;font-weight:500}
- ol li::before{content:counter(i);counter-increment:i;position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center}
- ol{counter-reset:i}
- ol li b{font-weight:800}
- .url{font-size:34px;font-weight:800;color:var(--cherry)}
- .disc{font-size:20px;line-height:1.35;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
+ .txt{display:flex;flex-direction:column;gap:12px;padding-top:6px}
+ .num{width:44px;height:44px;border-radius:50%;background:var(--cherry);color:#fff;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center}
+ .txt h3{font-size:30px;font-weight:800;line-height:1.15}
+ .txt p{font-size:24px;line-height:1.35;font-weight:500}
+ .txt p.buy{font-weight:800;color:var(--cherry)}
+ .claude{position:absolute;left:96px;right:96px;top:720px;display:flex;flex-direction:column;gap:12px}
+ .claude ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+ .claude li{font-size:22px;line-height:1.3}
+ .claude li b{display:block;font-size:24px;font-weight:800}
+ .bottom{display:flex;align-items:baseline;gap:32px;border-top:1px solid var(--line);padding-top:10px}
+ .url{font-size:32px;font-weight:800;color:var(--cherry);white-space:nowrap}
+ .disc{font-size:19px;line-height:1.35;color:var(--soft)}
  .disc b{color:var(--ink)}
 </style></head>
 <body>
@@ -82,24 +84,37 @@
 <section class="s s2">
   <div class="team">재드래곤</div>
   <div class="topic">BUILT TODAY · LIVE DEMO</div>
-  <h2>Any muse's look: <em>matching products, simulated on your face</em>. Live today.</h2>
-  <div class="phones">
-    <div class="phone"><div class="scr"><img src="assets/feed-top.png" alt=""><img src="assets/feed.png" alt=""></div><p><span>1</span> A shared look, 4 views</p></div>
-    <div class="phone"><div class="scr"><img src="assets/product.png" alt=""></div><p><span>2</span> Muse's products</p></div>
-    <div class="phone"><div class="scr"><img src="assets/product-mytone.png" alt=""></div><p><span>3</span> Re-picked for my tone</p></div>
-  </div>
-  <div class="right">
-    <div>
-      <div class="label">HOW CLAUDE DOES THE WORK</div>
-      <ol>
-        <li><b>Claude Haiku 5.5</b> reads the look photo: color, texture and technique for each face area, plus trend tags.</li>
-        <li><b>Claude Sonnet 5.5</b> reads your skin tone and re-picks every shade, with a reason for each change.</li>
-        <li>A <b>Claude Sonnet 5.5 agent</b> web-searches K-beauty products for each shade and returns buy links.</li>
-        <li>An image model paints the look on your selfie. Face pins come from in-browser landmarks.</li>
-      </ol>
+  <h2>Find a muse, <em>see how it's done, try it on your face</em>, then shop.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="scr"><img src="assets/feed-top.png" alt=""><img src="assets/feed.png" alt=""></div>
+      <div class="txt"><div class="num">1</div><h3>Discover muses</h3>
+        <p>Browse the looks other people love, and share how a look turned out on you.</p>
+        <p class="buy">Like one? Try it on your face.</p></div>
     </div>
-    <div class="url">muselook.fly.dev</div>
-    <div class="disc"><b>Live:</b> Claude analysis, tone translation and product search on every upload. <b>Sample:</b> demo faces are AI-generated people, and sample looks show cached results. On-face color is a simulation, not a real swatch.</div>
+    <div class="step">
+      <div class="scr"><img src="assets/product.png" alt=""></div>
+      <div class="txt"><div class="num">2</div><h3>Break down the look</h3>
+        <p>See how your muse's makeup is done and which products were used.</p>
+        <p class="buy">Buy any of them right away.</p></div>
+    </div>
+    <div class="step">
+      <div class="scr"><img src="assets/product-mytone.png" alt=""></div>
+      <div class="txt"><div class="num">3</div><h3>What if it's on your face?</h3>
+        <p>Test whether the look suits you first. Your muse's shades can show differently on your skin tone, so muselook picks better-matching items.</p>
+        <p class="buy">Buy them anytime.</p></div>
+    </div>
+  </div>
+  <div class="claude">
+    <div class="label" style="margin-bottom:0">HOW CLAUDE DOES THE WORK</div>
+    <ul>
+      <li><b>Claude Haiku 5.5</b>reads the look: color, texture and technique per face area</li>
+      <li><b>Claude Sonnet 5.5</b>re-matches every shade to your face, with a reason</li>
+      <li><b>Claude Sonnet 5.5 agent</b>web-searches K-beauty products and buy links</li>
+      <li><b>Image model</b>simulates the look on your selfie</li>
+    </ul>
+    <div class="bottom"><div class="url">muselook.fly.dev</div>
+      <div class="disc"><b>Live:</b> Claude analysis, shade matching and product search on every upload. <b>Sample:</b> demo faces are AI-generated people. On-face color is a simulation, not a real swatch.</div></div>
   </div>
   <div class="foot"><img src="assets/footer-for-light-slides.png" alt=""></div>
 </section>

@@ -3,6 +3,7 @@ import { spawn } from "node:child_process";
 import os from "node:os";
 import { getCatalogItems, catalog } from "./catalog";
 import { loadSession, updateSession } from "./storage";
+import { trackJob } from "./jobs";
 import { Product, ProductList, type LookAnalysis, type ToneTranslation } from "./types";
 
 const TIMEOUT_MS = 150_000;
@@ -157,7 +158,11 @@ async function searchProducts(prompt: string): Promise<Product[]> {
 }
 
 // Fire-and-forget; always settles session.products. Caller must NOT await.
-export async function runRecommendations(id: string): Promise<void> {
+export function runRecommendations(id: string): Promise<void> {
+  return trackJob(`${id}:products`, () => runRecommendationsInner(id));
+}
+
+async function runRecommendationsInner(id: string): Promise<void> {
   try {
     const s = await loadSession(id);
     if (!s?.analysis || !s.translation) throw new Error("missing translation");
@@ -203,7 +208,11 @@ export async function runRecommendations(id: string): Promise<void> {
 }
 
 // Fire-and-forget; settles session.museProducts (no catalog fallback: errors are shown as unavailable). Caller must NOT await.
-export async function runMuseProducts(id: string): Promise<void> {
+export function runMuseProducts(id: string): Promise<void> {
+  return trackJob(`${id}:museProducts`, () => runMuseProductsInner(id));
+}
+
+async function runMuseProductsInner(id: string): Promise<void> {
   try {
     const s = await loadSession(id);
     if (!s?.analysis) throw new Error("missing analysis");
