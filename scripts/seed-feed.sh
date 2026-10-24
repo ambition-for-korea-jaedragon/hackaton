@@ -5,11 +5,16 @@ run() { # look selfie caption
   local look=$1 selfie=$2 cap=$3 id st
   id=$(curl -s -X POST $B/api/session/sample -H 'content-type: application/json' -d "{\"sampleId\":\"$look\"}" | python3 -c "import json,sys;print(json.load(sys.stdin)['id'])") || return
   curl -s -X POST $B/api/session/$id/selfie -F "selfie=@public/samples/$selfie.jpg;type=image/jpeg" -o /dev/null
-  for i in $(seq 1 60); do st=$(curl -s $B/api/session/$id | python3 -c "import json,sys;print(json.load(sys.stdin)['applyOriginal']['status'])"); [ "$st" = pending ] && sleep 4 || break; done
-  [ "$st" = done ] || { echo "$look/$selfie ② $st"; return; }
   curl -s -X POST $B/api/session/$id/translate -o /dev/null
-  for i in $(seq 1 60); do st=$(curl -s $B/api/session/$id | python3 -c "import json,sys;d=json.load(sys.stdin);print(d['applyTranslated']['status'],(d.get('styled') or {}).get('status','idle'),(d.get('mannequin') or {}).get('status','idle'),(d.get('products') or {}).get('status'))"); case "$st" in *pending*|*idle*) sleep 4;; *) break;; esac; done
-  local code=$(curl -s -X POST $B/api/posts -H 'content-type: application/json' -d "{\"sessionId\":\"$id\",\"caption\":\"$cap\",\"includeLook\":true}" -o /dev/null -w "%{http_code}")
+  for i in $(seq 1 90); do
+    st=$(curl -s $B/api/session/$id | python3 -c "import json,sys;d=json.load(sys.stdin);g=lambda k:(d.get(k) or {}).get('status','idle');print(g('applyTranslated'),g('styled'),g('mannequin'),g('products'),g('museProducts'))")
+    case "$st" in ""|*pending*|*idle*) sleep 4;; *) break;; esac
+  done
+  local code=""
+  for t in 1 2 3; do
+  code=$(curl -s -X POST $B/api/posts -H 'content-type: application/json' -d "{\"sessionId\":\"$id\",\"caption\":\"$cap\",\"includeLook\":true}" -o /dev/null -w "%{http_code}")
+  [ "$code" = 200 ] && break; sleep 10
+  done
   echo "$look/$selfie → $st post $code"
 }
 pairs=(
