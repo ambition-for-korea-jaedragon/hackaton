@@ -26,11 +26,11 @@ export function PostView({ post }: { post: Post | null }) {
   if (!post) {
     return (
       <>
-        <TopBar backHref="/feed" />
+        <TopBar backHref="/" />
         <ScreenBody>
           <h1 className="mt-8 font-display text-3xl">This post is gone.</h1>
           <p className="mt-2 text-ink-soft">It may have been deleted, or the link is wrong.</p>
-          <Link href="/feed" className="mt-4 inline-block font-semibold underline underline-offset-2">Open the feed</Link>
+          <Link href="/" className="mt-4 inline-block font-semibold underline underline-offset-2">Open the feed</Link>
         </ScreenBody>
       </>
     );
@@ -43,7 +43,7 @@ export function PostView({ post }: { post: Post | null }) {
     try {
       await api(`/api/posts/${post.id}`, { method: "DELETE", headers: { "x-delete-token": token } });
       try { localStorage.removeItem(delKey(post.id)); } catch {}
-      router.push("/feed");
+      router.push("/");
     } catch (e) {
       setErr(e instanceof Error ? e.message : "Couldn't delete this post.");
       setDeleting(false);
@@ -52,7 +52,7 @@ export function PostView({ post }: { post: Post | null }) {
 
   return (
     <>
-      <TopBar backHref="/feed" />
+      <TopBar backHref="/" />
       <ScreenBody>
         <div className="flex justify-center pt-1">
           <Strip frames={postFrames(post)} footer={`${post.mood.split(/[,.—-]/)[0].trim().slice(0, 24)} · ${post.skinTone.depth} ${post.skinTone.undertone}`} />
@@ -75,7 +75,7 @@ export function PostView({ post }: { post: Post | null }) {
       </ScreenBody>
       <ActionBar>
         <PrimaryButton onClick={t.go} disabled={t.busy}>{t.busy ? "Starting…" : "Try This Look"}</PrimaryButton>
-        <SubLink href="/feed">Back to feed</SubLink>
+        <SubLink href="/">Back to feed</SubLink>
       </ActionBar>
     </>
   );

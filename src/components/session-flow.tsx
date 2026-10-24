@@ -67,7 +67,7 @@ export function SessionFlow({ id }: { id: string }) {
           ) : (
             <p role="status" className="mt-10 text-center font-display text-xl text-ink-soft">Loading your look…</p>
           )}
-          <SubLink href="/">Try another look</SubLink>
+          <SubLink href="/new">Try another look</SubLink>
         </ScreenBody>
       </>
     );
@@ -147,7 +147,7 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
       </ScreenBody>
       <ActionBar>
         <PrimaryButton onClick={onNext}>See It On Me</PrimaryButton>
-        <SubLink href="/">Try another look</SubLink>
+        <SubLink href="/new">Try another look</SubLink>
       </ActionBar>
     </>
   );
@@ -362,7 +362,7 @@ function MyTone({ s, refresh, onShare }: { s: SessionState; refresh: () => Promi
       </ScreenBody>
       <ActionBar>
         <PrimaryButton disabled={!done} onClick={onShare}>Share My Strip</PrimaryButton>
-        <SubLink href="/">Try another look</SubLink>
+        <SubLink href="/new">Try another look</SubLink>
       </ActionBar>
     </>
   );

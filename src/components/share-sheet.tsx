@@ -64,7 +64,7 @@ export function ShareSheet({ sessionId, onClose }: { sessionId: string; onClose:
             <PrimaryButton onClick={copy}>{copied ? "Link copied" : "Copy link"}</PrimaryButton>
             <div className="mt-3 flex justify-between text-sm font-semibold">
               <Link href={`/p/${postId}`} className="underline underline-offset-2">View your post</Link>
-              <Link href="/feed" className="underline underline-offset-2">Open feed</Link>
+              <Link href="/" className="underline underline-offset-2">Open feed</Link>
               <button type="button" onClick={onClose} className="underline underline-offset-2">Close</button>
             </div>
             {error ? <ErrorNote>{error}</ErrorNote> : null}

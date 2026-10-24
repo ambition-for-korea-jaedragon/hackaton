@@ -5,12 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { ActionBar, ErrorNote, PrimaryButton, ScreenBody, Spinner, TopBar } from "@/components/app-shell";
 import { api, postJson } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
+import { SAMPLES } from "@/lib/samples";
 
-const SAMPLES = [
-  { id: "peach-glass", name: "Peach glass", file: "look-peach-glass.jpg" },
-  { id: "mauve-cool", name: "Mauve cool", file: "look-mauve-cool.jpg" },
-  { id: "brick-sunset", name: "Brick sunset", file: "look-brick-sunset.jpg" },
-];
 const COPY = ["Reading the look…", "Spotting every shade…", "Matching finishes…", "Writing your breakdown…"];
 
 export function LookPicker() {
@@ -73,8 +69,8 @@ export function LookPicker() {
       <TopBar
         step={1}
         right={
-          <Link href="/feed" className="rounded-full bg-paper px-3 py-1.5 text-[13px] font-semibold">
-            Feed
+          <Link href="/" aria-label="Close" className="grid size-[34px] place-items-center rounded-full bg-paper text-lg">
+            ✕
           </Link>
         }
       />
@@ -149,7 +145,7 @@ export function LookPicker() {
             <div className="mb-2.5 mt-[22px] text-sm font-semibold" id="samples-label">
               Or start with a sample look
             </div>
-            <div className="flex gap-2.5" role="radiogroup" aria-labelledby="samples-label">
+            <div className="-mx-5 flex gap-2.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none]" role="radiogroup" aria-labelledby="samples-label">
               {SAMPLES.map((s) => (
                 <button
                   key={s.id}
@@ -157,7 +153,7 @@ export function LookPicker() {
                   role="radio"
                   aria-checked={sample === s.id}
                   onClick={() => pickSample(s.id)}
-                  className={`flex-1 overflow-hidden rounded-2xl bg-paper px-1.5 pb-2 pt-1.5 text-left ${
+                  className={`w-[104px] shrink-0 overflow-hidden rounded-2xl bg-paper px-1.5 pb-2 pt-1.5 text-left ${
                     sample === s.id ? "outline outline-[2.5px] outline-ink" : ""
                   }`}
                 >
@@ -167,7 +163,7 @@ export function LookPicker() {
                     alt={`${s.name} sample look`}
                     className="aspect-[5/6] w-full rounded-[11px] object-cover"
                   />
-                  <p className="mx-0.5 mt-[7px] text-[12.5px] font-semibold">{s.name}</p>
+                  <p className="mx-0.5 mt-[7px] truncate text-[12.5px] font-semibold">{s.name}</p>
                 </button>
               ))}
             </div>

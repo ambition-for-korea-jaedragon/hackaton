@@ -1,10 +1,15 @@
 "use client";
+// Home: Instagram-style feed. Stories row = sample looks (one tap starts a new session),
+// full-bleed posts with a swipeable 4:5 carousel (My tone → As-is → Look), bottom tab bar.
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
-import { ErrorNote, ScreenBody, TopBar } from "@/components/app-shell";
-import { PostCard } from "@/components/post-parts";
-import { TONE_DOT, api, toneClass, type ToneClass } from "@/lib/client/api";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ErrorNote } from "@/components/app-shell";
+import { useTry } from "@/components/post-parts";
+import { TONE_DOT, api, postJson, toneClass, type ToneClass } from "@/lib/client/api";
 import type { Post } from "@/lib/types";
+import { SAMPLES } from "@/lib/samples";
+
 
 const FILTERS: { key: "all" | ToneClass; label: string }[] = [
   { key: "all", label: "All tones" },
@@ -12,6 +17,16 @@ const FILTERS: { key: "all" | ToneClass; label: string }[] = [
   { key: "medium", label: "Medium" },
   { key: "deep", label: "Deep" },
 ];
+
+function timeAgo(iso: string) {
+  const s = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 1000));
+  if (s < 60) return `${s}s`;
+  const m = Math.round(s / 60);
+  if (m < 60) return `${m}m`;
+  const h = Math.round(m / 60);
+  if (h < 24) return `${h}h`;
+  return `${Math.round(h / 24)}d`;
+}
 
 export function Feed() {
   const [posts, setPosts] = useState<Post[] | null>(null);
@@ -39,59 +54,252 @@ export function Feed() {
   }, [load]);
 
   const shown = (posts ?? []).filter((p) => filter === "all" || toneClass(p.skinTone.depth) === filter);
+
   return (
     <>
-      <TopBar
-        right={
-          <Link href="/" aria-label="Make a new look" className="grid size-[34px] place-items-center rounded-full bg-paper text-lg">
-            ＋
-          </Link>
-        }
-      />
-      <div className="flex gap-2 overflow-x-auto px-5 pb-2.5" role="group" aria-label="Filter by skin tone">
-        {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            type="button"
-            aria-pressed={filter === f.key}
-            onClick={() => setFilter(f.key)}
-            className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-[7px] text-[13px] font-semibold ${
-              filter === f.key ? "border-ink bg-ink text-white" : "border-line bg-paper"
-            }`}
-          >
-            {f.key !== "all" && <i className="block size-3 rounded-full" style={{ background: TONE_DOT[f.key] }} />}
-            {f.label}
-          </button>
-        ))}
-      </div>
-      <ScreenBody>
+      <header className="flex items-center justify-between border-b border-line/70 px-4 pb-2 pt-[max(12px,env(safe-area-inset-top))]">
+        <Link href="/" className="font-display text-[26px] leading-none tracking-[0.2px]">
+          muselook
+        </Link>
+        <Link href="/new" aria-label="Make a new look" className="grid size-9 place-items-center rounded-[11px] border-2 border-ink text-xl font-bold leading-none">
+          +
+        </Link>
+      </header>
+
+      <main className="flex-1 overflow-y-auto pb-24">
+        <Stories />
+
+        <div className="flex gap-2 overflow-x-auto px-4 pb-3 pt-1" role="group" aria-label="Filter by skin tone">
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              type="button"
+              aria-pressed={filter === f.key}
+              onClick={() => setFilter(f.key)}
+              className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-[6px] text-[13px] font-semibold ${
+                filter === f.key ? "border-ink bg-ink text-white" : "border-line bg-paper"
+              }`}
+            >
+              {f.key !== "all" && <i className="block size-3 rounded-full" style={{ background: TONE_DOT[f.key] }} />}
+              {f.label}
+            </button>
+          ))}
+        </div>
+
         {posts === null ? (
           <p role="status" className="mt-10 text-center font-display text-xl text-ink-soft">Loading the feed…</p>
         ) : (
           <>
-            {error && <ErrorNote onRetry={() => load(cursor)}>{error}</ErrorNote>}
-            {shown.map((p) => <PostCard key={p.id} post={p} />)}
+            {error && (
+              <div className="px-4">
+                <ErrorNote onRetry={() => load(cursor)}>{error}</ErrorNote>
+              </div>
+            )}
+            {shown.map((p) => (
+              <FeedPost key={p.id} post={p} />
+            ))}
             {shown.length === 0 && !error && (
-              <div className="mt-6 rounded-[var(--radius-booth)] bg-lilac p-6 text-center">
+              <div className="mx-4 mt-4 rounded-[var(--radius-booth)] bg-lilac p-6 text-center">
                 <h2 className="font-display text-2xl leading-tight">
-                  {filter === "all" ? "No strips yet." : "No strips for this tone yet."}
+                  {filter === "all" ? "No looks yet." : "No looks for this tone yet."}
                 </h2>
                 <p className="mx-auto mt-2 max-w-[28ch] text-sm text-ink-soft">
-                  {filter === "all" ? "Be the first. Copy a look, keep your tone, and post your strip." : "Try another filter, or post one yourself."}
+                  {filter === "all" ? "Copy a look, keep your tone, and post the first one." : "Try another filter, or post one yourself."}
                 </p>
-                <Link href="/" className="mt-4 inline-block rounded-[var(--radius-cta)] bg-cherry px-5 py-3 font-semibold text-white">
-                  Make the first look
+                <Link href="/new" className="mt-4 inline-block rounded-[var(--radius-cta)] bg-cherry px-5 py-3 font-semibold text-white">
+                  Make a new look
                 </Link>
               </div>
             )}
             {cursor && (
-              <button type="button" disabled={more} onClick={() => load(cursor)} className="mx-auto mt-1 block rounded-full border border-line bg-paper px-5 py-2.5 text-sm font-semibold">
+              <button
+                type="button"
+                disabled={more}
+                onClick={() => load(cursor)}
+                className="mx-auto my-3 block rounded-full border border-line bg-paper px-5 py-2.5 text-sm font-semibold"
+              >
                 {more ? "Loading…" : "Load more"}
               </button>
             )}
           </>
         )}
-      </ScreenBody>
+      </main>
+
+      <TabBar />
     </>
+  );
+}
+
+function Stories() {
+  const router = useRouter();
+  const [busy, setBusy] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  async function start(id: string) {
+    setBusy(id);
+    setError(null);
+    try {
+      const r = await postJson<{ id: string }>("/api/session/sample", { sampleId: id });
+      router.push(`/s/${r.id}`);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Couldn't open that look.");
+      setBusy(null);
+    }
+  }
+  return (
+    <section aria-label="Start from a look" className="pb-2 pt-3">
+      <div className="flex gap-4 overflow-x-auto px-4">
+        <Link href="/new" className="flex w-[68px] shrink-0 flex-col items-center gap-1.5">
+          <span className="grid size-[64px] place-items-center rounded-full border-2 border-dashed border-ink/35 bg-paper text-2xl">+</span>
+          <span className="text-[11.5px] font-semibold">Your look</span>
+        </Link>
+        {SAMPLES.map((s) => (
+          <button
+            key={s.id}
+            type="button"
+            onClick={() => start(s.id)}
+            disabled={!!busy}
+            className="flex w-[68px] shrink-0 flex-col items-center gap-1.5 disabled:opacity-60"
+            aria-label={`Try the ${s.name} look`}
+          >
+            <span className={`rounded-full bg-[conic-gradient(from_200deg,#e0245e,#cfc4f0,#e0245e)] p-[2.5px] ${busy === s.id ? "animate-spin" : ""}`}>
+              <span className="block rounded-full bg-mirror p-[2px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/samples/${s.file}`} alt="" className="size-[56px] rounded-full object-cover object-top" />
+              </span>
+            </span>
+            <span className="w-full truncate text-center text-[11.5px] font-semibold">{s.name}</span>
+          </button>
+        ))}
+      </div>
+      {error && <p className="px-4 pt-2 text-[13px] text-cherry">{error}</p>}
+    </section>
+  );
+}
+
+function FeedPost({ post }: { post: Post }) {
+  const t = useTry(post.id);
+  const frames = [
+    { src: post.myToneUrl, label: "My tone", me: true },
+    { src: post.asIsUrl, label: "As-is" },
+    ...(post.lookUrl ? [{ src: post.lookUrl, label: "Look" }] : []),
+  ];
+  const [idx, setIdx] = useState(0);
+  const track = useRef<HTMLDivElement>(null);
+  const [copied, setCopied] = useState(false);
+  const tone = toneClass(post.skinTone.depth);
+
+  function onScroll() {
+    const el = track.current;
+    if (el) setIdx(Math.round(el.scrollLeft / el.clientWidth));
+  }
+  async function share() {
+    const url = `${location.origin}/p/${post.id}`;
+    try {
+      if (navigator.share) await navigator.share({ title: "muselook", text: post.caption || post.mood, url });
+      else {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1800);
+      }
+    } catch {
+      /* user cancelled */
+    }
+  }
+
+  return (
+    <article className="mb-5">
+      <div className="flex items-center gap-2.5 px-4 pb-2.5">
+        <span className="rounded-full bg-[conic-gradient(from_200deg,#e0245e,#cfc4f0,#e0245e)] p-[2px]">
+          <span className="block size-8 rounded-full border-2 border-mirror" style={{ background: TONE_DOT[tone] }} />
+        </span>
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="truncate text-[14px] font-bold first-letter:uppercase">
+            {post.skinTone.depth} · {post.skinTone.undertone.toLowerCase()}
+          </p>
+          <p className="truncate text-[12px] text-ink-soft">{post.mood.split(/[,.—:]/)[0]}</p>
+        </div>
+        <span className="text-[12px] text-ink-soft">{timeAgo(post.createdAt)}</span>
+      </div>
+
+      <div className="relative">
+        <div
+          ref={track}
+          onScroll={onScroll}
+          className="flex aspect-[4/5] snap-x snap-mandatory overflow-x-auto bg-ink [scrollbar-width:none]"
+          aria-label="Photos: swipe to compare"
+        >
+          {frames.map((f) => (
+            <div key={f.label} className="relative h-full w-full shrink-0 snap-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={f.src} alt={`${f.label} photo`} className="size-full object-cover" loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <span
+          className={`pointer-events-none absolute left-3 top-3 rounded-full px-2.5 py-1 text-[12px] font-bold ${
+            frames[idx]?.me ? "bg-cherry text-white" : "bg-paper text-ink"
+          }`}
+        >
+          {frames[idx]?.label}
+        </span>
+        <span className="pointer-events-none absolute right-3 top-3 rounded-full bg-ink/60 px-2 py-0.5 text-[11.5px] font-semibold text-white">
+          {idx + 1}/{frames.length}
+        </span>
+      </div>
+
+      <div className="flex items-center gap-3 px-4 pt-3">
+        <button
+          type="button"
+          onClick={t.go}
+          disabled={t.busy}
+          className="rounded-xl bg-cherry px-3.5 py-2 text-[13.5px] font-semibold text-white disabled:opacity-60"
+        >
+          {t.busy ? "Starting…" : "Try This Look"}
+        </button>
+        <button type="button" onClick={share} className="rounded-xl border border-line bg-paper px-3 py-2 text-[13.5px] font-semibold">
+          {copied ? "Link copied" : "Share"}
+        </button>
+        <div className="ml-auto flex gap-1" aria-hidden>
+          {frames.map((f, i) => (
+            <i key={f.label} className={`block size-1.5 rounded-full ${i === idx ? "bg-ink" : "bg-line"}`} />
+          ))}
+        </div>
+      </div>
+
+      <div className="px-4 pt-2 text-[14px] leading-snug">
+        {post.caption && <p className="font-bold">{post.caption}</p>}
+        <p className="text-ink-soft">{post.mood}</p>
+        {post.products.length > 0 && (
+          <Link href={`/p/${post.id}`} className="mt-1 inline-block text-[13.5px] font-semibold text-ink underline-offset-2 hover:underline">
+            View {post.products.length} products
+          </Link>
+        )}
+      </div>
+      {t.error && (
+        <div className="px-4">
+          <ErrorNote onRetry={t.go}>{t.error}</ErrorNote>
+        </div>
+      )}
+    </article>
+  );
+}
+
+function TabBar() {
+  return (
+    <nav
+      aria-label="Main"
+      className="absolute inset-x-0 bottom-0 flex items-center justify-around border-t border-line bg-mirror/95 pb-[max(14px,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur"
+    >
+      <Link href="/" aria-current="page" className="flex flex-col items-center gap-0.5 text-[11px] font-bold">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden fill="currentColor">
+          <path d="M12 3 3 10.2V21h6.5v-6h5v6H21V10.2z" />
+        </svg>
+        Home
+      </Link>
+      <Link href="/new" className="flex flex-col items-center gap-0.5 text-[11px] font-semibold text-ink-soft">
+        <span className="grid size-7 place-items-center rounded-[9px] bg-cherry text-lg font-bold leading-none text-white">+</span>
+        Create
+      </Link>
+    </nav>
   );
 }

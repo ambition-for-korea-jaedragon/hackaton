@@ -1,5 +1,5 @@
-import { LookPicker } from "@/components/look-picker";
+import { Feed } from "@/components/feed";
 
 export default function Home() {
-  return <LookPicker />;
+  return <Feed />;
 }

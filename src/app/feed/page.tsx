@@ -1,8 +1,5 @@
-import type { Metadata } from "next";
-import { Feed } from "@/components/feed";
-
-export const metadata: Metadata = { title: "Feed — muselook" };
+import { redirect } from "next/navigation";
 
 export default function Page() {
-  return <Feed />;
+  redirect("/");
 }
