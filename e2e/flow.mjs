@@ -18,7 +18,7 @@ try {
   await page.waitForURL("**/s/**", { timeout: 60000 }); log("analysis done →", page.url());
   await page.waitForSelector("text=See It On Me", { timeout: 20000 }); await shot("2-breakdown");
   await page.getByRole("button", { name: /See It On Me/ }).click(); await shot("3-onme-empty");
-  await page.setInputFiles('input[type="file"]', "/Users/choam2426/workspace/hackaton/public/samples/selfie-tan-warm.jpg");
+  await page.setInputFiles('input[type="file"]', "/Users/choam2426/workspace/hackaton/public/e2e/selfie-tan-warm.jpg");
   await page.getByRole("checkbox").check();
   await shot("4-selfie-ready");
   const go = page.getByRole("button", { name: /(See It On Me|Put|Upload|Create|Use)/ }).last();

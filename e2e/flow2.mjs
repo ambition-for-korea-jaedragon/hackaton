@@ -13,12 +13,12 @@ try {
   await page.goto(B + "/", { waitUntil: "networkidle" });
   await page.getByRole("link", { name: "Make a new look" }).click();
   await page.waitForURL("**/new"); log("on /new"); await shot("1-new");
-  await page.setInputFiles('input[type="file"]', "/Users/choam2426/workspace/hackaton/public/samples/look-golden-hour.jpg"); await page.waitForTimeout(500); await shot("1b-picked");
+  await page.setInputFiles('input[type="file"]', "/Users/choam2426/workspace/hackaton/public/e2e/look-golden-hour.jpg"); await page.waitForTimeout(500); await shot("1b-picked");
   await page.getByRole("button", { name: /Analyze This Look/ }).click();
   await page.waitForURL("**/s/**", { timeout: 90000 }); log("analysis done →", page.url());
   await page.waitForSelector("text=See It On Me", { timeout: 20000 }); await shot("2-breakdown");
   await page.getByRole("button", { name: /See It On Me/ }).click(); await shot("3-onme-empty");
-  await page.setInputFiles('input[type="file"]', "/Users/choam2426/workspace/hackaton/public/samples/selfie-medium-olive.jpg");
+  await page.setInputFiles('input[type="file"]', "/Users/choam2426/workspace/hackaton/public/e2e/selfie-medium-olive.jpg");
   await page.getByRole("checkbox").check();
   await shot("4-selfie-ready");
   const go = page.getByRole("button", { name: /(See It On Me|Put|Upload|Create|Use)/ }).last();
