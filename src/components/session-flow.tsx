@@ -11,7 +11,10 @@ import { getSession, imgUrl, postForm, postJson } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
 import { SELFIES } from "@/lib/samples";
 import { SampleDock, readSamplePayload } from "@/components/sample-dock";
-import type { SessionState } from "@/lib/types";
+import { ProductCallout } from "@/components/callout/product-callout";
+import { LookStepSheet } from "@/components/callout/look-sheet";
+import { useFacePoints } from "@/lib/client/face-points";
+import type { LookStep, Product, SessionState } from "@/lib/types";
 
 type Step = "breakdown" | "onme" | "tone";
 const STEP_NO: Record<Step, number> = { breakdown: 2, onme: 3, tone: 4 };
@@ -101,50 +104,52 @@ export function SessionFlow({ id }: { id: string }) {
 
 function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
   const a = s.analysis!;
-  const [open, setOpen] = useState<string | null>(null);
+  const lookSrc = imgUrl(s.id, "look.jpg");
+  const points = useFacePoints(lookSrc, s.points);
+  const [sel, setSel] = useState<LookStep | null>(null);
+  const [resetSignal, setResetSignal] = useState(0);
+  // Adapt analysis steps to the shared callout (pin + card per area); card text = the finish.
+  const pseudo: Product[] = a.steps.map((st) => ({
+    area: st.area,
+    brand: "",
+    name: st.finish,
+    shadeName: "",
+    hex: st.colors[0]?.hex,
+    url: "",
+    why: "",
+    sourceUrl: "",
+  }));
+  const close = () => {
+    setSel(null);
+    setResetSignal((n) => n + 1);
+  };
+  const pick = (area: LookStep["area"]) => setSel(a.steps.find((x) => x.area === area) ?? null);
   return (
     <>
       <ScreenBody>
-        <div className="mt-1.5 flex items-center gap-3.5">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={imgUrl(s.id, "look.jpg")} alt="The look you picked" className="aspect-[5/6] w-[84px] flex-none rounded-[14px] object-cover" />
-          <div>
+        <div className="mt-1 flex items-start gap-2.5">
+          <div className="min-w-0 flex-1">
             <Badge kind={s.source === "sample" ? "sample" : "live"} />
-            <h1 className="mt-2 font-display text-2xl leading-[1.08]">{a.mood}</h1>
+            <h1 className="mt-1.5 font-display text-[22px] leading-[1.1]">{a.mood}</h1>
           </div>
         </div>
-        <ol className="mt-[18px]">
+        <p className="mb-2.5 mt-1.5 text-[13px] text-ink-soft">Tap a pin to see how each part of the look is done.</p>
+        <ProductCallout src={lookSrc} points={points ?? undefined} products={pseudo} activeArea={sel?.area ?? null} onPick={(p) => pick(p.area)} resetSignal={resetSignal} />
+        <ol className="mt-4">
           {a.steps.map((st, i) => (
-            <li key={st.area} className="grid grid-cols-[30px_1fr] gap-3 border-t border-line py-[13px] first:border-t-0">
-              <span className="grid size-[26px] place-items-center rounded-full bg-ink text-[13px] font-bold text-white">{i + 1}</span>
-              <div>
-                <h2 className="flex items-center gap-2 text-base font-bold">
-                  {areaLabel(st.area)} <em className="text-[13px] font-medium not-italic text-ink-soft">{st.finish}</em>
-                  <span className="ml-auto inline-flex gap-1">
-                    {st.colors.map((c) => (
-                      <i key={c.hex + c.name} title={c.name} role="img" aria-label={`${c.name} ${c.hex}`} className="block size-4 rounded-full shadow-[inset_0_0_0_1px_rgba(0,0,0,.08)]" style={{ background: c.hex }} />
-                    ))}
-                  </span>
-                </h2>
-                <p className="mt-[3px] text-sm leading-[1.42] text-ink-soft">{st.technique}</p>
-                {st.tips.length > 0 && (
-                  <>
-                    <button
-                      type="button"
-                      aria-expanded={open === st.area}
-                      onClick={() => setOpen(open === st.area ? null : st.area)}
-                      className="mt-1.5 text-[13px] font-semibold underline underline-offset-2"
-                    >
-                      {open === st.area ? "Hide tips" : `Tips (${st.tips.length})`}
-                    </button>
-                    {open === st.area && (
-                      <ul className="mt-1.5 list-disc space-y-1 pl-4 text-[13px] leading-snug text-ink-soft">
-                        {st.tips.map((t) => <li key={t}>{t}</li>)}
-                      </ul>
-                    )}
-                  </>
-                )}
-              </div>
+            <li key={st.area} className="border-t border-line first:border-t-0">
+              <button type="button" onClick={() => pick(st.area)} className="grid w-full grid-cols-[30px_1fr_auto] items-center gap-3 py-3 text-left">
+                <span className="grid size-[26px] place-items-center rounded-full bg-ink text-[13px] font-bold text-white">{i + 1}</span>
+                <span className="min-w-0">
+                  <b className="text-base">{areaLabel(st.area)}</b> <em className="text-[13px] font-medium not-italic text-ink-soft">{st.finish}</em>
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  {st.colors.map((c) => (
+                    <i key={c.hex + c.name} aria-hidden className="block size-4 rounded-full shadow-[inset_0_0_0_1px_rgba(0,0,0,.08)]" style={{ background: c.hex }} />
+                  ))}
+                  <span aria-hidden className="ml-1 text-ink-soft">›</span>
+                </span>
+              </button>
             </li>
           ))}
         </ol>
@@ -153,6 +158,7 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
         <PrimaryButton onClick={onNext}>See It On Me</PrimaryButton>
         <SubLink href="/new">Try another look</SubLink>
       </ActionBar>
+      {sel && <LookStepSheet step={sel} onClose={close} />}
     </>
   );
 }

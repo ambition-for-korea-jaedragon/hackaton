@@ -18,6 +18,7 @@ export const LookStep = z.object({
   tips: z.array(z.string()), // points to watch
   productHints: z.array(z.string()), // product types/categories, never asserted exact brands
 });
+export type LookStep = z.infer<typeof LookStep>;
 export const LookAnalysis = z.object({
   mood: z.string(), // one-line mood of the look
   steps: z.array(LookStep), // ordered skincare -> base -> eye -> blush -> lip
@@ -84,6 +85,7 @@ export type SessionState = {
   id: string;
   createdAt: string;
   source: "live" | "sample"; // sample = precomputed demo result
+  points?: AreaPoints; // face anchor points on look.jpg for callout pins: samples carry precomputed points; live looks compute in the browser
   sampleId?: string; // set for sample sessions (and copied by 'try'); lets posts reuse precomputed face points
   analysis?: LookAnalysis;
   translation?: ToneTranslation;

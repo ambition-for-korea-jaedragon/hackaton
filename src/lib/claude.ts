@@ -5,7 +5,8 @@ import { LookAnalysis, ToneTranslation } from "./types";
 import { catalog } from "./catalog";
 import { TOPICS, TOPIC_KEYS } from "./topics";
 
-const MODEL = "claude-sonnet-5-5";
+const MODEL = "claude-sonnet-5-5"; // tone translation (needs the most judgment)
+const FAST_MODEL = process.env.CLAUDE_FAST_MODEL || "claude-haiku-5-5"; // look analysis + topic tagging
 
 function client() {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -34,6 +35,7 @@ async function callStructured<T>(opts: {
   content: Anthropic.Messages.ContentBlockParam[];
   schema: z.ZodType<T>;
   toolName: string;
+  model?: string;
 }): Promise<T> {
   const c = client();
   const schema = z.toJSONSchema(opts.schema, { io: "input" }) as Record<string, unknown>;
@@ -45,7 +47,7 @@ async function callStructured<T>(opts: {
       ? [...opts.content, { type: "text", text: `Your previous output was invalid (${lastErr}). Return valid output exactly matching the schema.` }]
       : opts.content;
     const res = await c.messages.create({
-      model: MODEL,
+      model: opts.model ?? MODEL,
       max_tokens: 4096,
       system: opts.system,
       // Structured outputs (forced tool_choice is not supported on this model)
@@ -77,6 +79,7 @@ export async function analyzeLook(look: Img): Promise<LookAnalysis> {
     content: [imgBlock(look), { type: "text", text: "Analyse this makeup look." }],
     schema: LookAnalysis,
     toolName: "return_look_analysis",
+    model: FAST_MODEL,
   });
 }
 
@@ -114,6 +117,7 @@ export async function classifyTopics(analysis: LookAnalysis): Promise<string[]> 
       content: [{ type: "text", text: `Topics:\n${topics}\n\nLook:\n${JSON.stringify(analysis)}` }],
       schema: TopicResult,
       toolName: "return_topics",
+      model: FAST_MODEL,
     });
     return r.tags.slice(0, 2);
   } catch (e) {

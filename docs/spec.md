@@ -27,6 +27,7 @@
 - **4장 그룹(사용자 결정 2026-10-24 12:5x):** 피드·포스트·My Tone의 모든 이미지는 2×2 한 묶음으로 4장 모두 노출. 좌상 = 기본 마네킹 얼굴에 룩의 메이크업만(원본 색), 우상 = 뮤즈(룩 사진), 좌하 = 셀피 스타일로 내 얼굴에 톤 번역 메이크업, 우하 = 거리감 있는 사진(헤어 스타일링·액세서리가 보임). As-is(②)는 만들기 흐름 안에서만 보여주고 그룹에는 넣지 않는다. 이미지 생성은 세션당 마네킹·As-is·번역본·스타일드 4장(마네킹은 룩 분석 직후 백그라운드, 스타일드는 번역본 완료 후).
 - 정보 구조(사용자 결정 2026-10-24 12:35): **메인(`/`)은 인스타그램 스타일 피드**. 상단 워드마크+만들기(+), 핫토픽 키워드 필터 칩(전체·가을·굽굽·어른여자·얼음·글로우·걸크러쉬·청순, `src/lib/topics.ts`; 포스트 게시 시 Claude가 1~2개 태그 분류, 해시태그로 표시; 스토리 줄 없음, 사용자 결정 2026-10-24 13:1x), 풀폭 포스트(헤더: 톤 아바타·톤 라벨·시간, 4:5 미디어 좌우 스와이프 My tone→As-is→Look, 액션 줄, 캡션·무드·제품 링크), 하단 탭(Home·Create). 만들기 흐름 시작은 `/new`.
 - **제품 정보 페이지(`/p/{id}`, 사용자 결정 13:2x):** 뮤즈 사진 위 얼굴 부위(이마·눈·볼·베이스·입술)에 핀+요약 카드+연결선, 핀 탭 시 줌 포커스+제품 시트('Buy now'), 하단 'All products' 리스트. 피드의 제품 보기는 버튼. 핀 좌표는 MediaPipe Face Landmarker(자체 호스팅 `/mediapipe`, `/models`)를 브라우저에서 실행해 계산하고, 샘플 룩은 `sample-looks.json`의 사전 계산 좌표를 포스트에 저장. 감지 실패 시 일반 좌표로 대체.
+- **Breakdown(룩 분석) 화면(사용자 결정 13:4x):** 뮤즈 사진 위 얼굴 부위(이마·눈·볼·베이스·입술)에 핀+카드(카드 문구=질감)+연결선, 핀/목록 탭 시 줌 포커스+시트(색 칩·방법·주의점·찾을 제품 유형). 제품 정보 페이지와 같은 콜아웃 컴포넌트 재사용.
 - 소셜 범위(사용자 결정 2026-10-24): 공개 피드 + 포스트 페이지·공유 링크 + "Try This Look" 재사용 루프. 좋아요·댓글·팔로우·계정은 이번 범위 밖. 게시는 명시적 opt-in, 13+, 브라우저에 저장한 삭제 토큰으로 내 포스트 삭제.
 - 시작 조건: 공개 URL, 로그인 없음. 데스크톱·모바일 브라우저. 13+ 체크.
 - 반복 실행·초기화: 세션 ID별 폴더. "Start Over"로 새 세션. 같은 세션에서 ③만 재실행 가능.
@@ -54,7 +55,7 @@
 | 언어·프레임워크 | 화면 + 비밀 키를 숨기는 서버 + 파일 저장을 한 프로세스로 | **Next.js(App Router) + TypeScript**, 단일 서비스. Route Handler가 Claude·OpenAI 호출·파일 저장 |
 | 데이터·저장 | 이미지 파일시스템 저장(사용자 결정), 세션별 결과 재표시, 공개 포스트 | 포스트는 `DATA_DIR/posts/{postId}.json`(이미지는 세션 파일 참조). `DATA_DIR`(로컬 `./data`, 배포 볼륨 `/data`) 아래 `sessions/{id}/look.*, selfie.*, analysis.json, translated.json, apply_original.png, apply_translated.png`. 카탈로그는 레포 `catalog.json`(샘플) |
 | 인증·민감 정보 | 접근 장벽 최소, 얼굴 사진 | 로그인 없음, 추측 불가 UUID 세션. 13+ 체크, "Anthropic·OpenAI로 전송, 데모 서버에 저장" 고지. 아이돌 사진은 사용자 업로드만, 샘플 룩은 권리 확보 이미지 |
-| 제품 AI | 룩 분석·톤 번역, 무드 있는 얼굴 이미지 | Claude `claude-sonnet-5-5`(vision, JSON) = ①③ 판단. OpenAI Images edit `gpt-image-2.5-sunburst`(다중 입력 이미지, 얼굴 `input_fidelity` 확인) = ②③ 이미지. 운영진 허용(`hackathon.md`) |
+| 제품 AI | 룩 분석·톤 번역, 무드 있는 얼굴 이미지 | Claude vision + structured outputs: ① 룩 분석·토픽 태깅 = `claude-haiku-5-5`(2026-10-24 실측: Sonnet 대비 빠름, 색·단계 품질 유사), ③ 톤 번역 = `claude-sonnet-5-5`. OpenAI Images edit `gpt-image-2.5-sunburst`(다중 입력 이미지, 얼굴 `input_fidelity` 확인) = ②③ 이미지. 운영진 허용(`hackathon.md`) |
 | 제품 추천 | 실제 판매 중인 K-뷰티 제품을 번역된 색·톤·제형에 맞춰 추천(사용자 결정) | ③ 번역 후 백엔드가 **pi를 헤드리스로 실행**(`pi -p --no-session --model anthropic/claude-sonnet-5-5 --tools web_search,fetch_content,get_search_content`, pi-web-access 확장의 Exa 검색). 결과 JSON을 `Product` 스키마로 검증해 세션에 저장. 검색 실패 시 샘플 카탈로그로 표시(`fallback` 배지) |
 | 배포 | 공개 URL, 영속 디스크, 21:00 유지, 컨테이너에 pi 포함 | **Fly.io** 머신 1대(`nrt`, shared-cpu-1x 1GB, auto-stop off) + Volume `muselook_data`→`/data`, **Dockerfile** 빌드(node 24 + `@earendil-works/pi-coding-agent` + `pi-web-access`). `fly deploy`로 로컬 디렉터리 배포. 비밀은 `fly secrets set` (Railway는 신규 가입 불가로 변경, 2026-10-24) |
 | 검증 | 실제 시나리오 | `pnpm lint`·`pnpm build` + 공개 URL에서 ①→②→③ 확인 |

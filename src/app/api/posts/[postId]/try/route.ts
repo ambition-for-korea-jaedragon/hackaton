@@ -20,6 +20,7 @@ export async function POST(_req: Request, ctx: { params: Promise<{ postId: strin
   await updateSession(s.id, (st) => {
     st.analysis = analysis;
     if (src.sampleId) st.sampleId = src.sampleId;
+    if (src.points) st.points = src.points;
     if (src.museProducts?.status === "done") st.museProducts = src.museProducts;
     else st.museProducts = { status: "pending" };
     st.mannequin = { status: mannequin ? "done" : "pending" };
