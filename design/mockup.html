@@ -125,7 +125,34 @@
   .pc .nm{font-size:13.5px;font-weight:700;line-height:1.25;margin-top:1px}
   .pc .why{font-size:12px;color:var(--ink-soft);line-height:1.35;margin-top:4px}
   .pc .lk{font-size:12px;font-weight:700;color:var(--cherry);margin-top:6px}
-  .notes{max-width:1880px;margin:40px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .sheet{position:absolute;left:0;right:0;bottom:0;background:var(--paper);border-radius:28px 28px 0 0;padding:10px 20px 30px;box-shadow:0 -10px 30px rgba(42,22,48,.18)}
+  .grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+  .sheet-t{font-size:19px;margin-bottom:12px}
+  .field{border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;font-size:15px}
+  .toggle{display:flex;justify-content:space-between;align-items:center;margin:14px 2px 6px;font-size:15px;font-weight:500}
+  .sw-ui{width:46px;height:28px;border-radius:999px;background:var(--line);position:relative}
+  .sw-ui.on{background:var(--ink)}
+  .sw-ui i{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff}
+  .sw-ui.on i{left:21px}
+  .fine{font-size:13px;color:var(--ink-soft);line-height:1.45;margin:8px 2px 16px}
+  .share-row{display:flex;justify-content:space-between;margin-top:14px;font-size:14px;font-weight:600;color:var(--ink)}
+  .share-row span{flex:1;text-align:center}
+  .filters{display:flex;gap:8px;padding:0 20px 10px;overflow:hidden}
+  .fl{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;background:var(--paper);border:1px solid var(--line);white-space:nowrap}
+  .fl i{width:12px;height:12px;border-radius:50%;display:block}
+  .fl.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .post{background:var(--paper);border-radius:22px;padding:10px;margin-bottom:14px}
+  .post-strip{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--ink);padding:6px;border-radius:14px}
+  .pl{position:relative}
+  .pl svg{display:block;width:100%;border-radius:8px}
+  .pl .tag{position:absolute;left:6px;bottom:6px;font-size:11px;font-weight:700;background:var(--paper);color:var(--ink);border-radius:999px;padding:3px 8px}
+  .pl .tag.me{background:var(--cherry);color:#fff}
+  .post-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 4px 2px}
+  .post-meta b{display:block;font-size:14.5px;line-height:1.3}
+  .tone{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-soft);margin-top:4px}
+  .tone i{width:12px;height:12px;border-radius:50%;display:block}
+  .try{border:0;background:var(--cherry);color:#fff;font:600 13.5px var(--body);border-radius:12px;padding:10px 12px;white-space:nowrap}
+  .notes{max-width:1880px;margin:40px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
   .note{background:var(--paper);border-radius:20px;padding:20px 22px;font-size:14.5px;line-height:1.55}
   .note h3{font-size:15px;margin-bottom:8px}
   .note ul{padding-left:18px}
@@ -270,7 +297,64 @@
           <div class="pc"><div class="chip" style="background:#5A3825"></div><div class="b">TIRTIR</div><div class="nm">Mask Fit Red Cushion 55N</div><div class="why">Matches deep neutral skin, satin finish.</div><div class="lk">View product</div></div>
         </div>
       </div>
-      <div class="actionbar"><button class="cta ghost">Try Another Look</button></div>
+      <div class="actionbar"><button class="cta">Share My Strip</button><div class="subcta">Try another look</div></div>
+    </div>
+  </div>
+
+  <!-- 5. SHARE SHEET -->
+  <div class="col">
+    <div class="cap"><b>5 · Share</b> — post to the feed or copy a link</div>
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+      <div class="topbar"><span class="back">‹</span><div class="steps"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></div>
+      <div class="scroll" style="filter:saturate(.6) brightness(.82)">
+        <div class="strip-wrap"><div class="strip" style="transform:rotate(-1.5deg) scale(.86);transform-origin:top center">
+          <div class="shot"><svg viewBox="0 0 100 124"><rect width="100" height="124" fill="#E8E2F4"/><ellipse cx="50" cy="66" rx="31" ry="40" fill="#6E4630"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0" fill="#F25C7A"/></svg><span class="tag">As-is</span></div>
+          <div class="shot"><svg viewBox="0 0 100 124"><rect width="100" height="124" fill="#E8E2F4"/><ellipse cx="50" cy="66" rx="31" ry="40" fill="#6E4630"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0" fill="#A3203F"/></svg><span class="tag me">My tone</span></div>
+          <div class="foot"><b>Shade Twin</b><span>Peach glass · deep warm</span></div>
+        </div></div>
+      </div>
+      <div class="sheet">
+        <div class="grab"></div>
+        <h3 class="sheet-t">Share your strip</h3>
+        <div class="field">Peach glass, but make it mine 🍑</div>
+        <div class="toggle"><span>Show the original look photo</span><span class="sw-ui on"><i></i></span></div>
+        <p class="fine">Your strip, tone tag and product list go to the public feed. You can delete it anytime from this device.</p>
+        <button class="cta">Post to Feed</button>
+        <div class="share-row"><span>Copy link</span><span>Save image</span><span>Instagram story</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. FEED -->
+  <div class="col">
+    <div class="cap"><b>6 · Feed</b> — see a look on someone like you, try it</div>
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+      <div class="topbar"><span class="brand">Shade Twin</span><span class="back">＋</span></div>
+      <div class="filters"><span class="fl on">All tones</span><span class="fl"><i style="background:#F3D9C8"></i>Fair</span><span class="fl"><i style="background:#C68A62"></i>Medium</span><span class="fl"><i style="background:#5A3825"></i>Deep</span></div>
+      <div class="scroll">
+        <article class="post">
+          <div class="post-strip">
+            <div class="pl"><svg viewBox="0 0 100 124"><rect width="100" height="124" fill="#F7D6DE"/><ellipse cx="50" cy="66" rx="30" ry="38" fill="#F1D3C2"/><path d="M42 88 q8 6 16 0 q-8 -4 -16 0" fill="#F25C7A"/><path d="M20 50 q30 -40 60 0 l0 -10 q-30 -30 -60 0z" fill="#3A2A2A"/></svg><span class="tag">Look</span></div>
+            <div class="pl"><svg viewBox="0 0 100 124"><rect width="100" height="124" fill="#E8E2F4"/><ellipse cx="50" cy="66" rx="31" ry="40" fill="#6E4630"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#C2413F" opacity=".6" filter="url(#soft2)"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#C2413F" opacity=".6" filter="url(#soft2)"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0" fill="#A3203F"/><path d="M17 54 q33 -48 66 0 q4 30 -4 50 l-2 -40 q-28 -30 -54 0 l-2 40 q-8 -20 -4 -50z" fill="#1B1210"/></svg><span class="tag me">My tone</span></div>
+          </div>
+          <div class="post-meta">
+            <div><b>Peach glass, but make it mine 🍑</b><span class="tone"><i style="background:#5A3825"></i>Deep · warm</span></div>
+            <button class="try">Try This Look</button>
+          </div>
+        </article>
+        <article class="post">
+          <div class="post-strip">
+            <div class="pl"><svg viewBox="0 0 100 124"><rect width="100" height="124" fill="#E3DDF4"/><ellipse cx="50" cy="66" rx="30" ry="38" fill="#EBCDBB"/><path d="M42 88 q8 6 16 0 q-8 -4 -16 0" fill="#9C3D6B"/><path d="M20 50 q30 -40 60 0 l0 -10 q-30 -30 -60 0z" fill="#20181C"/></svg><span class="tag">Look</span></div>
+            <div class="pl"><svg viewBox="0 0 100 124"><rect width="100" height="124" fill="#E8E2F4"/><ellipse cx="50" cy="66" rx="31" ry="40" fill="#C68A62"/><ellipse cx="33" cy="78" rx="9" ry="6" fill="#B0577E" opacity=".55" filter="url(#soft2)"/><ellipse cx="67" cy="78" rx="9" ry="6" fill="#B0577E" opacity=".55" filter="url(#soft2)"/><path d="M42 90 q8 6 16 0 q-8 -4 -16 0" fill="#7E2A55"/></svg><span class="tag me">My tone</span></div>
+          </div>
+          <div class="post-meta">
+            <div><b>Mauve cool for olive skin</b><span class="tone"><i style="background:#C68A62"></i>Medium · olive</span></div>
+            <button class="try">Try This Look</button>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </div>
@@ -279,6 +363,7 @@
   <div class="note"><h3>Type</h3>Bagel Fat One (Korean-designed, sticker-chunky) only for the hero, mood line and brand. Hanken Grotesk for everything else. Sentence case, verb-first buttons that say what happens.</div>
   <div class="note"><h3>One bold moment</h3>The tilted photo-booth strip with As-is / My tone frames. Swatches are drawn on a band of the user's own skin color, so the shift is judged on their tone, not on white.</div>
   <div class="note"><h3>Honesty labels</h3><ul><li>Live AI — Claude analysis and translation</li><li>Simulation — generated preview images</li><li>Web search — products found live; Sample when falling back to the curated list</li></ul>Illustrated faces here are placeholders for real photos.</div>
+  <div class="note"><h3>Social loop</h3>Share sends the strip to a public feed and a link with a preview image. Feed filters by tone, so you see a look on someone like you; "Try This Look" reuses that look's analysis and jumps straight to your selfie.</div>
 </section>
 </body>
 </html>
