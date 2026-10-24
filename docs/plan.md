@@ -5,7 +5,7 @@
 | 현재 시각 | 12:0x KST |
 | 남은 시간 | 목표 제출 13:30까지 1h40m (마감 17:00) |
 | 마지막 검증 후보 | 셋업 완료 커밋 (lint·tsc·build·docker run 통과, AI 실호출 미검증) |
-| 가장 큰 위험 | 이미지 모델의 얼굴·톤 보존 / Railway 계정·볼륨 / OpenAI 키 미수령 |
+| 가장 큰 위험 | 배포 호스트(Railway 신규 가입 불가) / ②③ 차이가 미묘함 |
 | 다음 작업 | Railway 로그인 → 첫 배포 / 키 입력 → T1 이미지 실험 / UI·피드 구현(dispatch) |
 
 ## 작업
@@ -29,3 +29,4 @@
 | ~12:05 | 6cd119d | T2·T3·T5 통합 후 `pnpm lint`, `npx tsc --noEmit`, `pnpm build` (repo root) | 통과, API 5개 dynamic. 키 없음 → AI 실호출 미검증 |
 | ~12:15 | (셋업) | `pnpm lint`, `npx tsc --noEmit`, `rm -rf .next && pnpm build`, `PORT=3100 pnpm start` + Edge 헤드리스 스크린샷(1280x960) | 통과, 디자인 A 토큰·폰트·앱 셸 렌더 확인. 390px 스크린샷은 헤드리스 최소 창 폭 때문에 우측 오프셋 — 실기기 미확인 |
 | ~12:18 | (셋업) | `docker build -t muselook:local .` → run → `/`·manifest 200, `pi --version` 1.4.0, pi-web-access 설치, `/data` 쓰기, `POST /api/session` 빈 파일 415 | 통과 (libatomic1 추가로 pnpm 실행 오류 수정) |
+| ~12:25 | (spike) | 로컬 `pnpm start` + 합성 샘플(`public/samples/`, gpt-image-2.5-flare 생성 가상 인물)으로 ①→②→③ 실호출 | ① Claude 분석 200, 17s (forced tool_choice 미지원 → structured outputs로 수정) · ② 이미지 28s, 얼굴·딥 톤 보존 확인(`docs/evidence/spike-apply-original.png`) · ③ 번역 8s + 이미지·pi 웹검색 제품 25s, 실제 제품 5개(Olive Young 등 URL), fallback 없음. ②③ 차이는 립·블러셔에서 보이나 미묘함 |

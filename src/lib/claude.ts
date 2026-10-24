@@ -19,6 +19,15 @@ const imgBlock = (i: Img) => ({
   source: { type: "base64" as const, media_type: i.mediaType, data: i.data.toString("base64") },
 });
 
+// Structured outputs require additionalProperties:false on every object.
+function strictObjects(node: unknown) {
+  if (Array.isArray(node)) return node.forEach(strictObjects);
+  if (!node || typeof node !== "object") return;
+  const o = node as Record<string, unknown>;
+  if (o.type === "object") o.additionalProperties = false;
+  Object.values(o).forEach(strictObjects);
+}
+
 async function callStructured<T>(opts: {
   system: string;
   content: Anthropic.Messages.ContentBlockParam[];
@@ -26,7 +35,9 @@ async function callStructured<T>(opts: {
   toolName: string;
 }): Promise<T> {
   const c = client();
-  const input_schema = z.toJSONSchema(opts.schema, { io: "input" }) as Anthropic.Messages.Tool.InputSchema;
+  const schema = z.toJSONSchema(opts.schema, { io: "input" }) as Record<string, unknown>;
+  delete schema.$schema;
+  strictObjects(schema);
   let lastErr = "";
   for (let attempt = 0; attempt < 2; attempt++) {
     const content: Anthropic.Messages.ContentBlockParam[] = attempt
@@ -36,12 +47,18 @@ async function callStructured<T>(opts: {
       model: MODEL,
       max_tokens: 4096,
       system: opts.system,
-      tools: [{ name: opts.toolName, description: "Return the structured result.", input_schema }],
-      tool_choice: { type: "tool", name: opts.toolName },
+      // Structured outputs (forced tool_choice is not supported on this model)
+      output_config: { format: { type: "json_schema", schema }, effort: "low" },
       messages: [{ role: "user", content }],
     });
-    const block = res.content.find((b) => b.type === "tool_use");
-    const parsed = opts.schema.safeParse(block && block.type === "tool_use" ? block.input : undefined);
+    const text = res.content.map((b) => (b.type === "text" ? b.text : "")).join("");
+    let json: unknown;
+    try {
+      json = JSON.parse(text);
+    } catch {
+      json = undefined;
+    }
+    const parsed = opts.schema.safeParse(json);
     if (parsed.success) return parsed.data;
     lastErr = parsed.error.issues.slice(0, 5).map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
   }
