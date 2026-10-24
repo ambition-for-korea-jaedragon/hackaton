@@ -13,7 +13,7 @@
 
 ## 보여줄 결과
 
-한 사용자 · 한 작업 · 바뀐 상태 하나: **② "그대로 적용한 내 얼굴" vs ③ "내 톤으로 번역한 내 얼굴" 비교 + 번역된 제품.**
+한 사용자 · 한 작업 · 바뀐 상태 하나: **② "그대로 적용한 내 얼굴" vs ③ "내 톤으로 번역한 내 얼굴" 비교 + 번역된 제품.** 이 결과가 피드에 공유되고 다른 사용자가 같은 룩을 자기 톤으로 시도하는 루프가 확산 경로다.
 
 | 사용자 행동·입력 | 기대 산출물·상태 변화 | 성공을 판정할 관찰 |
 |---|---|---|
@@ -21,6 +21,10 @@
 | ② 셀카 업로드(13+ 체크·전송 고지 동의) → "See It On Me" | 원본 룩을 그대로 입힌 내 얼굴 이미지(외부 이미지 모델) | 같은 사람·같은 피부톤으로 보이는 이미지가 뜬다 |
 | ③ "Translate To My Tone" | Claude 톤 판정 + 부위별 원본→번역 색·이유 + 샘플 카탈로그 제품 카드 + 번역 색으로 다시 입힌 이미지 + 기초→립 루틴 | ②와 ③ 이미지가 나란히 보이고, 각 변경에 이유 한 줄과 제품 카드가 있다 |
 
+| ④ "Share My Strip" → 캡션(선택)·원본 룩 공개 여부 선택 → "Post to Feed" | 공개 피드에 포스트(원본 룩·As-is·My tone·톤 태그·제품) + 공유 링크 `/p/{id}`(링크 미리보기 이미지) | 피드 최상단에 내 포스트가 보이고, 다른 브라우저에서 링크가 열린다 |
+| ⑤ 피드에서 다른 사람 포스트 → "Try This Look" | 그 룩으로 새 세션 시작(① 분석 재사용) → 내 셀카로 ②③ | 분석 대기 없이 셀카 단계로 바로 이동 |
+
+- 소셜 범위(사용자 결정 2026-10-24): 공개 피드 + 포스트 페이지·공유 링크 + "Try This Look" 재사용 루프. 좋아요·댓글·팔로우·계정은 이번 범위 밖. 게시는 명시적 opt-in, 13+, 브라우저에 저장한 삭제 토큰으로 내 포스트 삭제.
 - 시작 조건: 공개 URL, 로그인 없음. 데스크톱·모바일 브라우저. 13+ 체크.
 - 반복 실행·초기화: 세션 ID별 폴더. "Start Over"로 새 세션. 같은 세션에서 ③만 재실행 가능.
 - 실패 안내: 얼굴 미검출·AI 실패·타임아웃 시 이유와 "Try Again" / 샘플 룩·샘플 셀카로 진행 경로. 실패를 성공으로 꾸미지 않는다.
@@ -45,7 +49,7 @@
 | 제품 형태 | 심사자가 링크로 바로 사용 + 디자인·UI/UX 최우선(사용자 결정) | **앱 레이아웃 웹앱**: 모바일 퍼스트 앱 셸(데스크톱에선 중앙 폰 폭 ~430px), 단계별 전체 화면(Look → On Me → My Tone), 하단 고정 액션 바, 결과는 시트·비교 슬라이더. PWA manifest(홈 화면 추가·standalone). 영어 UI |
 | 디자인 시스템 | 템플릿처럼 보이지 않는 고유 비주얼 | `frontend-design` 스킬로 토큰(색 4~6·타입·레이아웃·원칙) 먼저 확정 → UI 구현. Tailwind 테마 토큰, `next/font`, Motion(화면 전환·비교 슬라이더 등 사용자 동작 응답 모션만). 스크린샷으로 자체 리뷰 |
 | 언어·프레임워크 | 화면 + 비밀 키를 숨기는 서버 + 파일 저장을 한 프로세스로 | **Next.js(App Router) + TypeScript**, 단일 서비스. Route Handler가 Claude·OpenAI 호출·파일 저장 |
-| 데이터·저장 | 이미지 파일시스템 저장(사용자 결정), 세션별 결과 재표시 | `DATA_DIR`(로컬 `./data`, 배포 볼륨 `/data`) 아래 `sessions/{id}/look.*, selfie.*, analysis.json, translated.json, apply_original.png, apply_translated.png`. 카탈로그는 레포 `catalog.json`(샘플) |
+| 데이터·저장 | 이미지 파일시스템 저장(사용자 결정), 세션별 결과 재표시, 공개 포스트 | 포스트는 `DATA_DIR/posts/{postId}.json`(이미지는 세션 파일 참조). `DATA_DIR`(로컬 `./data`, 배포 볼륨 `/data`) 아래 `sessions/{id}/look.*, selfie.*, analysis.json, translated.json, apply_original.png, apply_translated.png`. 카탈로그는 레포 `catalog.json`(샘플) |
 | 인증·민감 정보 | 접근 장벽 최소, 얼굴 사진 | 로그인 없음, 추측 불가 UUID 세션. 13+ 체크, "Anthropic·OpenAI로 전송, 데모 서버에 저장" 고지. 아이돌 사진은 사용자 업로드만, 샘플 룩은 권리 확보 이미지 |
 | 제품 AI | 룩 분석·톤 번역, 무드 있는 얼굴 이미지 | Claude `claude-sonnet-5-5`(vision, JSON) = ①③ 판단. OpenAI Images edit `gpt-image-2.5-sunburst`(다중 입력 이미지, 얼굴 `input_fidelity` 확인) = ②③ 이미지. 운영진 허용(`hackathon.md`) |
 | 제품 추천 | 실제 판매 중인 K-뷰티 제품을 번역된 색·톤·제형에 맞춰 추천(사용자 결정) | ③ 번역 후 백엔드가 **pi를 헤드리스로 실행**(`pi -p --no-session --model anthropic/claude-sonnet-5-5 --tools web_search,fetch_content,get_search_content`, pi-web-access 확장의 Exa 검색). 결과 JSON을 `Product` 스키마로 검증해 세션에 저장. 검색 실패 시 샘플 카탈로그로 표시(`fallback` 배지) |

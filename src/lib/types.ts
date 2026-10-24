@@ -81,7 +81,32 @@ export type SessionState = {
   products?: { status: ImageStatus; items?: Product[]; error?: string; fallback?: boolean }; // fallback = sample catalog used
 };
 
+// Social: public posts of (look + as-is + my tone). Persisted as DATA_DIR/posts/{postId}.json
+export const PostInput = z.object({
+  sessionId: z.string(),
+  caption: z.string().max(140).default(""),
+  includeLook: z.boolean().default(true), // user may hide the source look photo
+});
+export type Post = {
+  id: string; // short url-safe id
+  sessionId: string;
+  createdAt: string;
+  caption: string;
+  mood: string;
+  skinTone: { depth: string; undertone: string };
+  lookUrl?: string; // omitted if includeLook=false
+  asIsUrl: string; // apply_original.png
+  myToneUrl: string; // apply_translated.png
+  products: Product[]; // up to 5, copied at post time
+};
+
 // API (all JSON unless noted)
+// POST   /api/posts                 PostInput (requires both images done) -> { post, deleteToken }
+// GET    /api/posts?cursor=         -> { posts: Post[], nextCursor?: string }  newest first, 20 per page
+// GET    /api/posts/[postId]        -> Post
+// DELETE /api/posts/[postId]        header x-delete-token                  -> { ok: true }
+// POST   /api/posts/[postId]/try    -> { id } new session reusing the post's look + analysis (skips ①)
+// Page   /p/[postId]                public post page with OG image = myToneUrl
 // POST /api/session                multipart {look: File}            -> { id, analysis }
 // POST /api/session/[id]/selfie    multipart {selfie: File}          -> { ok: true }   (starts ② generation in background)
 // POST /api/session/[id]/translate (no body)                         -> { translation } (starts ③ generation in background)

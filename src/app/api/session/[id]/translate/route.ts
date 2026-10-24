@@ -1,6 +1,7 @@
 import { translateTone } from "@/lib/claude";
 import { loadSession, readFileFrom, updateSession } from "@/lib/storage";
 import { runGeneration } from "@/lib/generate-job";
+import { runRecommendations } from "@/lib/reco-agent";
 
 export async function POST(_req: Request, ctx: { params: Promise<{ id: string }> }) {
   const { id } = await ctx.params;
@@ -17,8 +18,10 @@ export async function POST(_req: Request, ctx: { params: Promise<{ id: string }>
     await updateSession(id, (st) => {
       st.translation = translation;
       st.applyTranslated = { status: "pending" };
+      st.products = { status: "pending" };
     });
     void runGeneration(id, "translated");
+    void runRecommendations(id);
     return Response.json({ translation });
   } catch (e) {
     console.error("[session:translate]", e instanceof Error ? e.message : e);
