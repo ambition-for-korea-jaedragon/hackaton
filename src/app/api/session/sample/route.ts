@@ -3,6 +3,7 @@ import path from "node:path";
 import { z } from "zod";
 import samples from "@/data/sample-looks.json";
 import { LookAnalysis } from "@/lib/types";
+import { runGeneration } from "@/lib/generate-job";
 import { createSession, updateSession, writeFileTo } from "@/lib/storage";
 
 const Body = z.object({ sampleId: z.string() });
@@ -18,9 +19,13 @@ export async function POST(req: Request) {
     const data = await readFile(path.join(process.cwd(), "public", "samples", sample.file));
     const s = await createSession("sample");
     await writeFileTo(s.id, "look.jpg", data);
+    const mannequin = await readFile(path.join(process.cwd(), "public", "samples", `mannequin-${sample.id}.png`)).catch(() => null);
+    if (mannequin) await writeFileTo(s.id, "mannequin.png", mannequin);
     await updateSession(s.id, (st) => {
       st.analysis = analysis;
+      st.mannequin = { status: mannequin ? "done" : "pending" };
     });
+    if (!mannequin) void runGeneration(s.id, "mannequin");
     return Response.json({ id: s.id, analysis }, { headers: NO_STORE });
   } catch (e) {
     console.error("[session:sample]", e instanceof Error ? e.message : e);

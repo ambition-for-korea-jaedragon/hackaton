@@ -4,7 +4,9 @@ import { listPosts, newDeleteToken, newPostId, NO_STORE, savePost } from "@/lib/
 
 export async function GET(req: Request) {
   const cursor = new URL(req.url).searchParams.get("cursor") || undefined;
-  return Response.json(await listPosts(cursor), { headers: NO_STORE });
+  const page = await listPosts(cursor);
+  const posts = page.posts.filter((p) => p.mannequinUrl && p.styledUrl); // drop old-format posts
+  return Response.json({ ...page, posts }, { headers: NO_STORE });
 }
 
 export async function POST(req: Request) {
@@ -24,7 +26,9 @@ export async function POST(req: Request) {
     s = null;
   }
   if (!s) return Response.json({ error: "session not found" }, { status: 404, headers: NO_STORE });
-  if (!s.analysis || !s.translation || s.applyOriginal.status !== "done" || s.applyTranslated.status !== "done") {
+  if (!s.analysis || !s.translation || s.applyTranslated.status !== "done" ||
+    s.mannequin?.status !== "done" ||
+    s.styled?.status !== "done") {
     return Response.json({ error: "session not ready" }, { status: 409, headers: NO_STORE });
   }
   const post: Post = {
@@ -35,8 +39,9 @@ export async function POST(req: Request) {
     mood: s.analysis.mood,
     skinTone: { depth: s.translation.skinTone.depth, undertone: s.translation.skinTone.undertone },
     ...(input.includeLook ? { lookUrl: fileUrl(s.id, "look.jpg") } : {}),
-    asIsUrl: fileUrl(s.id, "apply_original.png"),
+    mannequinUrl: fileUrl(s.id, "mannequin.png"),
     myToneUrl: fileUrl(s.id, "apply_translated.png"),
+    styledUrl: fileUrl(s.id, "styled.png"),
     products: (s.products?.items ?? []).slice(0, 5),
   };
   const deleteToken = newDeleteToken();

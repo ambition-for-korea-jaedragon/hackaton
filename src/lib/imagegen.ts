@@ -47,20 +47,29 @@ ${changes}
 Keep everything else in image 1 identical: same person, face, skin tone and texture, hair, pose, framing, lighting, backdrop and makeup placement and finish. The new shades should look beautiful, harmonious and clearly visible on her skin, professionally blended. Photorealistic, no text.`;
 }
 
-export async function generateApplied(opts: {
-  selfie: Buffer;
-  selfieType?: "image/jpeg" | "image/png";
-  look: Buffer;
-  prompt: string;
-}): Promise<Buffer> {
+export function mannequinPrompt(a: LookAnalysis | undefined): string {
+  const steps = a?.steps ?? [];
+  return `Image 1 is a reference makeup look. Create a clean studio product-style render of ONLY the makeup, on a completely featureless bald mannequin head: smooth matte white-ivory porcelain, NO hair, NO wig, NO ears, NO eyebrows, NO eyelashes, NO personality. The face is a minimal sculpted form (only the soft shape of the eye sockets, nose bridge and lips needed to carry makeup), like a cosmetics-counter display head. Head and neck only, front-facing, tightly framed, centered, on a plain seamless light neutral-gray backdrop with soft even studio light. Paint ONLY the makeup from image 1 onto it, with the reference's exact original colors, placement and finishes, so that the makeup itself is the only thing that stands out: ${steps
+    .filter((s) => s.area !== "skincare")
+    .map((s) => `${s.area}: ${s.colors.map((x) => `${x.name} ${x.hex}`).join(", ")}, ${s.finish}`)
+    .join("; ")}. Photorealistic, no text.`;
+}
+
+export function styledPrompt(t: ToneTranslation, a: LookAnalysis | undefined, safe = false): string {
+  const makeup = t.changes.map((c) => `${c.area} ${c.toHex}`).join(", ");
+  return `Image 1 is a photo of the user wearing finished makeup; image 2 is a reference look photo (the muse).
+Create a slightly wider, further-away photo of the SAME person from image 1 (chest-up or waist-up, with some distance, still flattering and front-facing), keeping her face, identity, hair texture and TRUE skin tone (${t.skinTone.depth}, ${t.skinTone.undertone} undertone, about ${t.skinTone.hex}) exactly, and the SAME makeup with the exact same colors as image 1 (${makeup}). Do not lighten, smooth away or recolor her skin, and never borrow the face of the person in image 2.
+Now show the styling inspired by image 2: hair styling, plus accessories such as earrings, necklace and hair accessories, and a fashionable fully-covered top (crew neck, turtleneck, jacket or blouse with a modest neckline) similar in spirit to image 2, adapted to her real hair texture and length (do not replace her hair texture with the muse's). Soft diffused beauty lighting and a clean backdrop in the same color family as image 2. Look mood: ${a?.mood ?? "same as reference"}. ${safe ? "A wholesome, family-friendly editorial beauty and fashion photo, fully clothed in modest outerwear with high neckline. " : ""}Photorealistic, high detail, no text.`;
+}
+
+export type InputImage = { buf: Buffer; name: string; type: "image/jpeg" | "image/png" };
+
+export async function generateFromImages(images: InputImage[], prompt: string): Promise<Buffer> {
   const c = client();
   const res = await c.images.edit({
     model: MODEL,
-    image: [
-      await toFile(opts.selfie, opts.selfieType === "image/png" ? "base.png" : "selfie.jpg", { type: opts.selfieType ?? "image/jpeg" }),
-      await toFile(opts.look, "look.jpg", { type: "image/jpeg" }),
-    ],
-    prompt: opts.prompt,
+    image: await Promise.all(images.map((i) => toFile(i.buf, i.name, { type: i.type }))),
+    prompt,
     size: "auto",
     quality: "high",
     output_format: "png",
@@ -70,4 +79,20 @@ export async function generateApplied(opts: {
   const b64 = res.data?.[0]?.b64_json;
   if (!b64) throw new Error("OpenAI image edit returned no image");
   return Buffer.from(b64, "base64");
+}
+
+export async function generateApplied(opts: {
+  selfie: Buffer;
+  selfieType?: "image/jpeg" | "image/png";
+  look: Buffer;
+  prompt: string;
+}): Promise<Buffer> {
+  const png = opts.selfieType === "image/png";
+  return generateFromImages(
+    [
+      { buf: opts.selfie, name: png ? "base.png" : "selfie.jpg", type: png ? "image/png" : "image/jpeg" },
+      { buf: opts.look, name: "look.jpg", type: "image/jpeg" },
+    ],
+    opts.prompt,
+  );
 }

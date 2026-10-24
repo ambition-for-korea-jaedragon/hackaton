@@ -18,6 +18,7 @@ export async function POST(_req: Request, ctx: { params: Promise<{ id: string }>
     await updateSession(id, (st) => {
       st.translation = translation;
       st.applyTranslated = { status: "pending" };
+      st.styled = { status: "idle" };
       st.products = { status: "pending" };
     });
     void runGeneration(id, "translated");

@@ -1,7 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ErrorNote, Strip } from "@/components/app-shell";
+import { ErrorNote } from "@/components/app-shell";
+import { FourUp } from "@/components/four-up";
 import { TONE_DOT, postJson, toneClass } from "@/lib/client/api";
 import type { Post } from "@/lib/types";
 
@@ -14,11 +15,12 @@ export function ToneTag({ post }: { post: Post }) {
   );
 }
 
-export function postFrames(p: Post) {
-  return [
-    p.lookUrl ? { src: p.lookUrl, label: "Look" } : { src: p.asIsUrl, label: "As-is" },
-    { src: p.myToneUrl, label: "My tone", me: true },
-  ];
+export function moodLine(mood: string) {
+  return mood.split(/[,.—:;]/)[0].trim().replace(/-/g, " ");
+}
+
+export function PostFourUp({ post, className }: { post: Post; className?: string }) {
+  return <FourUp mannequin={post.mannequinUrl} muse={post.lookUrl} me={post.myToneUrl} styled={post.styledUrl} mood={post.mood} className={className} />;
 }
 
 export function useTry(postId: string) {
@@ -43,7 +45,7 @@ export function PostCard({ post }: { post: Post }) {
   const t = useTry(post.id);
   return (
     <article className="mb-3.5 rounded-[22px] bg-paper p-2.5">
-      <Strip mini frames={postFrames(post)} />
+      <PostFourUp post={post} />
       <div className="flex items-center justify-between gap-2.5 px-1 pb-0.5 pt-2.5">
         <div className="min-w-0">
           <a href={`/p/${post.id}`} className="block text-[14.5px] font-bold leading-[1.3] underline-offset-2 hover:underline">

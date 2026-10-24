@@ -21,6 +21,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string }> 
   await updateSession(id, (st) => {
     st.applyOriginal = { status: "pending" };
     st.applyTranslated = { status: "idle" };
+    st.styled = { status: "idle" };
     delete st.translation;
   });
   void runGeneration(id, "original");

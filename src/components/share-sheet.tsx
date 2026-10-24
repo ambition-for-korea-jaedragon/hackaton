@@ -31,7 +31,7 @@ export function ShareSheet({ sessionId, onClose }: { sessionId: string; onClose:
       } catch {}
       setPostId(r.post.id);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Couldn't post your strip.");
+      setError(e instanceof Error ? e.message : "Couldn't post your look.");
     }
     setBusy(false);
   }
@@ -60,7 +60,7 @@ export function ShareSheet({ sessionId, onClose }: { sessionId: string; onClose:
         {postId ? (
           <>
             <h3 id="share-title" className="mb-1 font-display text-[22px]">Posted to the feed</h3>
-            <p className="mb-4 text-sm text-ink-soft">Your strip is live. Share the link or find it at the top of the feed.</p>
+            <p className="mb-4 text-sm text-ink-soft">Your look is live. Share the link or find it at the top of the feed.</p>
             <PrimaryButton onClick={copy}>{copied ? "Link copied" : "Copy link"}</PrimaryButton>
             <div className="mt-3 flex justify-between text-sm font-semibold">
               <Link href={`/p/${postId}`} className="underline underline-offset-2">View your post</Link>
@@ -71,7 +71,7 @@ export function ShareSheet({ sessionId, onClose }: { sessionId: string; onClose:
           </>
         ) : (
           <>
-            <h3 id="share-title" className="mb-3 text-[19px] font-bold">Share your strip</h3>
+            <h3 id="share-title" className="mb-3 text-[19px] font-bold">Share your look</h3>
             <label htmlFor="caption" className="sr-only">Caption</label>
             <textarea
               id="caption"
@@ -84,7 +84,7 @@ export function ShareSheet({ sessionId, onClose }: { sessionId: string; onClose:
             />
             <div className="text-right text-xs text-ink-soft">{caption.length}/140</div>
             <div className="mx-0.5 mb-1.5 mt-2 flex items-center justify-between text-[15px] font-medium">
-              <span id="look-toggle">Show the original look photo</span>
+              <span id="look-toggle">Show the muse photo</span>
               <button
                 type="button"
                 role="switch"
@@ -97,7 +97,7 @@ export function ShareSheet({ sessionId, onClose }: { sessionId: string; onClose:
               </button>
             </div>
             <p className="mx-0.5 mb-4 mt-2 text-[13px] leading-snug text-ink-soft">
-              Your strip, tone tag and product list go to the public feed. You can delete it anytime from this device.
+              Your look, tone tag and product list go to the public feed. You can delete it anytime from this device.
             </p>
             <PrimaryButton onClick={post} disabled={busy}>
               {busy ? (<><Spinner /> Posting…</>) : "Post to Feed"}

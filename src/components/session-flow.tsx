@@ -1,9 +1,10 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  ActionBar, Badge, ErrorNote, PrimaryButton, ScreenBody, Spinner, Strip, SubLink, TopBar,
+  ActionBar, Badge, ErrorNote, PrimaryButton, ScreenBody, Spinner, SubLink, TopBar,
 } from "@/components/app-shell";
 import { Booth } from "@/components/booth";
+import { FourUp } from "@/components/four-up";
 import { ShareSheet } from "@/components/share-sheet";
 import { ProductCards, ProductSkeleton, ProductsBadge, SwatchBand, areaLabel } from "@/components/tone-parts";
 import { getSession, imgUrl, postForm, postJson } from "@/lib/client/api";
@@ -15,7 +16,8 @@ const STEP_NO: Record<Step, number> = { breakdown: 2, onme: 3, tone: 4 };
 const NOTICE = "My selfie is sent to Anthropic and OpenAI to create the preview and kept on this demo server for this session.";
 
 const isPending = (s: SessionState) =>
-  s.applyOriginal.status === "pending" || s.applyTranslated.status === "pending" || s.products?.status === "pending";
+  s.applyOriginal.status === "pending" || s.applyTranslated.status === "pending" ||
+  s.mannequin?.status === "pending" || s.styled?.status === "pending" || s.products?.status === "pending";
 
 export function SessionFlow({ id }: { id: string }) {
   const [s, setS] = useState<SessionState | null>(null);
@@ -307,23 +309,27 @@ function MyTone({ s, refresh, onShare }: { s: SessionState; refresh: () => Promi
     );
   }
   const tp = s.applyTranslated;
-  const done = tp.status === "done" && s.applyOriginal.status === "done";
+  const mn = s.mannequin?.status === "done";
+  const sty = s.styled?.status === "done";
+  const me = tp.status === "done";
+  const done = mn && sty && me;
   const label = `${t.skinTone.depth}, ${t.skinTone.undertone}`;
   const prod = s.products;
   return (
     <>
       <ScreenBody>
-        <div className="flex justify-center pt-1">
-          <Strip
-            footer={`${s.analysis!.mood.split(/[,.—-]/)[0].trim().slice(0, 24)} · ${label}`}
-            frames={[
-              { src: imgUrl(s.id, "apply_original.png"), label: "As-is" },
-              { src: imgUrl(s.id, "apply_translated.png"), label: "My tone", me: true, developing: tp.status !== "done" },
-            ]}
+        <div className="pt-1">
+          <FourUp
+            mannequin={mn ? imgUrl(s.id, "mannequin.png") : undefined}
+            muse={imgUrl(s.id, "look.jpg")}
+            me={me ? imgUrl(s.id, "apply_translated.png") : undefined}
+            styled={sty ? imgUrl(s.id, "styled.png") : undefined}
+            pending={{ mannequin: !mn, me: !me, styled: !sty }}
           />
         </div>
-        {tp.status === "pending" && <p role="status" className="mt-3 text-center text-sm font-semibold text-ink-soft">Developing your My tone photo…</p>}
-        {tp.status === "error" && <ErrorNote onRetry={retry}>{tp.error ?? "We couldn't create your My tone photo."}</ErrorNote>}
+        {(s.mannequin?.status === "error" || s.styled?.status === "error") && <ErrorNote>We couldn&apos;t finish every photo in your look. Try another look or retry the translation.</ErrorNote>}
+        {!done && tp.status !== "error" && <p role="status" className="mt-3 text-center text-sm font-semibold text-ink-soft">Developing your look…</p>}
+                {tp.status === "error" && <ErrorNote onRetry={retry}>{tp.error ?? "We couldn't create your My tone photo."}</ErrorNote>}
         {error && <ErrorNote>{error}</ErrorNote>}
         <p className="mt-3 flex items-center gap-2 text-[13px] text-ink-soft"><Badge kind="simulation" /> AI-generated, approximate color.</p>
 
@@ -361,7 +367,7 @@ function MyTone({ s, refresh, onShare }: { s: SessionState; refresh: () => Promi
         )}
       </ScreenBody>
       <ActionBar>
-        <PrimaryButton disabled={!done} onClick={onShare}>Share My Strip</PrimaryButton>
+        <PrimaryButton disabled={!done} onClick={onShare}>Share My Look</PrimaryButton>
         <SubLink href="/new">Try another look</SubLink>
       </ActionBar>
     </>

@@ -1,9 +1,9 @@
 "use client";
-// Home: Instagram-style feed. Full-bleed posts with a swipeable 4:5 carousel (My tone → As-is → Look), bottom tab bar.
+// Home: Instagram-style feed. Full-bleed posts with a 2x2 four-image group, bottom tab bar.
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ErrorNote } from "@/components/app-shell";
-import { useTry } from "@/components/post-parts";
+import { PostFourUp, moodLine, useTry } from "@/components/post-parts";
 import { TONE_DOT, api, toneClass, type ToneClass } from "@/lib/client/api";
 import type { Post } from "@/lib/types";
 
@@ -50,7 +50,7 @@ export function Feed() {
     load();
   }, [load]);
 
-  const shown = (posts ?? []).filter((p) => filter === "all" || toneClass(p.skinTone.depth) === filter);
+  const shown = (posts ?? []).filter((p) => p.mannequinUrl && p.styledUrl).filter((p) => filter === "all" || toneClass(p.skinTone.depth) === filter);
 
   return (
     <>
@@ -127,20 +127,9 @@ export function Feed() {
 
 function FeedPost({ post }: { post: Post }) {
   const t = useTry(post.id);
-  const frames = [
-    { src: post.myToneUrl, label: "My tone", me: true },
-    { src: post.asIsUrl, label: "As-is" },
-    ...(post.lookUrl ? [{ src: post.lookUrl, label: "Look" }] : []),
-  ];
-  const [idx, setIdx] = useState(0);
-  const track = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
   const tone = toneClass(post.skinTone.depth);
 
-  function onScroll() {
-    const el = track.current;
-    if (el) setIdx(Math.round(el.scrollLeft / el.clientWidth));
-  }
   async function share() {
     const url = `${location.origin}/p/${post.id}`;
     try {
@@ -165,35 +154,13 @@ function FeedPost({ post }: { post: Post }) {
           <p className="truncate text-[14px] font-bold first-letter:uppercase">
             {post.skinTone.depth} · {post.skinTone.undertone.toLowerCase()}
           </p>
-          <p className="truncate text-[12px] text-ink-soft">{post.mood.split(/[,.—:]/)[0]}</p>
+          <p className="truncate text-[12px] text-ink-soft">{moodLine(post.mood)}</p>
         </div>
         <span className="text-[12px] text-ink-soft">{timeAgo(post.createdAt)}</span>
       </div>
 
-      <div className="relative">
-        <div
-          ref={track}
-          onScroll={onScroll}
-          className="flex aspect-[4/5] snap-x snap-mandatory overflow-x-auto bg-ink [scrollbar-width:none]"
-          aria-label="Photos: swipe to compare"
-        >
-          {frames.map((f) => (
-            <div key={f.label} className="relative h-full w-full shrink-0 snap-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={f.src} alt={`${f.label} photo`} className="size-full object-cover" loading="lazy" />
-            </div>
-          ))}
-        </div>
-        <span
-          className={`pointer-events-none absolute left-3 top-3 rounded-full px-2.5 py-1 text-[12px] font-bold ${
-            frames[idx]?.me ? "bg-cherry text-white" : "bg-paper text-ink"
-          }`}
-        >
-          {frames[idx]?.label}
-        </span>
-        <span className="pointer-events-none absolute right-3 top-3 rounded-full bg-ink/60 px-2 py-0.5 text-[11.5px] font-semibold text-white">
-          {idx + 1}/{frames.length}
-        </span>
+      <div className="px-4">
+        <PostFourUp post={post} />
       </div>
 
       <div className="flex items-center gap-3 px-4 pt-3">
@@ -208,16 +175,10 @@ function FeedPost({ post }: { post: Post }) {
         <button type="button" onClick={share} className="rounded-xl border border-line bg-paper px-3 py-2 text-[13.5px] font-semibold">
           {copied ? "Link copied" : "Share"}
         </button>
-        <div className="ml-auto flex gap-1" aria-hidden>
-          {frames.map((f, i) => (
-            <i key={f.label} className={`block size-1.5 rounded-full ${i === idx ? "bg-ink" : "bg-line"}`} />
-          ))}
-        </div>
       </div>
 
       <div className="px-4 pt-2 text-[14px] leading-snug">
         {post.caption && <p className="font-bold">{post.caption}</p>}
-        <p className="text-ink-soft">{post.mood}</p>
         {post.products.length > 0 && (
           <Link href={`/p/${post.id}`} className="mt-1 inline-block text-[13.5px] font-semibold text-ink underline-offset-2 hover:underline">
             View {post.products.length} products

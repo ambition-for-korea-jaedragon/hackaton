@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ActionBar, Badge, ErrorNote, PrimaryButton, ScreenBody, Strip, SubLink, TopBar } from "@/components/app-shell";
-import { ToneTag, postFrames, useTry } from "@/components/post-parts";
+import { ActionBar, Badge, ErrorNote, PrimaryButton, ScreenBody, SubLink, TopBar } from "@/components/app-shell";
+import { PostFourUp, ToneTag, useTry } from "@/components/post-parts";
 import { ProductCards, ProductsBadge } from "@/components/tone-parts";
 import { api, delKey } from "@/lib/client/api";
 import type { Post } from "@/lib/types";
@@ -54,9 +54,7 @@ export function PostView({ post }: { post: Post | null }) {
     <>
       <TopBar backHref="/" />
       <ScreenBody>
-        <div className="flex justify-center pt-1">
-          <Strip frames={postFrames(post)} footer={`${post.mood.split(/[,.—-]/)[0].trim().slice(0, 24)} · ${post.skinTone.depth} ${post.skinTone.undertone}`} />
-        </div>
+        <div className="pt-1"><PostFourUp post={post} /></div>
         <h1 className="mt-4 text-[17px] font-bold leading-snug">{post.caption || post.mood}</h1>
         <div className="flex items-center gap-2"><ToneTag post={post} /><Badge kind="simulation" /></div>
         {post.products.length > 0 && (

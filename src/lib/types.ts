@@ -78,6 +78,8 @@ export type SessionState = {
   translation?: ToneTranslation;
   applyOriginal: { status: ImageStatus; error?: string };
   applyTranslated: { status: ImageStatus; error?: string };
+  mannequin?: { status: ImageStatus; error?: string }; // generated from look.jpg + analysis (no selfie needed); samples ship a pre-generated file
+  styled?: { status: ImageStatus; error?: string }; // generated after applyTranslated is done
   products?: { status: ImageStatus; items?: Product[]; error?: string; fallback?: boolean }; // fallback = sample catalog used
 };
 
@@ -94,14 +96,15 @@ export type Post = {
   caption: string;
   mood: string;
   skinTone: { depth: string; undertone: string };
-  lookUrl?: string; // omitted if includeLook=false
-  asIsUrl: string; // apply_original.png
-  myToneUrl: string; // apply_translated.png
+  lookUrl?: string; // muse photo; omitted if includeLook=false (UI shows a placeholder tile)
+  mannequinUrl: string; // mannequin.png
+  myToneUrl: string; // apply_translated.png (selfie-style, tone-translated makeup)
+  styledUrl: string; // styled.png
   products: Product[]; // up to 5, copied at post time
 };
 
 // API (all JSON unless noted)
-// POST   /api/posts                 PostInput (requires both images done) -> { post, deleteToken }
+// POST   /api/posts                 PostInput (requires applyTranslated, mannequin and styled all done) -> { post, deleteToken }
 // GET    /api/posts?cursor=         -> { posts: Post[], nextCursor?: string }  newest first, 20 per page
 // GET    /api/posts/[postId]        -> Post
 // DELETE /api/posts/[postId]        header x-delete-token                  -> { ok: true }
@@ -110,10 +113,17 @@ export type Post = {
 // POST /api/session                multipart {look: File}            -> { id, analysis }
 // POST /api/session/sample         JSON {sampleId}                   -> { id, analysis }  (copies public/samples/{file}, cached analysis from src/data/sample-looks.json; source='sample')
 // POST /api/session/[id]/selfie    multipart {selfie: File}          -> { ok: true }   (starts ② generation in background)
-// POST /api/session/[id]/translate (no body)                         -> { translation } (starts ③ generation in background)
+// POST /api/session/[id]/translate (no body)                         -> { translation } (starts ③ generation in background; when applyTranslated is done, styled generation starts automatically)
+// POST /api/session (live look): after analysis, mannequin generation starts in background.
 //      translate also starts the web product search job in background (products.status pending -> done/error)
 // GET  /api/session/[id]                                             -> SessionState
 // GET  /api/files/[id]/[name]      name in FILE_NAMES                -> image bytes
-export const FILE_NAMES = ["look.jpg", "selfie.jpg", "apply_original.png", "apply_translated.png"] as const;
+// 4-up group shown everywhere (feed, post, My Tone):
+//   top-left  mannequin.png        neutral mannequin face wearing ONLY the look's makeup (original colors)
+//   top-right look.jpg             the muse (reference look photo)
+//   bottom-left apply_translated.png  selfie-style photo of the user's own face wearing the tone-translated makeup
+//   bottom-right styled.png        slightly wider shot of the user (same makeup) showing hair styling + accessories like the muse
+// apply_original.png (the look as-is on the user) stays in the create flow only, not in the 4-up.
+export const FILE_NAMES = ["look.jpg", "selfie.jpg", "apply_original.png", "apply_translated.png", "mannequin.png", "styled.png"] as const;
 export type FileName = (typeof FILE_NAMES)[number];
 export const fileUrl = (id: string, name: FileName) => `/api/files/${id}/${name}`;

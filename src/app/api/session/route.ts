@@ -1,5 +1,6 @@
 import { analyzeLook } from "@/lib/claude";
 import { createSession, updateSession, writeFileTo } from "@/lib/storage";
+import { runGeneration } from "@/lib/generate-job";
 import { readImage } from "@/lib/upload";
 
 export async function POST(req: Request) {
@@ -17,7 +18,9 @@ export async function POST(req: Request) {
     await writeFileTo(s.id, "look.jpg", img.data);
     await updateSession(s.id, (st) => {
       st.analysis = analysis;
+      st.mannequin = { status: "pending" };
     });
+    void runGeneration(s.id, "mannequin");
     return Response.json({ id: s.id, analysis });
   } catch (e) {
     console.error("[session:create]", e instanceof Error ? e.message : e);
