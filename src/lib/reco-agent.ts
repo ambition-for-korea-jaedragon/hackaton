@@ -144,6 +144,18 @@ function parseProducts(text: string): Product[] {
   throw new Error("unterminated JSON in pi output");
 }
 
+// Haiku sometimes answers in prose instead of JSON: retry once with a stricter reminder.
+async function searchProducts(prompt: string): Promise<Product[]> {
+  try {
+    return parseProducts(await runPi(prompt));
+  } catch (e) {
+    console.error(`[reco] first attempt failed (${e instanceof Error ? e.message : e}); retrying`);
+    return parseProducts(
+      await runPi(`${prompt}\n\nIMPORTANT: your previous answer did not contain the required JSON. Search, then reply with ONLY the JSON object {"products":[...]} and nothing else.`),
+    );
+  }
+}
+
 // Fire-and-forget; always settles session.products. Caller must NOT await.
 export async function runRecommendations(id: string): Promise<void> {
   try {
@@ -153,7 +165,7 @@ export async function runRecommendations(id: string): Promise<void> {
     let items: Product[] | undefined;
     let error: string | undefined;
     try {
-      items = parseProducts(await runPi(buildRecoPrompt(analysis, translation)));
+      items = await searchProducts(buildRecoPrompt(analysis, translation));
     } catch (e) {
       error = e instanceof Error ? e.message : String(e);
       console.error(`[reco] ${id}: ${error}`);
@@ -195,7 +207,7 @@ export async function runMuseProducts(id: string): Promise<void> {
   try {
     const s = await loadSession(id);
     if (!s?.analysis) throw new Error("missing analysis");
-    const items = parseProducts(await runPi(buildMusePrompt(s.analysis)));
+    const items = await searchProducts(buildMusePrompt(s.analysis));
     await updateSession(id, (st) => {
       st.museProducts = { status: "done", items };
     });
