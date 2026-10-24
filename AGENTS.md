@@ -6,13 +6,13 @@
 
 - 행사 규칙·마감·제출물: `docs/hackathon.md`. 수정 공지는 이 문서부터 갱신한다.
 - 공통 절차·시간 관리·복구: `docs/runbook.md`.
-- 팀·계정·선택 주제·선언 상태: `docs/context.md` — `/interview`가 생성한다.
+- 팀·계정·선택 주제·선언 상태: `docs/context.md` — 바뀌면 직접 갱신한다.
 - 제품 요구와 주제별 기술 결정: `docs/spec.md` — 주제 선택 후 채운다.
 - 현재 작업·소유권·실행 증거: `docs/plan.md` — `/spec`부터 생성한다.
 
 ## 실행 순서
 
-`/interview` → `/ideate` → `/declare` → `/spec` → `/scaffold` → `/dispatch`(반복) → `/ship` → `/submit-check`
+`/ideate`(아이디어 고도화) → `/spec` → `/scaffold` → `/dispatch`(반복) → `/ship` → `/submit-check`. 주제 선언이 남아 있으면 `/spec` 전에 `/declare`.
 
 `/spec`은 먼저 고객의 행동과 결과를 정의하고, 그 결과에 필요한 기술만 선택한다. `/pitch` 초안은 이때 병행하며 최종 화면·증거는 배포 후 반영한다. 주제 선언은 상세 기술 설계 때문에 늦추지 않는다.
 
