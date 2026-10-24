@@ -1,0 +1,556 @@
+[
+  {
+    "id": "anua-heartleaf-77-soothing-toner-original",
+    "brand": "Anua",
+    "name": "Heartleaf 77% Soothing Toner",
+    "area": "skincare",
+    "shadeName": "Original",
+    "hex": "#E8EFE3",
+    "finish": "dewy",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Anua+Heartleaf+77%25+Soothing+Toner",
+    "sample": true
+  },
+  {
+    "id": "torriden-dive-in-low-molecular-hyaluronic-acid-serum-original",
+    "brand": "Torriden",
+    "name": "DIVE-IN Low Molecular Hyaluronic Acid Serum",
+    "area": "skincare",
+    "shadeName": "Original",
+    "hex": "#EDF3F6",
+    "finish": "dewy",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Torriden+DIVE-IN+Low+Molecular+Hyaluronic+Acid+Serum",
+    "sample": true
+  },
+  {
+    "id": "cosrx-advanced-snail-92-all-in-one-cream-original",
+    "brand": "COSRX",
+    "name": "Advanced Snail 92 All in One Cream",
+    "area": "skincare",
+    "shadeName": "Original",
+    "hex": "#EFEBDD",
+    "finish": "dewy",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=COSRX+Advanced+Snail+92+All+in+One+Cream",
+    "sample": true
+  },
+  {
+    "id": "round-lab-birch-juice-moisturizing-sunscreen-original",
+    "brand": "Round Lab",
+    "name": "Birch Juice Moisturizing Sunscreen",
+    "area": "skincare",
+    "shadeName": "Original",
+    "hex": "#F4F1EA",
+    "finish": "satin",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Round+Lab+Birch+Juice+Moisturizing+Sunscreen",
+    "sample": true
+  },
+  {
+    "id": "beauty-of-joseon-relief-sun-rice-probiotics-original",
+    "brand": "Beauty of Joseon",
+    "name": "Relief Sun: Rice + Probiotics",
+    "area": "skincare",
+    "shadeName": "Original",
+    "hex": "#F6EFD8",
+    "finish": "matte",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Beauty+of+Joseon+Relief+Sun%3A+Rice+%2B+Probiotics",
+    "sample": true
+  },
+  {
+    "id": "beauty-of-joseon-glow-serum-propolis-niacinamide-original",
+    "brand": "Beauty of Joseon",
+    "name": "Glow Serum: Propolis + Niacinamide",
+    "area": "skincare",
+    "shadeName": "Original",
+    "hex": "#E9C77B",
+    "finish": "dewy",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Beauty+of+Joseon+Glow+Serum%3A+Propolis+%2B+Niacinamide",
+    "sample": true
+  },
+  {
+    "id": "tirtir-mask-fit-red-cushion-17c-porcelain",
+    "brand": "TIRTIR",
+    "name": "Mask Fit Red Cushion",
+    "area": "base",
+    "shadeName": "17C Porcelain",
+    "hex": "#F1D5C2",
+    "finish": "satin",
+    "toneFit": [
+      "fair"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=TIRTIR+Mask+Fit+Red+Cushion",
+    "sample": true
+  },
+  {
+    "id": "tirtir-mask-fit-red-cushion-21n-ivory",
+    "brand": "TIRTIR",
+    "name": "Mask Fit Red Cushion",
+    "area": "base",
+    "shadeName": "21N Ivory",
+    "hex": "#EBC8AC",
+    "finish": "satin",
+    "toneFit": [
+      "fair",
+      "light"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=TIRTIR+Mask+Fit+Red+Cushion",
+    "sample": true
+  },
+  {
+    "id": "tirtir-mask-fit-red-cushion-23n-sand",
+    "brand": "TIRTIR",
+    "name": "Mask Fit Red Cushion",
+    "area": "base",
+    "shadeName": "23N Sand",
+    "hex": "#DDB08E",
+    "finish": "satin",
+    "toneFit": [
+      "light",
+      "medium"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=TIRTIR+Mask+Fit+Red+Cushion",
+    "sample": true
+  },
+  {
+    "id": "clio-kill-cover-founwear-cushion-lingerie",
+    "brand": "CLIO",
+    "name": "Kill Cover Founwear Cushion",
+    "area": "base",
+    "shadeName": "Lingerie",
+    "hex": "#EFCDB5",
+    "finish": "satin",
+    "toneFit": [
+      "fair",
+      "light"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=CLIO+Kill+Cover+Founwear+Cushion",
+    "sample": true
+  },
+  {
+    "id": "clio-kill-cover-founwear-cushion-linen",
+    "brand": "CLIO",
+    "name": "Kill Cover Founwear Cushion",
+    "area": "base",
+    "shadeName": "Linen",
+    "hex": "#E3B996",
+    "finish": "satin",
+    "toneFit": [
+      "light",
+      "medium"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=CLIO+Kill+Cover+Founwear+Cushion",
+    "sample": true
+  },
+  {
+    "id": "clio-kill-cover-founwear-cushion-ginger",
+    "brand": "CLIO",
+    "name": "Kill Cover Founwear Cushion",
+    "area": "base",
+    "shadeName": "Ginger",
+    "hex": "#C99872",
+    "finish": "satin",
+    "toneFit": [
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=CLIO+Kill+Cover+Founwear+Cushion",
+    "sample": true
+  },
+  {
+    "id": "etude-play-color-eyes-cafe-time",
+    "brand": "Etude",
+    "name": "Play Color Eyes",
+    "area": "eye",
+    "shadeName": "Cafe Time",
+    "hex": "#8A5E48",
+    "finish": "matte",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Etude+Play+Color+Eyes",
+    "sample": true
+  },
+  {
+    "id": "etude-play-color-eyes-wine-party",
+    "brand": "Etude",
+    "name": "Play Color Eyes",
+    "area": "eye",
+    "shadeName": "Wine Party",
+    "hex": "#6B3A4F",
+    "finish": "shimmer",
+    "toneFit": [
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Etude+Play+Color+Eyes",
+    "sample": true
+  },
+  {
+    "id": "3ce-multi-eye-color-palette-overtake",
+    "brand": "3CE",
+    "name": "Multi Eye Color Palette",
+    "area": "eye",
+    "shadeName": "Overtake",
+    "hex": "#A5705A",
+    "finish": "shimmer",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=3CE+Multi+Eye+Color+Palette",
+    "sample": true
+  },
+  {
+    "id": "clio-pro-eye-palette-brown-choux",
+    "brand": "CLIO",
+    "name": "Pro Eye Palette",
+    "area": "eye",
+    "shadeName": "Brown Choux",
+    "hex": "#9B6B52",
+    "finish": "matte",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=CLIO+Pro+Eye+Palette",
+    "sample": true
+  },
+  {
+    "id": "romandnd-better-than-palette-dry-mango-garden",
+    "brand": "rom&nd",
+    "name": "Better Than Palette",
+    "area": "eye",
+    "shadeName": "Dry Mango Garden",
+    "hex": "#D98A6C",
+    "finish": "shimmer",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=rom%26nd+Better+Than+Palette",
+    "sample": true
+  },
+  {
+    "id": "romandnd-han-all-sharp-liner-black",
+    "brand": "rom&nd",
+    "name": "Han All Sharp Liner",
+    "area": "eye",
+    "shadeName": "Black",
+    "hex": "#1F1A1A",
+    "finish": "matte",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=rom%26nd+Han+All+Sharp+Liner",
+    "sample": true
+  },
+  {
+    "id": "wakemake-mix-blurring-eye-palette-rose-brown",
+    "brand": "Wakemake",
+    "name": "Mix Blurring Eye Palette",
+    "area": "eye",
+    "shadeName": "Rose Brown",
+    "hex": "#B07C78",
+    "finish": "shimmer",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Wakemake+Mix+Blurring+Eye+Palette",
+    "sample": true
+  },
+  {
+    "id": "romandnd-better-than-cheek-nutty-nude",
+    "brand": "rom&nd",
+    "name": "Better Than Cheek",
+    "area": "blush",
+    "shadeName": "Nutty Nude",
+    "hex": "#D79A8A",
+    "finish": "matte",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=rom%26nd+Better+Than+Cheek",
+    "sample": true
+  },
+  {
+    "id": "3ce-face-blush-rose-beige",
+    "brand": "3CE",
+    "name": "Face Blush",
+    "area": "blush",
+    "shadeName": "Rose Beige",
+    "hex": "#D4948A",
+    "finish": "matte",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=3CE+Face+Blush",
+    "sample": true
+  },
+  {
+    "id": "peripera-pure-blushed-sunshine-cheek-coral-aroma",
+    "brand": "Peripera",
+    "name": "Pure Blushed Sunshine Cheek",
+    "area": "blush",
+    "shadeName": "Coral Aroma",
+    "hex": "#E9806A",
+    "finish": "satin",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Peripera+Pure+Blushed+Sunshine+Cheek",
+    "sample": true
+  },
+  {
+    "id": "dasique-blending-mood-cheek-cranberry-cocoa",
+    "brand": "Dasique",
+    "name": "Blending Mood Cheek",
+    "area": "blush",
+    "shadeName": "Cranberry Cocoa",
+    "hex": "#9E4A52",
+    "finish": "matte",
+    "toneFit": [
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Dasique+Blending+Mood+Cheek",
+    "sample": true
+  },
+  {
+    "id": "fwee-lip-and-cheek-pudding-pot-peach",
+    "brand": "Fwee",
+    "name": "Lip & Cheek Pudding Pot",
+    "area": "blush",
+    "shadeName": "Peach",
+    "hex": "#E8967E",
+    "finish": "velvet",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Fwee+Lip+%26+Cheek+Pudding+Pot",
+    "sample": true
+  },
+  {
+    "id": "hince-true-dimension-radiance-blush-terracotta-brick",
+    "brand": "Hince",
+    "name": "True Dimension Radiance Blush",
+    "area": "blush",
+    "shadeName": "Terracotta Brick",
+    "hex": "#B5563F",
+    "finish": "satin",
+    "toneFit": [
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Hince+True+Dimension+Radiance+Blush",
+    "sample": true
+  },
+  {
+    "id": "romandnd-juicy-lasting-tint-bare-jujube",
+    "brand": "rom&nd",
+    "name": "Juicy Lasting Tint",
+    "area": "lip",
+    "shadeName": "Bare Jujube",
+    "hex": "#B0524A",
+    "finish": "glossy",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=rom%26nd+Juicy+Lasting+Tint",
+    "sample": true
+  },
+  {
+    "id": "romandnd-zero-velvet-tint-dusty-rose",
+    "brand": "rom&nd",
+    "name": "Zero Velvet Tint",
+    "area": "lip",
+    "shadeName": "Dusty Rose",
+    "hex": "#B86A6E",
+    "finish": "velvet",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=rom%26nd+Zero+Velvet+Tint",
+    "sample": true
+  },
+  {
+    "id": "peripera-ink-airy-velvet-rosy-nude",
+    "brand": "Peripera",
+    "name": "Ink Airy Velvet",
+    "area": "lip",
+    "shadeName": "Rosy Nude",
+    "hex": "#C77B7B",
+    "finish": "velvet",
+    "toneFit": [
+      "fair",
+      "light",
+      "medium",
+      "tan"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Peripera+Ink+Airy+Velvet",
+    "sample": true
+  },
+  {
+    "id": "hince-dewy-glow-tint-coral-brick",
+    "brand": "Hince",
+    "name": "Dewy Glow Tint",
+    "area": "lip",
+    "shadeName": "Coral Brick",
+    "hex": "#C2543F",
+    "finish": "glossy",
+    "toneFit": [
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Hince+Dewy+Glow+Tint",
+    "sample": true
+  },
+  {
+    "id": "amuse-dew-tint-red-berry",
+    "brand": "Amuse",
+    "name": "Dew Tint",
+    "area": "lip",
+    "shadeName": "Red Berry",
+    "hex": "#A12B43",
+    "finish": "glossy",
+    "toneFit": [
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Amuse+Dew+Tint",
+    "sample": true
+  },
+  {
+    "id": "etude-fixing-tint-plum-wine",
+    "brand": "Etude",
+    "name": "Fixing Tint",
+    "area": "lip",
+    "shadeName": "Plum Wine",
+    "hex": "#6E2C45",
+    "finish": "matte",
+    "toneFit": [
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Etude+Fixing+Tint",
+    "sample": true
+  },
+  {
+    "id": "espoir-couture-lip-tint-brick-red",
+    "brand": "Espoir",
+    "name": "Couture Lip Tint",
+    "area": "lip",
+    "shadeName": "Brick Red",
+    "hex": "#A8382E",
+    "finish": "satin",
+    "toneFit": [
+      "light",
+      "medium",
+      "tan",
+      "deep"
+    ],
+    "url": "https://global.oliveyoung.com/display/search?query=Espoir+Couture+Lip+Tint",
+    "sample": true
+  },
+  {
+    "id": "tirtir-mask-fit-red-cushion-35n",
+    "brand": "TIRTIR",
+    "name": "Mask Fit Red Cushion",
+    "area": "base",
+    "shadeName": "35N Walnut",
+    "hex": "#8A5A3C",
+    "finish": "satin",
+    "toneFit": [
+      "tan",
+      "deep"
+    ],
+    "sample": true,
+    "url": "https://global.oliveyoung.com/display/search?query=TIRTIR+Mask+Fit+Red+Cushion"
+  },
+  {
+    "id": "tirtir-mask-fit-red-cushion-55n",
+    "brand": "TIRTIR",
+    "name": "Mask Fit Red Cushion",
+    "area": "base",
+    "shadeName": "55N Espresso",
+    "hex": "#4E3022",
+    "finish": "satin",
+    "toneFit": [
+      "deep"
+    ],
+    "sample": true,
+    "url": "https://global.oliveyoung.com/display/search?query=TIRTIR+Mask+Fit+Red+Cushion"
+  }
+]
