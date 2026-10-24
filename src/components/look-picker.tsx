@@ -23,9 +23,9 @@ export function LookPicker() {
 
   useEffect(() => {
     if (!busy) return;
-    const t = setInterval(() => setCopyIdx((i) => Math.min(i + 1, COPY.length - 1)), 4000);
+    const t = setInterval(() => setCopyIdx((i) => Math.min(i + 1, COPY.length - 1)), sample ? 900 : 3000);
     return () => clearInterval(t);
-  }, [busy]);
+  }, [busy, sample]);
   useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
 
   function pickFile(f: File | undefined) {
@@ -49,7 +49,13 @@ export function LookPicker() {
     setCopyIdx(0);
     try {
       let res: { id: string };
-      if (sample) res = await postJson<{ id: string }>("/api/session/sample", { sampleId: sample });
+      if (sample) {
+        // Sample analyses are precomputed and return instantly; hold the analysis scene so the demo shows the step.
+        [res] = await Promise.all([
+          postJson<{ id: string }>("/api/session/sample", { sampleId: sample }),
+          new Promise((r) => setTimeout(r, 3600)),
+        ]);
+      }
       else if (file) {
         const small = await resizeImage(file);
         const fd = new FormData();
@@ -101,7 +107,9 @@ export function LookPicker() {
                 <i className="block h-full w-1/2 animate-[slide_1.4s_ease-in-out_infinite] rounded-[3px] bg-ink" />
               </div>
             </div>
-            <p className="mt-1 text-[13px] text-ink-soft">This takes about 15 seconds.</p>
+            <p className="mt-1 text-[13px] text-ink-soft">
+              {sample ? "Sample look: its breakdown was prepared ahead of time." : "This takes about 10 seconds."}
+            </p>
           </div>
         ) : (
           <>
