@@ -9,7 +9,7 @@ import { ShareSheet } from "@/components/share-sheet";
 import { ProductCards, ProductSkeleton, ProductsBadge, SwatchBand, areaLabel } from "@/components/tone-parts";
 import { getSession, imgUrl, postForm, postJson } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
-import { SELFIES, TEST_SELFIES } from "@/lib/samples";
+import { TEST_SELFIES } from "@/lib/samples";
 import { SampleDock, readSamplePayload } from "@/components/sample-dock";
 import { ProductCallout } from "@/components/callout/product-callout";
 import { LookDock } from "@/components/callout/look-sheet";
@@ -102,6 +102,34 @@ export function SessionFlow({ id }: { id: string }) {
   );
 }
 
+function SearchBanner({ pending, state, count }: { pending: boolean; state?: string; count: number }) {
+  if (pending) {
+    return (
+      <div role="status" aria-live="polite" className="mb-3 overflow-hidden rounded-2xl border border-cherry/30 bg-white">
+        <div className="flex items-center gap-3 px-3.5 py-3">
+          <span aria-hidden className="block size-6 flex-none animate-spin rounded-full border-[3px] border-cherry border-t-transparent" />
+          <div className="min-w-0">
+            <p className="text-[14.5px] font-bold leading-tight">Finding matching K-beauty products</p>
+            <p className="mt-0.5 text-[12.5px] leading-snug text-ink-soft">Searching the stores for each shade. Usually 1–2 minutes, so keep exploring the look.</p>
+          </div>
+        </div>
+        <div className="h-1 bg-cherry/10" aria-hidden>
+          <i className="block h-full w-1/3 animate-[slide_1.4s_ease-in-out_infinite] bg-cherry" />
+        </div>
+      </div>
+    );
+  }
+  if (state === "done" && count > 0) {
+    return (
+      <p role="status" className="mb-3 flex items-center gap-2 rounded-2xl bg-live/10 px-3.5 py-2.5 text-[13.5px] font-semibold">
+        <span aria-hidden className="grid size-5 flex-none place-items-center rounded-full bg-live text-[12px] text-white">✓</span>
+        {count} products matched. Tap a pin to see them.
+      </p>
+    );
+  }
+  return null;
+}
+
 function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
   const a = s.analysis!;
   const lookSrc = imgUrl(s.id, "look.jpg");
@@ -149,6 +177,7 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
             ))}
           </p>
         )}
+        <SearchBanner pending={productsPending} state={mp?.status} count={mp?.items?.length ?? 0} />
         <div ref={stageRef} className="scroll-mt-1">
           <ProductCallout
             src={lookSrc}
@@ -158,6 +187,7 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
             onPick={(p) => choose(p.area, true)}
             resetSignal={resetSignal}
             focusRequest={focusReq}
+            searching={productsPending}
           />
         </div>
         <ol className="mt-4">
@@ -173,7 +203,10 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
                       {productFor(st.area)!.shadeName ? <span className="font-medium text-ink-soft"> · {productFor(st.area)!.shadeName}</span> : null}
                     </span>
                   ) : productsPending ? (
-                    <span className="mt-1 block h-3 w-40 animate-pulse rounded bg-line" aria-hidden />
+                    <span className="mt-1 flex items-center gap-1.5 text-[13px] font-semibold text-cherry">
+                      <span aria-hidden className="block size-3 animate-spin rounded-full border-2 border-cherry border-t-transparent" />
+                      Searching for a match…
+                    </span>
                   ) : null}
                 </span>
                 <span className="inline-flex items-center gap-1">
@@ -218,7 +251,7 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
     setPreview(URL.createObjectURL(f));
   }
   async function pickSelfie(id: string) {
-    const it = [...SELFIES, ...TEST_SELFIES].find((x) => x.id === id);
+    const it = TEST_SELFIES.find((x) => x.id === id);
     if (!it) return;
     try {
       const blob = await (await fetch(it.src)).blob();
@@ -260,8 +293,7 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
       <ScreenBody>
         {showForm ? (
           <>
-            <SampleDock side="left" kind="selfie" items={SELFIES} title="Sample selfies" hint="Synthetic faces. Drag one onto the photo box, or click it. The look is applied for real." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
-            <SampleDock side="right" kind="selfie" items={TEST_SELFIES} title="Test faces" hint="More faces for end-to-end checks." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
+            <SampleDock side="right" kind="selfie" items={TEST_SELFIES} title="Try a face" hint="Synthetic faces. Drag one onto the photo box, or click it. The look is applied for real." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
             <h1 className="mt-1 font-display text-[28px] leading-[1.05]">Now, your face.</h1>
             <p className="mt-1.5 text-[15px] text-ink-soft">Add a clear, front-facing selfie in good light.</p>
             <div className="mt-3.5 rounded-[28px] bg-lilac p-4">

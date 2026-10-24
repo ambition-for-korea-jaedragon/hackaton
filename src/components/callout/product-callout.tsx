@@ -22,6 +22,7 @@ export function ProductCallout({
   onPick,
   resetSignal,
   focusRequest,
+  searching = false,
 }: {
   src: string;
   points?: AreaPoints;
@@ -30,6 +31,7 @@ export function ProductCallout({
   onPick: (p: Product) => void;
   resetSignal: number;
   focusRequest?: { area: Area; n: number }; // externally requested focus on an area's pin (e.g. from a detail panel's tabs)
+  searching?: boolean; // product search in progress: cards show a spinner instead of the color dot
 }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
@@ -217,7 +219,11 @@ export function ProductCallout({
                   >
                     <span className="flex items-center gap-1">
                       <span className={`rounded-full px-1.5 text-[9.5px] font-bold uppercase leading-[15px] text-white ${on ? "bg-cherry" : "bg-ink"}`}>{AREA_LABEL[p.area]}</span>
-                      <Dot hex={p.hex} size={10} />
+                      {searching ? (
+                        <span aria-hidden className="block size-2.5 flex-none animate-spin rounded-full border-[1.5px] border-cherry border-t-transparent" />
+                      ) : (
+                        <Dot hex={p.hex} size={10} />
+                      )}
                     </span>
                     <span className="mt-0.5 block truncate text-[11px] font-semibold leading-tight">{productTitle(p)}</span>
                   </button>

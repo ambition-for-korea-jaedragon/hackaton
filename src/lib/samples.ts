@@ -122,62 +122,62 @@ export const SELFIES: SampleItem[] = [
 // E2E test looks: used as real uploads, so they are analyzed live (no prepared data).
 export const TEST_LOOKS: SampleItem[] = [
   {
-    "id": "bold-fuchsia",
+    "id": "test-bold-fuchsia",
     "name": "Bold Fuchsia",
     "src": "/e2e/look-bold-fuchsia.jpg"
   },
   {
-    "id": "brick-sunset",
+    "id": "test-brick-sunset",
     "name": "Brick Sunset",
     "src": "/e2e/look-brick-sunset.jpg"
   },
   {
-    "id": "cherry-blossom",
+    "id": "test-cherry-blossom",
     "name": "Cherry Blossom",
     "src": "/e2e/look-cherry-blossom.jpg"
   },
   {
-    "id": "coral-summer",
+    "id": "test-coral-summer",
     "name": "Coral Summer",
     "src": "/e2e/look-coral-summer.jpg"
   },
   {
-    "id": "golden-hour",
+    "id": "test-golden-hour",
     "name": "Golden Hour",
     "src": "/e2e/look-golden-hour.jpg"
   },
   {
-    "id": "icy-lilac",
+    "id": "test-icy-lilac",
     "name": "Icy Lilac",
     "src": "/e2e/look-icy-lilac.jpg"
   },
   {
-    "id": "mauve-cool",
+    "id": "test-mauve-cool",
     "name": "Mauve Cool",
     "src": "/e2e/look-mauve-cool.jpg"
   },
   {
-    "id": "mlbb-nude",
+    "id": "test-mlbb-nude",
     "name": "Mlbb Nude",
     "src": "/e2e/look-mlbb-nude.jpg"
   },
   {
-    "id": "peach-glass",
+    "id": "test-peach-glass",
     "name": "Peach Glass",
     "src": "/e2e/look-peach-glass.jpg"
   },
   {
-    "id": "red-velvet",
+    "id": "test-red-velvet",
     "name": "Red Velvet",
     "src": "/e2e/look-red-velvet.jpg"
   },
   {
-    "id": "smoky-plum",
+    "id": "test-smoky-plum",
     "name": "Smoky Plum",
     "src": "/e2e/look-smoky-plum.jpg"
   },
   {
-    "id": "strawberry-milk",
+    "id": "test-strawberry-milk",
     "name": "Strawberry Milk",
     "src": "/e2e/look-strawberry-milk.jpg"
   }
@@ -186,37 +186,37 @@ export const TEST_LOOKS: SampleItem[] = [
 // E2E test selfies: real application as well.
 export const TEST_SELFIES: SampleItem[] = [
   {
-    "id": "deep-cool",
+    "id": "test-deep-cool",
     "name": "Deep Cool",
     "src": "/e2e/selfie-deep-cool.jpg"
   },
   {
-    "id": "deep",
+    "id": "test-deep",
     "name": "Deep",
     "src": "/e2e/selfie-deep.jpg"
   },
   {
-    "id": "fair-cool",
+    "id": "test-fair-cool",
     "name": "Fair Cool",
     "src": "/e2e/selfie-fair-cool.jpg"
   },
   {
-    "id": "light-neutral",
+    "id": "test-light-neutral",
     "name": "Light Neutral",
     "src": "/e2e/selfie-light-neutral.jpg"
   },
   {
-    "id": "medium-deep-warm",
+    "id": "test-medium-deep-warm",
     "name": "Medium Deep Warm",
     "src": "/e2e/selfie-medium-deep-warm.jpg"
   },
   {
-    "id": "medium-olive",
+    "id": "test-medium-olive",
     "name": "Medium Olive",
     "src": "/e2e/selfie-medium-olive.jpg"
   },
   {
-    "id": "tan-warm",
+    "id": "test-tan-warm",
     "name": "Tan Warm",
     "src": "/e2e/selfie-tan-warm.jpg"
   }

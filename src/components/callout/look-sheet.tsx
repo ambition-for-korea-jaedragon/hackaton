@@ -75,8 +75,13 @@ export function LookDock({
           </div>
         ) : productsPending ? (
           <div className="mt-2.5 flex items-center gap-3 rounded-2xl border border-line bg-paper p-2.5" role="status">
-            <span className="size-11 flex-none animate-pulse rounded-xl bg-line" aria-hidden />
-            <span className="text-[13px] text-ink-soft">Finding the product…</span>
+            <span className="grid size-11 flex-none place-items-center rounded-xl bg-line/70" aria-hidden>
+              <span className="block size-5 animate-spin rounded-full border-2 border-cherry border-t-transparent" />
+            </span>
+            <span className="min-w-0">
+              <span className="block text-[14px] font-bold">Searching the stores…</span>
+              <span className="block text-[12.5px] text-ink-soft">Matching this shade to a real product.</span>
+            </span>
           </div>
         ) : null}
         {step.colors.length > 0 && (
