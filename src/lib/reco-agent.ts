@@ -61,7 +61,7 @@ function runPi(prompt: string): Promise<string> {
     prompt,
   ];
   return new Promise((resolve, reject) => {
-    const child = spawn(bin, args, { cwd: os.tmpdir(), env: cleanEnv() });
+    const child = spawn(/*turbopackIgnore: true*/ bin, args, { cwd: os.tmpdir(), env: cleanEnv() });
     child.stdin.end();
     let out = "";
     let err = "";

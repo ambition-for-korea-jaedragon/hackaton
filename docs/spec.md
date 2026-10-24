@@ -68,19 +68,22 @@
 - AI 사용 조건: 입력 이미지 최대 10MB, 서버에서 긴 변 1536px로 축소(라이브러리 결정은 scaffold). Claude 타임아웃 60s·1회 재시도, 이미지 120s·재시도 없음. 응답 JSON 스키마 검증 실패 시 1회 재요청 후 에러 표시. 실제 호출과 sample 결과를 UI·로그에서 구분.
 - 비밀: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `DATA_DIR`. 로컬 `.env.local`(gitignore), 배포 Railway Variables. 키 값은 문서·로그·클라이언트에 기록하지 않는다. OpenAI 키는 사용자가 개발 시 제공 예정.
 
-## 실행 계약 — scaffold 후 실제 명령으로 갱신
+## 실행 계약 (scaffold 실측 2026-10-24 12:1x)
 
-- 소스 루트: 레포 루트(`/Users/choam2426/workspace/hackaton`), Next.js 앱
-- 런타임: Node v24.19.0(mise, 로컬 실측), pnpm(mise). Next.js 버전은 생성 후 기록
+- 소스 루트: 레포 루트 `/Users/choam2426/workspace/hackaton`. Next.js 16.4.2 / React 19.3.0 / Tailwind 4.3.3 / TypeScript 5.9.3. Next 16 문서는 `node_modules/next/dist/docs/`(AGENTS.md 규칙)
+- 런타임: Node v24.19.0, pnpm 11.22.0 (로컬 mise). 컨테이너 node:24-bookworm-slim + pi 1.4.0 + pi-web-access
+- 디자인: Option A Photo Booth (`design/option-a.html`), 토큰은 `src/app/globals.css` `@theme`, 셸·버튼·배지는 `src/components/app-shell.tsx`
 - 빌드: `pnpm build` 필요
 
 | 목적 | 작업 폴더(cwd) | 명령·절차 | 기대 결과 |
 |---|---|---|---|
-| 초기 설정·의존성 | 레포 루트 | `pnpm create next-app@latest`(TS, App Router, Tailwind, src/) → `pnpm install` | 의존성 설치, `.env.local` 무시 |
-| 로컬 실행 | 레포 루트 | `pnpm dev` | http://localhost:3000 |
-| 검사·빌드 | 레포 루트 | `pnpm lint && pnpm build` | 오류 0 |
-| 배포 | 레포 루트 | `railway link` → Volume `/data` 연결 → Variables 등록 → `railway up` | 공개 `*.up.railway.app` |
-| 시나리오 | 외부 브라우저 | 샘플 룩 → 셀카 → ①②③ | 비교 이미지·제품 카드·배지 |
+| 의존성 | 레포 루트 | `pnpm install` | lockfile 그대로 설치 |
+| 비밀 | 레포 루트 | `.env.local`(gitignore)에 `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` 입력. `DATA_DIR` 비우면 `./data` | 키 값은 커밋·로그 금지 |
+| 로컬 실행 | 레포 루트 | `pnpm dev` (또는 `pnpm build && PORT=3100 pnpm start`) | http://localhost:3000 |
+| 검사·빌드 | 레포 루트 | `pnpm lint && npx tsc --noEmit && pnpm build` | 오류·경고 0 |
+| 컨테이너 | 레포 루트 | `docker build -t muselook:local .` → `docker run -p 3200:3000 -e PORT=3000 -v muselook-data:/data muselook:local` | `/` 200, `pi --version` 1.4.0, `/data` 쓰기 가능 |
+| 배포 | 레포 루트 | `railway login`(사용자) → `railway init`/`link` → 서비스에 Volume mount `/data` → Variables: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `DATA_DIR=/data` → `railway up` (Dockerfile 자동 감지) → 도메인 생성 | 공개 `*.up.railway.app` |
+| 시나리오 | 외부 브라우저 | 샘플 룩 → 셀카 → ①②③ → 공유 → 피드 | 비교 이미지·제품 카드·배지·포스트 |
 
 ## 제출 후보
 

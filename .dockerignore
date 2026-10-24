@@ -4,3 +4,6 @@ data
 .env*
 .git
 docs
+design
+.agents
+.claude

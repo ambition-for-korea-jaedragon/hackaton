@@ -1,5 +1,5 @@
 FROM node:24-bookworm-slim
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates git \
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates git libatomic1 \
     && rm -rf /var/lib/apt/lists/*
 RUN npm i -g pnpm @earendil-works/pi-coding-agent
 # web_search / fetch_content extension (writes to ~/.pi/agent settings)

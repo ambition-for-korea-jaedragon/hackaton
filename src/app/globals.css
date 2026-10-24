@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* muselook design tokens — Option A "Photo Booth" (design/option-a.html) */
+@theme {
+  --color-mirror: #f6f4f9; /* app background, cool mirror light */
+  --color-ink: #2a1630; /* plum ink text */
+  --color-ink-soft: #6b5872;
+  --color-cherry: #e0245e; /* primary action only */
+  --color-lilac: #cfc4f0; /* booth backdrop */
+  --color-lilac-deep: #b3a4e6;
+  --color-paper: #ffffff;
+  --color-line: #e6e0ec;
+  --color-backdrop: #e9e5ef; /* desktop surround */
+
+  /* tone ramp: information, not decoration */
+  --color-tone-1: #f3d9c8;
+  --color-tone-2: #e2b08e;
+  --color-tone-3: #c68a62;
+  --color-tone-4: #8d5a3b;
+  --color-tone-5: #5a3825;
+
+  /* badges */
+  --color-live: #22a06b;
+  --color-sample: #e3a008;
+
+  --font-display: var(--font-bagel), system-ui, sans-serif;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+
+  --radius-cta: 18px;
+  --radius-booth: 26px;
+
+  --shadow-phone: 0 0 0 10px #1e1323, 0 30px 60px -20px rgb(42 22 48 / 0.45);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-backdrop);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
