@@ -2,11 +2,11 @@
 
 | 항목 | 값 |
 |---|---|
-| 현재 시각 | 11:50 KST |
+| 현재 시각 | 12:0x KST |
 | 남은 시간 | 목표 제출 13:30까지 1h40m (마감 17:00) |
-| 마지막 검증 후보 | 없음 (제품 코드 미시작) |
+| 마지막 검증 후보 | 6cd119d (lint·tsc·build 통과, AI 실호출 미검증) |
 | 가장 큰 위험 | 이미지 모델의 얼굴·톤 보존 / Railway 계정·볼륨 / OpenAI 키 미수령 |
-| 다음 작업 | 배포 계정 확정 → /scaffold |
+| 다음 작업 | 디자인 합의 → T4 UI / 키 수령 → T1 실험 / Railway 로그인 → 배포 |
 
 ## 작업
 
@@ -25,3 +25,5 @@
 
 | 시각 | 커밋 | 명령·시나리오 | 결과 |
 |---|---|---|---|
+| ~11:50 | 4b70a40 | scaffold: create-next-app 16.4.2, `pnpm lint`·`pnpm build` | 통과 |
+| ~12:05 | 6cd119d | T2·T3·T5 통합 후 `pnpm lint`, `npx tsc --noEmit`, `pnpm build` (repo root) | 통과, API 5개 dynamic. 키 없음 → AI 실호출 미검증 |
