@@ -14,11 +14,12 @@ export async function POST(req: Request) {
   const img = await readImage(form, "look");
   if (img instanceof Response) return img;
   try {
-    const analysis = await analyzeLook(img);
+    const { hashtags, ...analysis } = await analyzeLook(img);
     const s = await createSession("live");
     await writeFileTo(s.id, "look.jpg", img.data);
     await updateSession(s.id, (st) => {
       st.analysis = analysis;
+      st.hashtags = hashtags;
       st.mannequin = { status: "pending" };
       st.museProducts = { status: "pending" };
     });

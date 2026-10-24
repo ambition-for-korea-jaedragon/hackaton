@@ -12,7 +12,7 @@ const NO_STORE = { "Cache-Control": "no-store" };
 export async function POST(req: Request) {
   const body = Body.safeParse(await req.json().catch(() => null));
   if (!body.success) return Response.json({ error: "sampleId required" }, { status: 400, headers: NO_STORE });
-  const sample = (samples as { id: string; file: string; analysis: unknown; museProducts?: unknown[]; points?: AreaPoints }[]).find((x) => x.id === body.data.sampleId);
+  const sample = (samples as { id: string; file: string; analysis: unknown; museProducts?: unknown[]; points?: AreaPoints; hashtags?: string[] }[]).find((x) => x.id === body.data.sampleId);
   if (!sample) return Response.json({ error: "unknown sample" }, { status: 404, headers: NO_STORE });
   try {
     const analysis = LookAnalysis.parse(sample.analysis);
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
       st.analysis = analysis;
       st.sampleId = sample.id;
       if (sample.points) st.points = sample.points;
+      if (sample.hashtags?.length) st.hashtags = sample.hashtags;
       if (sample.museProducts?.length) st.museProducts = { status: "done", items: sample.museProducts as Product[] };
       st.mannequin = { status: mannequin ? "done" : "pending" };
     });

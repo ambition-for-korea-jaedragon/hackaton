@@ -21,6 +21,7 @@ export function ProductCallout({
   activeArea,
   onPick,
   resetSignal,
+  focusRequest,
 }: {
   src: string;
   points?: AreaPoints;
@@ -28,6 +29,7 @@ export function ProductCallout({
   activeArea: Area | null; // product whose sheet is open
   onPick: (p: Product) => void;
   resetSignal: number;
+  focusRequest?: { area: Area; n: number }; // externally requested focus on an area's pin (e.g. from a detail panel's tabs)
 }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
@@ -75,6 +77,17 @@ export function ProductCallout({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (resetSignal) setView(HOME);
   }, [resetSignal]);
+
+  const lastFocus = useRef(0);
+  useEffect(() => {
+    if (!focusRequest || focusRequest.n === lastFocus.current || !w) return;
+    const pt = points?.[focusRequest.area];
+    if (!pt) return;
+    lastFocus.current = focusRequest.n;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHover(null);
+    focusPoint(pt);
+  }, [focusRequest, points, w, focusPoint]);
 
   const viewRef = useRef(view);
   useEffect(() => {

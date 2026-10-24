@@ -85,6 +85,7 @@ export type SessionState = {
   id: string;
   createdAt: string;
   source: "live" | "sample"; // sample = precomputed demo result
+  hashtags?: string[]; // 3-6 tags (no '#') extracted from the look at analysis time; shown on the Breakdown screen
   points?: AreaPoints; // face anchor points on look.jpg for callout pins: samples carry precomputed points; live looks compute in the browser
   sampleId?: string; // set for sample sessions (and copied by 'try'); lets posts reuse precomputed face points
   analysis?: LookAnalysis;

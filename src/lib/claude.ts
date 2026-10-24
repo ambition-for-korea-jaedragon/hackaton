@@ -71,16 +71,21 @@ async function callStructured<T>(opts: {
 export const ANALYZE_SYSTEM = `You are a professional makeup artist analysing a makeup LOOK photo.
 Return the look as structured data: a one-line "mood", and exactly 5 steps in order: skincare, base, eye, blush, lip.
 For each step: "colors" (name + approximate hex of the visible product colors; empty array for skincare), "finish" (e.g. dewy, matte, glassy), "technique" (how it is applied), "tips" (points to watch), "productHints" (product TYPES/categories only, never assert exact brands or shades).
-Infer skincare prep from the skin finish visible. Write in concise, friendly English for a US Gen Z audience. Hex must be #RRGGBB.`;
+Infer skincare prep from the skin finish visible. Write in concise, friendly English for a US Gen Z audience. Hex must be #RRGGBB.
+Also return "hashtags": 5 short hashtags for this look WITHOUT the # sign (lowercase, no spaces): 1-2 Korean beauty trend keywords from this list only when they truly fit (가을, 굽굽, 어른여자, 얼음, 글로우, 걸크러쉬, 청순) plus 3-4 descriptive English tags (for example glassskin, strawberrymilk, dewylips).`;
 
-export async function analyzeLook(look: Img): Promise<LookAnalysis> {
-  return callStructured({
+const LookAnalysisOut = LookAnalysis.extend({ hashtags: z.array(z.string()) });
+
+export async function analyzeLook(look: Img): Promise<LookAnalysis & { hashtags: string[] }> {
+  const r = await callStructured({
     system: ANALYZE_SYSTEM,
     content: [imgBlock(look), { type: "text", text: "Analyse this makeup look." }],
-    schema: LookAnalysis,
+    schema: LookAnalysisOut,
     toolName: "return_look_analysis",
     model: FAST_MODEL,
   });
+  const hashtags = r.hashtags.map((h) => h.replace(/^#+/, "").replace(/\s+/g, "").toLowerCase()).filter(Boolean).slice(0, 6);
+  return { ...r, hashtags };
 }
 
 export const TRANSLATE_SYSTEM = `You are a makeup artist who adapts a makeup look to a different person's skin tone.

@@ -12,7 +12,7 @@ import { resizeImage } from "@/lib/client/resize";
 import { SELFIES } from "@/lib/samples";
 import { SampleDock, readSamplePayload } from "@/components/sample-dock";
 import { ProductCallout } from "@/components/callout/product-callout";
-import { LookStepSheet } from "@/components/callout/look-sheet";
+import { LookDock } from "@/components/callout/look-sheet";
 import { useFacePoints } from "@/lib/client/face-points";
 import type { LookStep, Product, SessionState } from "@/lib/types";
 
@@ -106,8 +106,11 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
   const a = s.analysis!;
   const lookSrc = imgUrl(s.id, "look.jpg");
   const points = useFacePoints(lookSrc, s.points);
-  const [sel, setSel] = useState<LookStep | null>(null);
+  const [selArea, setSelArea] = useState<LookStep["area"] | null>(null);
   const [resetSignal, setResetSignal] = useState(0);
+  const [focusReq, setFocusReq] = useState<{ area: LookStep["area"]; n: number }>({ area: "eye", n: 0 });
+  const stageRef = useRef<HTMLDivElement>(null);
+  const sel = a.steps.find((x) => x.area === selArea) ?? null;
   // Adapt analysis steps to the shared callout (pin + card per area); card text = the finish.
   const pseudo: Product[] = a.steps.map((st) => ({
     area: st.area,
@@ -119,26 +122,42 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
     why: "",
     sourceUrl: "",
   }));
-  const close = () => {
-    setSel(null);
+  function close() {
+    setSelArea(null);
     setResetSignal((n) => n + 1);
-  };
-  const pick = (area: LookStep["area"]) => setSel(a.steps.find((x) => x.area === area) ?? null);
+  }
+  // Pin tap: the callout zooms by itself. Tabs and list rows ask it to focus the pin.
+  function choose(area: LookStep["area"], viaCallout = false) {
+    if (!selArea) stageRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
+    setSelArea(area);
+    if (!viaCallout) setFocusReq((r) => ({ area, n: r.n + 1 }));
+  }
+  const tags = s.hashtags ?? [];
   return (
     <>
       <ScreenBody>
-        <div className="mt-1 flex items-start gap-2.5">
-          <div className="min-w-0 flex-1">
-            <Badge kind={s.source === "sample" ? "sample" : "live"} />
-            <h1 className="mt-1.5 font-display text-[22px] leading-[1.1]">{a.mood}</h1>
-          </div>
+        {tags.length > 0 && (
+          <p className="mb-2.5 mt-1 flex flex-wrap gap-x-2.5 gap-y-1 text-[15px] font-bold text-cherry" aria-label="Look hashtags">
+            {tags.map((t) => (
+              <span key={t}>#{t}</span>
+            ))}
+          </p>
+        )}
+        <div ref={stageRef} className="scroll-mt-1">
+          <ProductCallout
+            src={lookSrc}
+            points={points ?? undefined}
+            products={pseudo}
+            activeArea={selArea}
+            onPick={(p) => choose(p.area, true)}
+            resetSignal={resetSignal}
+            focusRequest={focusReq}
+          />
         </div>
-        <p className="mb-2.5 mt-1.5 text-[13px] text-ink-soft">Tap a pin to see how each part of the look is done.</p>
-        <ProductCallout src={lookSrc} points={points ?? undefined} products={pseudo} activeArea={sel?.area ?? null} onPick={(p) => pick(p.area)} resetSignal={resetSignal} />
         <ol className="mt-4">
           {a.steps.map((st, i) => (
             <li key={st.area} className="border-t border-line first:border-t-0">
-              <button type="button" onClick={() => pick(st.area)} className="grid w-full grid-cols-[30px_1fr_auto] items-center gap-3 py-3 text-left">
+              <button type="button" onClick={() => choose(st.area)} className="grid w-full grid-cols-[30px_1fr_auto] items-center gap-3 py-3 text-left">
                 <span className="grid size-[26px] place-items-center rounded-full bg-ink text-[13px] font-bold text-white">{i + 1}</span>
                 <span className="min-w-0">
                   <b className="text-base">{areaLabel(st.area)}</b> <em className="text-[13px] font-medium not-italic text-ink-soft">{st.finish}</em>
@@ -154,11 +173,13 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
           ))}
         </ol>
       </ScreenBody>
-      <ActionBar>
-        <PrimaryButton onClick={onNext}>See It On Me</PrimaryButton>
-        <SubLink href="/new">Try another look</SubLink>
-      </ActionBar>
-      {sel && <LookStepSheet step={sel} onClose={close} />}
+      {!sel && (
+        <ActionBar>
+          <PrimaryButton onClick={onNext}>See It On Me</PrimaryButton>
+          <SubLink href="/new">Try another look</SubLink>
+        </ActionBar>
+      )}
+      {sel && <LookDock steps={a.steps} step={sel} onSelect={(area) => choose(area)} onClose={close} />}
     </>
   );
 }
