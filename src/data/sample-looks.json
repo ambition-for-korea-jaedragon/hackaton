@@ -1,0 +1,423 @@
+[
+  {
+    "id": "peach-glass",
+    "name": "Peach glass",
+    "file": "look-peach-glass.jpg",
+    "analysis": {
+      "mood": "Dewy strawberry-milk pink glow, soft, flirty and fresh like a K-beauty main character moment",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "glassy, hydrated, plump",
+          "technique": "Layer a hydrating toner or essence, then a lightweight serum, and seal with a gel-cream. Finish with a thin facial oil or glow mist on the high points to get that lit-from-within sheen.",
+          "tips": [
+            "Press products in with your palms so skin looks bouncy, not greasy",
+            "Let each layer settle for about 30 seconds before the next",
+            "Add a little extra moisture on cheeks and nose bridge for max glow",
+            "Use SPF in the morning so the glow lasts under makeup"
+          ],
+          "productHints": [
+            "hydrating toner or essence",
+            "hyaluronic acid serum",
+            "gel moisturizer",
+            "glow facial mist or light facial oil",
+            "primer with a luminous finish"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Porcelain Ivory",
+              "hex": "#F3D9CF"
+            },
+            {
+              "name": "Pearl Highlight",
+              "hex": "#FBE8E0"
+            }
+          ],
+          "finish": "dewy, skin-like, luminous",
+          "technique": "Sheer, thin layer of a hydrating skin tint or light foundation, pressed in with a damp sponge or fingers. Only use concealer where needed, like under the eyes and around the nose. Tap a liquid or cream highlighter on the nose bridge, cheekbones and cupid's bow.",
+          "tips": [
+            "Keep it sheer so the skin texture and natural flush still peek through",
+            "Skip heavy powder, or only set the T-zone very lightly",
+            "Blend down to the neck and collarbone so the glow matches",
+            "Dab off excess oil with a tissue before adding highlighter"
+          ],
+          "productHints": [
+            "hydrating skin tint or serum foundation",
+            "creamy concealer",
+            "damp makeup sponge",
+            "liquid or cream highlighter",
+            "light setting mist"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Peach Pink Wash",
+              "hex": "#E9A39A"
+            },
+            {
+              "name": "Soft Rose Shimmer",
+              "hex": "#F2B8B0"
+            },
+            {
+              "name": "Soft Brown Liner",
+              "hex": "#4A3030"
+            }
+          ],
+          "finish": "sheer, shimmery, glossy",
+          "technique": "Sweep a peachy-pink wash across the lid and slightly under the eyes for a lightly flushed look. Dab a fine shimmer or glitter on the center of the lid and the lower lash line for sparkle. Define with a thin soft brown liner and a tiny wing, then add curled, separated lashes with mascara.",
+          "tips": [
+            "Blend the edges until there is no harsh line, it should look like a blush for the eyes",
+            "Keep the shimmer fine and pearly, not chunky",
+            "Curl lashes first and use a brown mascara for a softer look",
+            "Add tiny lower lashes for a doll-like effect"
+          ],
+          "productHints": [
+            "cream or powder eyeshadow in peach-pink",
+            "fine pearl or liquid shimmer shadow",
+            "brown gel or pencil eyeliner",
+            "lengthening mascara",
+            "eyelash curler"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Strawberry Pink",
+              "hex": "#EE7D86"
+            },
+            {
+              "name": "Rosy Peach",
+              "hex": "#F4A0A0"
+            }
+          ],
+          "finish": "dewy, flushed, soft-focus",
+          "technique": "Tap cream or liquid blush on the apples of the cheeks and blend upward toward the temples in a soft cloud. Let it diffuse slightly under the eyes and across the nose bridge for a sweet, sun-kissed flush.",
+          "tips": [
+            "Start with a small amount and build, since pink pigment gets intense fast",
+            "Blend with fingers or a sponge for a seamless melt into skin",
+            "Apply before powder products so it stays glowy",
+            "Echo the blush shade on the eyes and lips to keep the look cohesive"
+          ],
+          "productHints": [
+            "liquid blush",
+            "cream blush",
+            "fluffy blush brush or sponge",
+            "luminous setting spray"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Cherry Rose",
+              "hex": "#D94A5E"
+            },
+            {
+              "name": "Soft Pink Gloss",
+              "hex": "#F08A98"
+            }
+          ],
+          "finish": "glossy, juicy gradient",
+          "technique": "Dab a rosy-red tint in the center of the lips and blend outward with your finger for a soft gradient, blurry edges. Top with a clear or pink gloss in the center for a plump, wet-look pout.",
+          "tips": [
+            "Keep the outer edges diffused for that just-bitten effect",
+            "Exfoliate and balm the lips first so the tint goes on smooth",
+            "Layer the tint for more intensity, one thin coat at a time",
+            "Avoid heavy lip liner to keep it soft"
+          ],
+          "productHints": [
+            "water or gel lip tint",
+            "lip balm or sleeping mask for prep",
+            "glossy lip oil or plumping gloss",
+            "cotton swab for cleanup"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "mauve-cool",
+    "name": "Mauve cool",
+    "file": "look-mauve-cool.jpg",
+    "analysis": {
+      "mood": "Dreamy lavender-pink doll vibes with a moody mauve lip, soft, glowy, and a little bit unbothered.",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, plump, glassy",
+          "technique": "Layer a hydrating toner or essence, then a lightweight serum and a moisturizer, pressing each into the skin. Finish with a thin glow-boosting primer or facial oil on the high points for that lit-from-within sheen.",
+          "tips": [
+            "Press products in with your palms instead of rubbing so skin looks bouncy, not greasy",
+            "Give each layer about 30 seconds to sink in so base doesn't pill",
+            "Use a light touch of oil-free hydrator on the T-zone to keep shine looking fresh, not slick"
+          ],
+          "productHints": [
+            "hydrating toner or essence",
+            "hyaluronic acid serum",
+            "gel-cream moisturizer",
+            "glow primer or facial mist"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Porcelain Ivory",
+              "hex": "#F1DDD6"
+            },
+            {
+              "name": "Soft Pearl Highlight",
+              "hex": "#F8E9E4"
+            }
+          ],
+          "finish": "satin-dewy, skin-like with a glassy nose and cheekbone glow",
+          "technique": "Apply a thin layer of light-coverage foundation or skin tint with a damp sponge, focusing on the center of the face and blending outward. Spot-conceal under the eyes and around the nose, then tap a liquid or cream highlighter on the nose bridge, nose tip, and upper cheekbones.",
+          "tips": [
+            "Keep coverage sheer so natural skin texture shows through",
+            "Set only the edges of the T-zone with a tiny bit of powder to keep the glow alive",
+            "Match the neck so the porcelain tone looks seamless"
+          ],
+          "productHints": [
+            "skin tint or light-coverage foundation",
+            "creamy concealer",
+            "liquid or cream highlighter",
+            "damp makeup sponge"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Lilac Pink Shimmer",
+              "hex": "#D9A9C9"
+            },
+            {
+              "name": "Soft Orchid Wash",
+              "hex": "#C9A0D0"
+            },
+            {
+              "name": "Black Liner",
+              "hex": "#1E1A1C"
+            },
+            {
+              "name": "Mauve Lower Lash Shadow",
+              "hex": "#9B6A7E"
+            }
+          ],
+          "finish": "shimmery satin with a sharp graphic liner",
+          "technique": "Sweep a lilac-pink shimmer shadow across the lid and slightly past the crease with a fluffy brush, then pat a little extra shimmer on the center of the lid with a finger. Draw a thin winged liner with a subtle upward flick, smudge a hint of mauve along the lower lash line, and add defined mascara on the top and bottom lashes.",
+          "tips": [
+            "Keep the shadow wash sheer and blended so it reads soft, not chalky",
+            "Make the wing thin and angled toward the tail of the brow for a lifted look",
+            "Use a small brush on the lower lashes for a delicate, separated finish"
+          ],
+          "productHints": [
+            "pink-lilac shimmer eyeshadow or cream shadow",
+            "fine-tip liquid or gel eyeliner",
+            "lengthening mascara",
+            "small smudge brush"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Cool Rose Pink",
+              "hex": "#D98598"
+            },
+            {
+              "name": "Soft Mauve Pink",
+              "hex": "#C9879B"
+            }
+          ],
+          "finish": "soft matte-satin, diffused flush",
+          "technique": "Tap a cream or powder blush on the apples of the cheeks and blend upward and outward toward the temples, keeping the edges hazy. Lightly dust a bit across the bridge of the nose for a sun-kissed-but-cool flush.",
+          "tips": [
+            "Build in thin layers so the color melts into the skin",
+            "Keep the tone cool pink so it harmonizes with the lilac eyes",
+            "Blend the edges with a clean sponge for a no-line finish"
+          ],
+          "productHints": [
+            "cream blush",
+            "powder blush",
+            "fluffy blush brush",
+            "makeup sponge"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Dusty Mauve Plum",
+              "hex": "#7A4A58"
+            },
+            {
+              "name": "Soft Berry Edge",
+              "hex": "#8A5362"
+            }
+          ],
+          "finish": "velvet matte with a soft blurred edge",
+          "technique": "Dab a velvety mauve-plum lip color onto the center of the lips and press outward with a finger or small brush for a diffused, blurred edge. Lightly line the outer edge only if you want a more defined shape, then blot to lock in the matte.",
+          "tips": [
+            "Prep with a thin layer of lip balm and blot before applying so the matte doesn't look dry",
+            "Keep the edges soft to avoid a heavy look next to the delicate eyes",
+            "Clean up the outer edge with a little concealer for a crisp finish if needed"
+          ],
+          "productHints": [
+            "matte lip tint or velvet lip cream",
+            "lip balm for prep",
+            "lip liner in a neutral mauve",
+            "small lip brush"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "brick-sunset",
+    "name": "Brick sunset",
+    "file": "look-brick-sunset.jpg",
+    "analysis": {
+      "mood": "Warm autumn glow: monochrome terracotta-peach vibes with juicy glossy lips, like golden hour in a makeup look.",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, plump, glass-like",
+          "technique": "Layer a hydrating toner or essence, then a lightweight serum, and seal with a gel-cream moisturizer. Press products in with your palms so skin looks bouncy and smooth. Finish with a thin layer of facial oil or glow mist on high points if skin feels thirsty.",
+          "tips": [
+            "Give each layer a minute to sink in so base doesn't pill",
+            "Focus on hydration over oil control for that lit-from-within look",
+            "Dab a lip mask on lips so gloss glides on smooth"
+          ],
+          "productHints": [
+            "hydrating toner or essence",
+            "hyaluronic acid serum",
+            "gel-cream moisturizer",
+            "lip sleeping mask",
+            "primer for glow"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Warm Porcelain",
+              "hex": "#EBC3A5"
+            }
+          ],
+          "finish": "natural satin-dewy with sheer coverage",
+          "technique": "Apply a thin layer of skin-tint or light foundation with a damp sponge, concentrating on the center of the face and blending outward. Spot-conceal only where needed. Skip heavy powder and only set the T-zone lightly, leaving cheeks and nose bridge glowy.",
+          "tips": [
+            "Keep it sheer so skin texture and glow still peek through",
+            "Leave highlight on the nose tip and cheekbones",
+            "Match foundation to your neck to avoid a mask effect"
+          ],
+          "productHints": [
+            "skin tint or lightweight foundation",
+            "creamy concealer",
+            "damp makeup sponge",
+            "translucent setting powder (T-zone only)",
+            "liquid or cream highlighter"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Terracotta Peach",
+              "hex": "#D9876B"
+            },
+            {
+              "name": "Copper Shimmer",
+              "hex": "#C47A57"
+            },
+            {
+              "name": "Soft Gold Champagne",
+              "hex": "#E8B88F"
+            },
+            {
+              "name": "Brown Liner",
+              "hex": "#4A2A20"
+            }
+          ],
+          "finish": "soft shimmer with a wash of color",
+          "technique": "Sweep a terracotta-peach shade across the lid and up toward the socket in a soft wash, extending it a bit under the eyes. Press copper shimmer on the center of the lid for dimension and add champagne gold in the inner corner. Draw a thin, slightly winged brown liner and finish with defined, fluttery lashes.",
+          "tips": [
+            "Blend edges well so the color melts into skin",
+            "Use a fingertip to press shimmer for max payoff",
+            "Keep liner thin and flicked for a subtle lift",
+            "Repeat the lid color lightly under the lower lashes to tie it together"
+          ],
+          "productHints": [
+            "warm peach-copper eyeshadow palette",
+            "cream or liquid shimmer shadow",
+            "fluffy blending brush",
+            "brown gel or liquid eyeliner",
+            "lengthening mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Peachy Coral",
+              "hex": "#EE8A72"
+            },
+            {
+              "name": "Soft Apricot",
+              "hex": "#F2A68A"
+            }
+          ],
+          "finish": "dewy, flushed",
+          "technique": "Tap a cream or liquid blush onto the apples of the cheeks and blend upward toward the temples in a soft, diffused cloud. Layer a bit of the same shade across the nose bridge for a sun-kissed effect.",
+          "tips": [
+            "Build color gradually so it looks like a natural flush",
+            "Apply blush before powder so it stays melty",
+            "Match blush tone to the eyeshadow for a cohesive monochrome look"
+          ],
+          "productHints": [
+            "cream blush",
+            "liquid blush",
+            "fluffy blush brush or fingers",
+            "dewy setting spray"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Glossy Brick Red",
+              "hex": "#B7412F"
+            },
+            {
+              "name": "Warm Cherry Tint",
+              "hex": "#C95443"
+            }
+          ],
+          "finish": "high-shine glossy, juicy",
+          "technique": "Define lips with a soft brown-red liner, fill in with a brick-red tint or lipstick, and blend the edges slightly for a lived-in look. Top with a clear or tinted high-shine gloss, concentrating on the center of the lips for a plump effect.",
+          "tips": [
+            "Blur the outer edge with a fingertip for a soft gradient",
+            "Add gloss to the center of the lower lip for dimension",
+            "Blot before glossing if you want longer wear"
+          ],
+          "productHints": [
+            "brown-red lip liner",
+            "tinted lip balm or lipstick",
+            "high-shine lip gloss",
+            "lip oil"
+          ]
+        }
+      ]
+    }
+  }
+]
