@@ -1,4 +1,4 @@
-# Spec — Shade-true Look Copy (가칭)
+# Spec — muselook
 
 갱신 2026-10-24 11:50 KST. 요구가 바뀌면 이 문서부터 갱신한다. 근거: `ideas.md`, `research.md`, `evidence.md`.
 
