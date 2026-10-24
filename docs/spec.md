@@ -42,7 +42,8 @@
 
 | 결정 항목 | 요구에서 나온 필요 | 선택·이유 |
 |---|---|---|
-| 제품 형태 | 심사자가 링크로 바로 사용, 업로드·이미지 표시 | 반응형 웹앱, 영어 UI |
+| 제품 형태 | 심사자가 링크로 바로 사용 + 디자인·UI/UX 최우선(사용자 결정) | **앱 레이아웃 웹앱**: 모바일 퍼스트 앱 셸(데스크톱에선 중앙 폰 폭 ~430px), 단계별 전체 화면(Look → On Me → My Tone), 하단 고정 액션 바, 결과는 시트·비교 슬라이더. PWA manifest(홈 화면 추가·standalone). 영어 UI |
+| 디자인 시스템 | 템플릿처럼 보이지 않는 고유 비주얼 | `frontend-design` 스킬로 토큰(색 4~6·타입·레이아웃·원칙) 먼저 확정 → UI 구현. Tailwind 테마 토큰, `next/font`, Motion(화면 전환·비교 슬라이더 등 사용자 동작 응답 모션만). 스크린샷으로 자체 리뷰 |
 | 언어·프레임워크 | 화면 + 비밀 키를 숨기는 서버 + 파일 저장을 한 프로세스로 | **Next.js(App Router) + TypeScript**, 단일 서비스. Route Handler가 Claude·OpenAI 호출·파일 저장 |
 | 데이터·저장 | 이미지 파일시스템 저장(사용자 결정), 세션별 결과 재표시 | `DATA_DIR`(로컬 `./data`, 배포 볼륨 `/data`) 아래 `sessions/{id}/look.*, selfie.*, analysis.json, translated.json, apply_original.png, apply_translated.png`. 카탈로그는 레포 `catalog.json`(샘플) |
 | 인증·민감 정보 | 접근 장벽 최소, 얼굴 사진 | 로그인 없음, 추측 불가 UUID 세션. 13+ 체크, "Anthropic·OpenAI로 전송, 데모 서버에 저장" 고지. 아이돌 사진은 사용자 업로드만, 샘플 룩은 권리 확보 이미지 |
