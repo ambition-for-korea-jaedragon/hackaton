@@ -9,7 +9,7 @@ import { ShareSheet } from "@/components/share-sheet";
 import { ProductCards, ProductSkeleton, ProductsBadge, SwatchBand, areaLabel } from "@/components/tone-parts";
 import { getSession, imgUrl, postForm, postJson } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
-import { SELFIES } from "@/lib/samples";
+import { SELFIES, TEST_SELFIES } from "@/lib/samples";
 import { SampleDock, readSamplePayload } from "@/components/sample-dock";
 import { ProductCallout } from "@/components/callout/product-callout";
 import { LookDock } from "@/components/callout/look-sheet";
@@ -204,11 +204,11 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
     setPreview(URL.createObjectURL(f));
   }
   async function pickSelfie(id: string) {
-    const it = SELFIES.find((x) => x.id === id);
+    const it = [...SELFIES, ...TEST_SELFIES].find((x) => x.id === id);
     if (!it) return;
     try {
-      const blob = await (await fetch(`/samples/${it.file}`)).blob();
-      acceptFile(new File([blob], it.file, { type: blob.type || "image/jpeg" }), id);
+      const blob = await (await fetch(it.src)).blob();
+      acceptFile(new File([blob], `${it.id}.jpg`, { type: blob.type || "image/jpeg" }), id);
     } catch {
       setError("Couldn't load that sample. Try uploading a photo instead.");
     }
@@ -246,8 +246,8 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
       <ScreenBody>
         {showForm ? (
           <>
-            <SampleDock side="left" kind="selfie" items={SELFIES.slice(0, 4)} title="Try a sample selfie" hint="Synthetic faces for the demo. Drag one onto the photo box, or click it." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
-            <SampleDock side="right" kind="selfie" items={SELFIES.slice(4)} title="More skin tones" selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
+            <SampleDock side="left" kind="selfie" items={SELFIES} title="Sample selfies" hint="Synthetic faces. Drag one onto the photo box, or click it. The look is applied for real." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
+            <SampleDock side="right" kind="selfie" items={TEST_SELFIES} title="Test faces" hint="More faces for end-to-end checks." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
             <h1 className="mt-1 font-display text-[28px] leading-[1.05]">Now, your face.</h1>
             <p className="mt-1.5 text-[15px] text-ink-soft">Add a clear, front-facing selfie in good light.</p>
             <div className="mt-3.5 rounded-[28px] bg-lilac p-4">

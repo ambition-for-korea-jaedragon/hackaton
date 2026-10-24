@@ -1,0 +1,2584 @@
+[
+  {
+    "id": "burgundy-fall",
+    "name": "Burgundy Fall",
+    "file": "muse-burgundy-fall.jpg",
+    "analysis": {
+      "mood": "Cozy autumn siren: warm, sultry, and effortlessly put-together",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glowy",
+          "technique": "Prep with a hydrating moisturizer and a light illuminating primer so the skin looks plump and lit from within before any makeup goes on.",
+          "tips": [
+            "Hydrate well so the skin looks bouncy, not flaky",
+            "Press in a little glow on the high points like the nose bridge and cheekbones",
+            "Let skincare sink in fully before primer to avoid patchiness"
+          ],
+          "productHints": [
+            "hydrating moisturizer",
+            "illuminating primer",
+            "glow serum"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "warm beige skin tone",
+              "hex": "#E8C3A8"
+            }
+          ],
+          "finish": "skin-like, natural glow",
+          "technique": "Apply a sheer to medium-coverage foundation with a damp sponge, then spot-conceal and set only the T-zone lightly so the dewy skin still shows through.",
+          "tips": [
+            "Use a damp sponge for a seamless, lightweight layer",
+            "Keep powder off the cheeks to hold onto the glow",
+            "Match the foundation to your neck, not just your jawline"
+          ],
+          "productHints": [
+            "skin-tint or sheer foundation",
+            "liquid concealer",
+            "light translucent powder"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "dusty mauve shadow",
+              "hex": "#8A5A66"
+            },
+            {
+              "name": "deep plum liner",
+              "hex": "#4A2A3A"
+            },
+            {
+              "name": "soft brown-rose highlight",
+              "hex": "#C99A9A"
+            }
+          ],
+          "finish": "soft satin, smoky",
+          "technique": "Sweep a dusty mauve shadow across the lid and blend it up into the crease, then smudge a deep plum liner along the upper and lower lash lines for a soft smoky edge. Add a light shimmer on the inner corners and brow bone.",
+          "tips": [
+            "Smudge the liner with a fluffy brush so it looks lived-in, not harsh",
+            "Curl lashes and apply a dark brown mascara for lift",
+            "Keep the lower lash line soft so the look stays wearable"
+          ],
+          "productHints": [
+            "mauve eyeshadow palette",
+            "plum or brown eyeliner pencil",
+            "volumizing mascara",
+            "eyelash curler"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "peachy coral blush",
+              "hex": "#E88A7A"
+            }
+          ],
+          "finish": "soft, diffused satin",
+          "technique": "Tap a peachy coral blush onto the apples of the cheeks and sweep it slightly upward toward the temples, blending so there are no hard edges.",
+          "tips": [
+            "Smile to find the apples of your cheeks for placement",
+            "Blend the edges into the foundation so the color looks skin-deep",
+            "Pair with a little extra glow on the cheekbones for a lit effect"
+          ],
+          "productHints": [
+            "cream or powder blush in coral or peach",
+            "fluffy blush brush"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "deep wine berry",
+              "hex": "#6E1B2A"
+            }
+          ],
+          "finish": "glossy, juicy satin",
+          "technique": "Line the lips with a deep berry liner, fill in with a wine-toned lipstick, then dab a clear or sheer gloss at the center for a juicy shine.",
+          "tips": [
+            "Line first to keep the wine shade crisp at the edges",
+            "Blot once then add gloss for a plush look that does not feather",
+            "Use a lip balm beforehand so the color glides on evenly"
+          ],
+          "productHints": [
+            "berry or wine lip liner",
+            "satin or glossy wine lipstick",
+            "clear lip gloss"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "burgundyfall",
+      "smokyplumeye",
+      "wineberrylip",
+      "어른여자",
+      "글로우"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Anua",
+        "name": "PDRN Hyaluronic Acid 100 Moisturizing Cream",
+        "shadeName": "",
+        "hex": "#F3E6DC",
+        "url": "https://anua.com/products/pdrn-hyaluronic-acid-100-moisturizing-cream?_pos=4&_sid=692531c78&_ss=r",
+        "why": "Hydrating cream moisturizer that gives the plump, dewy, glowy prep the look starts with.",
+        "sourceUrl": "https://anua.com/products/pdrn-hyaluronic-acid-100-moisturizing-cream?_pos=4&_sid=692531c78&_ss=r"
+      },
+      {
+        "area": "base",
+        "brand": "hince",
+        "name": "Second Skin Foundation",
+        "shadeName": "23 Sand",
+        "hex": "#E8C3A8",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210510339",
+        "why": "Warm beige shade with a sheer-to-medium, skin-like natural glow finish.",
+        "sourceUrl": "https://store.minsstudios.com/products/hince-second-skin-foundation"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Palette",
+        "shadeName": "03 Rosebud Garden",
+        "hex": "#8A5A66",
+        "url": "https://romandbeauty.com/collections/all-products/products/better-than-palette",
+        "why": "Mauve-rose shades on dusty pink bases with satin and pearl finishes for a soft smoky mauve eye.",
+        "sourceUrl": "https://romandbeauty.com/collections/all-products/products/better-than-palette"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "C01 Peach Chip",
+        "hex": "#E88A7A",
+        "url": "https://www.kpopbeauty.com/products/rom-nd-better-than-cheek",
+        "why": "Peachy coral blush that blends into a soft, diffused satin flush.",
+        "sourceUrl": "https://www.kpopbeauty.com/products/rom-nd-better-than-cheek"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Juicy Lasting Tint",
+        "shadeName": "14 Berry Shot",
+        "hex": "#6E1B2A",
+        "url": "https://romandbeauty.com/products/juicy-lasting-tint?variant=41341720920139",
+        "why": "Deep berry-wine red tint with a glossy, juicy finish.",
+        "sourceUrl": "https://justcosmetics.cy/shop/lip-care/romnd-juicy-lasting-tint-original-series/"
+      }
+    ]
+  },
+  {
+    "id": "maple-latte",
+    "name": "Maple Latte",
+    "file": "muse-maple-latte.jpg",
+    "analysis": {
+      "mood": "Warm autumn golden-hour glow with a cozy, sultry vibe",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, luminous",
+          "technique": "Hydrate well and apply a light glow-boosting primer or essence so the skin reads smooth and lit from within before any base goes on.",
+          "tips": [
+            "Hydrate heavily so the skin looks plump, not patchy",
+            "Skip heavy oils on the T-zone if you want the glow to stay soft, not greasy"
+          ],
+          "productHints": [
+            "hydrating toner or essence",
+            "lightweight moisturizer",
+            "glow-boosting primer"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Warm porcelain",
+              "hex": "#F3D5C0"
+            },
+            {
+              "name": "Peachy rose blush wash",
+              "hex": "#EBA58F"
+            }
+          ],
+          "finish": "dewy, natural skin-like glow",
+          "technique": "Apply a sheer, buildable foundation or skin tint in thin layers, focusing on the center of the face and blending out to the edges. Use a cream blush on the cheeks and a little highlight on the high points.",
+          "tips": [
+            "Keep coverage sheer so freckles and texture show through",
+            "Tap the product in with a damp sponge for a seamless, lit-from-inside finish"
+          ],
+          "productHints": [
+            "sheer skin tint or light-coverage foundation",
+            "cream blush",
+            "cream or liquid highlighter",
+            "setting spray"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Burnt copper shimmer",
+              "hex": "#B5651D"
+            },
+            {
+              "name": "Soft peach shimmer",
+              "hex": "#E8A87C"
+            },
+            {
+              "name": "Rust brown liner",
+              "hex": "#8B4A2B"
+            }
+          ],
+          "finish": "shimmery, satin",
+          "technique": "Sweep a soft peach shimmer over the lid, press burnt copper into the outer lid and crease, then smudge a rust brown liner along the upper lash line and waterline. Finish with volumizing mascara and a few lower lash coats.",
+          "tips": [
+            "Blend the copper into the crease so there are no harsh lines",
+            "Smudge the liner out for a smoky, sultry edge",
+            "Add a little shimmer to the inner corners to brighten the eyes"
+          ],
+          "productHints": [
+            "peach shimmer eyeshadow",
+            "copper or bronze eyeshadow",
+            "brown pencil or gel eyeliner",
+            "volumizing mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Warm coral pink",
+              "hex": "#E88D7A"
+            },
+            {
+              "name": "Sheer peach",
+              "hex": "#F2A08A"
+            }
+          ],
+          "finish": "soft satin, diffused",
+          "technique": "Smile and sweep a warm coral blush onto the apples of the cheeks, blending upward toward the temples. Layer a touch of sheer peach on top for a diffused, flushed look.",
+          "tips": [
+            "Blend upward so the color looks like a natural flush",
+            "Build slowly, since the color is intense against fair skin"
+          ],
+          "productHints": [
+            "cream or powder blush in coral",
+            "soft blending brush"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Terracotta rust",
+              "hex": "#B9523B"
+            },
+            {
+              "name": "Glossy clay coral",
+              "hex": "#C4644A"
+            }
+          ],
+          "finish": "glossy, juicy",
+          "technique": "Line the lips with a terracotta or rust liner, fill in with a cream lipstick, then dab a clear or sheer gloss on the center for a juicy shine.",
+          "tips": [
+            "Blend the liner slightly inward so it doesn't look harsh",
+            "Keep the gloss mostly in the center for a plumped, dimensional look"
+          ],
+          "productHints": [
+            "rust or terracotta lip liner",
+            "cream lipstick",
+            "sheer lip gloss"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "maplelatte",
+      "autumnglow",
+      "coppershimmer",
+      "terracottalip",
+      "가을"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "VDL",
+        "name": "Lumilayer Primer 30ml",
+        "shadeName": "",
+        "hex": "#F3D5C0",
+        "url": "https://www.yesstyle.com/en/vdl-primer-lumilayer-primer-30ml-30ml/info.html/pid.1060097682",
+        "why": "Pearly glow-boosting primer that leaves skin dewy and lit from within before base.",
+        "sourceUrl": "https://www.yesstyle.com/en/vdl-primer-lumilayer-primer-30ml-30ml/info.html/pid.1060097682"
+      },
+      {
+        "area": "base",
+        "brand": "ABOUT_TONE",
+        "name": "Skin Layer Fit Cushion",
+        "shadeName": "#21 Warm Light",
+        "hex": "#F3D5C0",
+        "url": "https://www.yesstyle.com/en/about-tone-skin-layer-fit-cushion-8-colors-21-warm-light/info.html/pid.1135797896",
+        "why": "Warm light shade for a warm porcelain complexion, with a sheer skin-like cushion finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/about-tone-skin-layer-fit-cushion-8-colors-21-warm-light/info.html/pid.1135797896"
+      },
+      {
+        "area": "eye",
+        "brand": "AMUSE",
+        "name": "Eye Color Palette",
+        "shadeName": "#01 Warm Boksoonga",
+        "hex": "#B5651D",
+        "url": "https://www.yesstyle.com/en/amuse-eye-color-palette-3-types-02-cool-rose/info.html/pid.1123381112",
+        "why": "Warm peach-copper palette with shimmer, pearl and glitter pans for the peach lid and copper outer corner.",
+        "sourceUrl": "https://www.yesstyle.com/en/amuse-eye-color-palette-3-types-02-cool-rose/info.html/pid.1123381112"
+      },
+      {
+        "area": "blush",
+        "brand": "BANILA CO",
+        "name": "b by banila Romantic Blush Lip&Cheek",
+        "shadeName": "#13 Cream Coral",
+        "hex": "#E88D7A",
+        "url": "https://www.yesstyle.com/en/tcuc.SAR/coc.SA/info.html/pid.1135233230",
+        "why": "Sunny warm coral cream blush with a soft, diffused satin flush.",
+        "sourceUrl": "https://banilausa.com/products/romantic-blush-lip-cheek"
+      },
+      {
+        "area": "lip",
+        "brand": "romand",
+        "name": "The Juicy Lasting Tint",
+        "shadeName": "#11 Papaya Jam",
+        "hex": "#C4644A",
+        "url": "https://www.yesstyle.com/en/romand-the-juicy-lasting-tint-23-colors-01-pomelo-skin/info.html/pid.1134228333",
+        "why": "Coral-orange clay tone in a high-shine, juicy glossy finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-the-juicy-lasting-tint-23-colors-01-pomelo-skin/info.html/pid.1134228333"
+      }
+    ]
+  },
+  {
+    "id": "toasted-beige",
+    "name": "Toasted Beige",
+    "file": "muse-toasted-beige.jpg",
+    "analysis": {
+      "mood": "Soft, romantic, cozy-chic with a dewy warm-neutral glow",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glassy",
+          "technique": "Hydrate well and let the skin look plump and luminous before any makeup. Pat in a lightweight serum or essence, then a moisturizer, and press a little extra on the high points of the cheeks, nose, and forehead.",
+          "tips": [
+            "Skin should look lit from within, not oily, so blot any excess shine",
+            "Don't skip SPF, since a healthy base keeps the glow even",
+            "Hydration is the whole secret to this look, so start a few minutes early"
+          ],
+          "productHints": [
+            "hydrating essence",
+            "lightweight serum",
+            "gel-cream moisturizer",
+            "SPF"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Warm ivory skin tint",
+              "hex": "#F3DCCB"
+            },
+            {
+              "name": "Soft peach blush undertone",
+              "hex": "#E9B9A5"
+            }
+          ],
+          "finish": "natural dewy with a satin glow",
+          "technique": "Use a sheer, buildable base or skin tint and apply with a damp sponge or fingertips for a seamless, blurred look. Keep coverage light so freckles and texture still show through. Add a tiny bit of cream highlighter on the cheekbones, nose bridge, and cupid's bow.",
+          "tips": [
+            "Less is more, so build coverage in thin layers",
+            "Set only the T-zone with a light powder to keep the glow elsewhere",
+            "Blend the edges at the jaw so there is no visible line"
+          ],
+          "productHints": [
+            "sheer skin tint or BB cream",
+            "cream highlighter",
+            "light setting powder for T-zone",
+            "damp makeup sponge"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Soft taupe brown",
+              "hex": "#A08070"
+            },
+            {
+              "name": "Warm bronze shimmer",
+              "hex": "#B38A5E"
+            },
+            {
+              "name": "Deep brown liner",
+              "hex": "#4A3428"
+            }
+          ],
+          "finish": "soft satin with subtle shimmer",
+          "technique": "Sweep a soft taupe over the lid and blend into the crease. Dab warm bronze shimmer on the center of the lid. Tightline the upper lash line, then smudge a deep brown liner along the outer lash line and wing it slightly. Curl lashes and apply a brown-black mascara, adding a few extra lashes at the outer corners.",
+          "tips": [
+            "Keep the liner soft and smudged so it looks like it is part of the eye",
+            "Curl lashes before mascara for an open, wide-eyed look",
+            "Blend the crease well so there are no harsh edges"
+          ],
+          "productHints": [
+            "neutral brown eyeshadow palette",
+            "shimmer eyeshadow",
+            "smudgy brown eyeliner pencil",
+            "lash curler",
+            "brown mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Soft coral pink",
+              "hex": "#E8A090"
+            }
+          ],
+          "finish": "dewy, soft-focus",
+          "technique": "Use a cream or liquid blush on the apples of the cheeks and blend upward toward the temples. Keep the color diffused and sheer so it looks like a natural flush rather than a distinct patch.",
+          "tips": [
+            "Smile to find the apples of your cheeks and place color there",
+            "Tap a little over the highlight for a lit-from-within glow",
+            "Start light, since cream blush is easy to build"
+          ],
+          "productHints": [
+            "cream blush stick",
+            "liquid blush",
+            "fingertip or dense brush"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Dusty rose brown",
+              "hex": "#B76E65"
+            },
+            {
+              "name": "Glossy clear shine",
+              "hex": "#D98E82"
+            }
+          ],
+          "finish": "glossy, dewy with a soft satin edge",
+          "technique": "Line the lips with a soft rosy-brown liner, then fill in with a sheer rose-brown tint or lipstick. Press a clear or sheer gloss over the center of the lips to add shine and plumpness.",
+          "tips": [
+            "Blur the liner edge slightly so it does not look too defined",
+            "Gloss on the center only keeps the look modern and soft",
+            "Blot once before glossing so it lasts longer"
+          ],
+          "productHints": [
+            "rosy-brown lip liner",
+            "sheer lipstick or lip tint",
+            "clear or sheer lip gloss"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "굽굽",
+      "toastedbeige",
+      "warmneutralmakeup",
+      "dewybronzeglow",
+      "softbrownsmokey"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Round Lab",
+        "name": "Birch Juice Moisturizing Serum 50ml",
+        "shadeName": "",
+        "url": "https://www.stylevana.com/en_US/round-lab-birch-juice-moisturizing-serum-50ml25653.html",
+        "why": "Lightweight hydrating serum that gives a plump, glassy, dewy prep before makeup.",
+        "sourceUrl": "https://www.stylevana.com/en_US/round-lab-birch-juice-moisturizing-serum-50ml25653.html"
+      },
+      {
+        "area": "base",
+        "brand": "hince",
+        "name": "Second Skin Foundation",
+        "shadeName": "#21 Ivory",
+        "hex": "#F3DCCB",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210510339",
+        "why": "Light ivory shade with no strong yellow or pink cast, in a sheer, skin-like dewy finish for light complexions.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA210510339"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Pro Eye Palette Air",
+        "shadeName": "03 Mute Library",
+        "hex": "#A08070",
+        "url": "https://k-touch.us/products/clio-pro-eye-palette-air-7-2g-no-3-mute-library",
+        "why": "Soft taupe and brown shades with matte and shimmer finishes for a satin lid with subtle shimmer.",
+        "sourceUrl": "https://k-touch.us/products/clio-pro-eye-palette-air-7-2g-no-3-mute-library"
+      },
+      {
+        "area": "blush",
+        "brand": "HOUSE OF HUR",
+        "name": "Moist Ampoule Blusher",
+        "shadeName": "#05 Peach Coral",
+        "hex": "#E8A090",
+        "url": "https://houseofhur.com/products/moist-ampule-blusher",
+        "why": "Sheer, dewy liquid blush in coral that blends into a diffused flush.",
+        "sourceUrl": "https://houseofhur.com/products/moist-ampule-blusher"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Dewyful Water Tint",
+        "shadeName": "03 If Rose",
+        "hex": "#B76E65",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA211012028",
+        "why": "Glossy, dewy sheer rose tint that gives a natural stain and a juicy shine.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA211012028"
+      }
+    ]
+  },
+  {
+    "id": "cocoa-ribbon",
+    "name": "Cocoa Ribbon",
+    "file": "muse-cocoa-ribbon.jpg",
+    "analysis": {
+      "mood": "Soft, warm, romantic clean-girl with a cozy brown-sugar glow",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glassy",
+          "technique": "Hydrate well and let skin absorb, then press a light layer of hydrating essence or serum over the face so skin looks lit from within before base goes on.",
+          "tips": [
+            "Aim for skin that looks plump and luminous, not shiny or oily",
+            "Focus on cheeks and nose bridge where light hits to keep the glow even"
+          ],
+          "productHints": [
+            "hydrating essence",
+            "lightweight serum",
+            "moisturizer",
+            "lip treatment"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "warm beige nude",
+              "hex": "#E8C4A8"
+            },
+            {
+              "name": "peachy highlight",
+              "hex": "#F4D8C4"
+            }
+          ],
+          "finish": "natural satin with a dewy glow",
+          "technique": "Apply a sheer, skin-like base with fingers or a damp sponge, building only where needed. Tap a luminous highlighter on the cheekbones, nose bridge, and cupid's bow.",
+          "tips": [
+            "Keep coverage light so freckles and texture still peek through",
+            "Blend the edges of the base into the neck so there's no harsh line"
+          ],
+          "productHints": [
+            "skin tint or light-medium foundation",
+            "cushion foundation",
+            "liquid highlighter",
+            "concealer"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "soft peach shimmer",
+              "hex": "#E0B49A"
+            },
+            {
+              "name": "warm brown liner",
+              "hex": "#6B4A3A"
+            },
+            {
+              "name": "nude pink inner corner",
+              "hex": "#D9A596"
+            }
+          ],
+          "finish": "satin with a subtle shimmer",
+          "technique": "Sweep a peachy shimmer across the lid and blend it into the crease. Line the upper lash line with a soft brown liner, wing it out slightly, and smudge the lower lash line. Add a few lash-line flicks and curled lashes.",
+          "tips": [
+            "Smudge the liner so it looks like a soft shadow, not a hard line",
+            "Use a light hand on shimmer so it reads as a soft glow"
+          ],
+          "productHints": [
+            "peach eyeshadow palette",
+            "brown eyeliner pencil",
+            "brown or black mascara",
+            "eyelash curler"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "peachy coral",
+              "hex": "#F0A08A"
+            },
+            {
+              "name": "warm rose",
+              "hex": "#E88B7A"
+            }
+          ],
+          "finish": "dewy, soft-focus",
+          "technique": "Smile and dot a cream or liquid blush on the apples of the cheeks, then blend upward toward the temples with a fluffy brush or fingers for a diffused flush.",
+          "tips": [
+            "Blend thoroughly so the edges look like a natural flush",
+            "Layer a little powder blush on top to make it last"
+          ],
+          "productHints": [
+            "cream blush",
+            "liquid blush",
+            "soft powder blush",
+            "fluffy blending brush"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "rosy terracotta",
+              "hex": "#B5625A"
+            },
+            {
+              "name": "glossy brick rose",
+              "hex": "#9E4E4A"
+            }
+          ],
+          "finish": "glossy, juicy",
+          "technique": "Define the lips with a brown-rose liner slightly inside the natural border, fill in with a rosy terracotta lipstick, then press a clear or tinted gloss at the center for a shiny, plump look.",
+          "tips": [
+            "Pat the lipstick in with your finger for a soft, blurred edge",
+            "Keep the gloss mostly in the center so the shine looks natural"
+          ],
+          "productHints": [
+            "lip liner",
+            "tinted lip gloss",
+            "satin lipstick",
+            "lip balm"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "cocoaribbon",
+      "peachyglow",
+      "warmbrownliner",
+      "rosyterracotta",
+      "글로우"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Torriden",
+        "name": "DIVE-IN Low Molecular Hyaluronic Acid Serum 50ml",
+        "shadeName": "",
+        "hex": "#F2F2F0",
+        "url": "https://www.stylevana.com/en_CA/torriden-dive-in-low-molecular-hyaluronic-acid-serum-50ml57742.html",
+        "why": "Lightweight 5-type hyaluronic acid serum that absorbs fast and leaves skin dewy and glassy before base.",
+        "sourceUrl": "https://www.stylevana.com/en_CA/torriden-dive-in-low-molecular-hyaluronic-acid-serum-50ml57742.html"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Cushion SPF50+ PA++++",
+        "shadeName": "21N Linen",
+        "hex": "#E8C4A8",
+        "url": "https://www.stylevana.com/en_US/clio-kill-cover-mesh-glow-cushion-spf50-pa-15g-2.html",
+        "why": "Light-neutral warm beige shade with a dewy, skin-like glow finish.",
+        "sourceUrl": "https://seoulea.us/products/clio-kill-cover-mesh-glow-cushion-21n-linen"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Pro Eye Palette",
+        "shadeName": "07 Peach Groove",
+        "hex": "#E0B49A",
+        "url": "https://www.yesstyle.com/en/clio-pro-eye-palette-7-types-07-peach-groove/info.html/pid.1072245358",
+        "why": "Peachy-pink shimmer and glitter tones match the soft peach satin lid with subtle sparkle and nude pink inner corner.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-pro-eye-palette-7-types-07-peach-groove/info.html/pid.1072245358"
+      },
+      {
+        "area": "blush",
+        "brand": "peripera",
+        "name": "Syrupy Tok Cheek",
+        "shadeName": "01 Light Peach",
+        "hex": "#F0A08A",
+        "url": "https://www.yesstyle.com/en/peripera-syrupy-tok-cheek-5-colors-01-light-peach/info.html/pid.1133319186",
+        "why": "Peachy cream blush with a dewy, soft-focus flush.",
+        "sourceUrl": "https://www.yesstyle.com/en/peripera-syrupy-tok-cheek-5-colors-01-light-peach/info.html/pid.1133319186"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Dewyful Water Tint",
+        "shadeName": "04 Chili Up",
+        "hex": "#9E4E4A",
+        "url": "https://www.yesstyle.com/en/%E6%9F%94%E9%AD%85%E5%BE%97-dewyful-water-tint/info.html/pid.1109576108",
+        "why": "Warm red-brown terracotta tint with a glossy, juicy water-gloss finish.",
+        "sourceUrl": "https://romand.us/collections/all-products/products/dewyful-water-tint-5g"
+      }
+    ]
+  },
+  {
+    "id": "rosewood-chic",
+    "name": "Rosewood Chic",
+    "file": "muse-rosewood-chic.jpg",
+    "analysis": {
+      "mood": "Polished, editorial office-siren: clean skin, soft smoky-brown eyes, and a muted rose lip that reads sophisticated and effortless.",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, luminous",
+          "technique": "Prep with a hydrating toner and lightweight serum, then a gel-cream moisturizer. Skin looks plump and glowing with a soft sheen across cheeks and nose, so skip heavy powder in the prep stage.",
+          "tips": [
+            "Press in the moisturizer so it sets into a smooth base",
+            "Let the skin fully absorb before primer to keep that glass-like glow"
+          ],
+          "productHints": [
+            "hydrating toner",
+            "essence or serum",
+            "gel-cream moisturizer",
+            "SPF"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Soft beige ivory",
+              "hex": "#EBCDB8"
+            },
+            {
+              "name": "Warm rosy nude",
+              "hex": "#E3B9A6"
+            }
+          ],
+          "finish": "natural satin, skin-like",
+          "technique": "Apply a thin layer of foundation with a damp sponge or brush, focusing on the center of the face and blending outward. Use a tiny bit of concealer only under eyes and on redness. Keep the cheekbones lightly lit with a cream highlighter.",
+          "tips": [
+            "Build coverage in thin layers rather than one heavy coat",
+            "Blend the jawline well so there is no visible edge",
+            "Skip powder on the high points to keep the glow"
+          ],
+          "productHints": [
+            "lightweight foundation",
+            "cushion or skin-tint",
+            "concealer",
+            "cream highlighter"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Taupe brown",
+              "hex": "#7A6258"
+            },
+            {
+              "name": "Soft mocha shimmer",
+              "hex": "#A08474"
+            },
+            {
+              "name": "Deep espresso liner",
+              "hex": "#3B2A24"
+            }
+          ],
+          "finish": "soft satin with subtle shimmer",
+          "technique": "Sweep a taupe-brown shadow across the lid and into the crease for depth. Pat a soft mocha shade on the center lid. Smudge a dark brown along the lower lash line, then draw a sharp wing liner with a slight upward flick at the outer corner.",
+          "tips": [
+            "Keep the wing thin and tight for a sharp, editorial shape",
+            "Blend the crease well so the color looks seamless",
+            "Add a few lash-line lashes or a tightlining pencil for density"
+          ],
+          "productHints": [
+            "eyeshadow palette in neutral browns",
+            "liquid eyeliner",
+            "brown kohl or pencil",
+            "volumizing mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Dusty rose",
+              "hex": "#D89A95"
+            }
+          ],
+          "finish": "soft matte-satin",
+          "technique": "Tap a small amount of dusty rose onto the apples of the cheeks and blend upward toward the temples. Keep it close to the cheekbones for a subtle lift, not a strong flush.",
+          "tips": [
+            "Less is more so the glow still shows through",
+            "Blend the edges fully for a no-line finish"
+          ],
+          "productHints": [
+            "cream or powder blush",
+            "soft rose or mauve shade"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Muted rose berry",
+              "hex": "#B5626A"
+            },
+            {
+              "name": "Soft mauve gloss",
+              "hex": "#C98C8C"
+            }
+          ],
+          "finish": "satin with a light gloss",
+          "technique": "Line the lips with a soft rose-brown pencil, then fill with a muted rose berry. Press a touch of gloss at the center of the lower lip for dimension.",
+          "tips": [
+            "Blot after applying for a comfortable, longer-lasting wear",
+            "Keep the liner close to your natural lip line for a soft look"
+          ],
+          "productHints": [
+            "satin lipstick",
+            "lip liner",
+            "sheer gloss"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "rosewoodchic",
+      "mutedroseberry",
+      "smokybrowneyes",
+      "editorialsatin",
+      "어른여자"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Torriden",
+        "name": "DIVE-IN Low Molecular Hyaluronic Acid Serum 50ml",
+        "shadeName": "",
+        "url": "https://www.yesstyle.com/en/torriden-divein-low-molecule-hyaluronic-acid-serum/info.html/pid.1097455058",
+        "why": "Lightweight hyaluronic serum that gives the plump, dewy, luminous prep the muse's skin has.",
+        "sourceUrl": "https://www.yesstyle.com/en/torriden-divein-low-molecule-hyaluronic-acid-serum/info.html/pid.1097455058"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Essential Cushion",
+        "shadeName": "21N Linen",
+        "hex": "#EBCDB8",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228712&rwardCode=INKRNOW1",
+        "why": "Neutral soft-beige ivory shade with a glowy, skin-like satin finish that suits the #EBCDB8 base.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-kill-cover-mesh-glow-essential-cushion-mini-3-colors-21n-linen/info.html/pid.1136795271"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Eyes",
+        "shadeName": "02 Dry Rose",
+        "hex": "#7A6258",
+        "url": "https://www.yesstyle.com/en/romand-better-than-eyes-3-types-03-dry-ragras/info.html/pid.1074445400",
+        "why": "Four-pan palette with taupe-brown and mocha tones, matte to shimmer, for a soft smoky-brown eye.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-better-than-eyes-3-types-03-dry-ragras/info.html/pid.1074445400"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "N02 Vine Nude",
+        "hex": "#D09AA0",
+        "url": "https://www.stylevana.com/en_CA/romand-better-than-cheek-mutural-nude-series-4g-n02-vine-nude-1ea-misslady-cheek-brush-pink-and-white-1ea-set.html",
+        "why": "Muted dusty rose-mauve with a soft milky matte-satin finish for a subtle lifted flush.",
+        "sourceUrl": "https://www.stylevana.com/en_CA/romand-better-than-cheek-mutural-nude-series-4g-n02-vine-nude-1ea-misslady-cheek-brush-pink-and-white-1ea-set.html"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Zero Velvet Tint",
+        "shadeName": "04 Burnt Heart",
+        "hex": "#B5626A",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001392",
+        "why": "Muted elegant rose-berry tint that matches the sophisticated rose lip.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-zero-velvet-tint-11-colors-11-flare/info.html/pid.1071377547"
+      }
+    ]
+  },
+  {
+    "id": "cashmere-muse",
+    "name": "Cashmere Muse",
+    "file": "muse-cashmere-muse.jpg",
+    "analysis": {
+      "mood": "Sleek, poised, and quietly sultry with a polished editorial glow",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glassy",
+          "technique": "Prep skin with a hydrating serum and a lightweight moisturizer, then press in a gentle illuminating primer on the high points so the skin reads lit from within.",
+          "tips": [
+            "Skin looks soft and luminous, so hydration is the key to avoiding a flat, dry base",
+            "Let skincare fully sink in before makeup to keep the glow from looking patchy"
+          ],
+          "productHints": [
+            "hydrating serum",
+            "lightweight moisturizer",
+            "illuminating primer"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "soft porcelain beige",
+              "hex": "#EBD6C8"
+            },
+            {
+              "name": "warm rose blush-neutral",
+              "hex": "#E3B7A8"
+            }
+          ],
+          "finish": "natural satin with a dewy sheen",
+          "technique": "Apply a sheer-to-medium skin-tint or foundation with a damp sponge, building only where needed. Set the T-zone lightly and leave cheeks and nose glowing.",
+          "tips": [
+            "Keep coverage buildable and sheer so the skin still looks like skin",
+            "Use a cream or liquid highlighter on cheekbones and the bridge of the nose for that lit look"
+          ],
+          "productHints": [
+            "skin tint or lightweight foundation",
+            "cream highlighter",
+            "light setting powder"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "smoky taupe",
+              "hex": "#8C7B70"
+            },
+            {
+              "name": "soft mocha brown",
+              "hex": "#5E4B43"
+            },
+            {
+              "name": "champagne shimmer",
+              "hex": "#E8D9C4"
+            }
+          ],
+          "finish": "satin with subtle shimmer",
+          "technique": "Sweep a light taupe over the lid, pack a deeper mocha into the outer corner and lower lash line, then smudge a champagne shimmer on the inner corner and brow bone. Blend the edges until smoky and seamless.",
+          "tips": [
+            "Smudge the lower lash line softly for a hazy, lived-in smoke",
+            "Define lashes with black mascara and a fine liner along the upper lash line"
+          ],
+          "productHints": [
+            "eyeshadow palette in taupe and brown tones",
+            "eyeliner pencil",
+            "volumizing mascara",
+            "eyeshadow primer"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "dusty rose",
+              "hex": "#D89A8F"
+            }
+          ],
+          "finish": "soft satin, natural",
+          "technique": "Tap a dusty rose cream or powder blush onto the apples of the cheeks and blend upward toward the temples for a soft flush that echoes the lips.",
+          "tips": [
+            "Keep the color close to the cheekbones so it looks sculpted, not patchy",
+            "Use a cream blush over powder for a more dewy finish"
+          ],
+          "productHints": [
+            "cream blush",
+            "powder blush",
+            "blending brush"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "muted rosewood",
+              "hex": "#B5686A"
+            },
+            {
+              "name": "soft mauve nude",
+              "hex": "#C98C88"
+            }
+          ],
+          "finish": "glossy, dewy",
+          "technique": "Line the lips slightly inside the natural border with a rosy-brown liner, fill in with a mauve-nude, then press a sheer gloss into the center for a juicy shine.",
+          "tips": [
+            "Blot the edges after lining so the color doesn't feather",
+            "A center-focused gloss keeps the lips looking full and soft"
+          ],
+          "productHints": [
+            "lip liner",
+            "satin or cream lipstick",
+            "sheer lip gloss"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "cashmeremuse",
+      "smokytaupe",
+      "mochasmoke",
+      "dustyrosecheeks",
+      "유광글로우"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ROUND LAB",
+        "name": "Birch Juice Moisturizing Serum",
+        "shadeName": "",
+        "hex": "#F3E6D8",
+        "url": "https://www.yesstyle.com/en/round-lab-birch-juice-moisturizing-serum-50ml/info.html/pid.1123980116",
+        "why": "Hydrating birch-juice serum that gives the dewy, glassy prep the look starts with.",
+        "sourceUrl": "https://www.yesstyle.com/en/round-lab-birch-juice-moisturizing-serum-50ml/info.html/pid.1123980116"
+      },
+      {
+        "area": "base",
+        "brand": "hince",
+        "name": "Second Skin Glow Cushion",
+        "shadeName": "17 Porcelain",
+        "hex": "#EBD6C8",
+        "url": "https://www.yesstyle.com/en/hince-second-skin-glow-cushion-4-colors-15-rosy/info.html/pid.1129906976",
+        "why": "Bright neutral porcelain shade with a sheer, satin-to-dewy glow finish for a light complexion.",
+        "sourceUrl": "https://www.yesstyle.com/en/hince-second-skin-glow-cushion-4-colors-15-rosy/info.html/pid.1129906976"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Pro Eye Palette",
+        "shadeName": "02 Brown Choux",
+        "hex": "#8C7B70",
+        "url": "https://www.yesstyle.com/en/clio-pro-eye-palette-14-types-15-spring-sunshine-on-canvas-new/info.html/pid.1111848030",
+        "why": "Nudes and warm browns with shimmer cover the taupe, mocha and champagne smoky eye.",
+        "sourceUrl": "https://www.yesstyle.com/en/clio-pro-eye-palette-14-types-15-spring-sunshine-on-canvas-new/info.html/pid.1111848030"
+      },
+      {
+        "area": "blush",
+        "brand": "peripera",
+        "name": "Pure Blushed Sunshine Cheek",
+        "shadeName": "29 Dusty Mauve",
+        "hex": "#D89A8F",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230920260",
+        "why": "Muted dusty rose-mauve powder blush that gives a soft, natural flush.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA230920260"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Glasting Water Tint",
+        "shadeName": "14 Mauve Moon",
+        "hex": "#B5707A",
+        "url": "https://www.yesstyle.com/en/romand-glasting-water-tint-sunset-edition-4-colors-17-woody-sunset/info.html/pid.1125661668",
+        "why": "Soft mauve with a glossy, glazed finish that matches the juicy mauve-rosewood lip.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-glasting-water-tint-sunset-edition-4-colors-17-woody-sunset/info.html/pid.1125661668"
+      }
+    ]
+  },
+  {
+    "id": "frost-silver",
+    "name": "Frost Silver",
+    "file": "muse-frost-silver.jpg",
+    "analysis": {
+      "mood": "Icy ethereal snow queen with glassy, frosty glam",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "glassy dewy",
+          "technique": "Hydrate well and layer a glow-boosting primer or serum so the skin reads luminous and almost lit from within before any makeup goes on.",
+          "tips": [
+            "Press products in rather than rubbing so the skin stays smooth and bright",
+            "Hydrated skin is key here since the finish depends on that lit-from-inside glow"
+          ],
+          "productHints": [
+            "hydrating toner",
+            "vitamin C or glow serum",
+            "lightweight moisturizer",
+            "hydrating face mist"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "porcelain ivory",
+              "hex": "#F3E6DC"
+            },
+            {
+              "name": "cool pink blush tone",
+              "hex": "#F2C4C4"
+            }
+          ],
+          "finish": "dewy glass skin",
+          "technique": "Apply a sheer, skin-like base with a damp sponge, focusing on coverage where needed and leaving cheekbones and nose bridge bare-ish. Add a light cream highlight on high points for a wet-look sheen.",
+          "tips": [
+            "Go sheer so you can see the skin texture through the base",
+            "Blend the edges at the jawline thoroughly to avoid a visible line",
+            "Use a cool-toned highlight to keep the icy vibe"
+          ],
+          "productHints": [
+            "skin tint or sheer foundation",
+            "cushion compact",
+            "cream highlighter",
+            "setting spray with a dewy finish"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "icy silver shimmer",
+              "hex": "#D9E2EC"
+            },
+            {
+              "name": "frosty pale blue",
+              "hex": "#BFD4EA"
+            },
+            {
+              "name": "smoky slate",
+              "hex": "#6B7185"
+            },
+            {
+              "name": "soft charcoal liner",
+              "hex": "#3A3F4E"
+            }
+          ],
+          "finish": "shimmery glitter",
+          "technique": "Sweep a pale silver-blue shimmer across the lid and under the brow. Smudge a slate grey along the lower lash line and tightlining area, then add a charcoal wing liner and extended lashes. Dot a little glitter in the inner corners.",
+          "tips": [
+            "Keep the lower lash line smudged so the eyes look soft and dreamy",
+            "Wing the liner outward for a lifted, icy cat-eye shape",
+            "Layer lashes lightly so they look full but still natural"
+          ],
+          "productHints": [
+            "shimmer eyeshadow palette",
+            "cool grey eyeshadow",
+            "liquid or gel eyeliner",
+            "lash primer",
+            "volumizing mascara",
+            "loose glitter"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "soft cool pink",
+              "hex": "#F4B9BE"
+            }
+          ],
+          "finish": "satin soft-focus",
+          "technique": "Tap a pale pink blush onto the apples of the cheeks and blend upward toward the temples. Keep it diffused so it looks like a natural flush rather than a stripe.",
+          "tips": [
+            "Use a light hand since the look is cool and airy",
+            "Pair with the glassy base for a fresh, just-cold flush"
+          ],
+          "productHints": [
+            "cream blush",
+            "powder blush with satin finish",
+            "cheek tint"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "sheer milky rose",
+              "hex": "#E8A4A0"
+            },
+            {
+              "name": "glossy clear pink",
+              "hex": "#F3B8B5"
+            }
+          ],
+          "finish": "glossy juicy",
+          "technique": "Define the lips lightly with a soft rosy tone, then pat a glossy sheer pink over the center for a plump, wet look.",
+          "tips": [
+            "Keep the edges soft so the lips look juicy, not sharp",
+            "A clear gloss on top adds that mirror-like shine"
+          ],
+          "productHints": [
+            "sheer lip tint",
+            "lip liner in a soft rose",
+            "clear or sheer gloss"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "frostsilver",
+      "icyshimmer",
+      "silverlilac",
+      "snowqueen",
+      "얼음"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Heimish",
+        "name": "Artless Glow Base 40ml",
+        "shadeName": "",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA240624081",
+        "why": "Serum-textured glow primer that gives a glassy, radiant, lit-from-within prep under makeup.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA240624081"
+      },
+      {
+        "area": "base",
+        "brand": "TIRTIR",
+        "name": "Mask Fit Red Cushion",
+        "shadeName": "13N Fair Ivory",
+        "hex": "#F3E6DC",
+        "url": "https://m.global.oliveyoung.com/product/detail?dataSource=other_customers_bought&prdtNo=GA260439633",
+        "why": "Lightest neutral-ivory shade in a dewy, skin-like cushion that suits a porcelain ivory complexion.",
+        "sourceUrl": "https://m.global.oliveyoung.com/product/detail?dataSource=other_customers_bought&prdtNo=GA260439633"
+      },
+      {
+        "area": "eye",
+        "brand": "Holika Holika",
+        "name": "My Fave Piece Eye Frozen",
+        "shadeName": "Frosty",
+        "hex": "#D9E2EC",
+        "url": "https://holiholic.com/products/holika-holika-my-fave-piece-eye-frozen?variant=45513219047652",
+        "why": "Clear icy sparkling glitter for the lid and inner-corner glitter dots in the muse's frosty silver-blue.",
+        "sourceUrl": "https://holiholic.com/products/holika-holika-my-fave-piece-eye-frozen?variant=45513219047652"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "W01 Odi Milk",
+        "hex": "#F4B9BE",
+        "url": "https://romandbeauty.com/products/better-than-cheek",
+        "why": "Soft light pink powdery blush with a blurring, soft-focus satin finish for a diffused flush.",
+        "sourceUrl": "https://romandbeauty.com/products/better-than-cheek"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Dewyful Water Tint",
+        "shadeName": "03 If Rose",
+        "hex": "#E8A4A0",
+        "url": "https://www.stylevana.com/en_CA/deal-romand-dewyful-water-tint-5g-03-if-rose.html",
+        "why": "Sheer, juicy rose water tint that gives the milky rose, glossy wet look.",
+        "sourceUrl": "https://www.stylevana.com/en_CA/deal-romand-dewyful-water-tint-5g-03-if-rose.html"
+      }
+    ]
+  },
+  {
+    "id": "lavender-snow",
+    "name": "Lavender Snow",
+    "file": "muse-lavender-snow.jpg",
+    "analysis": {
+      "mood": "Icy starlight princess: dreamy, glassy, and frosty-cute with a silver-lavender twist.",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "glassy dewy",
+          "technique": "Prep skin with a hydrating layer so it looks luminous and poreless in photos. Press lightly rather than rubbing to keep the glow even.",
+          "tips": [
+            "Look for a healthy, glowing skin finish before base goes on",
+            "Hydrate well so the skin reads bouncy, not flat",
+            "Apply a light gloss or glow-boosting primer on high points like cheekbones and nose bridge"
+          ],
+          "productHints": [
+            "hydrating serum",
+            "moisturizer",
+            "illuminating primer or glow essence"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "porcelain ivory",
+              "hex": "#F3E6DF"
+            },
+            {
+              "name": "soft pearl highlight",
+              "hex": "#F7F1F4"
+            }
+          ],
+          "finish": "glassy, skin-like, lightly luminous",
+          "technique": "Use a sheer to medium-coverage base and blend thin, letting skin texture show. Add a pearly highlighter on cheekbones, nose tip, and cupid's bow for that frosty glow.",
+          "tips": [
+            "Keep coverage light so it looks like skin, not a mask",
+            "Blend concealer only where needed under the eyes",
+            "Set only the T-zone lightly to keep the dewy look"
+          ],
+          "productHints": [
+            "sheer or skin-tint foundation",
+            "concealer",
+            "pearl or liquid highlighter",
+            "light setting powder"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "frosted lavender shadow",
+              "hex": "#C9BCD9"
+            },
+            {
+              "name": "silver-pink shimmer",
+              "hex": "#E3D5E6"
+            },
+            {
+              "name": "deep violet liner",
+              "hex": "#4A3F5C"
+            },
+            {
+              "name": "icy silver glitter",
+              "hex": "#D8DCE6"
+            }
+          ],
+          "finish": "shimmery, glossy, with defined lashes",
+          "technique": "Sweep a pale lavender-pink shimmer across the lid and a soft lavender into the crease. Line the upper lash line with a deep violet-brown liner and add a dramatic lash look. Dot tiny silver rhinestones along the under-eye and brow area.",
+          "tips": [
+            "Keep the lid shimmer pearly, not chunky, for a fresh finish",
+            "Smudge the liner slightly for a soft, dreamy edge",
+            "Use a lash glue for gems so they stay put all night"
+          ],
+          "productHints": [
+            "cream or powder eyeshadow in lavender and pink-shimmer",
+            "soft eyeliner pencil in violet or brown",
+            "volumizing or dramatic false lashes",
+            "rhinestone or body gem kit"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "baby pink flush",
+              "hex": "#E9B7BE"
+            }
+          ],
+          "finish": "soft, dewy",
+          "technique": "Tap a sheer pink cream blush over the apples of the cheeks and blend upward toward the temples. Keep it diffused so it looks like a natural flush.",
+          "tips": [
+            "Less is more for this airbrushed look",
+            "Blend the edges fully so there are no harsh lines",
+            "Add a touch of glow on top for extra shine"
+          ],
+          "productHints": [
+            "cream blush",
+            "liquid blush stick",
+            "soft pink tint"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "sheer rosy pink",
+              "hex": "#D9A3AE"
+            },
+            {
+              "name": "clear pink gloss",
+              "hex": "#EBC8CF"
+            }
+          ],
+          "finish": "glossy, juicy, sheer",
+          "technique": "Apply a sheer rosy pink tint to the center and blend outward, then top with a clear-pink gloss for a plump shine. Keep the edges soft so the lip looks natural.",
+          "tips": [
+            "Pat lips with a finger for a bitten-in tint effect",
+            "Layer gloss only on the center for max shine",
+            "Exfoliate lips first so the gloss looks smooth"
+          ],
+          "productHints": [
+            "sheer lip tint or balm",
+            "glossy lip gloss",
+            "lip liner in a close shade if you want more definition"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "lavendersnow",
+      "icystarlight",
+      "silverlavender",
+      "frostyglow",
+      "얼음"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ANUA",
+        "name": "Rice 70 Glow Milky Toner",
+        "shadeName": "",
+        "hex": "#F3EDE8",
+        "url": "https://www.stylevana.com/en_US/anua-rice-70-glow-milky-toner-250ml29217.html",
+        "why": "Lightweight milky toner that hydrates and leaves a non-sticky glassy glow, a good base for luminous skin.",
+        "sourceUrl": "https://www.stylevana.com/en_US/anua-rice-70-glow-milky-toner-250ml29217.html"
+      },
+      {
+        "area": "base",
+        "brand": "WAKEMAKE",
+        "name": "Water Glow Coating Cushion SPF50+/PA++++",
+        "shadeName": "19 Porcelain",
+        "hex": "#F3E6DF",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=160&prdtNo=GA230920575",
+        "why": "Bright neutral porcelain-ivory shade with a dewy, skin-like glow that matches #F3E6DF.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=160&prdtNo=GA230920575"
+      },
+      {
+        "area": "eye",
+        "brand": "mude",
+        "name": "Shawl Moment Eyeshadow Palette",
+        "shadeName": "Lilac Moment",
+        "hex": "#C9BCD9",
+        "url": "https://global.oliveyoung.com/product/detail?lang=en&prdtNo=GA231121046",
+        "why": "Lilac and pink tones in shimmer and pearl textures, close to the frosted lavender and silver-pink lid.",
+        "sourceUrl": "https://m.global.oliveyoung.com/product/detail?dataSource=other_customers_bought&prdtNo=GA231121046"
+      },
+      {
+        "area": "blush",
+        "brand": "peripera",
+        "name": "Syrupy Tok Cheek",
+        "shadeName": "02 Milky Lavender",
+        "hex": "#E3BFD0",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250128079",
+        "why": "Sheer, dewy liquid blush in a cool pink-lavender, which suits the icy flush. It is more lavender than the baby pink #E9B7BE.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA250128079"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Glasting Water Gloss",
+        "shadeName": "#01 Sanho Crush",
+        "hex": "#EBC8CF",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002481",
+        "why": "Glassy, juicy gloss with a pink shimmer, used as the clear-pink gloss layer over a sheer tint.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002481"
+      }
+    ]
+  },
+  {
+    "id": "dew-bob",
+    "name": "Dew Bob",
+    "file": "muse-dew-bob.jpg",
+    "analysis": {
+      "mood": "Dewy, soft-romantic Korean girl look with a fresh, glassy glow and sweet peachy-pink accents",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glowing",
+          "technique": "Hydrate well and layer a hydrating essence or serum, then a light moisturizer so skin looks plump and lit from within before any base goes on.",
+          "tips": [
+            "Pat products in instead of rubbing so the skin stays juicy and glowy",
+            "Let skincare fully sink in before priming to avoid patchiness",
+            "Skin here looks naturally luminous, so skip heavy powder prep"
+          ],
+          "productHints": [
+            "hydrating essence",
+            "lightweight serum",
+            "gel or water-based moisturizer",
+            "hydrating primer-friendly sunscreen"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Soft peach-beige",
+              "hex": "#F3D2C0"
+            },
+            {
+              "name": "Warm ivory highlight",
+              "hex": "#F9E6D8"
+            }
+          ],
+          "finish": "dewy, skin-like, lightly sheer",
+          "technique": "Apply a thin layer of skin-tint or light-coverage cushion foundation with a damp sponge, focusing on the center of the face. Add a luminous highlighter to the high points like cheekbones, nose bridge, and brow bone.",
+          "tips": [
+            "Keep coverage sheer so freckles and natural texture still peek through",
+            "Tap a little extra glow on the forehead and nose for that lit-from-within sheen",
+            "Set only the T-zone lightly, if at all, to keep the glass look"
+          ],
+          "productHints": [
+            "skin tint or cushion foundation",
+            "liquid or cream highlighter",
+            "concealer for under-eyes"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Shimmery champagne",
+              "hex": "#E8C9B5"
+            },
+            {
+              "name": "Soft rose-brown",
+              "hex": "#A9776A"
+            },
+            {
+              "name": "Deep brown-black",
+              "hex": "#2B1E1C"
+            }
+          ],
+          "finish": "shimmery, soft satin",
+          "technique": "Sweep a light champagne shimmer across the lid, define the outer corner and lower lash line with a soft rose-brown, then line the upper lash line with a fine brown-black liner. Layer lashes at the outer corners and add a subtle glow on the inner corners.",
+          "tips": [
+            "Keep the liner thin and tightlined for a natural, doll-eye effect",
+            "Wing the lash line only slightly so the look stays soft",
+            "Curl lashes and add 2 coats of volumizing mascara"
+          ],
+          "productHints": [
+            "cream or powder eyeshadow in champagne",
+            "soft brown eyeshadow palette",
+            "fine liquid or gel eyeliner",
+            "volumizing mascara",
+            "individual or strip lashes"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Peachy coral pink",
+              "hex": "#F4A394"
+            },
+            {
+              "name": "Soft rose",
+              "hex": "#EE9A8E"
+            }
+          ],
+          "finish": "dewy, diffused",
+          "technique": "Tap a cream or liquid blush onto the apples of the cheeks and blend upward toward the temples with fingers or a dense brush for a seamless flush.",
+          "tips": [
+            "Smile to find the apples of your cheeks for placement",
+            "Blend edges so there are no harsh lines",
+            "Pair with a touch of the same shade on the nose tip for a sweet, cohesive flush"
+          ],
+          "productHints": [
+            "cream blush",
+            "liquid blush",
+            "tinted cheek balm"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Sheer coral pink",
+              "hex": "#E88E82"
+            },
+            {
+              "name": "Glossy peach-pink",
+              "hex": "#F2A08F"
+            }
+          ],
+          "finish": "glossy, juicy",
+          "technique": "Apply a sheer coral-pink tint to the center of the lips and pat it outward, then add a clear or peachy gloss on top, concentrating it on the center for a plump, wet look.",
+          "tips": [
+            "Blot the edges slightly so the color melts into the lip naturally",
+            "Add gloss to the center only for a juicy, dimensional shine",
+            "Exfoliate lips beforehand so the gloss looks smooth"
+          ],
+          "productHints": [
+            "lip tint or sheer lip stain",
+            "lip gloss",
+            "lip balm for prep"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "글로우",
+      "peachyglow",
+      "dewycoral",
+      "softromantic",
+      "champagneshimmer"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Torriden",
+        "name": "DIVE-IN Low Molecular Hyaluronic Acid Serum 50ml",
+        "shadeName": "",
+        "url": "https://www.stylevana.com/en_CA/torriden-dive-in-low-molecular-hyaluronic-acid-serum-50ml57742.html",
+        "why": "Lightweight hyaluronic acid serum that layers under moisturizer for plump, dewy, lit-from-within skin.",
+        "sourceUrl": "https://www.stylevana.com/en_CA/torriden-dive-in-low-molecular-hyaluronic-acid-serum-50ml57742.html"
+      },
+      {
+        "area": "base",
+        "brand": "dasique",
+        "name": "Water Dewy Gel Cushion",
+        "shadeName": "21N Pure",
+        "hex": "#F3D2C0",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240624343",
+        "why": "Light-coverage, glowy gel cushion in a light neutral beige that matches the soft peach-beige skin-tint base.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA240624343"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Palette The Secret Garden",
+        "shadeName": "#03 Rosebud Garden",
+        "hex": "#A9776A",
+        "url": "https://www.yesstyle.com/en/romand-better-than-palette-the-secret-garden-9-types-03-rosebud-garden/info.html/pid.1100088620",
+        "why": "Champagne shimmer, rose-brown and deep brown shades cover the lid, outer corner and lower lash line.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-better-than-palette-the-secret-garden-9-types-03-rosebud-garden/info.html/pid.1100088620"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "C01 Peach Chip",
+        "hex": "#F4A394",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=110&prdtNo=GA220916123",
+        "why": "Soft peachy-coral flush that blends into the skin for a diffused look, close to the peachy coral pink blush.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=110&prdtNo=GA220916123"
+      },
+      {
+        "area": "lip",
+        "brand": "peripera",
+        "name": "Ink Mood Glowy Tint",
+        "shadeName": "#02 Coral Influencer",
+        "hex": "#E88E82",
+        "url": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA231121205",
+        "why": "Glossy, juicy tint in a warm coral-pink that matches the sheer coral lip and wet finish.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?accParam=10&prdtNo=GA231121205"
+      }
+    ]
+  },
+  {
+    "id": "honey-braids",
+    "name": "Honey Braids",
+    "file": "muse-honey-braids.jpg",
+    "analysis": {
+      "mood": "Golden-hour glow girl: dewy, sun-kissed, sweet and effortlessly romantic",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glowy, hydrated",
+          "technique": "Hydrate well and use a luminous primer or glow serum so skin looks lit from within. Press product in with fingertips for a seamless, bouncy base.",
+          "tips": [
+            "Skin should look juicy, not greasy, so go easy on heavy creams",
+            "Hydration is the whole game here, dry skin kills the glow"
+          ],
+          "productHints": [
+            "hydrating toner or essence",
+            "glow serum",
+            "hydrating moisturizer",
+            "luminous or dewy primer"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Warm beige skin tone",
+              "hex": "#E8C4A0"
+            },
+            {
+              "name": "Peachy highlight",
+              "hex": "#F3D5B5"
+            }
+          ],
+          "finish": "dewy, skin-like, lightweight",
+          "technique": "Apply a sheer, buildable foundation or skin tint with a damp sponge or fingers. Use only where needed and let the skin's natural texture show. Add a light cream highlighter on cheekbones, nose bridge, and cupid's bow.",
+          "tips": [
+            "Less coverage equals more glow, aim for sheer skin",
+            "Blend the foundation edge into the neck so there is no visible line",
+            "Set only the T-zone lightly if needed, keep cheeks bouncy"
+          ],
+          "productHints": [
+            "sheer skin tint or tinted moisturizer",
+            "cream highlighter",
+            "light concealer",
+            "dewy setting spray"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Soft champagne shimmer",
+              "hex": "#E9D2B0"
+            },
+            {
+              "name": "Warm bronze brown",
+              "hex": "#9A6A45"
+            },
+            {
+              "name": "Deep espresso liner",
+              "hex": "#4A3426"
+            }
+          ],
+          "finish": "satin shimmer with soft matte depth",
+          "technique": "Sweep a light champagne shimmer across the lid and under the brow bone. Lightly tap a warm bronze brown into the crease and along the outer corner. Tightlap a thin espresso liner along the upper lash line and smudge slightly at the outer corner. Curl lashes and apply a brown-black mascara, adding a few wispy lashes at the outer corners.",
+          "tips": [
+            "Keep the crease blend soft so the shadow looks natural, not heavy",
+            "Brown liner feels softer than black and suits the warm palette",
+            "Add a little shimmer to the inner corners to brighten the eyes"
+          ],
+          "productHints": [
+            "cream or powder eyeshadow in champagne",
+            "warm brown eyeshadow",
+            "brown eyeliner pencil or gel liner",
+            "lash curler",
+            "brown-black mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Soft peachy coral",
+              "hex": "#E8907A"
+            },
+            {
+              "name": "Sheer rosy apricot",
+              "hex": "#F0A08A"
+            }
+          ],
+          "finish": "dewy, sheer, blended",
+          "technique": "Tap a peachy coral blush onto the apples of the cheeks and blend upward toward the temples. Add a tiny touch of cream blush on top for a lit-from-within flush.",
+          "tips": [
+            "Smile to find the apples of your cheeks for placement",
+            "Keep the color sheer so it looks like a natural flush",
+            "Blend well so there are no hard edges"
+          ],
+          "productHints": [
+            "cream blush stick",
+            "powder blush in peach or coral",
+            "cheek tint"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Glossy terracotta coral",
+              "hex": "#D9735A"
+            },
+            {
+              "name": "Sheer peachy gloss",
+              "hex": "#E9957E"
+            }
+          ],
+          "finish": "glossy, juicy, plump",
+          "technique": "Line lips lightly with a warm terracotta liner, then fill in with a coral-brown lip color. Dab a clear or peachy gloss in the center of the lower lip and at the cupid's bow for a wet, jelly-like shine.",
+          "tips": [
+            "Blot the edges slightly before adding gloss so color stays put",
+            "Keep the center glossier than the outline for a plump look",
+            "Pair with a bronzy eye to keep the overall look balanced"
+          ],
+          "productHints": [
+            "terracotta or coral lip liner",
+            "tinted lip balm or sheer lipstick",
+            "glossy lip gloss",
+            "jelly lip oil"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "goldenhourglow",
+      "sunkissedbraids",
+      "peachycoral",
+      "glowgirl",
+      "글로우"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "touchinSOL",
+        "name": "Glow Base Prep 30ml",
+        "shadeName": "",
+        "hex": "#F3D5B5",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338313",
+        "why": "Hydrating glow prep that gives a dewy, lit-from-within base before makeup.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338313"
+      },
+      {
+        "area": "base",
+        "brand": "Dasique",
+        "name": "Water Dewy Gel Cushion",
+        "shadeName": "21N Pure",
+        "hex": "#E8C4A0",
+        "url": "https://www.stylevana.com/en_US/dasique-water-dewy-gel-cushion-15-g.html",
+        "why": "Light neutral-beige shade in a dewy, lightweight cushion that looks like skin.",
+        "sourceUrl": "https://www.stylevana.com/en_US/dasique-water-dewy-gel-cushion-15-g.html"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Palette",
+        "shadeName": "01 Pampas Garden",
+        "hex": "#9A6A45",
+        "url": "https://www.stylevana.com/en_US/romand-better-than-palette-set-r.html",
+        "why": "Champagne shimmers with warm bronze-brown and deep brown tones, satin shimmer plus soft matte depth.",
+        "sourceUrl": "https://www.stylevana.com/en_US/romand-better-than-palette-set-r.html"
+      },
+      {
+        "area": "blush",
+        "brand": "HOUSE OF HUR",
+        "name": "Moist Ampoule Blusher",
+        "shadeName": "05 Peach Coral",
+        "hex": "#E8907A",
+        "url": "https://www.yesstyle.com/en/house-of-hur-moist-ampoule-blusher-11-colors-05-peach-coral/info.html/pid.1128290256",
+        "why": "Warm peachy-coral liquid blush with a dewy, sheer, blendable finish.",
+        "sourceUrl": "https://www.yesstyle.com/en/house-of-hur-moist-ampoule-blusher-11-colors-05-peach-coral/info.html/pid.1128290256"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Glasting Melting Balm",
+        "shadeName": "08 Coralia",
+        "hex": "#D9735A",
+        "url": "https://www.stylevana.com/en_US/romand-glasting-melting-balm-3-5g.html",
+        "why": "Coral-terracotta tone with a glossy, juicy, plumping shine.",
+        "sourceUrl": "https://www.stylevana.com/en_US/romand-glasting-melting-balm-3-5g.html"
+      }
+    ]
+  },
+  {
+    "id": "scarlet-edge",
+    "name": "Scarlet Edge",
+    "file": "muse-scarlet-edge.jpg",
+    "analysis": {
+      "mood": "Edgy, fierce, red-hot dominatrix glam with a sleek, glowing base",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "glassy, dewy",
+          "technique": "Hydrate well and let skin look lit from within before any base goes on; a luminous prep keeps the whole look reading as glass skin.",
+          "tips": [
+            "Use a hydrating essence or serum and press in gently so skin looks plump",
+            "Don't over-set the T-zone, you want that lit-from-inside shine to show through",
+            "Quick glow-boosting mist right before base helps the skin look fresh"
+          ],
+          "productHints": [
+            "hydrating essence",
+            "lightweight serum",
+            "glow mist",
+            "gel-cream moisturizer"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Warm ivory",
+              "hex": "#F3D9C4"
+            },
+            {
+              "name": "Soft rose blush undertone",
+              "hex": "#E8B4A8"
+            }
+          ],
+          "finish": "dewy, skin-like",
+          "technique": "Apply a sheer, buildable base with fingers or a damp sponge, focusing on the center of the face, then add a luminous highlight on the nose bridge, cheekbones, and cupid's bow.",
+          "tips": [
+            "Keep coverage light so pores and natural texture still show",
+            "Use a cream highlight on the high points for that glassy sheen",
+            "Set only the T-zone lightly to keep the glow"
+          ],
+          "productHints": [
+            "sheer skin tint or serum foundation",
+            "cream highlighter",
+            "light powder for T-zone only"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Blood red",
+              "hex": "#8B1A1A"
+            },
+            {
+              "name": "Deep wine",
+              "hex": "#4A0E12"
+            },
+            {
+              "name": "Jet black",
+              "hex": "#141014"
+            }
+          ],
+          "finish": "glossy, sharp",
+          "technique": "Sweep a deep wine-red shadow into the crease and lower lash line, then draw a bold winged liner in black with a red stripe above it that extends past the outer corner to make a sharp, lifted line.",
+          "tips": [
+            "Smudge the red into the lower lash line for a smoky, drama-heavy effect",
+            "Use a steady hand for the wing, anchor the tail at the outer corner first",
+            "Layer lash-line liner so the black stays intense through the day"
+          ],
+          "productHints": [
+            "red eyeshadow",
+            "wine or burgundy eyeshadow",
+            "black liquid eyeliner",
+            "red liquid or gel liner",
+            "volumizing mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Dusty rose",
+              "hex": "#D98A8A"
+            }
+          ],
+          "finish": "soft satin",
+          "technique": "Sweep a rosy-red blush along the apples of the cheeks and blend up toward the temples so it looks flushed rather than placed.",
+          "tips": [
+            "Smile to find the apple of the cheek, then blend upward",
+            "Keep the color softly diffused so it sits close to the skin",
+            "Pair with the glow on cheekbones for a lit, sultry flush"
+          ],
+          "productHints": [
+            "cream blush",
+            "powder blush with a satin finish"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Cherry red",
+              "hex": "#B0151E"
+            }
+          ],
+          "finish": "matte with a soft velvet feel",
+          "technique": "Line the lips with a precise red liner, then fill in with a saturated red, pressing color in with a tissue for a velvety, defined look.",
+          "tips": [
+            "Define the cupid's bow sharply to match the sharp eye wing",
+            "Blot after the first pass for a cleaner, longer-wear finish",
+            "A touch of gloss in the center will keep it from looking flat"
+          ],
+          "productHints": [
+            "red lip liner",
+            "matte red lipstick",
+            "lip gloss or tint for center pop"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "scarletedge",
+      "bloodredwing",
+      "winecrease",
+      "cherrymatte",
+      "걸크러쉬"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Beauty of Joseon",
+        "name": "Glow Serum: Propolis + Niacinamide",
+        "shadeName": "",
+        "hex": "#E8C9A0",
+        "url": "https://www.stylevana.com/en_US/beauty-of-joseon-glow-serum-propolis-niacinamide-30ml24182.html",
+        "why": "A lightweight, dewy glow serum that preps skin to look lit from within and glassy before base.",
+        "sourceUrl": "https://www.stylevana.com/en_US/beauty-of-joseon-glow-serum-propolis-niacinamide-30ml24182.html"
+      },
+      {
+        "area": "base",
+        "brand": "CLIO",
+        "name": "Kill Cover Mesh Glow Cushion",
+        "shadeName": "02 Lingerie",
+        "hex": "#EBCBB8",
+        "url": "https://korecareglobal.com/collections/cushion-foundations/products/clio-kill-cover-mesh-glow-cushion-refill",
+        "why": "02 Lingerie is a light rose-beige that matches the warm ivory with a soft rose undertone, in a sheer, glowy, skin-like finish.",
+        "sourceUrl": "https://korecareglobal.com/collections/cushion-foundations/products/clio-kill-cover-mesh-glow-cushion-refill"
+      },
+      {
+        "area": "eye",
+        "brand": "dasique",
+        "name": "Shadow Palette",
+        "shadeName": "#19 Candy Berry",
+        "hex": "#8B1A3A",
+        "url": "https://www.yesstyle.com/en/dasique-%E7%9C%BC%E5%BD%B1%E7%9B%A4-9%E6%AC%BE%E5%8F%AF%E9%81%B8/info.html/pid.1124811137",
+        "why": "A red-berry and wine palette that gives the blood red and deep wine crease and lower-lash shades.",
+        "sourceUrl": "https://www.yesstyle.com/en/dasique-%E7%9C%BC%E5%BD%B1%E7%9B%A4-9%E6%AC%BE%E5%8F%AF%E9%81%B8/info.html/pid.1124811137"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "N02 Vine Nude",
+        "hex": "#D08C8C",
+        "url": "https://kbeautytone.com/products/romand-better-than-cheek",
+        "why": "A muted dusty-rose shade in a soft, milky powder finish that blends into a flush.",
+        "sourceUrl": "https://kbeautytone.com/products/romand-better-than-cheek"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Zero Velvet Tint",
+        "shadeName": "07 Fizz",
+        "hex": "#B0151E",
+        "url": "https://www.yesstyle.com/en/romand-zero-velvet-tint-11-colori-11-flare/info.html/pid.1071377547",
+        "why": "A cherry-cola red in a matte, velvety finish that matches the saturated cherry red lip.",
+        "sourceUrl": "https://www.yesstyle.com/en/romand-zero-velvet-tint-11-colori-11-flare/info.html/pid.1071377547"
+      }
+    ]
+  },
+  {
+    "id": "noir-wing",
+    "name": "Noir Wing",
+    "file": "muse-noir-wing.jpg",
+    "analysis": {
+      "mood": "Moody, sleek street-goth glam with a cool, editorial edge",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "skin looks smooth, fresh, and softly luminous with a natural sheen",
+          "technique": "Prep with a hydrating moisturizer and a light primer so the skin looks even and slightly glowy before makeup goes on",
+          "tips": [
+            "Hydrate well so the base doesn't look dry or patchy under the cool lighting",
+            "Keep a little natural sheen on the high points for a lit-from-within look"
+          ],
+          "productHints": [
+            "hydrating serum",
+            "gel or cream moisturizer",
+            "hydrating primer"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Porcelain ivory",
+              "hex": "#EFE2DA"
+            },
+            {
+              "name": "Cool neutral beige",
+              "hex": "#E0CBC0"
+            }
+          ],
+          "finish": "natural satin with a soft, skin-like finish",
+          "technique": "Apply a thin layer of medium-coverage foundation with a damp sponge or brush, then set only the T-zone lightly so the skin still glows. Blend foundation down the jawline to avoid a visible edge",
+          "tips": [
+            "Pick a shade slightly cooler than your neck so the face stays bright and pale",
+            "Skip heavy powder on the cheeks to keep the glassy edge"
+          ],
+          "productHints": [
+            "medium-coverage foundation",
+            "skin-tint or light serum foundation",
+            "setting powder",
+            "concealer"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Charcoal smoke",
+              "hex": "#4A4A4E"
+            },
+            {
+              "name": "Soft taupe",
+              "hex": "#8E7F78"
+            },
+            {
+              "name": "Jet black",
+              "hex": "#141414"
+            }
+          ],
+          "finish": "smoky, matte-to-soft-shimmer",
+          "technique": "Pat a soft taupe shadow across the lid and blend into the crease. Build charcoal along the lower lash line and outer corner, then press a black liner along the upper lash line with a sharp wing that lifts outward. Smudge the lower line slightly and add lashes at the outer corner",
+          "tips": [
+            "Wing the liner upward and outward for the sharp, editorial shape",
+            "Blend the smoky lower lash line so it looks soft, not messy",
+            "Use a sharp angled brush for a crisp wing"
+          ],
+          "productHints": [
+            "cream eyeshadow",
+            "matte eyeshadow palette",
+            "gel eyeliner",
+            "pencil eyeliner",
+            "false lashes or volumizing mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Dusty rose",
+              "hex": "#C99A93"
+            }
+          ],
+          "finish": "soft matte with a subtle diffused glow",
+          "technique": "Lightly sweep a muted rose-brown just on the apples of the cheeks and blend upward toward the temples so it looks like natural warmth rather than a defined spot",
+          "tips": [
+            "Keep it subtle so it doesn't compete with the bold eye and lip",
+            "Tap a little highlighter on the cheekbones for a soft glow"
+          ],
+          "productHints": [
+            "cream blush",
+            "powder blush",
+            "cheek highlighter"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Cocoa mauve",
+              "hex": "#7A4B47"
+            },
+            {
+              "name": "Deep mahogany brown",
+              "hex": "#5E3A36"
+            }
+          ],
+          "finish": "matte to satin, velvety",
+          "technique": "Line the lips with a deep brown-mauve liner, then fill in with a matching matte or satin lipstick. Press a little on the center of the lower lip for a soft, slightly muted finish",
+          "tips": [
+            "Line slightly outside the natural lip for a fuller, sculpted shape",
+            "Blot after applying to keep the matte look from feeling heavy"
+          ],
+          "productHints": [
+            "lip liner",
+            "matte lipstick",
+            "satin lipstick"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "noirwing",
+      "streetgoth",
+      "charcoalsmoke",
+      "sharpwingliner",
+      "moodyglam"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "ILLIYOON",
+        "name": "Ceramide Ato Concentrate Cream 75ml",
+        "shadeName": "",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034628",
+        "why": "Hydrating ceramide moisturizer that preps skin to look smooth, fresh and slightly dewy before makeup.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034628"
+      },
+      {
+        "area": "base",
+        "brand": "HERA",
+        "name": "Silky Stay 24H Longwear Foundation",
+        "shadeName": "17C1 Porcelain",
+        "hex": "#EFE2DA",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825125",
+        "why": "Light cool-neutral porcelain shade in a medium-coverage, skin-like satin foundation that matches the muse's complexion.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825125"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Palette",
+        "shadeName": "04 Dusty Fog Garden",
+        "hex": "#8E7F78",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210004849",
+        "why": "Muted taupe-to-charcoal smoky tones in matte and soft-shimmer finishes for the smoky eye.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?dataSource=you_might_also_like&prdtNo=GA210004849"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "N02 Vine Nude",
+        "hex": "#C99A93",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220916123",
+        "why": "Muted rose-nude soft matte blush that gives diffused natural warmth.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA220916123"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Zero Velvet Tint",
+        "shadeName": "14 Peacan Tarte",
+        "hex": "#7A4B47",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001392",
+        "why": "Rosy cocoa-brown mauve in a velvety matte finish that matches the muse's lip.",
+        "sourceUrl": "https://m.global.oliveyoung.com/product/detail?dataSource=you_might_also_like&prdtNo=GA210001392"
+      }
+    ]
+  },
+  {
+    "id": "pure-peach",
+    "name": "Pure Peach",
+    "file": "muse-pure-peach.jpg",
+    "analysis": {
+      "mood": "Soft, sweet, innocent 청순 vibe with a dreamy strawberry-milk glow",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glassy",
+          "technique": "Hydrate well and apply a lightweight, glowy primer-like layer so skin looks poreless and luminous before base goes on.",
+          "tips": [
+            "Skin here reads hydrated with a soft sheen on the nose and cheeks, so don't skip moisture",
+            "Pat, don't rub, to keep the glow even"
+          ],
+          "productHints": [
+            "hydrating toner",
+            "gel or essence moisturizer",
+            "hydrating sunscreen or glow primer"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Porcelain beige",
+              "hex": "#F3DCCB"
+            }
+          ],
+          "finish": "natural satin, skin-like",
+          "technique": "Apply a sheer, buildable foundation or skin tint with fingers or a damp sponge, focusing on the center of the face and blending outward for a seamless, almost bare-skin look. Set only the T-zone lightly.",
+          "tips": [
+            "Keep coverage light so freckles and natural texture still show",
+            "Use a tiny bit of concealer under the eyes only where needed"
+          ],
+          "productHints": [
+            "sheer foundation or skin tint",
+            "light concealer",
+            "loose setting powder"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Soft mocha brown",
+              "hex": "#8A6A5E"
+            },
+            {
+              "name": "Muted rose shimmer",
+              "hex": "#E8B4B0"
+            }
+          ],
+          "finish": "soft satin with a subtle shimmer",
+          "technique": "Sweep a soft brown or rose shade through the crease, blend the edges well, then line the upper lash line with a thin brown liner and smudge it slightly. Define lower lashes lightly and curl lashes before adding a defined mascara.",
+          "tips": [
+            "Keep liner thin and soft for that innocent, doe-eyed look",
+            "Blend the crease so there are no harsh lines"
+          ],
+          "productHints": [
+            "brown eyeshadow palette",
+            "soft brown eyeliner pencil",
+            "lash curler",
+            "volumizing or natural-lengthening mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Baby pink",
+              "hex": "#F4A6A6"
+            }
+          ],
+          "finish": "soft, creamy, diffused",
+          "technique": "Tap a cream or soft powder blush onto the apples of the cheeks and blend upward toward the temples for a lifted, rosy flush.",
+          "tips": [
+            "Start light and build, since this look is about a gentle flush",
+            "Matching the blush to the lip tone keeps everything cohesive"
+          ],
+          "productHints": [
+            "cream blush",
+            "powder blush",
+            "blush stick"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Sheer coral pink",
+              "hex": "#EE8A80"
+            }
+          ],
+          "finish": "glossy, juicy",
+          "technique": "Apply a sheer tinted balm or gloss over the center of the lips, pressing and blending outward for a soft, hydrated stain that looks like your natural lip color.",
+          "tips": [
+            "Add a touch of gloss in the center for that juicy shine",
+            "Keep edges soft so the color blends naturally"
+          ],
+          "productHints": [
+            "tinted lip balm",
+            "sheer lip gloss",
+            "lip stain"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "purepeach",
+      "peachmakeup",
+      "strawberrymilk",
+      "청순",
+      "dreamyglow"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Torriden",
+        "name": "Dive-In Low Molecular Hyaluronic Acid Serum",
+        "shadeName": "",
+        "hex": "#EAF4F8",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260640905",
+        "why": "Lightweight hyaluronic acid serum that hydrates deeply for a dewy, glassy, poreless-looking prep layer.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA260640905"
+      },
+      {
+        "area": "base",
+        "brand": "espoir",
+        "name": "Be Glow Foundation SPF27 PA++",
+        "shadeName": "13N Neutral Porcelain",
+        "hex": "#F3DCCB",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127772",
+        "why": "Porcelain shade with a natural, glowy satin finish that is buildable and skin-like.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127772"
+      },
+      {
+        "area": "eye",
+        "brand": "rom&nd",
+        "name": "Better Than Palette",
+        "shadeName": "03 Rosebud Garden",
+        "hex": "#B98B85",
+        "url": "https://www.yesstyle.com/en/romand-better-than-palette-the-secret-garden-9-types-03-rosebud-garden/info.html/pid.1100088620",
+        "why": "Dusty rose and soft brown mattes with rosy pearl shimmer match the mocha crease and muted rose shimmer.",
+        "sourceUrl": "https://romandbeauty.com/collections/all-products/products/better-than-palette"
+      },
+      {
+        "area": "blush",
+        "brand": "rom&nd",
+        "name": "Better Than Cheek",
+        "shadeName": "W01 Odi Milk",
+        "hex": "#F4A6A6",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220916123",
+        "why": "A baby pink with a milky strawberry tone in a soft, creamy-powder finish that blends diffusely.",
+        "sourceUrl": "https://www.romandglobal.com/en-ca/products/rom-nd-better-than-cheek"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "Glasting Melting Balm",
+        "shadeName": "08 Coralia",
+        "hex": "#EE8A80",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA221116780",
+        "why": "A sheer, glossy, juicy tinted balm in coral pink that gives a hydrated natural-looking stain.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA221116780"
+      }
+    ]
+  },
+  {
+    "id": "milky-ribbon",
+    "name": "Milky Ribbon",
+    "file": "muse-milky-ribbon.jpg",
+    "analysis": {
+      "mood": "Soft, romantic, doll-like clean girl look with a dewy Korean glow",
+      "steps": [
+        {
+          "area": "skincare",
+          "colors": [],
+          "finish": "dewy, glowy",
+          "technique": "Hydrate well and let skin absorb before makeup so the face looks plump and lit from within. Pat on a light layer of essence or serum, then a moisturizer, focusing on cheeks and the nose bridge where light catches.",
+          "tips": [
+            "Skin looks luminous, so skip heavy powder underneath",
+            "A tiny bit of glow oil on high points adds lift without shine overload"
+          ],
+          "productHints": [
+            "hydrating essence",
+            "gel or lotion moisturizer",
+            "glow-boosting serum"
+          ]
+        },
+        {
+          "area": "base",
+          "colors": [
+            {
+              "name": "Porcelain nude",
+              "hex": "#F3E1D3"
+            }
+          ],
+          "finish": "dewy, skin-like",
+          "technique": "Apply a sheer, lightweight foundation or skin tint with fingertips or a damp sponge, building only where needed. Keep under-eyes and center of face lightly covered and let natural texture show through.",
+          "tips": [
+            "Stick to a shade that matches your neck so the face doesn't look separate",
+            "Set only the T-zone lightly to keep the glow"
+          ],
+          "productHints": [
+            "sheer skin tint",
+            "light-coverage cushion foundation",
+            "hydrating concealer"
+          ]
+        },
+        {
+          "area": "eye",
+          "colors": [
+            {
+              "name": "Soft smoky brown",
+              "hex": "#7A6258"
+            },
+            {
+              "name": "Creamy white highlight",
+              "hex": "#FBF6F0"
+            },
+            {
+              "name": "Deep espresso liner",
+              "hex": "#3B2A24"
+            }
+          ],
+          "finish": "satin, soft-focus",
+          "technique": "Sweep a soft brown shade along the lash line and blend into the crease for subtle depth. Add a bit of shimmer to the inner corner and brow bone, then draw a thin wing liner along the upper lash line and tightly tightline the waterline. Finish with lots of curled, defined lashes.",
+          "tips": [
+            "Keep the liner thin and slightly lifted at the outer corner for a puppy-eyed look",
+            "Curl lashes before mascara for max lift"
+          ],
+          "productHints": [
+            "brown eyeshadow palette",
+            "pearly highlight shadow",
+            "gel or liquid eyeliner",
+            "lengthening mascara"
+          ]
+        },
+        {
+          "area": "blush",
+          "colors": [
+            {
+              "name": "Peachy rose",
+              "hex": "#F2A29A"
+            }
+          ],
+          "finish": "soft, diffused",
+          "technique": "Tap a cream or powder blush onto the apples of the cheeks and blend upward toward the temples. Keep it concentrated where cheeks naturally flush for a warm, healthy-looking pink.",
+          "tips": [
+            "Smile to find the apple of your cheek before placing color",
+            "Cream blush blended with fingers gives the most dewy result"
+          ],
+          "productHints": [
+            "cream blush stick",
+            "pink powder blush",
+            "tinted cheek balm"
+          ]
+        },
+        {
+          "area": "lip",
+          "colors": [
+            {
+              "name": "Strawberry milk pink",
+              "hex": "#E8716B"
+            },
+            {
+              "name": "Sheer gloss clear",
+              "hex": "#F6C4BE"
+            }
+          ],
+          "finish": "glossy, juicy",
+          "technique": "Line the lips lightly with a warm pink-coral liner, then fill in with a sheer tinted balm or lipstick. Dab a clear or pink-tinted gloss at the center of the lower and upper lip for a jelly shine.",
+          "tips": [
+            "Keep the liner close to your natural lip line for a soft edge",
+            "Blot first if you want a juicier stain that lasts"
+          ],
+          "productHints": [
+            "tinted lip balm",
+            "sheer lipstick",
+            "glossy lip gloss",
+            "coral-pink lip liner"
+          ]
+        }
+      ]
+    },
+    "hashtags": [
+      "milkyribbon",
+      "softwingliner",
+      "peachyrosecheek",
+      "strawberrymilklip",
+      "청순"
+    ],
+    "museProducts": [
+      {
+        "area": "skincare",
+        "brand": "Round Lab",
+        "name": "Birch Juice Moisturizing Ampoule",
+        "shadeName": "",
+        "hex": "#F6EFE6",
+        "url": "https://roundlab.com/products/birch-juice-ampoule",
+        "why": "Lightweight hydrating ampoule that preps skin for a plump, dewy glow before makeup.",
+        "sourceUrl": "https://roundlab.com/products/birch-juice-ampoule"
+      },
+      {
+        "area": "base",
+        "brand": "rom&nd",
+        "name": "Bare Water Cushion",
+        "shadeName": "01 Porcelain 17",
+        "hex": "#F3E1D3",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA221116781",
+        "why": "Lightest porcelain shade with a sheer, watery, dewy skin-like finish.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA221116781"
+      },
+      {
+        "area": "eye",
+        "brand": "CLIO",
+        "name": "Pro Eye Palette Air",
+        "shadeName": "08 Latte Senior",
+        "hex": "#7A6258",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250833127",
+        "why": "Soft latte-brown palette with satin and shimmer shades for a soft-focus smoky brown eye.",
+        "sourceUrl": "https://holiholic.com/products/clio-pro-eye-palette-air"
+      },
+      {
+        "area": "blush",
+        "brand": "peripera",
+        "name": "Pure Blushed Sunshine Cheek",
+        "shadeName": "#39 Rose Cookie",
+        "hex": "#F2A29A",
+        "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230920260",
+        "why": "Soft rosy-peach powder blush that blends into a diffused, healthy flush.",
+        "sourceUrl": "https://global.oliveyoung.com/product/detail?prdtNo=GA230920260"
+      },
+      {
+        "area": "lip",
+        "brand": "rom&nd",
+        "name": "The Juicy Lasting Tint",
+        "shadeName": "26 Very Berry Pink",
+        "hex": "#E8716B",
+        "url": "https://romand.us/products/rom-nd-juicy-lasting-tint",
+        "why": "Glossy, juicy strawberry-milk pink tint with a jelly shine.",
+        "sourceUrl": "https://www.gwenchanda.com/shop/makeup/lips/lip-gloss/juicy-lasting-tint/"
+      }
+    ]
+  }
+]

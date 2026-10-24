@@ -13,18 +13,20 @@ run() { # look selfie caption
   echo "$look/$selfie → $st post $code"
 }
 pairs=(
-  "cherry-blossom|selfie-medium-olive|Cherry blossom, olive edition 🌸"
-  "smoky-plum|selfie-fair-cool|Girl crush plum but softer for fair skin"
-  "coral-summer|selfie-deep-cool|Coral summer that actually shows up on me"
-  "mlbb-nude|selfie-tan-warm|My everyday MLBB, tan version"
-  "red-velvet|selfie-medium-deep-warm|Red velvet lip, warmed up"
-  "icy-lilac|selfie-light-neutral|Icy lilac without looking washed out"
-  "golden-hour|selfie-deep-cool|Golden hour on deep cool skin ✨"
-  "strawberry-milk|selfie-tan-warm|Strawberry milk blush but make it tan"
-  "bold-fuchsia|selfie-medium-olive|Concert-ready fuchsia"
-  "mauve-cool|selfie-medium-deep-warm|Mauve that doesn't go gray on me"
-  "brick-sunset|selfie-fair-cool|Brick sunset, toned for fair cool"
-  "peach-glass|selfie-light-neutral|Peach glass skin day"
+  "burgundy-fall|me-deep-warm|Burgundy lips for fall, deep warm edition"
+  "maple-latte|me-medium-olive|Maple latte eyes on olive skin"
+  "toasted-beige|me-tan-golden|Toasted beige, tan and golden"
+  "cocoa-ribbon|me-medium-deep-red|Cocoa baked look, red undertones"
+  "rosewood-chic|me-light-neutral|Rosewood, but make it soft"
+  "cashmere-muse|me-fair-cool|Cashmere neutrals for fair cool skin"
+  "frost-silver|me-deep-cool|Frost silver that actually shows on deep skin"
+  "lavender-snow|me-light-medium-warm|Lavender snow without the wash-out"
+  "dew-bob|me-tan-golden|Dewy bob day"
+  "honey-braids|me-deep-warm|Honey glow, braids and gold"
+  "scarlet-edge|me-medium-olive|Scarlet edge, concert-ready"
+  "noir-wing|me-deep-cool|Noir wing, same drama"
+  "pure-peach|me-light-neutral|Pure peach, pure comfort"
+  "milky-ribbon|me-fair-cool|Milky ribbon, fair and cool"
 )
 N=${N:-4}; k=0
 ONLY=${ONLY:-}

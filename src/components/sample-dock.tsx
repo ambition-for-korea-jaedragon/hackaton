@@ -4,7 +4,7 @@
 import { useState } from "react";
 
 export const DND_MIME = "application/x-muselook-sample";
-export type SamplePayload = { kind: "look" | "selfie"; id: string };
+export type SamplePayload = { kind: "look" | "testlook" | "selfie"; id: string };
 
 export function readSamplePayload(e: React.DragEvent): SamplePayload | null {
   try {
@@ -19,7 +19,7 @@ export function hasSamplePayload(e: React.DragEvent) {
   return Array.from(e.dataTransfer.types).includes(DND_MIME);
 }
 
-type Item = { id: string; name: string; file: string };
+type Item = { id: string; name: string; src: string };
 
 export function SampleDock({
   side,
@@ -69,7 +69,7 @@ export function SampleDock({
               } ${dragging === it.id ? "opacity-50" : ""}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/samples/${it.file}`} alt="" draggable={false} className="aspect-[4/5] w-full rounded-[11px] object-cover object-top" />
+              <img src={it.src} alt="" draggable={false} className="aspect-[4/5] w-full rounded-[11px] object-cover object-top" />
               <span className="mx-0.5 mt-1.5 block truncate text-[12.5px] font-semibold">{it.name}</span>
             </button>
           </li>

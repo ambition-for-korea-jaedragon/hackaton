@@ -72,7 +72,7 @@ export const ANALYZE_SYSTEM = `You are a professional makeup artist analysing a 
 Return the look as structured data: a one-line "mood", and exactly 5 steps in order: skincare, base, eye, blush, lip.
 For each step: "colors" (name + approximate hex of the visible product colors; empty array for skincare), "finish" (e.g. dewy, matte, glassy), "technique" (how it is applied), "tips" (points to watch), "productHints" (product TYPES/categories only, never assert exact brands or shades).
 Infer skincare prep from the skin finish visible. Write in concise, friendly English for a US Gen Z audience. Hex must be #RRGGBB.
-Also return "hashtags": 5 short hashtags for this look WITHOUT the # sign (lowercase, no spaces): 1-2 Korean beauty trend keywords from this list only when they truly fit (가을, 굽굽, 어른여자, 얼음, 글로우, 걸크러쉬, 청순) plus 3-4 descriptive English tags (for example glassskin, strawberrymilk, dewylips).`;
+Also return "hashtags": 5 short hashtags for this look WITHOUT the # sign (lowercase, no spaces). Make them specific to THIS look: its colors, finish, styling and vibe. Avoid generic tags such as glassskin or dewylips unless that really defines the look. Add a Korean keyword only when it clearly fits (굽굽 = toasty baked brown/beige/coral monochrome; 가을 = autumn deep warm shades; 어른여자 = mature polished; 얼음 = icy cool silver/lilac/blue; 글로우 = dewy glass-skin glow; 걸크러쉬 = bold sharp stage glam; 청순 = pure soft pastel). Use 1-2 Korean keywords at most, plus 3-4 specific English tags.`;
 
 const LookAnalysisOut = LookAnalysis.extend({ hashtags: z.array(z.string()) });
 

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ActionBar, ErrorNote, PrimaryButton, ScreenBody, Spinner, TopBar } from "@/components/app-shell";
 import { api, postJson } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
-import { SAMPLES } from "@/lib/samples";
+import { SAMPLES, TEST_LOOKS } from "@/lib/samples";
 import { SampleDock, readSamplePayload } from "@/components/sample-dock";
 
 const COPY = ["Reading the look…", "Spotting every shade…", "Matching finishes…", "Writing your breakdown…"];
@@ -17,6 +17,7 @@ export function LookPicker() {
   const [preview, setPreview] = useState<string | null>(null);
   const [sample, setSample] = useState<string | null>(null);
   const [over, setOver] = useState(false);
+  const [testPicked, setTestPicked] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copyIdx, setCopyIdx] = useState(0);
@@ -28,19 +29,33 @@ export function LookPicker() {
   }, [busy, sample]);
   useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
 
-  function pickFile(f: File | undefined) {
+  function pickFile(f: File | undefined, testId: string | null = null) {
     if (!f) return;
     if (!f.type.startsWith("image/")) return setError("Please choose an image file.");
     setError(null);
     setFile(f);
+    setTestPicked(testId);
     setSample(null);
     setPreview(URL.createObjectURL(f));
   }
   function pickSample(id: string) {
+    setTestPicked(null);
     setSample(id);
     setFile(null);
     setPreview(null);
     setError(null);
+  }
+
+  // Test looks are real uploads: they go through live analysis instead of the prepared sample data.
+  async function pickTestLook(id: string) {
+    const it = TEST_LOOKS.find((x) => x.id === id);
+    if (!it) return;
+    try {
+      const blob = await (await fetch(it.src)).blob();
+      pickFile(new File([blob], `${it.id}.jpg`, { type: blob.type || "image/jpeg" }), id);
+    } catch {
+      setError("Couldn't load that test look. Try uploading a photo instead.");
+    }
   }
 
   async function analyze() {
@@ -72,13 +87,12 @@ export function LookPicker() {
   const ready = !!(file || sample);
   const current = SAMPLES.find((s) => s.id === sample);
 
-  const half = Math.ceil(SAMPLES.length / 2);
   return (
     <>
       {!busy && (
         <>
-          <SampleDock side="left" kind="look" items={SAMPLES.slice(0, half)} title="Try a sample look" hint="Drag a photo onto the box, or click it." selected={sample} onPick={pickSample} />
-          <SampleDock side="right" kind="look" items={SAMPLES.slice(half)} title="More looks" selected={sample} onPick={pickSample} />
+          <SampleDock side="left" kind="look" items={SAMPLES} title="Demo looks" hint="Ready-made breakdowns. Drag one onto the photo box, or click it." selected={sample} onPick={pickSample} />
+          <SampleDock side="right" kind="testlook" items={TEST_LOOKS} title="Live test looks" hint="Analyzed for real, about 10 seconds. Drag one onto the box." selected={testPicked} onPick={(id) => void pickTestLook(id)} />
         </>
       )}
       <TopBar
@@ -95,7 +109,7 @@ export function LookPicker() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] bg-paper">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={preview ?? (current ? `/samples/${current.file}` : "")}
+                src={preview ?? (current ? current.src : "")}
                 alt="Your look being analyzed"
                 className="size-full object-cover opacity-90"
               />
@@ -136,6 +150,7 @@ export function LookPicker() {
                   setOver(false);
                   const dropped = readSamplePayload(e);
                   if (dropped?.kind === "look") pickSample(dropped.id);
+                  else if (dropped?.kind === "testlook") void pickTestLook(dropped.id);
                   else pickFile(e.dataTransfer.files[0]);
                 }}
                 className={`relative flex h-[250px] cursor-pointer flex-col [&>*]:pointer-events-none items-center justify-center gap-2.5 overflow-hidden rounded-[18px] border-2 border-dashed border-ink/30 text-center focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink ${
@@ -151,7 +166,7 @@ export function LookPicker() {
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={preview ?? `/samples/${current?.file}`}
+                      src={preview ?? current?.src}
                       alt={current && !preview ? `${current.name} sample look` : "Your selected look"}
                       className="absolute inset-0 size-full object-cover"
                     />
@@ -195,7 +210,7 @@ export function LookPicker() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`/samples/${s.file}`}
+                    src={s.src}
                     alt={`${s.name} sample look`}
                     className="aspect-[5/6] w-full rounded-[11px] object-cover"
                   />

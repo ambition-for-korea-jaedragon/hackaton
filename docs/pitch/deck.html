@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>muselook · Ambition for Korea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+ @page{size:1920px 1080px;margin:0}
+ *{margin:0;padding:0;box-sizing:border-box;word-break:keep-all}
+ :root{--mirror:#f6f4f9;--ink:#2a1630;--soft:#6b5872;--cherry:#e0245e;--lilac:#cfc4f0;--line:#e6e0ec;--paper:#fff}
+ body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:#555;color:var(--ink)}
+ .s{width:1920px;height:1080px;position:relative;overflow:hidden;background:var(--mirror);page-break-after:always;margin:0 auto 40px}
+ @media print{body{background:none}.s{margin:0}}
+ .team{position:absolute;top:48px;left:96px;font-size:26px;font-weight:700;color:var(--soft)}
+ .topic{position:absolute;top:48px;right:96px;font-size:22px;font-weight:800;color:var(--cherry);letter-spacing:.08em}
+ .foot{position:absolute;left:5%;right:5%;bottom:32px}
+ .foot img{width:100%;display:block}
+ .label{font-size:22px;font-weight:800;letter-spacing:.1em;color:var(--cherry);margin-bottom:10px}
+ .card p.src,.src{font-size:21px;font-weight:500;color:var(--soft);line-height:1.35}
+
+ /* slide 1 */
+ .s1 .left{position:absolute;left:96px;top:116px;width:1010px;display:flex;flex-direction:column;gap:22px}
+ .mark{font-family:'Bagel Fat One',sans-serif;font-size:130px;line-height:.95;letter-spacing:-.01em}
+ .one{font-size:42px;font-weight:700;line-height:1.2}
+ .one em{font-style:normal;color:var(--cherry)}
+ .card{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:22px 32px}
+ .card p{font-size:30px;line-height:1.35;font-weight:500}
+ .card p b{font-weight:800}
+ .s1 .right{position:absolute;right:96px;top:120px;width:660px;height:740px;display:flex;gap:20px;align-items:stretch}
+ .ph{flex:1;position:relative;border-radius:26px;overflow:hidden;box-shadow:0 0 0 8px #1e1323,0 24px 48px -20px rgb(42 22 48/.45)}
+ .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+ .tag{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:999px;padding:8px 18px;font-size:26px;font-weight:800}
+ .tag.c{background:var(--cherry);color:#fff}
+ .arrow{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--cherry);color:#fff;font-size:40px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px var(--mirror);z-index:2}
+ .cap{position:absolute;right:96px;top:876px;width:660px;text-align:center;font-size:24px;color:var(--soft);font-weight:600}
+
+ /* slide 2 */
+ .s2 h2{position:absolute;left:96px;right:96px;top:104px;font-size:46px;font-weight:800;line-height:1.15}
+ .s2 h2 em{font-style:normal;color:var(--cherry)}
+ .phones{position:absolute;left:96px;top:196px;display:flex;gap:30px}
+ .phone{width:330px;display:flex;flex-direction:column;gap:12px}
+ .scr{width:330px;height:640px;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 0 0 7px #1e1323,0 20px 40px -20px rgb(42 22 48/.45)}
+ .scr img{width:100%;display:block}
+ .phone p{font-size:24px;font-weight:700;text-align:center;line-height:1.2}
+ .phone p span{color:var(--cherry)}
+ .s2 .right{position:absolute;left:1180px;right:96px;top:196px;display:flex;flex-direction:column;gap:18px}
+ ol{list-style:none;display:flex;flex-direction:column;gap:14px}
+ ol li{font-size:28px;line-height:1.28;padding-left:52px;position:relative;font-weight:500}
+ ol li::before{content:counter(i);counter-increment:i;position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center}
+ ol{counter-reset:i}
+ ol li b{font-weight:800}
+ .url{font-size:34px;font-weight:800;color:var(--cherry)}
+ .disc{font-size:20px;line-height:1.35;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
+ .disc b{color:var(--ink)}
+</style></head>
+<body>
+
+<!-- 1 · What, for whom -->
+<section class="s s1">
+  <div class="team">TEAM_NAME</div>
+  <div class="topic">TOPIC · K-BEAUTY FOR GLOBAL CONSUMERS</div>
+  <div class="left">
+    <div class="mark">muselook</div>
+    <div class="one">Pick any idol makeup look. See it <em>translated to your skin tone</em>, on your face, with the K-beauty products that match.</div>
+    <div class="card">
+      <div class="label">FOR</div>
+      <p><b>US Gen Z K-beauty fans (13+)</b>, especially medium-to-deep skin tones.</p>
+    </div>
+    <div class="card">
+      <div class="label">PROBLEM</div>
+      <p>Idol product lists ignore skin tone. Fans can't swatch from overseas, and K-beauty shade ranges skew light, so they buy shades that look wrong on them.</p>
+      <p class="src" style="margin-top:12px">"Brown skin foundations: Tirtir is the only option" (r/koreanskincare, 2025) · US is K-beauty's #1 export market, $2.19B in 2025, +15.1% (MFDS via Yonhap)</p>
+    </div>
+  </div>
+  <div class="right">
+    <div class="arrow">→</div>
+    <div class="ph"><img src="assets/muse.jpg" alt=""><span class="tag">Muse look</span></div>
+    <div class="ph"><img src="assets/mytone.png" alt=""><span class="tag c">My tone</span></div>
+  </div>
+  <div class="cap">Same look, re-shaded for a medium-tan warm skin tone</div>
+  <div class="foot"><img src="assets/footer-for-light-slides.png" alt=""></div>
+</section>
+
+<!-- 2 · Built today -->
+<section class="s s2">
+  <div class="team">TEAM_NAME</div>
+  <div class="topic">BUILT TODAY · LIVE DEMO</div>
+  <h2>One idol look, <em>re-shaded and re-shopped for your skin</em>. Live today.</h2>
+  <div class="phones">
+    <div class="phone"><div class="scr"><img src="assets/feed.png" alt=""></div><p><span>1</span> A shared look, 4 views</p></div>
+    <div class="phone"><div class="scr"><img src="assets/product.png" alt=""></div><p><span>2</span> Muse's products</p></div>
+    <div class="phone"><div class="scr"><img src="assets/product-mytone.png" alt=""></div><p><span>3</span> Re-picked for my tone</p></div>
+  </div>
+  <div class="right">
+    <div>
+      <div class="label">HOW CLAUDE DOES THE WORK</div>
+      <ol>
+        <li><b>Claude Haiku 5.5</b> reads the look photo: color, texture and technique for each face area, plus trend tags.</li>
+        <li><b>Claude Sonnet 5.5</b> reads your skin tone and re-picks every shade, with a reason for each change.</li>
+        <li>A <b>Claude Sonnet 5.5 agent</b> web-searches K-beauty products for each shade and returns buy links.</li>
+        <li>An image model paints the look on your selfie. Face pins come from in-browser landmarks.</li>
+      </ol>
+    </div>
+    <div class="url">muselook.fly.dev</div>
+    <div class="disc"><b>Live:</b> Claude analysis, tone translation and product search on every upload. <b>Sample:</b> demo faces are AI-generated people, and sample looks show cached results. On-face color is a simulation, not a real swatch.</div>
+  </div>
+  <div class="foot"><img src="assets/footer-for-light-slides.png" alt=""></div>
+</section>
+
+</body></html>

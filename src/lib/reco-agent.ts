@@ -133,7 +133,10 @@ function parseProducts(text: string): Product[] {
     } else if (c === '"') inStr = true;
     else if (c === "{") depth++;
     else if (c === "}" && --depth === 0) {
-      const list = ProductList.parse(JSON.parse(text.slice(start, i + 1)));
+      const raw = JSON.parse(text.slice(start, i + 1)) as { products?: Record<string, unknown>[] };
+      // Be lenient about swatch colors: drop a malformed hex instead of rejecting the whole list.
+      for (const p of raw.products ?? []) if (typeof p.hex !== "string" || !/^#[0-9a-fA-F]{6}$/.test(p.hex)) delete p.hex;
+      const list = ProductList.parse(raw);
       if (!list.products.length) throw new Error("empty product list");
       return list.products;
     }
