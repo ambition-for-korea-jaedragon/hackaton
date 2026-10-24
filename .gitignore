@@ -10,3 +10,12 @@ build/
 .vercel/
 __pycache__/
 .venv/
+coverage/
+out/
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+.pnp
+.pnp.*
+# runtime data (uploaded/generated images)
+/data/

@@ -33,3 +33,15 @@
 개발과 제품 AI는 지급 Claude 크레딧을 사용한다. 비밀 값은 공개 레포·문서·로그·배포한 클라이언트에 노출하지 않고 선택한 환경의 비밀 저장 기능을 사용한다. 실측·외부 사실·추정·샘플을 구분한다.
 
 고객 가치·덱 판단이 필요하면 `docs/design-refs/judge-perspective.md`를 읽는다.
+
+## Next.js (앱 소스: 레포 루트)
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
