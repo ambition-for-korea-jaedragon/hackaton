@@ -61,3 +61,14 @@ export const SAMPLES = [
     "file": "look-bold-fuchsia.jpg"
   }
 ] as const;
+
+// Synthetic (AI-generated, fictional) selfies for the hackathon demo; drag them onto the selfie box.
+export const SELFIES = [
+  { id: "deep-warm", name: "Deep · warm", file: "selfie-deep.jpg" },
+  { id: "fair-cool", name: "Fair · cool", file: "selfie-fair-cool.jpg" },
+  { id: "light-neutral", name: "Light · neutral", file: "selfie-light-neutral.jpg" },
+  { id: "medium-olive", name: "Medium · olive", file: "selfie-medium-olive.jpg" },
+  { id: "tan-warm", name: "Tan · warm", file: "selfie-tan-warm.jpg" },
+  { id: "deep-cool", name: "Deep · cool", file: "selfie-deep-cool.jpg" },
+  { id: "medium-deep-warm", name: "Medium-deep · warm", file: "selfie-medium-deep-warm.jpg" },
+] as const;

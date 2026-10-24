@@ -6,6 +6,7 @@ import { ActionBar, ErrorNote, PrimaryButton, ScreenBody, Spinner, TopBar } from
 import { api, postJson } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
 import { SAMPLES } from "@/lib/samples";
+import { SampleDock, readSamplePayload } from "@/components/sample-dock";
 
 const COPY = ["Reading the look…", "Spotting every shade…", "Matching finishes…", "Writing your breakdown…"];
 
@@ -15,6 +16,7 @@ export function LookPicker() {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [sample, setSample] = useState<string | null>(null);
+  const [over, setOver] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copyIdx, setCopyIdx] = useState(0);
@@ -64,8 +66,15 @@ export function LookPicker() {
   const ready = !!(file || sample);
   const current = SAMPLES.find((s) => s.id === sample);
 
+  const half = Math.ceil(SAMPLES.length / 2);
   return (
     <>
+      {!busy && (
+        <>
+          <SampleDock side="left" kind="look" items={SAMPLES.slice(0, half)} title="Try a sample look" hint="Drag a photo onto the box, or click it." selected={sample} onPick={pickSample} />
+          <SampleDock side="right" kind="look" items={SAMPLES.slice(half)} title="More looks" selected={sample} onPick={pickSample} />
+        </>
+      )}
       <TopBar
         step={1}
         right={
@@ -108,17 +117,36 @@ export function LookPicker() {
             <div className="mt-5 rounded-[var(--radius-booth)] bg-lilac p-3.5">
               <label
                 htmlFor="look-file"
-                onDragOver={(e) => e.preventDefault()}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.dataTransfer.dropEffect = "copy";
+                  setOver(true);
+                }}
+                onDragLeave={() => setOver(false)}
                 onDrop={(e) => {
                   e.preventDefault();
-                  pickFile(e.dataTransfer.files[0]);
+                  setOver(false);
+                  const dropped = readSamplePayload(e);
+                  if (dropped?.kind === "look") pickSample(dropped.id);
+                  else pickFile(e.dataTransfer.files[0]);
                 }}
-                className="relative flex h-[250px] cursor-pointer flex-col items-center justify-center gap-2.5 overflow-hidden rounded-[18px] border-2 border-dashed border-ink/30 text-center focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink"
+                className={`relative flex h-[250px] cursor-pointer flex-col [&>*]:pointer-events-none items-center justify-center gap-2.5 overflow-hidden rounded-[18px] border-2 border-dashed border-ink/30 text-center focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink ${
+                  over ? "border-cherry bg-white/60 ring-4 ring-cherry/40" : ""
+                }`}
               >
-                {preview ? (
+                {over && (
+                  <span className="pointer-events-none absolute inset-0 z-10 grid place-items-center bg-white/70 font-display text-2xl">
+                    Drop to use this look
+                  </span>
+                )}
+                {preview || current ? (
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={preview} alt="Your selected look" className="absolute inset-0 size-full object-cover" />
+                    <img
+                      src={preview ?? `/samples/${current?.file}`}
+                      alt={current && !preview ? `${current.name} sample look` : "Your selected look"}
+                      className="absolute inset-0 size-full object-cover"
+                    />
                     <span className="absolute bottom-2.5 rounded-full bg-paper px-3 py-1.5 text-[13px] font-semibold">
                       Change photo
                     </span>

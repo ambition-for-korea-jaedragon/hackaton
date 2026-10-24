@@ -9,6 +9,8 @@ import { ShareSheet } from "@/components/share-sheet";
 import { ProductCards, ProductSkeleton, ProductsBadge, SwatchBand, areaLabel } from "@/components/tone-parts";
 import { getSession, imgUrl, postForm, postJson } from "@/lib/client/api";
 import { resizeImage } from "@/lib/client/resize";
+import { SELFIES } from "@/lib/samples";
+import { SampleDock, readSamplePayload } from "@/components/sample-dock";
 import type { SessionState } from "@/lib/types";
 
 type Step = "breakdown" | "onme" | "tone";
@@ -160,10 +162,30 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
+  const [over, setOver] = useState(false);
+  const [pickedSample, setPickedSample] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
+
+  function acceptFile(f: File, sampleId: string | null = null) {
+    if (!f.type.startsWith("image/")) return setError("Please choose an image file.");
+    setError(null);
+    setFile(f);
+    setPickedSample(sampleId);
+    setPreview(URL.createObjectURL(f));
+  }
+  async function pickSelfie(id: string) {
+    const it = SELFIES.find((x) => x.id === id);
+    if (!it) return;
+    try {
+      const blob = await (await fetch(`/samples/${it.file}`)).blob();
+      acceptFile(new File([blob], it.file, { type: blob.type || "image/jpeg" }), id);
+    } catch {
+      setError("Couldn't load that sample. Try uploading a photo instead.");
+    }
+  }
 
   async function upload() {
     if (!file) return;
@@ -197,13 +219,35 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
       <ScreenBody>
         {showForm ? (
           <>
+            <SampleDock side="left" kind="selfie" items={SELFIES.slice(0, 4)} title="Try a sample selfie" hint="Synthetic faces for the demo. Drag one onto the photo box, or click it." selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
+            <SampleDock side="right" kind="selfie" items={SELFIES.slice(4)} title="More skin tones" selected={pickedSample} onPick={(id) => void pickSelfie(id)} />
             <h1 className="mt-1 font-display text-[28px] leading-[1.05]">Now, your face.</h1>
             <p className="mt-1.5 text-[15px] text-ink-soft">Add a clear, front-facing selfie in good light.</p>
             <div className="mt-3.5 rounded-[28px] bg-lilac p-4">
               <label
                 htmlFor="selfie-file"
-                className="relative flex aspect-[4/5] cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-[18px] border-2 border-dashed border-ink/30 text-center focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink"
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.dataTransfer.dropEffect = "copy";
+                  setOver(true);
+                }}
+                onDragLeave={() => setOver(false)}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  setOver(false);
+                  const dropped = readSamplePayload(e);
+                  if (dropped?.kind === "selfie") void pickSelfie(dropped.id);
+                  else if (e.dataTransfer.files[0]) acceptFile(e.dataTransfer.files[0]);
+                }}
+                className={`relative flex aspect-[4/5] cursor-pointer flex-col [&>*]:pointer-events-none items-center justify-center gap-2 overflow-hidden rounded-[18px] border-2 border-dashed border-ink/30 text-center focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink ${
+                  over ? "border-cherry bg-white/60 ring-4 ring-cherry/40" : ""
+                }`}
               >
+                {over && (
+                  <span className="pointer-events-none absolute inset-0 z-10 grid place-items-center bg-white/70 font-display text-2xl">
+                    Drop to use this selfie
+                  </span>
+                )}
                 {preview ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={preview} alt="Your selfie" className="absolute inset-0 size-full object-cover" />
@@ -220,7 +264,7 @@ function OnMe({ s, refresh, onNext }: { s: SessionState; refresh: () => Promise<
                   className="sr-only"
                   onChange={(e) => {
                     const f = e.target.files?.[0];
-                    if (f) { setFile(f); setPreview(URL.createObjectURL(f)); }
+                    if (f) acceptFile(f);
                   }}
                 />
               </label>
