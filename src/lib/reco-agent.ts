@@ -4,57 +4,67 @@ import os from "node:os";
 import { getCatalogItems, catalog } from "./catalog";
 import { loadSession, updateSession } from "./storage";
 import { trackJob } from "./jobs";
-import { Product, ProductList, type LookAnalysis, type ToneTranslation } from "./types";
+import { AREAS, Product, ProductList, type Area, type LookAnalysis, type ToneTranslation } from "./types";
 
-const TIMEOUT_MS = 150_000;
+// One short-lived agent per area; each searches for a single product.
+const TIMEOUT_MS = 100_000;
+// Bound concurrent pi processes (each is a ~300MB node process).
+const MAX_PI = Number(process.env.PI_MAX_CONCURRENCY) || 10;
+let activePi = 0;
+const piWaiters: (() => void)[] = [];
+async function withPiSlot<T>(fn: () => Promise<T>): Promise<T> {
+  if (activePi >= MAX_PI) await new Promise<void>((r) => piWaiters.push(r));
+  activePi++;
+  try {
+    return await fn();
+  } finally {
+    activePi--;
+    piWaiters.shift()?.();
+  }
+}
 
-export function buildRecoPrompt(analysis: LookAnalysis, t: ToneTranslation): string {
-  const areas = t.changes
-    .map((c) => {
-      const finish = analysis.steps.find((s) => s.area === c.area)?.finish ?? "n/a";
-      return `- ${c.area}: target color ${c.toHex}, finish ${finish}. Reason: ${c.reason}`;
-    })
-    .join("\n");
-  return `You are a K-beauty shopping assistant. Use the web_search tool (and fetch_content if needed) to find REAL, currently sold Korean-brand (K-beauty) products.
+const RULES = `Rules:
+- Use the web_search tool at most 3 times (fetch_content only if really needed), then answer. Find a REAL, currently sold Korean-brand (K-beauty) product that you actually saw on a page. Prefer Olive Young Global, the brand's official site, YesStyle or Stylevana. Never invent URLs.
+- shadeName must be the exact shade name as sold on the product page (for example "21N Ivory"), with no notes or comments. If you cannot confirm the exact shade on a page, pick a different product whose shade you did confirm. For skincare, shadeName is "".
+- url must be a specific product page (not a search, category or home page).
+- "hex" is an approximate swatch color as "#RRGGBB"; omit it if unknown.`;
+
+const SCHEMA = (area: Area, whyHint: string) =>
+  `Output ONLY one JSON object, no prose, no markdown fences, with exactly ONE product:
+{"products":[{"area":"${area}","brand":"","name":"","shadeName":"","hex":"#RRGGBB","url":"product page URL","why":"${whyHint}","sourceUrl":"page used as evidence"}]}`;
+
+// MY TONE: one product for one area, adapted to the customer's skin tone.
+export function buildToneAreaPrompt(area: Area, analysis: LookAnalysis, t: ToneTranslation): string {
+  const finish = analysis.steps.find((s) => s.area === area)?.finish ?? "n/a";
+  const ch = t.changes.find((c) => c.area === area);
+  const target = ch
+    ? `Target color ${ch.toHex} (adapted to the customer's skin tone), finish ${finish}. Reason: ${ch.reason}`
+    : `No color target. Pick a prep product that suits a "${finish}" finish.`;
+  const baseRule = area === "base" ? "\n- The base shade MUST match the customer's skin depth and undertone (deep shade ranges exist, for example TIRTIR)." : "";
+  return `You are a K-beauty shopping assistant. Find ONE product for the "${area}" step of a makeup look.
 
 Customer skin tone: depth ${t.skinTone.depth}, undertone ${t.skinTone.undertone}, approx hex ${t.skinTone.hex}.
 Look mood: ${analysis.mood}
-Target per area (already adapted to the customer's skin tone):
-${areas}
+Area: ${area}. ${target}
 
-Task: recommend exactly 1 product for each of these areas: skincare, base, eye, blush, lip.
-- The base product MUST have a shade that matches the customer's skin depth and undertone (deep shade ranges exist, e.g. TIRTIR).
-- The color, shade and finish should match the target color and finish for each area. For skincare, pick a prep product that suits the finish; shadeName is "".
-- Only products you actually found on a page via search. Prefer Olive Young Global, the brand's official site, YesStyle or Stylevana pages. Never invent URLs.
-- shadeName must be the exact shade name as sold on the product page (e.g. "21N Ivory"), with no notes or comments such as "check selector". If you cannot confirm the exact shade on a page, pick a different product whose shade you did confirm.
-- url must be a specific product page for that product (not a search, category or home page).
-- "hex" is an approximate swatch color as "#RRGGBB"; omit it if unknown.
+${RULES}${baseRule}
 
-Output ONLY one JSON object, no prose, no markdown fences:
-{"products":[{"area":"skincare|base|eye|blush|lip","brand":"","name":"","shadeName":"","hex":"#RRGGBB","url":"product page URL","why":"one short line on why it fits","sourceUrl":"page used as evidence"}]}`;
+${SCHEMA(area, "one short line on why it fits")}`;
 }
 
-// MUSE products: real K-beauty products that reproduce the muse look's ORIGINAL colors (no skin-tone adaptation).
-export function buildMusePrompt(analysis: LookAnalysis): string {
-  const areas = analysis.steps
-    .map((s) => `- ${s.area}: colors ${s.colors.map((c) => `${c.name} ${c.hex}`).join(", ") || "n/a"}; finish ${s.finish}; ${s.technique}`)
-    .join("\n");
-  return `You are a K-beauty shopping assistant. Use the web_search tool (and fetch_content if needed) to find REAL, currently sold Korean-brand (K-beauty) products that recreate this muse's makeup look exactly as shown (original colors, for the muse's own light complexion).
+// MUSE: one product for one area, matching the muse's original colors.
+export function buildMuseAreaPrompt(area: Area, analysis: LookAnalysis): string {
+  const st = analysis.steps.find((x) => x.area === area);
+  const colors = st?.colors.map((c) => `${c.name} ${c.hex}`).join(", ") || "n/a";
+  const baseRule = area === "base" ? "\n- Base: a shade matching the muse's complexion given by the base color above." : "";
+  return `You are a K-beauty shopping assistant. Find ONE product that recreates the "${area}" step of this muse's makeup look exactly as shown (original colors, for the muse's own complexion).
 
 Look mood: ${analysis.mood}
-Muse look by area:
-${areas}
+Area: ${area}. Colors: ${colors}; finish ${st?.finish ?? "n/a"}; ${st?.technique ?? ""}
 
-Task: recommend exactly 1 product for each of these areas: skincare, base, eye, blush, lip.
-- Match each area's color and finish as closely as possible (base: a shade matching the muse's complexion in the base color above). For skincare, pick a prep product that suits the finish; shadeName is "".
-- Only products you actually found on a page via search. Prefer Olive Young Global, the brand's official site, YesStyle or Stylevana pages. Never invent URLs.
-- shadeName must be the exact shade name as sold on the product page, with no notes or comments. If you cannot confirm the exact shade on a page, pick a different product whose shade you did confirm.
-- url must be a specific product page for that product (not a search, category or home page).
-- "hex" is an approximate swatch color as "#RRGGBB"; omit it if unknown.
-- "why": one short line saying how it matches the muse's color/finish.
+${RULES}${baseRule}
 
-Output ONLY one JSON object, no prose, no markdown fences:
-{"products":[{"area":"skincare|base|eye|blush|lip","brand":"","name":"","shadeName":"","hex":"#RRGGBB","url":"product page URL","why":"one short line on how it matches the muse","sourceUrl":"page used as evidence"}]}`;
+${SCHEMA(area, "one short line on how it matches the muse")}`;
 }
 
 function cleanEnv(): NodeJS.ProcessEnv {
@@ -73,6 +83,10 @@ function redact(s: string): string {
 }
 
 function runPi(prompt: string): Promise<string> {
+  return withPiSlot(() => runPiProcess(prompt));
+}
+
+function runPiProcess(prompt: string): Promise<string> {
   const bin = process.env.PI_BIN || "pi";
   const model = process.env.PI_MODEL_RECO || "anthropic/claude-haiku-5-5";
   const args = [
@@ -157,6 +171,38 @@ async function searchProducts(prompt: string): Promise<Product[]> {
   }
 }
 
+// Search one product for one area; the agent's area is forced to the requested one.
+async function searchArea(area: Area, prompt: string): Promise<Product> {
+  const list = await searchProducts(prompt);
+  const p = list.find((x) => x.area === area) ?? list[0];
+  return { ...p, area };
+}
+
+type Key = "products" | "museProducts";
+
+// Run one agent per area in parallel; each finished product is written to the session right away
+// so the UI can show results as they arrive. Returns how many areas succeeded.
+async function searchAllAreas(id: string, key: Key, prompts: Record<Area, string>): Promise<{ found: number; errors: string[] }> {
+  const errors: string[] = [];
+  await Promise.all(
+    AREAS.map(async (area) => {
+      try {
+        const p = await searchArea(area, prompts[area]);
+        await updateSession(id, (st) => {
+          const cur = (st[key] ??= { status: "pending" });
+          cur.items = [...(cur.items ?? []).filter((x) => x.area !== area), p];
+        });
+      } catch (e) {
+        const msg = `${area}: ${e instanceof Error ? e.message : String(e)}`;
+        errors.push(msg);
+        console.error(`[reco] ${id} ${key} ${msg}`);
+      }
+    }),
+  );
+  const s = await loadSession(id);
+  return { found: s?.[key]?.items?.length ?? 0, errors };
+}
+
 // Fire-and-forget; always settles session.products. Caller must NOT await.
 export function runRecommendations(id: string): Promise<void> {
   return trackJob(`${id}:products`, () => runRecommendationsInner(id));
@@ -167,20 +213,15 @@ async function runRecommendationsInner(id: string): Promise<void> {
     const s = await loadSession(id);
     if (!s?.analysis || !s.translation) throw new Error("missing translation");
     const { analysis, translation } = s;
-    let items: Product[] | undefined;
-    let error: string | undefined;
-    try {
-      items = await searchProducts(buildRecoPrompt(analysis, translation));
-    } catch (e) {
-      error = e instanceof Error ? e.message : String(e);
-      console.error(`[reco] ${id}: ${error}`);
-    }
-    if (items) {
+    const prompts = Object.fromEntries(AREAS.map((a) => [a, buildToneAreaPrompt(a, analysis, translation)])) as Record<Area, string>;
+    const { found, errors } = await searchAllAreas(id, "products", prompts);
+    if (found > 0) {
       await updateSession(id, (st) => {
-        st.products = { status: "done", items };
+        st.products = { status: "done", items: st.products?.items, error: errors.length ? errors.join("; ") : undefined };
       });
       return;
     }
+    // Nothing found: fall back to the curated sample catalog (flagged as sample).
     let picks = getCatalogItems(translation.productIds);
     if (!picks.length) picks = catalog.slice(0, 5);
     const fb: Product[] = picks.map((c) => ({
@@ -195,8 +236,8 @@ async function runRecommendationsInner(id: string): Promise<void> {
     }));
     await updateSession(id, (st) => {
       st.products = fb.length
-        ? { status: "done", fallback: true, items: fb, error }
-        : { status: "error", error: error ?? "no products available" };
+        ? { status: "done", fallback: true, items: fb, error: errors.join("; ") }
+        : { status: "error", error: errors.join("; ") || "no products available" };
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
@@ -207,7 +248,7 @@ async function runRecommendationsInner(id: string): Promise<void> {
   }
 }
 
-// Fire-and-forget; settles session.museProducts (no catalog fallback: errors are shown as unavailable). Caller must NOT await.
+// Fire-and-forget; settles session.museProducts (no catalog fallback). Caller must NOT await.
 export function runMuseProducts(id: string): Promise<void> {
   return trackJob(`${id}:museProducts`, () => runMuseProductsInner(id));
 }
@@ -216,9 +257,14 @@ async function runMuseProductsInner(id: string): Promise<void> {
   try {
     const s = await loadSession(id);
     if (!s?.analysis) throw new Error("missing analysis");
-    const items = await searchProducts(buildMusePrompt(s.analysis));
+    const { analysis } = s;
+    const prompts = Object.fromEntries(AREAS.map((a) => [a, buildMuseAreaPrompt(a, analysis)])) as Record<Area, string>;
+    const { found, errors } = await searchAllAreas(id, "museProducts", prompts);
     await updateSession(id, (st) => {
-      st.museProducts = { status: "done", items };
+      st.museProducts =
+        found > 0
+          ? { status: "done", items: st.museProducts?.items }
+          : { status: "error", error: errors.join("; ") || "no products found" };
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);

@@ -104,8 +104,10 @@ function SearchBanner({ pending, state, count }: { pending: boolean; state?: str
         <div className="flex items-center gap-3 px-3.5 py-3">
           <span aria-hidden className="block size-6 flex-none animate-spin rounded-full border-[3px] border-cherry border-t-transparent" />
           <div className="min-w-0">
-            <p className="text-[14.5px] font-bold leading-tight">Finding matching K-beauty products</p>
-            <p className="mt-0.5 text-[12.5px] leading-snug text-ink-soft">Searching the stores for each shade. Usually 1–2 minutes, so keep exploring the look.</p>
+            <p className="text-[14.5px] font-bold leading-tight">
+              Finding matching K-beauty products{count > 0 ? <span className="text-cherry"> · {count} of 5 found</span> : null}
+            </p>
+            <p className="mt-0.5 text-[12.5px] leading-snug text-ink-soft">One search per part of the look, all at once. Usually under a minute.</p>
           </div>
         </div>
         <div className="h-1 bg-cherry/10" aria-hidden>
@@ -137,7 +139,7 @@ function Breakdown({ s, onNext }: { s: SessionState; onNext: () => void }) {
   // Adapt analysis steps to the shared callout (pin + card per area); card text = the finish.
   const mp = s.museProducts;
   const productsPending = !mp || mp.status === "pending" || mp.status === "idle";
-  const productFor = (area: LookStep["area"]) => (mp?.status === "done" ? mp.items?.find((p) => p.area === area) : undefined);
+  const productFor = (area: LookStep["area"]) => mp?.items?.find((p) => p.area === area); // shows partial results while searching
   const pseudo: Product[] = a.steps.map((st) => {
     const pr = productFor(st.area);
     return {
@@ -411,8 +413,11 @@ function MyTone({ s, refresh, onShare }: { s: SessionState; refresh: () => Promi
         </h2>
         {!prod || prod.status === "pending" || prod.status === "idle" ? (
           <>
-            <ProductSkeleton />
-            <p className="mt-2 text-[13px] text-ink-soft">Searching for products that match…</p>
+            {prod?.items?.length ? <ProductCards products={prod.items} /> : <ProductSkeleton />}
+            <p role="status" className="mt-2 flex items-center gap-2 text-[13px] font-semibold text-cherry">
+              <span aria-hidden className="block size-3 animate-spin rounded-full border-2 border-cherry border-t-transparent" />
+              {prod?.items?.length ? `${prod.items.length} of 5 found, searching for the rest…` : "Searching for products that match…"}
+            </p>
           </>
         ) : prod.status === "error" || !prod.items?.length ? (
           <p className="text-sm text-ink-soft">We couldn&apos;t find products this time. {prod.error ?? ""}</p>
