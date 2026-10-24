@@ -54,6 +54,20 @@ export const CatalogItem = z.object({
 });
 export type CatalogItem = z.infer<typeof CatalogItem>;
 
+// Web-searched product recommendations (headless pi agent with web_search), after ③ translation
+export const Product = z.object({
+  area: Area,
+  brand: z.string(),
+  name: z.string(),
+  shadeName: z.string(), // "" for skincare
+  hex: Hex.optional(), // approximate, from search results; omit if unknown
+  url: z.string().url(), // product or retailer page found by search
+  why: z.string(), // one line: why this fits the translated color / tone / finish
+  sourceUrl: z.string().url(), // page the agent used as evidence
+});
+export type Product = z.infer<typeof Product>;
+export const ProductList = z.object({ products: z.array(Product) });
+
 // Session state persisted as DATA_DIR/sessions/{id}/session.json
 export type ImageStatus = "idle" | "pending" | "done" | "error";
 export type SessionState = {
@@ -64,12 +78,14 @@ export type SessionState = {
   translation?: ToneTranslation;
   applyOriginal: { status: ImageStatus; error?: string };
   applyTranslated: { status: ImageStatus; error?: string };
+  products?: { status: ImageStatus; items?: Product[]; error?: string; fallback?: boolean }; // fallback = sample catalog used
 };
 
 // API (all JSON unless noted)
 // POST /api/session                multipart {look: File}            -> { id, analysis }
 // POST /api/session/[id]/selfie    multipart {selfie: File}          -> { ok: true }   (starts ② generation in background)
 // POST /api/session/[id]/translate (no body)                         -> { translation } (starts ③ generation in background)
+//      translate also starts the web product search job in background (products.status pending -> done/error)
 // GET  /api/session/[id]                                             -> SessionState
 // GET  /api/files/[id]/[name]      name in FILE_NAMES                -> image bytes
 export const FILE_NAMES = ["look.jpg", "selfie.jpg", "apply_original.png", "apply_translated.png"] as const;

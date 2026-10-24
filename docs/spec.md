@@ -48,7 +48,8 @@
 | 데이터·저장 | 이미지 파일시스템 저장(사용자 결정), 세션별 결과 재표시 | `DATA_DIR`(로컬 `./data`, 배포 볼륨 `/data`) 아래 `sessions/{id}/look.*, selfie.*, analysis.json, translated.json, apply_original.png, apply_translated.png`. 카탈로그는 레포 `catalog.json`(샘플) |
 | 인증·민감 정보 | 접근 장벽 최소, 얼굴 사진 | 로그인 없음, 추측 불가 UUID 세션. 13+ 체크, "Anthropic·OpenAI로 전송, 데모 서버에 저장" 고지. 아이돌 사진은 사용자 업로드만, 샘플 룩은 권리 확보 이미지 |
 | 제품 AI | 룩 분석·톤 번역, 무드 있는 얼굴 이미지 | Claude `claude-sonnet-5-5`(vision, JSON) = ①③ 판단. OpenAI Images edit `gpt-image-2.5-sunburst`(다중 입력 이미지, 얼굴 `input_fidelity` 확인) = ②③ 이미지. 운영진 허용(`hackathon.md`) |
-| 배포 | 공개 URL, 영속 디스크, 21:00 유지 | **Railway** 서비스 1개 + Volume `/data`. `railway up`으로 로컬 디렉터리 배포. 비밀은 Railway Variables |
+| 제품 추천 | 실제 판매 중인 K-뷰티 제품을 번역된 색·톤·제형에 맞춰 추천(사용자 결정) | ③ 번역 후 백엔드가 **pi를 헤드리스로 실행**(`pi -p --no-session --model anthropic/claude-sonnet-5-5 --tools web_search,fetch_content,get_search_content`, pi-web-access 확장의 Exa 검색). 결과 JSON을 `Product` 스키마로 검증해 세션에 저장. 검색 실패 시 샘플 카탈로그로 표시(`fallback` 배지) |
+| 배포 | 공개 URL, 영속 디스크, 21:00 유지, 컨테이너에 pi 포함 | **Railway** 서비스 1개 + Volume `/data`, **Dockerfile** 빌드(node 24 + `@earendil-works/pi-coding-agent` + `pi-web-access`). `railway up`으로 로컬 디렉터리 배포. 비밀은 Railway Variables |
 | 검증 | 실제 시나리오 | `pnpm lint`·`pnpm build` + 공개 URL에서 ①→②→③ 확인 |
 
 ## 위험과 계약
