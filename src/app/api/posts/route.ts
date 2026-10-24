@@ -28,6 +28,11 @@ export async function POST(req: Request) {
     s = null;
   }
   if (!s) return Response.json({ error: "session not found" }, { status: 404, headers: NO_STORE });
+  // Product searches run in the background; give them a short grace period so posts are not published empty.
+  for (let i = 0; i < 40 && (s.products?.status === "pending" || s.museProducts?.status === "pending"); i++) {
+    await new Promise((r) => setTimeout(r, 2000));
+    s = (await loadSession(input.sessionId).catch(() => null)) ?? s;
+  }
   if (!s.analysis || !s.translation || s.applyTranslated.status !== "done" ||
     s.mannequin?.status !== "done" ||
     s.styled?.status !== "done") {

@@ -17,7 +17,7 @@ const NOTICE = "My selfie is sent to Anthropic and OpenAI to create the preview 
 
 const isPending = (s: SessionState) =>
   s.applyOriginal.status === "pending" || s.applyTranslated.status === "pending" ||
-  s.mannequin?.status === "pending" || s.styled?.status === "pending" || s.products?.status === "pending";
+  s.mannequin?.status === "pending" || s.styled?.status === "pending" || s.products?.status === "pending" || s.museProducts?.status === "pending";
 
 export function SessionFlow({ id }: { id: string }) {
   const [s, setS] = useState<SessionState | null>(null);
@@ -313,6 +313,8 @@ function MyTone({ s, refresh, onShare }: { s: SessionState; refresh: () => Promi
   const sty = s.styled?.status === "done";
   const me = tp.status === "done";
   const done = mn && sty && me;
+  const prodPending = !s.products || s.products.status === "pending" || s.products.status === "idle" || s.museProducts?.status === "pending";
+  const ready = done && !prodPending;
   const label = `${t.skinTone.depth}, ${t.skinTone.undertone}`;
   const prod = s.products;
   return (
@@ -367,7 +369,7 @@ function MyTone({ s, refresh, onShare }: { s: SessionState; refresh: () => Promi
         )}
       </ScreenBody>
       <ActionBar>
-        <PrimaryButton disabled={!done} onClick={onShare}>Share My Look</PrimaryButton>
+        <PrimaryButton disabled={!ready} onClick={onShare}>{done && prodPending ? "Finding products…" : "Share My Look"}</PrimaryButton>
         <SubLink href="/new">Try another look</SubLink>
       </ActionBar>
     </>
